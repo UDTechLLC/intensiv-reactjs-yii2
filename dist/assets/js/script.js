@@ -1,0 +1,1 @@
+$(function(){_this=$(this),$("[role='button']").click(function(e){e.preventDefault()}),$(".section select").length&&$(".section select").select2({minimumResultsForSearch:1/0}),$("select").on("select2:open",function(e){$(".select2-results__options").scrollbar().parent().addClass("scrollbar-inner")})});

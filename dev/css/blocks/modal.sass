@@ -1,0 +1,109 @@
+body
+  &.modal-open
+    overflow: hidden
+    position: fixed
+    width: 100%
+    padding-right: 0 !important
+
+    .modal
+      overflow-y: auto
+      .modal-dialog
+        width: 696px
+        .modal-content
+          box-shadow: 0 24px 59px rgba(51, 59, 69, 0.15)
+          border-radius: $border-radius-btn-small
+          background-color: #021725
+
+          &:before
+            content: ""
+            width: 100%
+            height: 100%
+            display: block
+            background: url(../images/bg-popup.png)
+            position: absolute
+            top: 0
+            bottom: 0
+            left: 0
+            right: 0
+            margin: auto
+
+          h4, h2
+            color: white
+            font-weight: $light
+            text-transform: uppercase
+            text-align: center
+          h4
+            font-size: 30px
+            line-height: 40px
+            margin-bottom: 3px
+          h2
+            font-size: 50px
+            line-height: 50px
+            margin-bottom: 10px
+            span
+              color: $mainColor
+              font-weight: $semi-bold
+
+          p
+            color: white
+            font-weight: $light
+            font-size: 16px
+            line-height: 40px
+            text-transform: uppercase
+            text-align: center
+          .modal-body
+            padding: 31px 45px 15px
+            input[type=email]
+              width: 64%
+              margin: 0
+            input[type=submit]
+              width: 33%
+              margin: 0
+            form
+              margin-top: 59px
+          .modal-header
+            position: relative
+            border: none
+            padding-top: 43px
+
+          .modal-footer
+            padding: 8px 45px 27px
+            position: relative
+            border: none
+            p
+              opacity: 0.5
+              text-transform: inherit
+              font-size: 14px
+              line-height: 26px
+
+        .close
+          height: 30px
+          width: 30px
+          border: none
+          background: none
+          position: absolute
+          right: 26px
+          top: 18px
+          cursor: pointer
+
+          &:before, &:after
+            transform: rotate(-45deg)
+            content: ''
+            position: absolute
+            top: 37%
+            left: 50%
+            margin-top: 0
+            margin-left: 0
+            display: block
+            height: 25px
+            width: 2px
+            background-color: rgba(white, 0.7)
+            transition: all 0.35s ease-out
+          &:after
+            transform: rotate(45deg)
+          &:hover
+            &:before, &:after
+              transform: rotate(90deg)
+              background-color: $mainColor
+          &:focus, &:active
+            outline: none

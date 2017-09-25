@@ -1,0 +1,49 @@
+body
+  input[type=text], input[type=email]
+    width: 100%
+    height: 50px
+    line-height: 50px
+    padding: 0 27px
+    border-radius: $border-radius-btn
+    background-color: $inputColor
+    margin-bottom: 10px
+    color: $fontColor
+    font-size: 14px
+    font-weight: $light
+    border: 1px solid $inputColor
+    transition: all 0.35s ease-in
+    +_placeholder
+      color: $placeholder
+
+    &:hover
+      background-color: #e1e4e6
+      border-color: #e1e4e6
+
+    &:focus, &:active
+      outline: none
+      background-color: $inputColor
+      border-color: $mainColor
+
+
+  textarea
+    width: 100%
+    height: 131px
+    padding: 16px 27px
+    color: $fontColor
+    border-radius: $border-radius-btn
+    background-color: $inputColor
+    margin-bottom: 16px
+    border: 1px solid $inputColor
+    resize: none
+    transition: all 0.35s ease-in
+    +_placeholder
+      color: $placeholder
+
+    &:hover
+      background-color: #e1e4e6
+      border-color: #e1e4e6
+    &:focus, &:active
+      outline: none
+      background-color: $inputColor
+      border-color: $mainColor
+

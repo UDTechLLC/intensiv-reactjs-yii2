@@ -1,0 +1,56 @@
+.btn
+ display: inline-block
+ box-shadow: none
+ border: none
+ cursor: pointer
+ background: transparent
+ box-shadow: none
+ border: none
+ &:hover, &:focus, &:active
+  outline: none
+ &:last-child
+  margin-right: 0
+
+ &-block
+  display: block
+  width: 100%
+
+ &-blue
+  border-radius: $border-radius-btn
+  background-color: $mainColor
+  color: #ffffff
+  width: 100%
+  font-size: 14px
+  padding: 5px 0
+  font-weight: $semi-bold
+  border: none
+  cursor: pointer
+  line-height: 40px
+  text-transform: uppercase
+  transition: all 0.3s ease-in
+  &:hover
+   background-color: $hoverColor
+   outline: none
+  &:active, &:focus
+   background-color: $activeColor
+   outline: none
+  &:disabled
+   opacity: 0.5
+   cursor: not-allowed
+
+ &-small
+  width: 180px
+  margin: 11px auto 15px
+  display: block
+  line-height: 30px
+
+ &-reset
+  background-color: $mainColor
+  -webkit-appearance: none !important
+  &:hover
+   background-color: $hoverColor
+  &:active, &:focus
+   background-color: $activeColor
+
+ &-fullwidth
+  width: 100%

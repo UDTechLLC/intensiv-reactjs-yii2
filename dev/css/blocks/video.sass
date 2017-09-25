@@ -1,0 +1,62 @@
+.section-video
+  padding-top: 76px
+  padding-bottom: 64px
+  h2
+    padding: 0 200px
+    text-align: center
+    font-size: 30px
+    font-weight: $light
+    line-height: 42px
+    color: $headingColor
+    margin-bottom: 39px
+  .video-container
+    border-radius: $border-radius-main
+    overflow: hidden
+    position: relative
+    z-index: 9
+    margin-bottom: 25px
+    img
+      width: 100%
+      z-index: 1
+      position: relative
+    .description
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
+      padding: 41px 39px
+      z-index: 3
+      background-image: linear-gradient(to top, rgba(#12100b, 0.5) 0%, rgba(0, 0, 0, 0) 100%)
+      p
+        margin-bottom: 0
+        color: #ffffff
+        font-size: 20px
+        font-weight: $light
+        line-height: 30px
+        padding-top: 12px
+      .play-btn
+        width: 50px
+        height: 50px
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2)
+        background-color: #ffffff
+        opacity: 0.9
+        position: relative
+        cursor: pointer
+        border-radius: $border-radius-circle
+        transition: all 0.35s ease-in
+        &:before
+          content: ""
+          display: block
+          border: 6px solid transparent
+          border-left: 10px solid $fontColor
+          position: absolute
+          top: 19px
+          left: 21px
+          transition: all 0.3s ease-in
+        &:hover
+          &:before
+            border-left: 10px solid $mainColor
+        &:active, &:focus
+          background-color: $mainColor
+          &:before
+            border-left: 10px solid #fff

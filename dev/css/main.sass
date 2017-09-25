@@ -1,0 +1,37 @@
+
+@import "core/_vars"
+@import "core/_mixins"
+
+@import "core/_base"
+@import "core/_grid12"
+@import "core/_fonts"
+@import "core/_btn"
+@import "core/_icons"
+
+@import "blocks/header"
+@import "blocks/school-view"
+@import "blocks/footer"
+@import "blocks/contact"
+@import "blocks/plans"
+@import "blocks/charts"
+@import "blocks/video"
+@import "blocks/additional-info"
+@import "blocks/select"
+@import "blocks/form-input"
+@import "blocks/scroll"
+@import "blocks/modal"
+
+[class^="b_"]
+ display: block
+
+.flex
+ display: flex
+ &-between
+  justify-content: space-between
+ &-center
+  align-items: center
+  justify-content: center
+ &-vertical-center
+  align-items: center
+ &-end
+  justify-content: flex-end

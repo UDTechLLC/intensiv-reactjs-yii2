@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <title>intensivkurs</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="assets/css/libs.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+  </head>
+  <body>
+    <!-- block HEADER-->
+    <div class="header flex" id="app">
+      <div class="map"><img src="assets/images/map.jpg" alt="map"></div>
+      <div class="filter-section">
+        <div class="flex flex-center header-filter"><a class="b_logo" href="#"><img src="/assets/images/logo.svg" alt="Intensivkurs Logo"></a></div>
+        <div class="body">
+          <h2>NÄRHET KVALITET & MILJÖ</h2>
+          <form method="POST" action="#">
+            <div class="drive">
+              <h3>Välj ett fordon</h3>
+              <div class="section flex">
+                <div class="button-license b">
+                  <input type="radio" name="license" value="b">
+                  <div class="wrap-btn">B</div>
+                  <div class="dropdown animated fadeIn">
+                    <input type="radio" name="license" value="ub" id="license-ub">
+                    <label for="license-ub"><span>UB</span>släpvagn (Max 4.25 ton)</label>
+                    <input type="radio" name="license" value="be" id="license-be">
+                    <label for="license-be"><span>BE</span>tung släpvagn (Max 3.5 ton)</label>
+                  </div>
+                </div>
+                <div class="button-license a">
+                  <input type="radio" name="license" value="a">
+                  <div class="wrap-btn">A</div>
+                  <div class="dropdown animated fadeInDown">
+                    <input type="radio" name="license" value="a1" id="license-a1">
+                    <label for="license-a1"><span>A1</span>Lätt motorcykel (Max 11 Kw)</label>
+                    <input type="radio" name="license" value="a2" id="license-a2">
+                    <label for="license-a2"><span>A2</span>Mellanstor motorcykel (Max 35 Kw)</label>
+                  </div>
+                </div>
+                <div class="button-license am">
+                  <input type="radio" name="license" value="am">
+                  <div class="wrap-btn">AM</div>
+                </div>
+              </div>
+            </div>
+            <div class="home">
+              <h3>Välj en ort eller en trafikskola</h3>
+              <div class="section">
+                <select name="search_area_map">
+                  <option value="hello_default">Välj ort</option>
+                  <option value="1">Bromma</option>
+                  <option value="3">Botkyra</option>
+                  <option value="4">Danderyd-Täby</option>
+                  <option value="5">Farsta</option>
+                  <option value="6">Haninge</option>
+                  <option value="7">Huddinge</option>
+                  <option value="8">Hässelby-Vällingby</option>
+                  <option value="9">Jakobsberg</option>
+                  <option value="10">Lidingö</option>
+                  <option value="11">Nacka</option>
+                  <option value="12">Norrtälje</option>
+                  <option value="13">Nynäshamn</option>
+                  <option value="14">Sollentuna</option>
+                  <option value="15">Sundbyberg/Solna</option>
+                  <option value="16">Södermalm</option>
+                  <option value="17">Södertälje</option>
+                  <option value="18">Upplands Väsby</option>
+                  <option value="19">Tyresö</option>
+                  <option value="20">Västermalm</option>
+                  <option value="21">Östermalm</option>
+                </select>
+                <select name="search_name">
+                  <option value="hello_default">Välj trafikskola</option>
+                  <option value="2">Västerort Trafikskola</option>
+                  <option value="3">Kullens Trafikskola</option>
+                  <option value="4">JPs Trafikskola</option>
+                  <option value="5">Gabriels Trafikskola</option>
+                  <option value="6">Västermalm Trafikskola</option>
+                  <option value="7">Brommaplans Trafikskola</option>
+                  <option value="8">Tyresö Trafikskola</option>
+                  <option value="9">Farsta Trafikskola</option>
+                  <option value="10">Jarla Trafikskola</option>
+                  <option value="11">Lidingö Trafikskola</option>
+                  <option value="12">Saltsjö Trafikskola</option>
+                  <option value="13">Södermalms Trafikskola</option>
+                  <option value="14">Haninge Trafikskola</option>
+                  <option value="15">Huddinge Trafikskola</option>
+                  <option value="16">Danderyd Trafikskola</option>
+                  <option value="17">Upplands Väsby Trafikskola</option>
+                  <option value="18">Din Körskola</option>
+                  <option value="19">Södertälje Trafikskola</option>
+                  <option value="20">Yvonnes Trafikskola</option>
+                  <option value="22">Norrtälje Trafikskola</option>
+                </select>
+              </div>
+            </div>
+            <input class="btn-blue" type="submit" value="Välj en trafikskola">
+          </form>
+        </div>
+      </div>
+      <div class="school-view">
+        <button class="close"></button>
+        <h2>Kullens Trafikskola</h2>
+        <p class="description">Kvalitet och miljörevision IKS-17</p>
+        <div class="graph" v-text="json.hello"></div>
+        <div class="table-statistic">
+          <div class="row">
+            <div class="col col-sm-5">
+              <p class="label">Kundsupport</p>
+            </div>
+            <div class="col col-sm-7">
+              <div class="block-statistic">
+                <div class="progress-bar"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-sm-5">
+              <p class="label">Lärarlegitimation</p>
+            </div>
+            <div class="col col-sm-7">
+              <div class="block-statistic">
+                <div class="progress-bar"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-sm-5">
+              <p class="label">Pedagogik</p>
+            </div>
+            <div class="col col-sm-7">
+              <div class="block-statistic">
+                <div class="progress-bar"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-sm-5">
+              <p class="label">Miljöfordon</p>
+            </div>
+            <div class="col col-sm-7">
+              <div class="block-statistic">
+                <div class="progress-bar"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-sm-5">
+              <p class="label">Rekommendation</p>
+            </div>
+            <div class="col col-sm-7">
+              <div class="block-statistic">
+                <div class="progress-bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-info">
+          <div class="info-block location">Sollentunavägen 162 B 191 48 Sollentuna</div>
+          <div class="info-block email">info@kullenstrafikskola.nu</div>
+          <div class="info-block phone">08-590 722 00</div>
+          <input class="btn-blue" type="submit" value="Välj en trafikskola">
+        </div>
+      </div>
+    </div>
+    <!-- block CONTENT-->
+    <div class="content">
+      <div class="container">
+        <div class="plans">
+          <h2>Välj mellan olika körpaket</h2>
+          <ul class="nav nav-tabs flex flex-center" role="tablist">
+            <li class="active"><a href="#intensive" aria-controls="intensive" role="tab" data-toggle="tab">Intensivpaket</a></li>
+            <li><a href="#study" aria-controls="study" role="tab" data-toggle="tab">Övningspaket</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" role="tabpanel" id="intensive">
+              <div class="row">
+                <div class="col col-md-3">
+                  <div class="card flipInY animated">
+                    <div class="icon">1</div>
+                    <h3>KAMPANJ NY ELEV</h3>
+                    <div class="price">3650 kr</div>
+                    <ul>
+                      <li>Riskettan</li>
+                      <li>Risktvåan</li>
+                      <li>Körkortsboken</li>
+                      <li>Online teori</li>
+                    </ul>
+                    <button class="btn-blue btn-small">Boka nu</button>
+                  </div>
+                </div>
+                <div class="col col-md-3">
+                  <div class="card flipInY animated active">
+                    <div class="icon">2</div>
+                    <h3>INTENSIVPAKET 1 VECKA</h3>
+                    <div class="price">3650 kr</div>
+                    <ul>
+                      <li>11 Körlektioner</li>
+                      <li>50 min per körlektion</li>
+                      <li>Lånebil vid uppkörning</li>
+                      <li>Manuell eller Automat</li>
+                    </ul>
+                    <button class="btn-blue btn-small">Boka nu</button>
+                  </div>
+                </div>
+                <div class="col col-md-3">
+                  <div class="card flipInY animated">
+                    <div class="icon">3</div>
+                    <h3>INTENSIVPAKET 2 VEKOR</h3>
+                    <div class="price">11 750 kr</div>
+                    <ul>
+                      <li>16 Körlektioner</li>
+                      <li>50 min per körlektion</li>
+                      <li>Lånebil vid uppkörning</li>
+                      <li>Manuell eller Automat</li>
+                    </ul>
+                    <button class="btn-blue btn-small">Boka nu</button>
+                  </div>
+                </div>
+                <div class="col col-md-3">
+                  <div class="card flipInY animated">
+                    <div class="icon">4</div>
+                    <h3>INTENSIVPAKET 2 VEKOR</h3>
+                    <div class="price">15 200 kr</div>
+                    <ul>
+                      <li>21 Körlektioner</li>
+                      <li>50 min per körlektion</li>
+                      <li>Lånebil vid uppkörning</li>
+                      <li>Manuell eller Automat</li>
+                    </ul>
+                    <button class="btn-blue btn-small">Boka nu</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" role="tabpanel" id="study">
+              <div class="row">
+                <div class="col col-md-3">
+                  <div class="card flipInY animated">
+                    <div class="icon">1</div>
+                    <h3>KAMPANJ NY ELEV</h3>
+                    <div class="price">3650 kr</div>
+                    <ul>
+                      <li>Riskettan</li>
+                      <li>Risktvåan</li>
+                      <li>Körkortsboken</li>
+                      <li>Online teori</li>
+                    </ul>
+                    <button class="btn-blue btn-small">Boka nu</button>
+                  </div>
+                </div>
+                <div class="col col-md-3">
+                  <div class="card flipInY animated">
+                    <div class="icon">2</div>
+                    <h3>INTENSIVPAKET 1 VECKA</h3>
+                    <div class="price">3650 kr</div>
+                    <ul>
+                      <li>11 Körlektioner</li>
+                      <li>50 min per körlektion</li>
+                      <li>Lånebil vid uppkörning</li>
+                      <li>Manuell eller Automat</li>
+                    </ul>
+                    <button class="btn-blue btn-small">Boka nu</button>
+                  </div>
+                </div>
+                <div class="col col-md-3">
+                  <div class="card flipInY animated">
+                    <div class="icon">3</div>
+                    <h3>INTENSIVPAKET 2 VEKOR</h3>
+                    <div class="price">11 750 kr</div>
+                    <ul>
+                      <li>16 Körlektioner</li>
+                      <li>50 min per körlektion</li>
+                      <li>Lånebil vid uppkörning</li>
+                      <li>Manuell eller Automat</li>
+                    </ul>
+                    <button class="btn-blue btn-small">Boka nu</button>
+                  </div>
+                </div>
+                <div class="col col-md-3">
+                  <div class="card flipInY animated">
+                    <div class="icon">4</div>
+                    <h3>INTENSIVPAKET 2 VEKOR</h3>
+                    <div class="price">15 200 kr</div>
+                    <ul>
+                      <li>21 Körlektioner</li>
+                      <li>50 min per körlektion</li>
+                      <li>Lånebil vid uppkörning</li>
+                      <li>Manuell eller Automat</li>
+                    </ul>
+                    <button class="btn-blue btn-small">Boka nu</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-video">
+          <h2>Välj en trafikskola nära dig som erbjuder en hög standard på utbildning och värnar om vår miljö</h2>
+          <div class="row">
+            <div class="col col-md-6 col-sm-12">
+              <div class="video-container"><img src="/assets/images/video-1.jpg" alt="video-1">
+                <div class="description flex flex-vertical-center flex-between">
+                  <p>Vägen till körkort</p>
+                  <div class="play-btn"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col col-md-6 col-sm-12">
+              <div class="video-container"><img src="/assets/images/video-1.jpg" alt="video-2">
+                <div class="description flex flex-vertical-center flex-between">
+                  <p>Vägen till körkort</p>
+                  <div class="play-btn"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-charts">
+          <h2>Förarprovstatistik</h2>
+          <p class="headline">Antal godkända Körprov B som genomförts på Trafikverket, perioden Januari – Juli 2017</p>
+          <div class="row without-line header-table">
+            <div class="col col-md-3"></div>
+            <div class="col col-md-3">
+              <p class="label">Kvinnor</p>
+            </div>
+            <div class="col col-md-3">
+              <p class="label">Män</p>
+            </div>
+            <div class="col col-md-3">
+              <p class="label">Totalt</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-md-3 flex flex-vertical-center">
+              <p class="label">Farsta</p>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="40">
+                <figcaption></figcaption>
+                <p>42<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="45">
+                <figcaption></figcaption>
+                <p>44<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="40">
+                <figcaption></figcaption>
+                <p>43</p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-md-3 flex flex-vertical-center">
+              <p class="label">Jakobsberg</p>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="35">
+                <figcaption></figcaption>
+                <p>37<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="45">
+                <figcaption></figcaption>
+                <p>42<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="40">
+                <figcaption></figcaption>
+                <p>41<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-md-3 flex flex-vertical-center">
+              <p class="label">Sollentuna</p>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="35">
+                <figcaption></figcaption>
+                <p>38<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="40">
+                <figcaption></figcaption>
+                <p>40<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="40">
+                <figcaption></figcaption>
+                <p>39<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+          </div>
+          <div class="row without-line">
+            <div class="col col-md-3 flex flex-vertical-center">
+              <p class="label">Södertälje</p>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="40">
+                <figcaption></figcaption>
+                <p>43<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="45">
+                <figcaption></figcaption>
+                <p>45<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="45">
+                <figcaption></figcaption>
+                <p>43<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+          </div>
+          <p class="headline">Antal godkända Kunskapsprov B som genomförts på Trafikverket, Perioden Januari – Juni 2017</p>
+          <div class="row">
+            <div class="col col-md-3 flex flex-vertical-center">
+              <p class="label">Stockholm</p>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="45">
+                <figcaption></figcaption>
+                <p>46<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="35">
+                <figcaption></figcaption>
+                <p>38<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="40">
+                <figcaption></figcaption>
+                <p>41<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-md-3 flex flex-vertical-center">
+              <p class="label">Södertälje</p>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="50">
+                <figcaption></figcaption>
+                <p>48<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="35">
+                <figcaption></figcaption>
+                <p>35<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+            <div class="col col-md-3">
+              <figure class="chart" data-percent="40">
+                <figcaption></figcaption>
+                <p>40<span>%</span></p>
+                <svg width="72" height="72">
+                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                </svg>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-additional-info">
+        <div class="container">
+          <h2>Mer information</h2>
+          <p class="headline">Länkar till Transportstyrelse & Trafikverket</p>
+          <div class="row">
+            <div class="col col-md-4">
+              <div class="info-block license">
+                <div class="icon"></div>
+                <h3>Körkortsbehörigheter</h3>
+                <p>I tabellen hos Transportstyrelsen kan du se vilken ålder som krävs för att du ska kunna ta körkort för de olika behörigheterna.</p><a class="btn">Besök webbplatsen</a>
+              </div>
+            </div>
+            <div class="col col-md-4">
+              <div class="info-block category">
+                <div class="icon"></div>
+                <h3>Körkortstillstånd</h3>
+                <p>Hos Transportstyrelsen kan du ansöka om körkortstillstånd för AM, A1, A2, A, B, BE och traktorkort.</p><a class="btn">Besök webbplatsen</a>
+              </div>
+            </div>
+            <div class="col col-md-4">
+              <div class="info-block testing">
+                <div class="icon"></div>
+                <h3>Boka förarprov</h3>
+                <p>I tjänsten Boka förarprov hos Trafikverket kan du boka och avboka prov för alla körkortsbehörigheter.</p><a class="btn">Besök webbplatsen</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-contact">
+        <div class="container">
+          <h2>Välkommen att kontakta oss</h2>
+          <p class="headline">Har du några frågor och funderingar kring körkort eller körpaket, vi hjälper dig gärna.</p>
+          <div class="flex flex-center social-area"><a href="https://www.facebook.com/www.vasterorttrafikskola.se" target="_blank" id="fb">fb.com/intensivkurs</a><a href="mailto:intensivkurs@gmail.com" target="_blank" id="mail">intensivkurs@gmail.com</a></div>
+          <form action="#" method="">
+            <input type="text" name="name" placeholder="Namn">
+            <input type="email" name="email" placeholder="Email Adress">
+            <textarea placeholder="Skriv ditt meddelande här"></textarea>
+            <input class="btn-blue" type="submit" value="SKICKA">
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="ads-modal" tabindex="-1" role="dialog" aria-labelledby="ads" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal"></button>
+            <h4 class="modal-title">VÄLKOMMEN</h4>
+            <p>SOM NY BESÖKARE GER VI DIG IDAG</p>
+          </div>
+          <div class="modal-body">
+            <h2><span>10%</span>RABATT</h2>
+            <p>PÅ DITT FÖRSTA KÖP!</p>
+            <form class="flex flex-between" action="#" method="">
+              <input type="email" name="email" placeholder="Skriv in din email adress här">
+              <input class="btn-blue" type="submit" value="SKICKA">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <p>Genom att fylla i din email adress godkänner du samtidigt att du får ta en del av intensivkurs Stockholms nyhetsbrev och kampanjer. Du kan närsomhelst avregistrera dig från nyhetsbrevet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="assets/js/libs.js"></script>
+    <script src="https://unpkg.com/vue@2.4.2/dist/vue.js"></script>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

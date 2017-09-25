@@ -1,0 +1,68 @@
+=_placeholder
+  &::-webkit-input-placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content
+
+//MEDIA BP
+=_media-xs()
+  @media (max-width: $screen-xs-max)
+    @content
+
+=_media-sm()
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+    @content
+
+=_media-md()
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max)
+    @content
+
+=_media-lg()
+  @media (min-width: $screen-lg-min)
+    @content
+
+=_media-sm-up()
+  @media (min-width: $screen-sm-min)
+    @content
+
+=_media-md-up()
+  @media (min-width: $screen-md-min)
+    @content
+
+=_media-lg-up()
+  @media (min-width: $screen-lg-min)
+    @content
+
+=_media-sm-down()
+  @media (max-width: $screen-sm-min)
+    @content
+
+=_media-md-down()
+  @media (max-width: $screen-md-min)
+    @content
+
+=_media-lg-down()
+  @media (max-width: $screen-lg-min)
+    @content
+
+=_media-lg-up()
+  @media (min-width: $screen-lg-min)
+    @content
+
+=_media-val-down($val)
+  @media screen and (max-width: $val)
+    @content
+
+=_media-val-up($val)
+  @media screen and (min-width: $val)
+    @content
+
+@mixin calc($property, $default, $expression)
+  #{$property}: $default
+  #{$property}: -webkit-calc(#{$expression})
+  #{$property}: -moz-calc(#{$expression})
+  #{$property}: calc(#{$expression})

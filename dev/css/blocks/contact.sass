@@ -1,0 +1,76 @@
+.section-contact
+  padding-top: 41px
+  padding-bottom: 51px
+  h2
+    text-align: center
+    color: $headingColor
+    font-size: 30px
+    font-weight: $light
+    line-height: 40px
+    margin-bottom: 3px
+  .social-area
+    padding-top: 14px
+    padding-bottom: 33px
+    a
+      color: $headingColor
+      font-size: 14px
+      font-weight: 300
+      line-height: 40px
+      position: relative
+      padding-left: 64px
+      transition: all 0.35s ease-in
+      &:before
+        content: ""
+        display: block
+        width: 48px
+        height: 48px
+        border: 2px solid $inputColor
+        border-radius: $border-radius-circle
+        position: absolute
+        top: -4px
+        left: -3px
+        transition: all 0.35s ease-in
+      &:after
+        content: ""
+        display: block
+        background-color: $mainColor
+        position: absolute
+      &#fb
+        padding-right: 137px
+        &:after
+          -webkit-mask-image: url(../images/icon-facebook.svg)
+          mask-image: url(../images/icon-facebook.svg)
+          width: 11px
+          height: 22px
+          top: 9px
+          left: 14px
+      &#mail
+        &:after
+          -webkit-mask-image: url(../images/icon-mail.svg)
+          mask-image: url(../images/icon-mail.svg)
+          width: 18px
+          height: 14px
+          top: 13px
+          left: 12px
+
+      &:hover
+        color: $mainColor
+        &:before
+          border-color: $mainColor
+
+      &:focus, &:active
+        color: $mainColor
+        &:before
+          border-color: $mainColor
+          background: $mainColor
+        &:after
+          background-color: white
+
+  form
+    width: 48.64%
+    margin: 0 auto
+
+    input[type=submit]
+      width: 53%
+      margin: 0 auto
+      display: block

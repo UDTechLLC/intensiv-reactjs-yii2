@@ -1,0 +1,39 @@
+html
+ font-size: 62.5%
+ overflow-x: hidden
+
+body
+ font-family: $mainFont
+ font-size: $fsMain
+ color: $fontColor
+ background-color: #fff
+ overflow-x: hidden
+ backface-visibility: hidden
+ text-rendering: optimizeSpeed
+ -webkit-font-smoothing: subpixel-antialiased
+
+a
+ color: $mainColor
+ transition: all .35s
+
+a, a:hover, a:focus, a:active
+ text-decoration: none
+
+ul
+ padding: 0
+ margin: 0
+ li
+  list-style-type: none
+
+.clearfix::after
+ display: block
+ content: ""
+ clear: both
+
+.hidden
+ display: none !important
+
+@media (max-width: 1200px)
+ body .container
+  width: 82.7%
+
