@@ -17,6 +17,7 @@ var pug = require('gulp-pug'),
 	sourcemaps = require('gulp-sourcemaps'),
 
 	//js
+    babel = require('gulp-babel'),
 	uglify = require('gulp-uglify'),
 
 	//img
@@ -38,7 +39,7 @@ var path = {
 	dev: {
 		html: ['dev/**/*.pug','!dev/blocks/**/*.pug', '!dev/tpl/**/*.pug'],
 		css: 'dev/css/main.sass',
-		js: 'dev/js/*.js',
+		js: 'dev/js/script.js',
 		fonts: 'dev/fonts/**/*.*',
 		img: 'dev/images/**/**/**/*.*'
 	},
@@ -76,7 +77,7 @@ gulp.task('checkHtml', function(){
 		.pipe(gulp.dest(path.dist.html));
 });
 
-/* SYLES */
+/* STYLES */
 
 gulp.task('css', function(){
 	gulp.src([
@@ -123,6 +124,9 @@ gulp.task('libsJs', function(){
 
 gulp.task('js', function(){
 	gulp.src(path.dev.js)
+	.pipe(babel({
+		presets: ['env']
+	}))
 	.pipe(uglify())
 	.pipe(concat('script.js'))
 	.pipe(gulp.dest(path.dist.js))

@@ -22,10 +22,11 @@ body
         content: ""
         display: block
         position: absolute
-        top: 10px
-        left: 0
-        width: 38px
-        height: 38px
+        top: 6px
+        left: 7px
+        width: 24px
+        height: 17px
+        transform: rotate(90deg)
         background-color: $mainColor
         -webkit-mask-image: url(../images/arrow-down.svg)
         mask-image: url(../images/arrow-down.svg)
@@ -39,6 +40,8 @@ body
         color: $mainColor
         border-color: $mainColor
         background: $mainColor
+        &:before
+          background-color: white
 
     h2
       color: $headingColor
