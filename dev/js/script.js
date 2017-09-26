@@ -1,5 +1,4 @@
 $(function(){
-	_this = $(this);
 
 	$("[role='button']").click(function(e){
 		e.preventDefault();
@@ -20,8 +19,6 @@ $(function(){
     $('select').on('select2:open', function(e){
         $('.select2-results__options').scrollbar().parent().addClass('scrollbar-inner');
     });
-
-
 
 
 });
@@ -91,8 +88,21 @@ let app = new Vue({
                 if( school.id == self.selectSchool){
                     self.schoolView = school
                     $('.progress-bar.support').width(parseInt(self.schoolView.support) +'%')
+                    $('.progress-bar.registrationTeacher').width(parseInt(self.schoolView.registrationTeacher) +'%')
+                    $('.progress-bar.pedagogical').width(parseInt(self.schoolView.pedagogical) +'%')
+                    $('.progress-bar.cleanVehicles').width(parseInt(self.schoolView.cleanVehicles) +'%')
+                    $('.progress-bar.recommendation').width(parseInt(self.schoolView.recommendation) +'%')
                 }
             });
+        },
+        closeSchoolView(){
+            this.schoolViewStatus = false
+            let self = this;
+            $('.progress-bar.support').width(0)
+            $('.progress-bar.registrationTeacher').width(0)
+            $('.progress-bar.pedagogical').width(0)
+            $('.progress-bar.cleanVehicles').width(0)
+            $('.progress-bar.recommendation').width(0)
         }
     }
 });

@@ -97,7 +97,7 @@ html(lang="en")
 										slot
 						input(type="submit" value="Välj en trafikskola", class="btn-blue")
 			.school-view
-				button.close
+				button.close(v-on:click="closeSchoolView")
 				h2 {{schoolView.name}}
 				p.description Kvalitet och miljörevision IKS-17
 				.graph
@@ -114,25 +114,25 @@ html(lang="en")
 							p.label Lärarlegitimation
 						.col.col-sm-7
 							.block-statistic
-								.progress-bar
+								.progress-bar.registrationTeacher
 					.row
 						.col.col-sm-5
 							p.label Pedagogik
 						.col.col-sm-7
 							.block-statistic
-								.progress-bar
+								.progress-bar.pedagogical
 					.row
 						.col.col-sm-5
 							p.label Miljöfordon
 						.col.col-sm-7
 							.block-statistic
-								.progress-bar
+								.progress-bar.cleanVehicles
 					.row
 						.col.col-sm-5
 							p.label Rekommendation
 						.col.col-sm-7
 							.block-statistic
-								.progress-bar
+								.progress-bar.recommendation
 				.contact-info
 					.info-block.location {{schoolView.address}}
 					.info-block.email {{schoolView.email}}
