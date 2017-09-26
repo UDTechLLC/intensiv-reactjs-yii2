@@ -13,11 +13,11 @@
     <!-- block HEADER-->
     <div class="header flex" id="app">
       <div class="map"><img src="assets/images/map.jpg" alt="map"></div>
-      <div class="filter-section">
+      <div class="filter-section" :class="{'open-school-view': schoolViewStatus}">
         <div class="flex flex-center header-filter"><a class="b_logo" href="#"><img src="/assets/images/logo.svg" alt="Intensivkurs Logo"></a></div>
         <div class="body">
           <h2>NÄRHET KVALITET & MILJÖ</h2>
-          <form method="POST" action="#">
+          <form method="POST" action="#" v-on:submit.prevent="openSchoolView">
             <div class="drive">
               <h3>Välj ett fordon</h3>
               <div class="section flex">
@@ -50,8 +50,8 @@
             <div class="home">
               <h3>Välj en ort eller en trafikskola</h3>
               <div class="section">
-                <select name="search_area_map">
-                  <option value="hello_default">Välj ort</option>
+                <select2 name="search_area_map">
+                  <option disabled selected value="placeholder">Välj ort</option>
                   <option value="1">Bromma</option>
                   <option value="3">Botkyra</option>
                   <option value="4">Danderyd-Täby</option>
@@ -72,30 +72,16 @@
                   <option value="19">Tyresö</option>
                   <option value="20">Västermalm</option>
                   <option value="21">Östermalm</option>
-                </select>
-                <select name="search_name">
-                  <option value="hello_default">Välj trafikskola</option>
-                  <option value="2">Västerort Trafikskola</option>
-                  <option value="3">Kullens Trafikskola</option>
-                  <option value="4">JPs Trafikskola</option>
-                  <option value="5">Gabriels Trafikskola</option>
-                  <option value="6">Västermalm Trafikskola</option>
-                  <option value="7">Brommaplans Trafikskola</option>
-                  <option value="8">Tyresö Trafikskola</option>
-                  <option value="9">Farsta Trafikskola</option>
-                  <option value="10">Jarla Trafikskola</option>
-                  <option value="11">Lidingö Trafikskola</option>
-                  <option value="12">Saltsjö Trafikskola</option>
-                  <option value="13">Södermalms Trafikskola</option>
-                  <option value="14">Haninge Trafikskola</option>
-                  <option value="15">Huddinge Trafikskola</option>
-                  <option value="16">Danderyd Trafikskola</option>
-                  <option value="17">Upplands Väsby Trafikskola</option>
-                  <option value="18">Din Körskola</option>
-                  <option value="19">Södertälje Trafikskola</option>
-                  <option value="20">Yvonnes Trafikskola</option>
-                  <option value="22">Norrtälje Trafikskola</option>
-                </select>
+                </select2>
+                <select2 name="search_name" v-model="selectSchool">
+                  <option disabled selected value="placeholder">Välj trafikskola</option>
+                  <option v-for="school in listSchools" :value="school.id">{{school.name}}</option>
+                </select2>
+                <script type="text/x-template" id="select2-template">
+                  <select>
+                    <slot></slot>
+                  </select>
+                </script>
               </div>
             </div>
             <input class="btn-blue" type="submit" value="Välj en trafikskola">
@@ -104,9 +90,9 @@
       </div>
       <div class="school-view">
         <button class="close"></button>
-        <h2>Kullens Trafikskola</h2>
+        <h2>{{schoolView.name}}</h2>
         <p class="description">Kvalitet och miljörevision IKS-17</p>
-        <div class="graph" v-text="json.hello"></div>
+        <div class="graph"></div>
         <div class="table-statistic">
           <div class="row">
             <div class="col col-sm-5">
@@ -114,7 +100,7 @@
             </div>
             <div class="col col-sm-7">
               <div class="block-statistic">
-                <div class="progress-bar"></div>
+                <div class="progress-bar support"></div>
               </div>
             </div>
           </div>
@@ -160,9 +146,9 @@
           </div>
         </div>
         <div class="contact-info">
-          <div class="info-block location">Sollentunavägen 162 B 191 48 Sollentuna</div>
-          <div class="info-block email">info@kullenstrafikskola.nu</div>
-          <div class="info-block phone">08-590 722 00</div>
+          <div class="info-block location">{{schoolView.address}}</div>
+          <div class="info-block email">{{schoolView.email}}</div>
+          <div class="info-block phone">{{schoolView.phone}}</div>
           <input class="btn-blue" type="submit" value="Välj en trafikskola">
         </div>
       </div>
@@ -598,6 +584,6 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="assets/js/libs.js"></script>
     <script src="https://unpkg.com/vue@2.4.2/dist/vue.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/script.js"></script>
   </body>
 </html>

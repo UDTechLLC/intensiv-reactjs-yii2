@@ -23,14 +23,14 @@ html(lang="en")
 		.header.flex(id="app")
 			.map
 				img(src="" + imagePath + "map.jpg", alt="map")
-			.filter-section
+			.filter-section(:class="{'open-school-view': schoolViewStatus}")
 				.flex.flex-center.header-filter
 					a(href="#").b_logo
 						img(src="/" + imagePath + "logo.svg", alt="Intensivkurs Logo")
 				.body
 					h2 NÄRHET KVALITET & MILJÖ
 
-					form(method="POST", action="#")
+					form(method="POST", action="#", v-on:submit.prevent="openSchoolView")
 						.drive
 							h3 Välj ett fordon
 							.section.flex
@@ -65,8 +65,8 @@ html(lang="en")
 							h3 Välj en ort eller en trafikskola
 							.section
 
-								select(name="search_area_map")
-									option(value="hello_default") Välj ort
+								select2(name="search_area_map")
+									option(disabled, selected, value="placeholder") Välj ort
 									option(value="1") Bromma
 									option(value="3") Botkyra
 									option(value="4") Danderyd-Täby
@@ -88,35 +88,19 @@ html(lang="en")
 									option(value="20") Västermalm
 									option(value="21") Östermalm
 
-								select(name="search_name")
-									option(value="hello_default") Välj trafikskola
-									option(value="2") Västerort Trafikskola
-									option(value="3") Kullens Trafikskola
-									option(value="4") JPs Trafikskola
-									option(value="5") Gabriels Trafikskola
-									option(value="6") Västermalm Trafikskola
-									option(value="7") Brommaplans Trafikskola
-									option(value="8") Tyresö Trafikskola
-									option(value="9") Farsta Trafikskola
-									option(value="10") Jarla Trafikskola
-									option(value="11") Lidingö Trafikskola
-									option(value="12") Saltsjö Trafikskola
-									option(value="13") Södermalms Trafikskola
-									option(value="14") Haninge Trafikskola
-									option(value="15") Huddinge Trafikskola
-									option(value="16") Danderyd Trafikskola
-									option(value="17") Upplands Väsby Trafikskola
-									option(value="18") Din Körskola
-									option(value="19") Södertälje Trafikskola
-									option(value="20") Yvonnes Trafikskola
-									option(value="22") Norrtälje Trafikskola
+								select2(name="search_name", v-model="selectSchool")
+									option(disabled, selected, value="placeholder") Välj trafikskola
+									option(v-for="school in listSchools", :value="school.id") {{school.name}}
 
+								script(type="text/x-template", id="select2-template")
+									select
+										slot
 						input(type="submit" value="Välj en trafikskola", class="btn-blue")
 			.school-view
 				button.close
-				h2 Kullens Trafikskola
+				h2 {{schoolView.name}}
 				p.description Kvalitet och miljörevision IKS-17
-				.graph(v-text="json.hello")
+				.graph
 
 				.table-statistic
 					.row
@@ -124,7 +108,7 @@ html(lang="en")
 							p.label Kundsupport
 						.col.col-sm-7
 							.block-statistic
-								.progress-bar
+								.progress-bar.support
 					.row
 						.col.col-sm-5
 							p.label Lärarlegitimation
@@ -150,9 +134,9 @@ html(lang="en")
 							.block-statistic
 								.progress-bar
 				.contact-info
-					.info-block.location Sollentunavägen 162 B 191 48 Sollentuna
-					.info-block.email info@kullenstrafikskola.nu
-					.info-block.phone 08-590 722 00
+					.info-block.location {{schoolView.address}}
+					.info-block.email {{schoolView.email}}
+					.info-block.phone {{schoolView.phone}}
 					input.btn-blue(type="submit", value="Välj en trafikskola")
 
 		// block CONTENT
@@ -504,4 +488,4 @@ html(lang="en")
 			script(src="https://code.jquery.com/jquery-2.2.4.min.js")
 			script(src="assets/js/libs.js")
 			script(src="https://unpkg.com/vue@2.4.2/dist/vue.js")
-			script(src="assets/js/script.js")
+			script(src="assets/script.js")
