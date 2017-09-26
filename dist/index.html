@@ -22,27 +22,27 @@
               <h3>Välj ett fordon</h3>
               <div class="section flex">
                 <div class="button-license b">
-                  <input type="radio" name="license" value="b">
+                  <input type="radio" name="license" value="b" v-model="pickedLicense" v-on:change="changeLicense">
                   <div class="wrap-btn">B</div>
                   <div class="dropdown animated fadeIn">
-                    <input type="radio" name="license" value="ub" id="license-ub">
+                    <input type="radio" name="license" value="ub" id="license-ub" v-model="pickedLicense" v-on:change="changeLicense">
                     <label for="license-ub"><span>UB</span>släpvagn (Max 4.25 ton)</label>
-                    <input type="radio" name="license" value="be" id="license-be">
+                    <input type="radio" name="license" value="be" id="license-be" v-model="pickedLicense" v-on:change="changeLicense">
                     <label for="license-be"><span>BE</span>tung släpvagn (Max 3.5 ton)</label>
                   </div>
                 </div>
                 <div class="button-license a">
-                  <input type="radio" name="license" value="a">
+                  <input type="radio" name="license" value="a" v-model="pickedLicense" v-on:change="changeLicense">
                   <div class="wrap-btn">A</div>
-                  <div class="dropdown animated fadeInDown">
-                    <input type="radio" name="license" value="a1" id="license-a1">
+                  <div class="dropdown animated fadeIn">
+                    <input type="radio" name="license" value="a1" id="license-a1" v-model="pickedLicense" v-on:change="changeLicense">
                     <label for="license-a1"><span>A1</span>Lätt motorcykel (Max 11 Kw)</label>
-                    <input type="radio" name="license" value="a2" id="license-a2">
+                    <input type="radio" name="license" value="a2" id="license-a2" v-model="pickedLicense" v-on:change="changeLicense">
                     <label for="license-a2"><span>A2</span>Mellanstor motorcykel (Max 35 Kw)</label>
                   </div>
                 </div>
                 <div class="button-license am">
-                  <input type="radio" name="license" value="am">
+                  <input type="radio" name="license" value="am" v-model="pickedLicense" v-on:change="changeLicense">
                   <div class="wrap-btn">AM</div>
                 </div>
               </div>
@@ -50,30 +50,31 @@
             <div class="home">
               <h3>Välj en ort eller en trafikskola</h3>
               <div class="section">
-                <select2 name="search_area_map">
+                <select2 class="select-contain" name="search_area_map" v-model="selectPlace">
                   <option disabled selected value="placeholder">Välj ort</option>
-                  <option value="1">Bromma</option>
-                  <option value="3">Botkyra</option>
-                  <option value="4">Danderyd-Täby</option>
-                  <option value="5">Farsta</option>
-                  <option value="6">Haninge</option>
-                  <option value="7">Huddinge</option>
-                  <option value="8">Hässelby-Vällingby</option>
-                  <option value="9">Jakobsberg</option>
-                  <option value="10">Lidingö</option>
-                  <option value="11">Nacka</option>
-                  <option value="12">Norrtälje</option>
-                  <option value="13">Nynäshamn</option>
-                  <option value="14">Sollentuna</option>
-                  <option value="15">Sundbyberg/Solna</option>
-                  <option value="16">Södermalm</option>
-                  <option value="17">Södertälje</option>
-                  <option value="18">Upplands Väsby</option>
-                  <option value="19">Tyresö</option>
-                  <option value="20">Västermalm</option>
-                  <option value="21">Östermalm</option>
+                  <option v-for="place in listPlaces" :value="place.id">{{place.city}}</option>
+                  <!--option(value="1") Bromma-->
+                  <!--option(value="3") Botkyra-->
+                  <!--option(value="4") Danderyd-Täby-->
+                  <!--option(value="5") Farsta-->
+                  <!--option(value="6") Haninge-->
+                  <!--option(value="7") Huddinge-->
+                  <!--option(value="8") Hässelby-Vällingby-->
+                  <!--option(value="9") Jakobsberg-->
+                  <!--option(value="10") Lidingö-->
+                  <!--option(value="11") Nacka-->
+                  <!--option(value="12") Norrtälje-->
+                  <!--option(value="13") Nynäshamn-->
+                  <!--option(value="14") Sollentuna-->
+                  <!--option(value="15") Sundbyberg/Solna-->
+                  <!--option(value="16") Södermalm-->
+                  <!--option(value="17") Södertälje-->
+                  <!--option(value="18") Upplands Väsby-->
+                  <!--option(value="19") Tyresö-->
+                  <!--option(value="20") Västermalm-->
+                  <!--option(value="21") Östermalm-->
                 </select2>
-                <select2 name="search_name" v-model="selectSchool">
+                <select2 class="select-contain" name="search_name" v-model="selectSchool">
                   <option disabled selected value="placeholder">Välj trafikskola</option>
                   <option v-for="school in listSchools" :value="school.id">{{school.name}}</option>
                 </select2>

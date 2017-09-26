@@ -11,7 +11,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": false
+  "moto": false,
+  "city": "Hässelby-Vällingby"
 },
 {
   "id": 1,
@@ -26,7 +27,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": false
+  "moto": false,
+  "city": "Sollentuna"
 },
 {
   "id": 2,
@@ -41,7 +43,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": true
+  "moto": true,
+  "city": "Sundbyberg/Solna"
 },
 {
   "id": 3,
@@ -56,7 +59,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": false
+  "moto": false,
+  "city": "Jakobsberg"
 },
 {
   "id": 4,
@@ -71,7 +75,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": true
+  "moto": true,
+  "city": "Västermalm"
 },
 {
   "id": 5,
@@ -86,7 +91,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": false
+  "moto": false,
+  "city": "Bromma"
 },
 {
   "id": 6,
@@ -101,7 +107,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": false
+  "moto": false,
+  "city": "Tyresö"
 },
 {
   "id": 7,
@@ -116,7 +123,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": true
+  "moto": true,
+  "city": "Farsta"
 },
 {
   "id": 8,
@@ -131,7 +139,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": true
+  "moto": true,
+  "city": "Östermalm"
 },
 {
   "id": 9,
@@ -146,7 +155,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": true
+  "moto": true,
+  "city": "Lidingö"
 },
 {
   "id": 10,
@@ -161,7 +171,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": false
+  "moto": false,
+  "city": "Nacka"
 },
 {
   "id": 11,
@@ -176,7 +187,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": false
+  "moto": false,
+  "city": "Södermalm"
 },
 {
   "id": 12,
@@ -191,7 +203,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": false
+  "moto": false,
+  "city": "Haninge"
 },
 {
   "id": 13,
@@ -206,7 +219,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": false
+  "moto": false,
+  "city": "Huddinge"
 },
 {
   "id": 14,
@@ -221,7 +235,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": false
+  "moto": false,
+  "city": "Danderyd-Täby"
 },
 {
   "id": 15,
@@ -236,7 +251,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": false
+  "moto": false,
+  "city": "Upplands Väsby"
 },
 {
   "id": 16,
@@ -251,7 +267,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": true
+  "moto": true,
+  "city": "Botkyra"
 },
 {
   "id": 17,
@@ -266,7 +283,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": true
+  "moto": true,
+  "city": "Södertälje"
 },
 {
   "id": 18,
@@ -281,7 +299,8 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": true
+  "moto": true,
+  "city": "Nynäshamn"
 },
 {
   "id": 19,
@@ -296,5 +315,6 @@
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
-  "moto": false
+  "moto": false,
+  "city": "Norrtälje"
 }]

@@ -23,6 +23,73 @@ $(function(){
 
 });
 
+/*create graph config school view*/
+function createConfig(details, data) {
+    return {
+        type: 'line',
+        data: {
+            labels: ['Kundsupport', 'Lärarlegitimation', 'Pedagogik', 'Miljöfordon', 'Rekommendation'],
+            datasets: [{
+                label: '',
+                steppedLine: details.steppedLine,
+                data: data,
+                borderColor: details.color,
+                borderWidth: 9,
+                pointBackgroundColor: '#0eb4fc',
+                pointRadius: 8,
+                pointHoverRadius: 8,
+                pointBorderWidth: 6,
+                pointHoverBorderWidth: 6,
+                pointBorderColor: '#274f7a',
+                fill: false,
+            }]
+        },
+        options: {
+            responsive: false,
+            maintainAspectRatio:false,
+            title: {
+                display:false,
+                text: false,
+            },
+            scales: {
+                xAxes: [{
+                    display: false
+                }]
+            },
+            layout: {
+                padding: {
+                    top: 15,
+                    bottom:15,
+                    right:15
+                }
+            },
+        }
+    };
+}
+function createGraph(data) {
+    var container = document.querySelector('.graph');
+
+    var steppedLineSettings = [{
+        steppedLine: "",
+        label: "",
+        color: '#028fcc'
+    }];
+
+    steppedLineSettings.forEach(function(details) {
+        var div = document.createElement('div');
+        div.classList.add('chart-container');
+
+        var canvas = document.createElement('canvas');
+        div.appendChild(canvas);
+        container.appendChild(div);
+
+        var ctx = canvas.getContext('2d');
+        var config = createConfig(details, data);
+        Chart.defaults.global.legend.display = false;
+        new Chart(ctx, config);
+    });
+};
+
 /*select 2 component*/
 Vue.component('select2', {
     props: ['options', 'value'],
@@ -35,7 +102,7 @@ Vue.component('select2', {
                 data: this.options,
                 minimumResultsForSearch: Infinity
             })
-            .val(this.value != null ? this.value : 'placeholder')
+            .val('placeholder')
             .trigger('change')
             // emit event on change.
             .on('change', function () {
@@ -49,7 +116,8 @@ Vue.component('select2', {
         },
         options: function (options) {
             // update options
-            $(this.$el).empty().select2({ data: options })
+            $(this.$el).empty().select2({ data: options });
+            $(this.$el).select2('update');
         }
     },
     destroyed: function () {
@@ -61,37 +129,62 @@ Vue.component('select2', {
 let app = new Vue({
     el: '#app',
     data: {
+        pickedLicense: '',
         schools: null,
         listSchools: null,
+        listPlaces: null,
         schoolViewStatus: false,
         selectSchool: '',
+        selectPlace: '',
         schoolView: ''
     },
     created: function () {
         fetch("/schools.json").then(r => r.json()).then(json => {
             this.schools = json;
-            this.listSchools = json;
+            this.listSchools = this.schools;
+            this.listPlaces = this.schools;
+            // this.listPlaces.sort(function(a, b){
+            //     if(a.city < b.city) return -1;
+            //     if(a.city > b.city) return 1;
+            //     return 0;
+            // })
         });
     },
     methods:{
-        changeCheckboxLicenceA(){
-            this.listSchools = this.schools.filter(school => school.moto);
+        changeLicense(){
+            if(this.pickedLicense == 'a' || this.pickedLicense == 'a1' || this.pickedLicense == 'a2' || this.pickedLicense == 'am') {
+                this.listSchools = this.schools.filter(school => school.moto);
+                this.listPlaces = this.schools.filter(school => school.moto);
+            }else{
+                this.listSchools = this.schools;
+                this.listPlaces = this.schools;
+            }
         },
-        changeCheckboxLicenceB(){
-            this.listSchools = this.schools;
-        },
+
         openSchoolView(){
             this.schoolViewStatus = true
             let self = this;
-
             this.schools.filter(function( school) {
-                if( school.id == self.selectSchool){
+                let schoolId = '';
+                if(self.selectSchool === ''){
+                    schoolId = self.selectPlace;
+                }else{
+                    schoolId = self.selectSchool;
+                }
+                if( school.id == schoolId){
                     self.schoolView = school
                     $('.progress-bar.support').width(parseInt(self.schoolView.support) +'%')
                     $('.progress-bar.registrationTeacher').width(parseInt(self.schoolView.registrationTeacher) +'%')
                     $('.progress-bar.pedagogical').width(parseInt(self.schoolView.pedagogical) +'%')
                     $('.progress-bar.cleanVehicles').width(parseInt(self.schoolView.cleanVehicles) +'%')
                     $('.progress-bar.recommendation').width(parseInt(self.schoolView.recommendation) +'%')
+                    createGraph( [
+                        self.schoolView.support,
+                        self.schoolView.registrationTeacher,
+                        self.schoolView.pedagogical,
+                        self.schoolView.cleanVehicles,
+                        self.schoolView.recommendation
+                    ])
                 }
             });
         },
@@ -103,6 +196,10 @@ let app = new Vue({
             $('.progress-bar.pedagogical').width(0)
             $('.progress-bar.cleanVehicles').width(0)
             $('.progress-bar.recommendation').width(0)
+            setTimeout(function () {
+                    $('.graph .chart-container').remove()
+            },400)
+
         }
     }
 });
