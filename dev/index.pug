@@ -21,8 +21,8 @@ html(lang="en")
 	body
 		// block HEADER
 		.header.flex(id="app")
-			.map
-				img(src="" + imagePath + "map.jpg", alt="map")
+			.map(id="map-layout")
+				//img(src="" + imagePath + "map.jpg", alt="map")
 			.filter-section(:class="{'open-school-view': schoolViewStatus}")
 				.flex.flex-center.header-filter
 					a(href="#").b_logo
@@ -486,6 +486,7 @@ html(lang="en")
 						p Genom att fylla i din email adress godkänner du samtidigt att du får ta en del av intensivkurs Stockholms nyhetsbrev och kampanjer. Du kan närsomhelst avregistrera dig från nyhetsbrevet.
 
 		block scripts
+			script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcQed-XICEOIuLN8MHRzJ2GtX6D8g8IXs")
 			script(src="https://code.jquery.com/jquery-2.2.4.min.js")
 			script(src="assets/js/libs.js")
 			script(src="https://unpkg.com/vue@2.4.2/dist/vue.js")

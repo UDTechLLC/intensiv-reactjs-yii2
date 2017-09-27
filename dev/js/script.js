@@ -19,8 +19,6 @@ $(function(){
     $('select').on('select2:open', function(e){
         $('.select2-results__options').scrollbar().parent().addClass('scrollbar-inner');
     });
-
-
 });
 
 /*create graph config school view*/
@@ -129,6 +127,9 @@ Vue.component('select2', {
 let app = new Vue({
     el: '#app',
     data: {
+        latitudeMap: 59.339783,
+        longitudeMap: 17.939713,
+        mapLocate: null,
         pickedLicense: '',
         schools: null,
         listSchools: null,
@@ -138,16 +139,128 @@ let app = new Vue({
         selectPlace: '',
         schoolView: ''
     },
-    created: function () {
-        fetch("/schools.json").then(r => r.json()).then(json => {
+    mounted: function () {
+
+        let myLatlng = new google.maps.LatLng(this.latitudeMap, this.longitudeMap);
+        let map = new google.maps.Map(document.getElementById('map-layout'), {
+            center: myLatlng,
+            zoom: 9,
+            styles: [
+                {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+                {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+                {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+                {
+                    featureType: 'administrative.locality',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#b1c5cd'}]
+                },
+                {
+                    featureType: 'poi',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#b1c5cd'}]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'geometry',
+                    stylers: [{color: '#263c3f'}]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#6b9a76'}]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry',
+                    stylers: [{color: '#18688d'}]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry.stroke',
+                    stylers: [{color: '#3c87ab'}]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#9ca5b3'}]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry',
+                    stylers: [{color: '#003f61'}]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry.stroke',
+                    stylers: [{color: '#3c87ab'}]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#f3d19c'}]
+                },
+                {
+                    featureType: 'transit',
+                    elementType: 'geometry',
+                    stylers: [{color: '#3c87ab'}]
+                },
+                {
+                    featureType: 'transit.station',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#d59563'}]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'geometry',
+                    stylers: [{color: '#003c5d'}]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#515c6d'}]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'labels.text.stroke',
+                    stylers: [{color: '#17263c'}]
+                }
+            ]
+        });
+        this.mapLocate = map;
+            fetch("/schools.json").then(r => r.json()).then(json => {
             this.schools = json;
             this.listSchools = this.schools;
-            this.listPlaces = this.schools;
-            // this.listPlaces.sort(function(a, b){
-            //     if(a.city < b.city) return -1;
-            //     if(a.city > b.city) return 1;
-            //     return 0;
-            // })
+            this.listPlaces = JSON.parse(JSON.stringify(json));
+            this.listPlaces.sort(function(a, b){
+                if(a.city < b.city) return -1;
+                if(a.city > b.city) return 1;
+                return 0;
+            });
+            this.schools.forEach((school) => {
+                const position = new google.maps.LatLng(school.latitude, school.longitude);
+                const marker = new google.maps.Marker({
+                    position,
+                    map,
+                    animation: google.maps.Animation.DROP,
+                    schoolId: school.id,
+                    icon: 'assets/images/marker.svg'
+                    // icon: 'assets/images/map.png'
+                });
+                google.maps.event.addListener(marker, 'click', function(event){
+                    // app.schoolViewStatus = true;
+                    if(app.schoolViewStatus){
+                        app.closeSchoolView();
+                        setTimeout(function () {
+                            app.openSchoolView(marker.schoolId)
+                        },400);
+                    }else{
+                        app.openSchoolView(marker.schoolId)
+                    }
+
+                    app.smoothZoomMap(map, 15, map.getZoom(), true);
+                    map.panTo(marker.position);
+                });
+            });
         });
     },
     methods:{
@@ -157,16 +270,22 @@ let app = new Vue({
                 this.listPlaces = this.schools.filter(school => school.moto);
             }else{
                 this.listSchools = this.schools;
-                this.listPlaces = this.schools;
+                this.listPlaces = JSON.parse(JSON.stringify(this.schools)).sort(function(a, b){
+                    if(a.city < b.city) return -1;
+                    if(a.city > b.city) return 1;
+                    return 0;
+                });
             }
         },
 
-        openSchoolView(){
-            this.schoolViewStatus = true
+        openSchoolView(markerId){
+            this.schoolViewStatus = true;
             let self = this;
             this.schools.filter(function( school) {
                 let schoolId = '';
-                if(self.selectSchool === ''){
+                if(Number.isInteger(markerId)){
+                    schoolId = markerId;
+                }else if(self.selectSchool === ''){
                     schoolId = self.selectPlace;
                 }else{
                     schoolId = self.selectSchool;
@@ -196,10 +315,42 @@ let app = new Vue({
             $('.progress-bar.pedagogical').width(0)
             $('.progress-bar.cleanVehicles').width(0)
             $('.progress-bar.recommendation').width(0)
+            app.smoothZoomMap(this.map, 9, this.map.getZoom(), false);
+            let myLatlng = new google.maps.LatLng(this.latitudeMap, this.longitudeMap);
+            this.map.panTo(myLatlng);
             setTimeout(function () {
                     $('.graph .chart-container').remove()
             },400)
 
+        },
+
+        smoothZoomMap(map, level, cnt, mode) {
+            //alert('Count: ' + cnt + 'and Max: ' + level);
+
+            if(mode == true) {
+
+                if (cnt >= level) {
+                    return;
+                }
+                else {
+                    var z = google.maps.event.addListener(map, 'zoom_changed', function(event){
+                        google.maps.event.removeListener(z);
+                        app.smoothZoomMap(map, level, cnt + 1, true);
+                    });
+                    setTimeout(function(){map.setZoom(cnt)}, 80);
+                }
+            } else {
+                if (cnt <= level) {
+                    return;
+                }
+                else {
+                    var z = google.maps.event.addListener(map, 'zoom_changed', function(event) {
+                        google.maps.event.removeListener(z);
+                        app.smoothZoomMap(map, level, cnt - 1, false);
+                    });
+                    setTimeout(function(){map.setZoom(cnt)}, 80);
+                }
+            }
         }
     }
 });

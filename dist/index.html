@@ -12,7 +12,9 @@
   <body>
     <!-- block HEADER-->
     <div class="header flex" id="app">
-      <div class="map"><img src="assets/images/map.jpg" alt="map"></div>
+      <div class="map" id="map-layout">
+        <!--img(src="" + imagePath + "map.jpg", alt="map")-->
+      </div>
       <div class="filter-section" :class="{'open-school-view': schoolViewStatus}">
         <div class="flex flex-center header-filter"><a class="b_logo" href="#"><img src="/assets/images/logo.svg" alt="Intensivkurs Logo"></a></div>
         <div class="body">
@@ -582,6 +584,7 @@
         </div>
       </div>
     </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcQed-XICEOIuLN8MHRzJ2GtX6D8g8IXs"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="assets/js/libs.js"></script>
     <script src="https://unpkg.com/vue@2.4.2/dist/vue.js"></script>
