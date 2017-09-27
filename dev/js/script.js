@@ -115,7 +115,6 @@ Vue.component('select2', {
         options: function (options) {
             // update options
             $(this.$el).empty().select2({ data: options });
-            $(this.$el).select2('update');
         }
     },
     destroyed: function () {
@@ -130,6 +129,7 @@ let app = new Vue({
         latitudeMap: 59.339783,
         longitudeMap: 17.939713,
         mapLocate: null,
+        markersList: [],
         pickedLicense: '',
         schools: null,
         listSchools: null,
@@ -243,9 +243,11 @@ let app = new Vue({
                     map,
                     animation: google.maps.Animation.DROP,
                     schoolId: school.id,
-                    icon: 'assets/images/marker.svg'
-                    // icon: 'assets/images/map.png'
+                    moto: school.moto,
+                    // icon: 'assets/images/marker.svg'
+                    icon: 'assets/images/map.png'
                 });
+                app.markersList.push(marker);
                 google.maps.event.addListener(marker, 'click', function(event){
                     // app.schoolViewStatus = true;
                     if(app.schoolViewStatus){
@@ -257,8 +259,6 @@ let app = new Vue({
                         app.openSchoolView(marker.schoolId)
                     }
 
-                    app.smoothZoomMap(map, 15, map.getZoom(), true);
-                    map.panTo(marker.position);
                 });
             });
         });
@@ -276,6 +276,22 @@ let app = new Vue({
                     return 0;
                 });
             }
+            $('select-contain').each(
+                function () {
+                    $(this).select2('update');
+                }
+            );
+            this.markersList.forEach((marker) => {
+                if (this.pickedLicense == 'a' || this.pickedLicense == 'a1' || this.pickedLicense == 'a2' || this.pickedLicense == 'am') {
+                    if (marker.moto){
+                        marker.setVisible(true);
+                    }else {
+                        marker.setVisible(false);
+                    }
+                }else {
+                    marker.setVisible(true);
+                }
+            });
         },
 
         openSchoolView(markerId){
@@ -303,7 +319,12 @@ let app = new Vue({
                         self.schoolView.pedagogical,
                         self.schoolView.cleanVehicles,
                         self.schoolView.recommendation
-                    ])
+                    ]);
+                    setTimeout(function () {
+                        app.smoothZoomMap(app.mapLocate, 15, app.mapLocate.getZoom(), true);
+                        let myLatlng = new google.maps.LatLng(school.latitude, school.longitude);
+                        app.mapLocate.panTo(myLatlng);
+                    },400);
                 }
             });
         },
@@ -315,11 +336,12 @@ let app = new Vue({
             $('.progress-bar.pedagogical').width(0)
             $('.progress-bar.cleanVehicles').width(0)
             $('.progress-bar.recommendation').width(0)
-            app.smoothZoomMap(this.map, 9, this.map.getZoom(), false);
-            let myLatlng = new google.maps.LatLng(this.latitudeMap, this.longitudeMap);
-            this.map.panTo(myLatlng);
+
             setTimeout(function () {
-                    $('.graph .chart-container').remove()
+                $('.graph .chart-container').remove();
+                app.smoothZoomMap(app.mapLocate, 9, app.mapLocate.getZoom(), false);
+                let myLatlng = new google.maps.LatLng(app.latitudeMap, app.longitudeMap);
+                app.mapLocate.panTo(myLatlng);
             },400)
 
         },
