@@ -226,8 +226,16 @@ let app = new Vue({
                 }
             ]
         });
+        AOS.init({
+            /* easing: 'ease-in-out-sine'; */
+            duration: 1000,
+            disable: function () {
+                var maxWidth = 1024;
+                return window.innerWidth < maxWidth;
+            }
+        });
         this.mapLocate = map;
-            fetch("/schools.json").then(r => r.json()).then(json => {
+        fetch("/schools.json").then(r => r.json()).then(json => {
             this.schools = json;
             this.listSchools = this.schools;
             this.listPlaces = JSON.parse(JSON.stringify(json));
@@ -244,8 +252,7 @@ let app = new Vue({
                     animation: google.maps.Animation.DROP,
                     schoolId: school.id,
                     moto: school.moto,
-                    // icon: 'assets/images/marker.svg'
-                    icon: 'assets/images/map.png'
+                    icon: 'assets/images/map-marker.svg'
                 });
                 app.markersList.push(marker);
                 google.maps.event.addListener(marker, 'click', function(event){
@@ -258,6 +265,7 @@ let app = new Vue({
                     }else{
                         app.openSchoolView(marker.schoolId)
                     }
+                    marker.setIcon('assets/images/marker-active.svg');
 
                 });
             });
@@ -327,6 +335,19 @@ let app = new Vue({
                     },400);
                 }
             });
+            this.markersList.filter(function(marker) {
+                let schoolId = '';
+                if(Number.isInteger(markerId)){
+                    schoolId = markerId;
+                }else if(self.selectSchool === ''){
+                    schoolId = self.selectPlace;
+                }else{
+                    schoolId = self.selectSchool;
+                }
+                if(marker.schoolId == schoolId){
+                    marker.setIcon('assets/images/marker-active.svg');
+                }
+            });
         },
         closeSchoolView(){
             this.schoolViewStatus = false
@@ -337,9 +358,13 @@ let app = new Vue({
             $('.progress-bar.cleanVehicles').width(0)
             $('.progress-bar.recommendation').width(0)
 
+            this.markersList.forEach(function(marker) {
+                marker.setIcon('assets/images/map-marker.svg');
+            });
+
             setTimeout(function () {
                 $('.graph .chart-container').remove();
-                app.smoothZoomMap(app.mapLocate, 9, app.mapLocate.getZoom(), false);
+                app.smoothZoomMap(app.mapLocate, 8, app.mapLocate.getZoom(), false);
                 let myLatlng = new google.maps.LatLng(app.latitudeMap, app.longitudeMap);
                 app.mapLocate.panTo(myLatlng);
             },400)

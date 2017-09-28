@@ -55,26 +55,6 @@
                 <select2 class="select-contain" name="search_area_map" v-model="selectPlace">
                   <option disabled selected value="placeholder">Välj ort</option>
                   <option v-for="place in listPlaces" :value="place.id">{{place.city}}</option>
-                  <!--option(value="1") Bromma-->
-                  <!--option(value="3") Botkyra-->
-                  <!--option(value="4") Danderyd-Täby-->
-                  <!--option(value="5") Farsta-->
-                  <!--option(value="6") Haninge-->
-                  <!--option(value="7") Huddinge-->
-                  <!--option(value="8") Hässelby-Vällingby-->
-                  <!--option(value="9") Jakobsberg-->
-                  <!--option(value="10") Lidingö-->
-                  <!--option(value="11") Nacka-->
-                  <!--option(value="12") Norrtälje-->
-                  <!--option(value="13") Nynäshamn-->
-                  <!--option(value="14") Sollentuna-->
-                  <!--option(value="15") Sundbyberg/Solna-->
-                  <!--option(value="16") Södermalm-->
-                  <!--option(value="17") Södertälje-->
-                  <!--option(value="18") Upplands Väsby-->
-                  <!--option(value="19") Tyresö-->
-                  <!--option(value="20") Västermalm-->
-                  <!--option(value="21") Östermalm-->
                 </select2>
                 <select2 class="select-contain" name="search_name" v-model="selectSchool">
                   <option disabled selected value="placeholder">Välj trafikskola</option>
@@ -152,7 +132,7 @@
           <div class="info-block location">{{schoolView.address}}</div>
           <div class="info-block email">{{schoolView.email}}</div>
           <div class="info-block phone">{{schoolView.phone}}</div>
-          <input class="btn-blue" type="submit" value="Välj en trafikskola">
+          <input class="btn-blue" type="button" value="Välj en trafikskola" data-target="#form-modal" data-toggle="modal">
         </div>
       </div>
     </div>
@@ -169,7 +149,7 @@
             <div class="tab-pane active" role="tabpanel" id="intensive">
               <div class="row">
                 <div class="col col-md-3">
-                  <div class="card flipInY animated">
+                  <div class="card" data-aos="flipInY" data-aos-delay="500">
                     <div class="icon">1</div>
                     <h3>KAMPANJ NY ELEV</h3>
                     <div class="price">3650 kr</div>
@@ -211,7 +191,7 @@
                   </div>
                 </div>
                 <div class="col col-md-3">
-                  <div class="card flipInY animated">
+                  <div class="card flipInY">
                     <div class="icon">4</div>
                     <h3>INTENSIVPAKET 2 VEKOR</h3>
                     <div class="price">15 200 kr</div>
@@ -292,7 +272,9 @@
           <h2>Välj en trafikskola nära dig som erbjuder en hög standard på utbildning och värnar om vår miljö</h2>
           <div class="row">
             <div class="col col-md-6 col-sm-12">
-              <div class="video-container"><img src="/assets/images/video-1.jpg" alt="video-1">
+              <div class="video-container">
+                <!--img(src="/" + imagePath + "video-1.jpg", alt="video-1")-->
+                <iframe src="https://www.youtube.com/embed/QafXcUBkOTQ?enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer" frameborder="0" allowfullscreen="true" showinfo="0" controls="0"></iframe>
                 <div class="description flex flex-vertical-center flex-between">
                   <p>Vägen till körkort</p>
                   <div class="play-btn"></div>
@@ -300,7 +282,9 @@
               </div>
             </div>
             <div class="col col-md-6 col-sm-12">
-              <div class="video-container"><img src="/assets/images/video-1.jpg" alt="video-2">
+              <div class="video-container">
+                <!--img(src="/" + imagePath + "video-1.jpg", alt="video-2")-->
+                <iframe src="https://www.youtube.com/embed/tshiDexOecE?enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer" frameborder="0" allowfullscreen="true"></iframe>
                 <div class="description flex flex-vertical-center flex-between">
                   <p>Vägen till körkort</p>
                   <div class="play-btn"></div>
@@ -581,6 +565,28 @@
           <div class="modal-footer">
             <p>Genom att fylla i din email adress godkänner du samtidigt att du får ta en del av intensivkurs Stockholms nyhetsbrev och kampanjer. Du kan närsomhelst avregistrera dig från nyhetsbrevet.</p>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="form" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal"></button>
+            <h4 class="modal-title">KONTAKTA OSS</h4>
+            <p>Standard system för kvalitet och miljö</p>
+            <p>Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.</p>
+          </div>
+          <div class="modal-body">
+            <form action="#" method="">
+              <input type="text" name="name" placeholder="Namn">
+              <input type="email" name="email" placeholder="Email Adress">
+              <input type="text" name="phone" placeholder="Telefonnumber">
+              <input type="text" name="code" placeholder="Rabattkod">
+              <input class="btn-blue" type="submit" value="SKICKA">
+            </form>
+          </div>
+          <div class="modal-footer"></div>
         </div>
       </div>
     </div>

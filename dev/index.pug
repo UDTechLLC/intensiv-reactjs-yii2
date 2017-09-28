@@ -68,26 +68,6 @@ html(lang="en")
 								select2(name="search_area_map", class="select-contain", v-model="selectPlace")
 									option(disabled, selected, value="placeholder") Välj ort
 									option(v-for="place in listPlaces", :value="place.id") {{place.city}}
-									//option(value="1") Bromma
-									//option(value="3") Botkyra
-									//option(value="4") Danderyd-Täby
-									//option(value="5") Farsta
-									//option(value="6") Haninge
-									//option(value="7") Huddinge
-									//option(value="8") Hässelby-Vällingby
-									//option(value="9") Jakobsberg
-									//option(value="10") Lidingö
-									//option(value="11") Nacka
-									//option(value="12") Norrtälje
-									//option(value="13") Nynäshamn
-									//option(value="14") Sollentuna
-									//option(value="15") Sundbyberg/Solna
-									//option(value="16") Södermalm
-									//option(value="17") Södertälje
-									//option(value="18") Upplands Väsby
-									//option(value="19") Tyresö
-									//option(value="20") Västermalm
-									//option(value="21") Östermalm
 
 								select2(name="search_name", class="select-contain", v-model="selectSchool")
 									option(disabled, selected, value="placeholder") Välj trafikskola
@@ -138,7 +118,7 @@ html(lang="en")
 					.info-block.location {{schoolView.address}}
 					.info-block.email {{schoolView.email}}
 					.info-block.phone {{schoolView.phone}}
-					input.btn-blue(type="submit", value="Välj en trafikskola")
+					input.btn-blue(type="button", value="Välj en trafikskola", data-target="#form-modal", data-toggle="modal")
 
 		// block CONTENT
 		.content
@@ -157,7 +137,7 @@ html(lang="en")
 						.tab-pane.active(role="tabpanel", id="intensive")
 							.row
 								.col.col-md-3
-									.card.flipInY.animated
+									.card(data-aos="flipInY", data-aos-delay="500")
 										.icon 1
 										h3 KAMPANJ NY ELEV
 										.price 3650 kr
@@ -190,7 +170,7 @@ html(lang="en")
 											li Manuell eller Automat
 										button.btn-blue.btn-small Boka nu
 								.col.col-md-3
-									.card.flipInY.animated
+									.card.flipInY
 										.icon 4
 										h3 INTENSIVPAKET 2 VEKOR
 										.price 15 200 kr
@@ -253,13 +233,15 @@ html(lang="en")
 					.row
 						.col.col-md-6.col-sm-12
 							.video-container
-								img(src="/" + imagePath + "video-1.jpg", alt="video-1")
+								//img(src="/" + imagePath + "video-1.jpg", alt="video-1")
+								iframe(src="https://www.youtube.com/embed/QafXcUBkOTQ?enablejsapi=1&version=3&playerapiid=ytplayer", frameborder="0", allowfullscreen="true", showinfo="0", controls="0")
 								.description.flex.flex-vertical-center.flex-between
 									p Vägen till körkort
 									.play-btn
 						.col.col-md-6.col-sm-12
 							.video-container
-								img(src="/" + imagePath + "video-1.jpg", alt="video-2")
+								//img(src="/" + imagePath + "video-1.jpg", alt="video-2")
+								iframe(src="https://www.youtube.com/embed/tshiDexOecE?enablejsapi=1&version=3&playerapiid=ytplayer", frameborder="0", allowfullscreen="true")
 								.description.flex.flex-vertical-center.flex-between
 									p Vägen till körkort
 									.play-btn
@@ -484,6 +466,24 @@ html(lang="en")
 							input(type="submit", value="SKICKA", class="btn-blue")
 					.modal-footer
 						p Genom att fylla i din email adress godkänner du samtidigt att du får ta en del av intensivkurs Stockholms nyhetsbrev och kampanjer. Du kan närsomhelst avregistrera dig från nyhetsbrevet.
+
+		.modal.fade(id="form-modal", tabindex="-1", role="dialog", aria-labelledby="form" aria-hidden="true")
+			.modal-dialog
+				.modal-content
+					.modal-header
+						button.close(type="button", data-dismiss="modal")
+						h4.modal-title KONTAKTA OSS
+						p Standard system för kvalitet och miljö
+						p Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.
+					.modal-body
+						form(action="#", method="")
+							input(type="text", name="name", placeholder="Namn")
+							input(type="email", name="email", placeholder="Email Adress")
+							input(type="text", name="phone", placeholder="Telefonnumber")
+							input(type="text", name="code", placeholder="Rabattkod")
+							input(type="submit", value="SKICKA", class="btn-blue")
+					.modal-footer
+
 
 		block scripts
 			script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcQed-XICEOIuLN8MHRzJ2GtX6D8g8IXs")
