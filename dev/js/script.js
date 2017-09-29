@@ -137,7 +137,8 @@ let app = new Vue({
         schoolViewStatus: false,
         selectSchool: '',
         selectPlace: '',
-        schoolView: ''
+        schoolView: '',
+        closeZoomMode: true
     },
     mounted: function () {
 
@@ -226,14 +227,15 @@ let app = new Vue({
                 }
             ]
         });
-        AOS.init({
-            /* easing: 'ease-in-out-sine'; */
-            duration: 1000,
-            disable: function () {
-                var maxWidth = 1024;
-                return window.innerWidth < maxWidth;
-            }
-        });
+        // AOS.init({
+        //     /* easing: 'ease-in-out-sine'; */
+        //     duration: 1000,
+        //     disable: function () {
+        //         var maxWidth = 1024;
+        //         return window.innerWidth < maxWidth;
+        //     }
+        // });
+        new WOW().init();
         this.mapLocate = map;
         fetch("/schools.json").then(r => r.json()).then(json => {
             this.schools = json;
@@ -258,6 +260,7 @@ let app = new Vue({
                 google.maps.event.addListener(marker, 'click', function(event){
                     // app.schoolViewStatus = true;
                     if(app.schoolViewStatus){
+                        app.closeZoomMode = false;
                         app.closeSchoolView();
                         setTimeout(function () {
                             app.openSchoolView(marker.schoolId)
@@ -364,9 +367,13 @@ let app = new Vue({
 
             setTimeout(function () {
                 $('.graph .chart-container').remove();
-                app.smoothZoomMap(app.mapLocate, 8, app.mapLocate.getZoom(), false);
-                let myLatlng = new google.maps.LatLng(app.latitudeMap, app.longitudeMap);
-                app.mapLocate.panTo(myLatlng);
+                if(app.closeZoomMode) {
+                    app.smoothZoomMap(app.mapLocate, 8, app.mapLocate.getZoom(), false);
+                    let myLatlng = new google.maps.LatLng(app.latitudeMap, app.longitudeMap);
+                    app.mapLocate.panTo(myLatlng);
+                }else{
+                    app.closeZoomMode = true;
+                }
             },400)
 
         },
