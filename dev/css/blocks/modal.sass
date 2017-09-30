@@ -30,7 +30,10 @@ body
             span
               color: $mainColor
               font-weight: $semi-bold
-
+          input[type=submit]
+            margin: 10px auto 0
+            width: 52%
+            display: block
           p
             color: $fontColor
             font-weight: $light
@@ -88,15 +91,6 @@ body
           &:focus, &:active
             outline: none
 
-
-      &#form-modal
-        .modal-dialog
-          .modal-content
-            .btn-blue
-              margin: 10px auto 0
-              width: 52%
-              display: block
-
       &#ads-modal
         .modal-dialog
           .modal-content
@@ -133,6 +127,7 @@ body
               input[type=submit]
                 width: 33%
                 margin: 0
+                display: inline-block
 
               .close
                 &:before, &:after

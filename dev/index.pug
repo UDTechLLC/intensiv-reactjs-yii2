@@ -19,471 +19,488 @@ html(lang="en")
 			link(rel="stylesheet", href="assets/css/app.css")
 
 	body
-		// block HEADER
-		.header.flex(id="app")
-			.map(id="map-layout")
-				//img(src="" + imagePath + "map.jpg", alt="map")
-			.filter-section(:class="{'open-school-view': schoolViewStatus}")
-				.flex.flex-center.header-filter
-					a(href="#").b_logo
-						img(src="/" + imagePath + "logo.svg", alt="Intensivkurs Logo")
-				.body
-					h2 NÄRHET KVALITET & MILJÖ
+		.page(id="app")
+			// block HEADER
+			.header.flex
+				.map(id="map-layout")
+					//img(src="" + imagePath + "map.jpg", alt="map")
+				.filter-section(:class="{'open-school-view': schoolViewStatus}")
+					.flex.flex-center.header-filter
+						a(href="#").b_logo
+							img(src="/" + imagePath + "logo.svg", alt="Intensivkurs Logo")
+					.body
+						h2 NÄRHET KVALITET & MILJÖ
 
-					form(method="POST", action="#", v-on:submit.prevent="openSchoolView")
-						.drive
-							h3 Välj ett fordon
-							.section.flex
-								.button-license.b
-									input(type="radio", name="license", value="b", v-model="pickedLicense", v-on:change="changeLicense")
-									.wrap-btn B
-									.dropdown.animated.fadeIn
-										input(type="radio", name="license", value="ub", id="license-ub", v-model="pickedLicense", v-on:change="changeLicense")
-										label(for="license-ub")
-											span UB
-											|släpvagn (Max 4.25 ton)
-										input(type="radio", name="license", value="be", id="license-be", v-model="pickedLicense", v-on:change="changeLicense")
-										label(for="license-be")
-											span BE
-											|tung släpvagn (Max 3.5 ton)
-								.button-license.a
-									input(type="radio", name="license", value="a", v-model="pickedLicense", v-on:change="changeLicense")
-									.wrap-btn A
-									.dropdown.animated.fadeIn
-										input(type="radio", name="license", value="a1", id="license-a1", v-model="pickedLicense", v-on:change="changeLicense")
-										label(for="license-a1")
-											span A1
-											|Lätt motorcykel (Max 11 Kw)
-										input(type="radio", name="license", value="a2", id="license-a2", v-model="pickedLicense", v-on:change="changeLicense")
-										label(for="license-a2")
-											span A2
-											|Mellanstor motorcykel (Max 35 Kw)
-								.button-license.am
-									input(type="radio", name="license", value="am", v-model="pickedLicense", v-on:change="changeLicense")
-									.wrap-btn AM
-						.home
-							h3 Välj en ort eller en trafikskola
-							.section
+						form(method="POST", action="#", v-on:submit.prevent="openSchoolView")
+							.drive
+								h3 Välj ett fordon
+								.section.flex
+									.button-license.b
+										input(type="radio", name="license", value="b", v-model="pickedLicense", v-on:change="changeLicense")
+										.wrap-btn B
+										.dropdown.animated.fadeIn
+											input(type="radio", name="license", value="ub", id="license-ub", v-model="pickedLicense", v-on:change="changeLicense")
+											label(for="license-ub")
+												span UB
+												|släpvagn (Max 4.25 ton)
+											input(type="radio", name="license", value="be", id="license-be", v-model="pickedLicense", v-on:change="changeLicense")
+											label(for="license-be")
+												span BE
+												|tung släpvagn (Max 3.5 ton)
+									.button-license.a
+										input(type="radio", name="license", value="a", v-model="pickedLicense", v-on:change="changeLicense")
+										.wrap-btn A
+										.dropdown.animated.fadeIn
+											input(type="radio", name="license", value="a1", id="license-a1", v-model="pickedLicense", v-on:change="changeLicense")
+											label(for="license-a1")
+												span A1
+												|Lätt motorcykel (Max 11 Kw)
+											input(type="radio", name="license", value="a2", id="license-a2", v-model="pickedLicense", v-on:change="changeLicense")
+											label(for="license-a2")
+												span A2
+												|Mellanstor motorcykel (Max 35 Kw)
+									.button-license.am
+										input(type="radio", name="license", value="am", v-model="pickedLicense", v-on:change="changeLicense")
+										.wrap-btn AM
+							.home
+								h3 Välj en ort eller en trafikskola
+								.section
 
-								select2(name="search_area_map", class="select-contain", v-model="selectPlace")
-									option(disabled, selected, value="placeholder") Välj ort
-									option(v-for="place in listPlaces", :value="place.id") {{place.city}}
+									select2(name="search_area_map", class="select-contain", v-model="selectPlace")
+										option(disabled, selected, value="placeholder") Välj ort
+										option(v-for="place in listPlaces", :value="place.id") {{place.city}}
 
-								select2(name="search_name", class="select-contain", v-model="selectSchool")
-									option(disabled, selected, value="placeholder") Välj trafikskola
-									option(v-for="school in listSchools", :value="school.id") {{school.name}}
+									select2(name="search_name", class="select-contain", v-model="selectSchool")
+										option(disabled, selected, value="placeholder") Välj trafikskola
+										option(v-for="school in listSchools", :value="school.id") {{school.name}}
 
-								script(type="text/x-template", id="select2-template")
-									select
-										slot
-						input(type="submit" value="Välj en trafikskola", class="btn-blue")
-			.school-view
-				button.close(v-on:click="closeSchoolView")
-				h2 {{schoolView.name}}
-				p.description Kvalitet och miljörevision IKS-17
-				.graph
+									script(type="text/x-template", id="select2-template")
+										select
+											slot
+							input(type="submit" value="Välj en trafikskola", class="btn-blue")
+				.school-view
+					button.close(v-on:click="closeSchoolView")
+					h2 {{schoolView.name}}
+					p.description Kvalitet och miljörevision IKS-17
+					.graph
 
-				.table-statistic
-					.row
-						.col.col-sm-5
-							p.label Kundsupport
-						.col.col-sm-7
-							.block-statistic
-								.progress-bar.support
-					.row
-						.col.col-sm-5
-							p.label Lärarlegitimation
-						.col.col-sm-7
-							.block-statistic
-								.progress-bar.registrationTeacher
-					.row
-						.col.col-sm-5
-							p.label Pedagogik
-						.col.col-sm-7
-							.block-statistic
-								.progress-bar.pedagogical
-					.row
-						.col.col-sm-5
-							p.label Miljöfordon
-						.col.col-sm-7
-							.block-statistic
-								.progress-bar.cleanVehicles
-					.row
-						.col.col-sm-5
-							p.label Rekommendation
-						.col.col-sm-7
-							.block-statistic
-								.progress-bar.recommendation
-				.contact-info
-					.info-block.location {{schoolView.address}}
-					.info-block.email {{schoolView.email}}
-					.info-block.phone {{schoolView.phone}}
-					input.btn-blue(type="button", value="Välj en trafikskola", data-target="#form-modal", data-toggle="modal")
+					.table-statistic
+						.row
+							.col.col-sm-5
+								p.label Kundsupport
+							.col.col-sm-7
+								.block-statistic
+									.progress-bar.support
+						.row
+							.col.col-sm-5
+								p.label Lärarlegitimation
+							.col.col-sm-7
+								.block-statistic
+									.progress-bar.registrationTeacher
+						.row
+							.col.col-sm-5
+								p.label Pedagogik
+							.col.col-sm-7
+								.block-statistic
+									.progress-bar.pedagogical
+						.row
+							.col.col-sm-5
+								p.label Miljöfordon
+							.col.col-sm-7
+								.block-statistic
+									.progress-bar.cleanVehicles
+						.row
+							.col.col-sm-5
+								p.label Rekommendation
+							.col.col-sm-7
+								.block-statistic
+									.progress-bar.recommendation
+					.contact-info
+						.info-block.location {{schoolView.address}}
+						.info-block.email {{schoolView.email}}
+						.info-block.phone {{schoolView.phone}}
+						input.btn-blue(type="button", value="Välj en trafikskola", data-target="#form-modal", data-toggle="modal")
 
-		// block CONTENT
-		.content
-			.container
-				block mainSiteContent
-
-				.plans
-					h2 Välj mellan olika körpaket
-					ul.nav.nav-tabs.flex.flex-center(role="tablist")
-						li.active
-							a(href="#intensive", aria-controls="intensive", role="tab", data-toggle="tab") Intensivpaket
-						li
-							a(href="#study", aria-controls="study", role="tab", data-toggle="tab") Övningspaket
-
-					.tab-content
-						.tab-pane.active(role="tabpanel", id="intensive")
-							.row
-								.col.col-md-3
-									.card.wow.flipInY(data-wow-duration="1000ms", data-wow-delay="500ms", data-wow-offset="100")
-										.icon 1
-										h3 KAMPANJ NY ELEV
-										.price 3650 kr
-										ul
-											li Riskettan
-											li Risktvåan
-											li Körkortsboken
-											li Online teori
-										button.btn-blue.btn-small Boka nu
-								.col.col-md-3
-									.card.flipInY.active.wow(data-wow-duration="1000ms", data-wow-delay="800ms", data-wow-offset="100")
-										.icon 2
-										h3 INTENSIVPAKET 1 VECKA
-										.price 3650 kr
-										ul
-											li 11 Körlektioner
-											li 50 min per körlektion
-											li Lånebil vid uppkörning
-											li Manuell eller Automat
-										button.btn-blue.btn-small Boka nu
-								.col.col-md-3
-									.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="1100ms", data-wow-offset="100")
-										.icon 3
-										h3 INTENSIVPAKET 2 VECKOR
-										.price 11 750 kr
-										ul
-											li 16 Körlektioner
-											li 50 min per körlektion
-											li Lånebil vid uppkörning
-											li Manuell eller Automat
-										button.btn-blue.btn-small Boka nu
-								.col.col-md-3
-									.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="300ms", data-wow-offset="100")
-										.icon 4
-										h3 INTENSIVPAKET 3 VECKOR
-										.price 15 200 kr
-										ul
-											li 21 Körlektioner
-											li 50 min per körlektion
-											li Lånebil vid uppkörning
-											li Manuell eller Automat
-										button.btn-blue.btn-small Boka nu
-
-						.tab-pane(role="tabpanel", id="study")
-							.row
-								.col.col-md-3
-									.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="500ms")
-										.icon 1
-										h3 PROVA PA NY ELEV
-										.price 3650 kr
-										ul
-											li Riskettan
-											li Risktvåan
-											li Körkortsboken
-											li Online teori
-										button.btn-blue.btn-small Boka nu
-								.col.col-md-3
-									.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="800ms")
-										.icon 2
-										h3 ÖVNINGSPAKET 1 VECKA
-										.price 3650 kr
-										ul
-											li 11 Körlektioner
-											li 50 min per körlektion
-											li Lånebil vid uppkörning
-											li Manuell eller Automat
-										button.btn-blue.btn-small Boka nu
-								.col.col-md-3
-									.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="1100ms")
-										.icon 3
-										h3 ÖVNINGSPAKET 2 VECKOR
-										.price 11 750 kr
-										ul
-											li 16 Körlektioner
-											li 50 min per körlektion
-											li Lånebil vid uppkörning
-											li Manuell eller Automat
-										button.btn-blue.btn-small Boka nu
-								.col.col-md-3
-									.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="300ms")
-										.icon 4
-										h3 ÖVNINGSPAKET 3 VECKOR
-										.price 15 200 kr
-										ul
-											li 21 Körlektioner
-											li 50 min per körlektion
-											li Lånebil vid uppkörning
-											li Manuell eller Automat
-										button.btn-blue.btn-small Boka nu
-
-				.section-video
-					h2 Välj en trafikskola nära dig som erbjuder en hög standard på utbildning och värnar om vår miljö
-					.row
-						.col.col-md-6.col-sm-12
-							.video-container
-								//img(src="/" + imagePath + "video-1.jpg", alt="video-1")
-								iframe(src="https://www.youtube.com/embed/QafXcUBkOTQ?enablejsapi=1&version=3&playerapiid=ytplayer", frameborder="0", allowfullscreen="true", showinfo="0", controls="0")
-								.description.flex.flex-vertical-center.flex-between
-									p Vägen till körkort
-									.play-btn
-						.col.col-md-6.col-sm-12
-							.video-container
-								//img(src="/" + imagePath + "video-1.jpg", alt="video-2")
-								iframe(src="https://www.youtube.com/embed/tshiDexOecE?enablejsapi=1&version=3&playerapiid=ytplayer", frameborder="0", allowfullscreen="true")
-								.description.flex.flex-vertical-center.flex-between
-									p Vägen till körkort
-									.play-btn
-
-
-				.section-charts
-					h2 Förarprovstatistik
-					p.headline Antal godkända Körprov B som genomförts på Trafikverket, perioden Januari – Juli 2017
-					.row.without-line.header-table
-						.col.col-md-3
-
-						.col.col-md-3
-							p.label Kvinnor
-						.col.col-md-3
-							p.label Män
-						.col.col-md-3
-							p.label Totalt
-					.row
-						.col.col-md-3.flex.flex-vertical-center
-							p.label Farsta
-						.col.col-md-3
-							figure.chart(data-percent="40")
-								figcaption
-								p 42
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-						.col.col-md-3
-							figure.chart(data-percent="45")
-								figcaption
-								p 44
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-						.col.col-md-3
-							figure.chart(data-percent="40")
-								figcaption
-								p 43
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-
-					.row
-						.col.col-md-3.flex.flex-vertical-center
-							p.label Jakobsberg
-						.col.col-md-3
-							figure.chart(data-percent="35")
-								figcaption
-								p 37
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-						.col.col-md-3
-							figure.chart(data-percent="45")
-								figcaption
-								p 42
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-						.col.col-md-3
-							figure.chart(data-percent="40")
-								figcaption
-								p 41
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-
-					.row
-						.col.col-md-3.flex.flex-vertical-center
-							p.label Sollentuna
-						.col.col-md-3
-							figure.chart(data-percent="35")
-								figcaption
-								p 38
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-						.col.col-md-3
-							figure.chart(data-percent="40")
-								figcaption
-								p 40
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-						.col.col-md-3
-							figure.chart(data-percent="40")
-								figcaption
-								p 39
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-
-					.row.without-line
-						.col.col-md-3.flex.flex-vertical-center
-							p.label Södertälje
-						.col.col-md-3
-							figure.chart(data-percent="40")
-								figcaption
-								p 43
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-						.col.col-md-3
-							figure.chart(data-percent="45")
-								figcaption
-								p 45
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-						.col.col-md-3
-							figure.chart(data-percent="45")
-								figcaption
-								p 43
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-
-					p.headline Antal godkända Kunskapsprov B som genomförts på Trafikverket, Perioden Januari – Juni 2017
-
-					.row
-						.col.col-md-3.flex.flex-vertical-center
-							p.label Stockholm
-						.col.col-md-3
-							figure.chart(data-percent="45")
-								figcaption
-								p 46
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-						.col.col-md-3
-							figure.chart(data-percent="35")
-								figcaption
-								p 38
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-						.col.col-md-3
-							figure.chart(data-percent="40")
-								figcaption
-								p 41
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-
-					.row
-						.col.col-md-3.flex.flex-vertical-center
-							p.label Södertälje
-						.col.col-md-3
-							figure.chart(data-percent="50")
-								figcaption
-								p 48
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-						.col.col-md-3
-							figure.chart(data-percent="35")
-								figcaption
-								p 35
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-						.col.col-md-3
-							figure.chart(data-percent="40")
-								figcaption
-								p 40
-									span %
-								svg(width="72", height="72")
-									circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
-
-			.section-additional-info
+			// block CONTENT
+			.content
 				.container
-					h2 Mer information
-					p.headline Länkar till Transportstyrelse & Trafikverket
-					.row
-						.col.col-md-4
-							.info-block.license
-								.icon
-								h3 Körkortsbehörigheter
-								p I tabellen hos Transportstyrelsen kan du se vilken ålder som krävs för att du ska kunna ta körkort för de olika behörigheterna.
-								a.btn Besök webbplatsen
-						.col.col-md-4
-							.info-block.category
-								.icon
-								h3 Körkortstillstånd
-								p Hos Transportstyrelsen kan du ansöka om körkortstillstånd för AM, A1, A2, A, B, BE och traktorkort.
-								a.btn Besök webbplatsen
-						.col.col-md-4
-							.info-block.testing
-								.icon
-								h3 Boka förarprov
-								p I tjänsten Boka förarprov hos Trafikverket kan du boka och avboka prov för alla körkortsbehörigheter.
-								a.btn Besök webbplatsen
+					block mainSiteContent
 
-			.section-contact
-				.container
-					h2 Välkommen att kontakta oss
-					p.headline Har du några frågor och funderingar kring körkort eller körpaket, vi hjälper dig gärna.
+					.plans
+						h2 Välj mellan olika körpaket
+						ul.nav.nav-tabs.flex.flex-center(role="tablist")
+							li.active
+								a(href="#intensive", aria-controls="intensive", role="tab", data-toggle="tab") Intensivpaket
+							li
+								a(href="#study", aria-controls="study", role="tab", data-toggle="tab") Övningspaket
 
-					.flex.flex-center.social-area
-						a(href="https://www.facebook.com/www.vasterorttrafikskola.se", target="_blank", id="fb") fb.com/intensivkurs
-						a(href="mailto:intensivkurs@gmail.com", target="_blank", id="mail") intensivkurs@gmail.com
+						.tab-content
+							.tab-pane.active(role="tabpanel", id="intensive")
+								.row
+									.col.col-md-3
+										.card.wow.flipInY(data-wow-duration="1000ms", data-wow-delay="500ms", data-wow-offset="100")
+											.icon 1
+											h3 KAMPANJ NY ELEV
+											.price 3650 kr
+											ul
+												li Riskettan
+												li Risktvåan
+												li Körkortsboken
+												li Online teori
+											button.btn-blue.btn-small(v-on:click="openModalPacket('KAMPANJ NY ELEV', '3650')", data-target="#packet-modal", data-toggle="modal") Boka nu
+									.col.col-md-3
+										.card.flipInY.active.wow(data-wow-duration="1000ms", data-wow-delay="800ms", data-wow-offset="100")
+											.icon 2
+											h3 INTENSIVPAKET 1 VECKA
+											.price 3650 kr
+											ul
+												li 11 Körlektioner
+												li 50 min per körlektion
+												li Lånebil vid uppkörning
+												li Manuell eller Automat
+											button.btn-blue.btn-small(v-on:click="openModalPacket('INTENSIVPAKET 1 VECKA', '3650')", data-target="#packet-modal", data-toggle="modal") Boka nu
+									.col.col-md-3
+										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="1100ms", data-wow-offset="100")
+											.icon 3
+											h3 INTENSIVPAKET 2 VECKOR
+											.price 11 750 kr
+											ul
+												li 16 Körlektioner
+												li 50 min per körlektion
+												li Lånebil vid uppkörning
+												li Manuell eller Automat
+											button.btn-blue.btn-small(v-on:click="openModalPacket('INTENSIVPAKET 2 VECKOR', '11 750')", data-target="#packet-modal", data-toggle="modal") Boka nu
+									.col.col-md-3
+										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="300ms", data-wow-offset="100")
+											.icon 4
+											h3 INTENSIVPAKET 3 VECKOR
+											.price 15 200 kr
+											ul
+												li 21 Körlektioner
+												li 50 min per körlektion
+												li Lånebil vid uppkörning
+												li Manuell eller Automat
+											button.btn-blue.btn-small(v-on:click="openModalPacket('INTENSIVPAKET 3 VECKOR', '15 200')", data-target="#packet-modal", data-toggle="modal") Boka nu
 
-					form(action="#", method="")
-						input(type="text", name="name", placeholder="Namn")
-						input(type="email", name="email", placeholder="Email Adress")
-						textarea(placeholder="Skriv ditt meddelande här")
-						input(type="submit", value="SKICKA", class="btn-blue")
+							.tab-pane(role="tabpanel", id="study")
+								.row
+									.col.col-md-3
+										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="500ms")
+											.icon 1
+											h3 PROVA PA NY ELEV
+											.price 3650 kr
+											ul
+												li Riskettan
+												li Risktvåan
+												li Körkortsboken
+												li Online teori
+											button.btn-blue.btn-small(v-on:click="openModalPacket('PROVA PA NY ELEV', '3650')", data-target="#packet-modal", data-toggle="modal") Boka nu
+									.col.col-md-3
+										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="800ms")
+											.icon 2
+											h3 ÖVNINGSPAKET 1 VECKA
+											.price 3650 kr
+											ul
+												li 11 Körlektioner
+												li 50 min per körlektion
+												li Lånebil vid uppkörning
+												li Manuell eller Automat
+											button.btn-blue.btn-small(v-on:click="openModalPacket('ÖVNINGSPAKET 1 VECKA', '3650')", data-target="#packet-modal", data-toggle="modal") Boka nu
+									.col.col-md-3
+										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="1100ms")
+											.icon 3
+											h3 ÖVNINGSPAKET 2 VECKOR
+											.price 11 750 kr
+											ul
+												li 16 Körlektioner
+												li 50 min per körlektion
+												li Lånebil vid uppkörning
+												li Manuell eller Automat
+											button.btn-blue.btn-small(v-on:click="openModalPacket('ÖVNINGSPAKET 2 VECKOR', '11 750')", data-target="#packet-modal", data-toggle="modal") Boka nu
+									.col.col-md-3
+										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="300ms")
+											.icon 4
+											h3 ÖVNINGSPAKET 3 VECKOR
+											.price 15 200 kr
+											ul
+												li 21 Körlektioner
+												li 50 min per körlektion
+												li Lånebil vid uppkörning
+												li Manuell eller Automat
+											button.btn-blue.btn-small(v-on:click="openModalPacket('ÖVNINGSPAKET 3 VECKOR', '15 200')", data-target="#packet-modal", data-toggle="modal") Boka nu
 
-		.modal.fade(id="ads-modal", tabindex="-1", role="dialog", aria-labelledby="ads" aria-hidden="true")
-			.modal-dialog
-				.modal-content
-					.modal-header
-						button.close(type="button", data-dismiss="modal")
-						h4.modal-title VÄLKOMMEN
-						p SOM NY BESÖKARE GER VI DIG IDAG
-					.modal-body
-						h2
-							span 10%
-							| RABATT
-						p PÅ DITT FÖRSTA KÖP!
-						form.flex.flex-between(action="#", method="")
-							input(type="email", name="email", placeholder="Skriv in din email adress här")
-							input(type="submit", value="SKICKA", class="btn-blue")
-					.modal-footer
-						p Genom att fylla i din email adress godkänner du samtidigt att du får ta en del av intensivkurs Stockholms nyhetsbrev och kampanjer. Du kan närsomhelst avregistrera dig från nyhetsbrevet.
+					.section-video
+						h2 Välj en trafikskola nära dig som erbjuder en hög standard på utbildning och värnar om vår miljö
+						.row
+							.col.col-md-6.col-sm-12
+								.video-container
+									//img(src="/" + imagePath + "video-1.jpg", alt="video-1")
+									iframe(src="https://www.youtube.com/embed/QafXcUBkOTQ?enablejsapi=1&version=3&playerapiid=ytplayer", frameborder="0", allowfullscreen="true", showinfo="0", controls="0")
+									.description.flex.flex-vertical-center.flex-between
+										p Vägen till körkort
+										.play-btn
+							.col.col-md-6.col-sm-12
+								.video-container
+									//img(src="/" + imagePath + "video-1.jpg", alt="video-2")
+									iframe(src="https://www.youtube.com/embed/tshiDexOecE?enablejsapi=1&version=3&playerapiid=ytplayer", frameborder="0", allowfullscreen="true")
+									.description.flex.flex-vertical-center.flex-between
+										p Vägen till körkort
+										.play-btn
 
-		.modal.fade(id="form-modal", tabindex="-1", role="dialog", aria-labelledby="form" aria-hidden="true")
-			.modal-dialog
-				.modal-content
-					.modal-header
-						button.close(type="button", data-dismiss="modal")
-						h4.modal-title KONTAKTA OSS
-						p Standard system för kvalitet och miljö
-						p Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.
-					.modal-body
+
+					.section-charts
+						h2 Förarprovstatistik
+						p.headline Antal godkända Körprov B som genomförts på Trafikverket, perioden Januari – Juli 2017
+						.row.without-line.header-table
+							.col.col-md-3
+
+							.col.col-md-3
+								p.label Kvinnor
+							.col.col-md-3
+								p.label Män
+							.col.col-md-3
+								p.label Totalt
+						.row
+							.col.col-md-3.flex.flex-vertical-center
+								p.label Farsta
+							.col.col-md-3
+								figure.chart(data-percent="40")
+									figcaption
+									p 42
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+							.col.col-md-3
+								figure.chart(data-percent="45")
+									figcaption
+									p 44
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+							.col.col-md-3
+								figure.chart(data-percent="40")
+									figcaption
+									p 43
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+
+						.row
+							.col.col-md-3.flex.flex-vertical-center
+								p.label Jakobsberg
+							.col.col-md-3
+								figure.chart(data-percent="35")
+									figcaption
+									p 37
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+							.col.col-md-3
+								figure.chart(data-percent="45")
+									figcaption
+									p 42
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+							.col.col-md-3
+								figure.chart(data-percent="40")
+									figcaption
+									p 41
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+
+						.row
+							.col.col-md-3.flex.flex-vertical-center
+								p.label Sollentuna
+							.col.col-md-3
+								figure.chart(data-percent="35")
+									figcaption
+									p 38
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+							.col.col-md-3
+								figure.chart(data-percent="40")
+									figcaption
+									p 40
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+							.col.col-md-3
+								figure.chart(data-percent="40")
+									figcaption
+									p 39
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+
+						.row.without-line
+							.col.col-md-3.flex.flex-vertical-center
+								p.label Södertälje
+							.col.col-md-3
+								figure.chart(data-percent="40")
+									figcaption
+									p 43
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+							.col.col-md-3
+								figure.chart(data-percent="45")
+									figcaption
+									p 45
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+							.col.col-md-3
+								figure.chart(data-percent="45")
+									figcaption
+									p 43
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+
+						p.headline Antal godkända Kunskapsprov B som genomförts på Trafikverket, Perioden Januari – Juni 2017
+
+						.row
+							.col.col-md-3.flex.flex-vertical-center
+								p.label Stockholm
+							.col.col-md-3
+								figure.chart(data-percent="45")
+									figcaption
+									p 46
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+							.col.col-md-3
+								figure.chart(data-percent="35")
+									figcaption
+									p 38
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+							.col.col-md-3
+								figure.chart(data-percent="40")
+									figcaption
+									p 41
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+
+						.row
+							.col.col-md-3.flex.flex-vertical-center
+								p.label Södertälje
+							.col.col-md-3
+								figure.chart(data-percent="50")
+									figcaption
+									p 48
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+							.col.col-md-3
+								figure.chart(data-percent="35")
+									figcaption
+									p 35
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+							.col.col-md-3
+								figure.chart(data-percent="40")
+									figcaption
+									p 40
+										span %
+									svg(width="72", height="72")
+										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
+
+				.section-additional-info
+					.container
+						h2 Mer information
+						p.headline Länkar till Transportstyrelse & Trafikverket
+						.row
+							.col.col-md-4
+								.info-block.license
+									.icon
+									h3 Körkortsbehörigheter
+									p I tabellen hos Transportstyrelsen kan du se vilken ålder som krävs för att du ska kunna ta körkort för de olika behörigheterna.
+									a.btn Besök webbplatsen
+							.col.col-md-4
+								.info-block.category
+									.icon
+									h3 Körkortstillstånd
+									p Hos Transportstyrelsen kan du ansöka om körkortstillstånd för AM, A1, A2, A, B, BE och traktorkort.
+									a.btn Besök webbplatsen
+							.col.col-md-4
+								.info-block.testing
+									.icon
+									h3 Boka förarprov
+									p I tjänsten Boka förarprov hos Trafikverket kan du boka och avboka prov för alla körkortsbehörigheter.
+									a.btn Besök webbplatsen
+
+				.section-contact
+					.container
+						h2 Välkommen att kontakta oss
+						p.headline Har du några frågor och funderingar kring körkort eller körpaket, vi hjälper dig gärna.
+
+						.flex.flex-center.social-area
+							a(href="https://www.facebook.com/www.vasterorttrafikskola.se", target="_blank", id="fb") fb.com/intensivkurs
+							a(href="mailto:intensivkurs@gmail.com", target="_blank", id="mail") intensivkurs@gmail.com
+
 						form(action="#", method="")
 							input(type="text", name="name", placeholder="Namn")
 							input(type="email", name="email", placeholder="Email Adress")
-							input(type="text", name="phone", placeholder="Telefonnumber")
-							input(type="text", name="code", placeholder="Rabattkod")
+							textarea(placeholder="Skriv ditt meddelande här")
 							input(type="submit", value="SKICKA", class="btn-blue")
-					.modal-footer
 
+			.modal.fade(id="ads-modal", tabindex="-1", role="dialog", aria-labelledby="ads" aria-hidden="true")
+				.modal-dialog
+					.modal-content
+						.modal-header
+							button.close(type="button", data-dismiss="modal")
+							h4.modal-title VÄLKOMMEN
+							p SOM NY BESÖKARE GER VI DIG IDAG
+						.modal-body
+							h2
+								span 10%
+								| RABATT
+							p PÅ DITT FÖRSTA KÖP!
+							form.flex.flex-between(action="#", method="")
+								input(type="email", name="email", placeholder="Skriv in din email adress här")
+								input(type="submit", value="SKICKA", class="btn-blue")
+						.modal-footer
+							p Genom att fylla i din email adress godkänner du samtidigt att du får ta en del av intensivkurs Stockholms nyhetsbrev och kampanjer. Du kan närsomhelst avregistrera dig från nyhetsbrevet.
+
+			.modal.fade(id="form-modal", tabindex="-1", role="dialog", aria-labelledby="form" aria-hidden="true")
+				.modal-dialog
+					.modal-content
+						.modal-header
+							button.close(type="button", data-dismiss="modal")
+							h4.modal-title KONTAKTA OSS
+							p Standard system för kvalitet och miljö
+							p Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.
+						.modal-body
+							form(action="#", method="")
+								input(type="text", name="name", placeholder="Namn")
+								input(type="email", name="email", placeholder="Email Adress")
+								input(type="text", name="phone", placeholder="Telefonnumber")
+								input(type="text", name="code", placeholder="Rabattkod")
+								input(type="submit", value="SKICKA", class="btn-blue")
+						.modal-footer
+
+			.modal.fade(id="packet-modal", tabindex="-1", role="dialog", aria-labelledby="form" aria-hidden="true")
+				.modal-dialog
+					.modal-content
+						.modal-header
+							button.close(type="button", data-dismiss="modal")
+							h4.modal-title {{namePacket}}
+							p Standard system för kvalitet och miljö {{pricePacket}}
+							p Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.
+						.modal-body
+							form(action="#", method="")
+								input(type="text", name="name", placeholder="Namn")
+								input(type="email", name="email", placeholder="Email Adress")
+								input(type="text", name="phone", placeholder="Telefonnumber")
+								input(type="text", name="code", placeholder="Rabattkod")
+								input(type="submit", value="SKICKA", class="btn-blue")
+						.modal-footer
 
 		block scripts
 			script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcQed-XICEOIuLN8MHRzJ2GtX6D8g8IXs")

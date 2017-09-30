@@ -138,7 +138,9 @@ let app = new Vue({
         selectSchool: '',
         selectPlace: '',
         schoolView: '',
-        closeZoomMode: true
+        closeZoomMode: true,
+        namePacket: '',
+        pricePacket: '',
     },
     mounted: function () {
 
@@ -275,6 +277,12 @@ let app = new Vue({
         });
     },
     methods:{
+        openModalPacket(name, price){
+            if(name != '' && price != ''){
+                this.namePacket = name;
+                this.pricePacket = price;
+            }
+        },
         changeLicense(){
             if(this.pickedLicense == 'a' || this.pickedLicense == 'a1' || this.pickedLicense == 'a2' || this.pickedLicense == 'am') {
                 this.listSchools = this.schools.filter(school => school.moto);

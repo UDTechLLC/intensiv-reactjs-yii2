@@ -10,583 +10,607 @@
     <link rel="stylesheet" href="assets/css/app.css">
   </head>
   <body>
-    <!-- block HEADER-->
-    <div class="header flex" id="app">
-      <div class="map" id="map-layout">
-        <!--img(src="" + imagePath + "map.jpg", alt="map")-->
-      </div>
-      <div class="filter-section" :class="{'open-school-view': schoolViewStatus}">
-        <div class="flex flex-center header-filter"><a class="b_logo" href="#"><img src="/assets/images/logo.svg" alt="Intensivkurs Logo"></a></div>
-        <div class="body">
-          <h2>NÄRHET KVALITET & MILJÖ</h2>
-          <form method="POST" action="#" v-on:submit.prevent="openSchoolView">
-            <div class="drive">
-              <h3>Välj ett fordon</h3>
-              <div class="section flex">
-                <div class="button-license b">
-                  <input type="radio" name="license" value="b" v-model="pickedLicense" v-on:change="changeLicense">
-                  <div class="wrap-btn">B</div>
-                  <div class="dropdown animated fadeIn">
-                    <input type="radio" name="license" value="ub" id="license-ub" v-model="pickedLicense" v-on:change="changeLicense">
-                    <label for="license-ub"><span>UB</span>släpvagn (Max 4.25 ton)</label>
-                    <input type="radio" name="license" value="be" id="license-be" v-model="pickedLicense" v-on:change="changeLicense">
-                    <label for="license-be"><span>BE</span>tung släpvagn (Max 3.5 ton)</label>
-                  </div>
-                </div>
-                <div class="button-license a">
-                  <input type="radio" name="license" value="a" v-model="pickedLicense" v-on:change="changeLicense">
-                  <div class="wrap-btn">A</div>
-                  <div class="dropdown animated fadeIn">
-                    <input type="radio" name="license" value="a1" id="license-a1" v-model="pickedLicense" v-on:change="changeLicense">
-                    <label for="license-a1"><span>A1</span>Lätt motorcykel (Max 11 Kw)</label>
-                    <input type="radio" name="license" value="a2" id="license-a2" v-model="pickedLicense" v-on:change="changeLicense">
-                    <label for="license-a2"><span>A2</span>Mellanstor motorcykel (Max 35 Kw)</label>
-                  </div>
-                </div>
-                <div class="button-license am">
-                  <input type="radio" name="license" value="am" v-model="pickedLicense" v-on:change="changeLicense">
-                  <div class="wrap-btn">AM</div>
-                </div>
-              </div>
-            </div>
-            <div class="home">
-              <h3>Välj en ort eller en trafikskola</h3>
-              <div class="section">
-                <select2 class="select-contain" name="search_area_map" v-model="selectPlace">
-                  <option disabled selected value="placeholder">Välj ort</option>
-                  <option v-for="place in listPlaces" :value="place.id">{{place.city}}</option>
-                </select2>
-                <select2 class="select-contain" name="search_name" v-model="selectSchool">
-                  <option disabled selected value="placeholder">Välj trafikskola</option>
-                  <option v-for="school in listSchools" :value="school.id">{{school.name}}</option>
-                </select2>
-                <script type="text/x-template" id="select2-template">
-                  <select>
-                    <slot></slot>
-                  </select>
-                </script>
-              </div>
-            </div>
-            <input class="btn-blue" type="submit" value="Välj en trafikskola">
-          </form>
+    <div class="page" id="app">
+      <!-- block HEADER-->
+      <div class="header flex">
+        <div class="map" id="map-layout">
+          <!--img(src="" + imagePath + "map.jpg", alt="map")-->
         </div>
-      </div>
-      <div class="school-view">
-        <button class="close" v-on:click="closeSchoolView"></button>
-        <h2>{{schoolView.name}}</h2>
-        <p class="description">Kvalitet och miljörevision IKS-17</p>
-        <div class="graph"></div>
-        <div class="table-statistic">
-          <div class="row">
-            <div class="col col-sm-5">
-              <p class="label">Kundsupport</p>
-            </div>
-            <div class="col col-sm-7">
-              <div class="block-statistic">
-                <div class="progress-bar support"></div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col col-sm-5">
-              <p class="label">Lärarlegitimation</p>
-            </div>
-            <div class="col col-sm-7">
-              <div class="block-statistic">
-                <div class="progress-bar registrationTeacher"></div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col col-sm-5">
-              <p class="label">Pedagogik</p>
-            </div>
-            <div class="col col-sm-7">
-              <div class="block-statistic">
-                <div class="progress-bar pedagogical"></div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col col-sm-5">
-              <p class="label">Miljöfordon</p>
-            </div>
-            <div class="col col-sm-7">
-              <div class="block-statistic">
-                <div class="progress-bar cleanVehicles"></div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col col-sm-5">
-              <p class="label">Rekommendation</p>
-            </div>
-            <div class="col col-sm-7">
-              <div class="block-statistic">
-                <div class="progress-bar recommendation"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="contact-info">
-          <div class="info-block location">{{schoolView.address}}</div>
-          <div class="info-block email">{{schoolView.email}}</div>
-          <div class="info-block phone">{{schoolView.phone}}</div>
-          <input class="btn-blue" type="button" value="Välj en trafikskola" data-target="#form-modal" data-toggle="modal">
-        </div>
-      </div>
-    </div>
-    <!-- block CONTENT-->
-    <div class="content">
-      <div class="container">
-        <div class="plans">
-          <h2>Välj mellan olika körpaket</h2>
-          <ul class="nav nav-tabs flex flex-center" role="tablist">
-            <li class="active"><a href="#intensive" aria-controls="intensive" role="tab" data-toggle="tab">Intensivpaket</a></li>
-            <li><a href="#study" aria-controls="study" role="tab" data-toggle="tab">Övningspaket</a></li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" role="tabpanel" id="intensive">
-              <div class="row">
-                <div class="col col-md-3">
-                  <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="500ms" data-wow-offset="100">
-                    <div class="icon">1</div>
-                    <h3>KAMPANJ NY ELEV</h3>
-                    <div class="price">3650 kr</div>
-                    <ul>
-                      <li>Riskettan</li>
-                      <li>Risktvåan</li>
-                      <li>Körkortsboken</li>
-                      <li>Online teori</li>
-                    </ul>
-                    <button class="btn-blue btn-small">Boka nu</button>
+        <div class="filter-section" :class="{'open-school-view': schoolViewStatus}">
+          <div class="flex flex-center header-filter"><a class="b_logo" href="#"><img src="/assets/images/logo.svg" alt="Intensivkurs Logo"></a></div>
+          <div class="body">
+            <h2>NÄRHET KVALITET & MILJÖ</h2>
+            <form method="POST" action="#" v-on:submit.prevent="openSchoolView">
+              <div class="drive">
+                <h3>Välj ett fordon</h3>
+                <div class="section flex">
+                  <div class="button-license b">
+                    <input type="radio" name="license" value="b" v-model="pickedLicense" v-on:change="changeLicense">
+                    <div class="wrap-btn">B</div>
+                    <div class="dropdown animated fadeIn">
+                      <input type="radio" name="license" value="ub" id="license-ub" v-model="pickedLicense" v-on:change="changeLicense">
+                      <label for="license-ub"><span>UB</span>släpvagn (Max 4.25 ton)</label>
+                      <input type="radio" name="license" value="be" id="license-be" v-model="pickedLicense" v-on:change="changeLicense">
+                      <label for="license-be"><span>BE</span>tung släpvagn (Max 3.5 ton)</label>
+                    </div>
                   </div>
-                </div>
-                <div class="col col-md-3">
-                  <div class="card flipInY active wow" data-wow-duration="1000ms" data-wow-delay="800ms" data-wow-offset="100">
-                    <div class="icon">2</div>
-                    <h3>INTENSIVPAKET 1 VECKA</h3>
-                    <div class="price">3650 kr</div>
-                    <ul>
-                      <li>11 Körlektioner</li>
-                      <li>50 min per körlektion</li>
-                      <li>Lånebil vid uppkörning</li>
-                      <li>Manuell eller Automat</li>
-                    </ul>
-                    <button class="btn-blue btn-small">Boka nu</button>
+                  <div class="button-license a">
+                    <input type="radio" name="license" value="a" v-model="pickedLicense" v-on:change="changeLicense">
+                    <div class="wrap-btn">A</div>
+                    <div class="dropdown animated fadeIn">
+                      <input type="radio" name="license" value="a1" id="license-a1" v-model="pickedLicense" v-on:change="changeLicense">
+                      <label for="license-a1"><span>A1</span>Lätt motorcykel (Max 11 Kw)</label>
+                      <input type="radio" name="license" value="a2" id="license-a2" v-model="pickedLicense" v-on:change="changeLicense">
+                      <label for="license-a2"><span>A2</span>Mellanstor motorcykel (Max 35 Kw)</label>
+                    </div>
                   </div>
-                </div>
-                <div class="col col-md-3">
-                  <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="1100ms" data-wow-offset="100">
-                    <div class="icon">3</div>
-                    <h3>INTENSIVPAKET 2 VECKOR</h3>
-                    <div class="price">11 750 kr</div>
-                    <ul>
-                      <li>16 Körlektioner</li>
-                      <li>50 min per körlektion</li>
-                      <li>Lånebil vid uppkörning</li>
-                      <li>Manuell eller Automat</li>
-                    </ul>
-                    <button class="btn-blue btn-small">Boka nu</button>
-                  </div>
-                </div>
-                <div class="col col-md-3">
-                  <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="300ms" data-wow-offset="100">
-                    <div class="icon">4</div>
-                    <h3>INTENSIVPAKET 3 VECKOR</h3>
-                    <div class="price">15 200 kr</div>
-                    <ul>
-                      <li>21 Körlektioner</li>
-                      <li>50 min per körlektion</li>
-                      <li>Lånebil vid uppkörning</li>
-                      <li>Manuell eller Automat</li>
-                    </ul>
-                    <button class="btn-blue btn-small">Boka nu</button>
+                  <div class="button-license am">
+                    <input type="radio" name="license" value="am" v-model="pickedLicense" v-on:change="changeLicense">
+                    <div class="wrap-btn">AM</div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="tab-pane" role="tabpanel" id="study">
-              <div class="row">
-                <div class="col col-md-3">
-                  <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="500ms">
-                    <div class="icon">1</div>
-                    <h3>PROVA PA NY ELEV</h3>
-                    <div class="price">3650 kr</div>
-                    <ul>
-                      <li>Riskettan</li>
-                      <li>Risktvåan</li>
-                      <li>Körkortsboken</li>
-                      <li>Online teori</li>
-                    </ul>
-                    <button class="btn-blue btn-small">Boka nu</button>
-                  </div>
-                </div>
-                <div class="col col-md-3">
-                  <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="800ms">
-                    <div class="icon">2</div>
-                    <h3>ÖVNINGSPAKET 1 VECKA</h3>
-                    <div class="price">3650 kr</div>
-                    <ul>
-                      <li>11 Körlektioner</li>
-                      <li>50 min per körlektion</li>
-                      <li>Lånebil vid uppkörning</li>
-                      <li>Manuell eller Automat</li>
-                    </ul>
-                    <button class="btn-blue btn-small">Boka nu</button>
-                  </div>
-                </div>
-                <div class="col col-md-3">
-                  <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="1100ms">
-                    <div class="icon">3</div>
-                    <h3>ÖVNINGSPAKET 2 VECKOR</h3>
-                    <div class="price">11 750 kr</div>
-                    <ul>
-                      <li>16 Körlektioner</li>
-                      <li>50 min per körlektion</li>
-                      <li>Lånebil vid uppkörning</li>
-                      <li>Manuell eller Automat</li>
-                    </ul>
-                    <button class="btn-blue btn-small">Boka nu</button>
-                  </div>
-                </div>
-                <div class="col col-md-3">
-                  <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <div class="icon">4</div>
-                    <h3>ÖVNINGSPAKET 3 VECKOR</h3>
-                    <div class="price">15 200 kr</div>
-                    <ul>
-                      <li>21 Körlektioner</li>
-                      <li>50 min per körlektion</li>
-                      <li>Lånebil vid uppkörning</li>
-                      <li>Manuell eller Automat</li>
-                    </ul>
-                    <button class="btn-blue btn-small">Boka nu</button>
-                  </div>
+              <div class="home">
+                <h3>Välj en ort eller en trafikskola</h3>
+                <div class="section">
+                  <select2 class="select-contain" name="search_area_map" v-model="selectPlace">
+                    <option disabled selected value="placeholder">Välj ort</option>
+                    <option v-for="place in listPlaces" :value="place.id">{{place.city}}</option>
+                  </select2>
+                  <select2 class="select-contain" name="search_name" v-model="selectSchool">
+                    <option disabled selected value="placeholder">Välj trafikskola</option>
+                    <option v-for="school in listSchools" :value="school.id">{{school.name}}</option>
+                  </select2>
+                  <script type="text/x-template" id="select2-template">
+                    <select>
+                      <slot></slot>
+                    </select>
+                  </script>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="section-video">
-          <h2>Välj en trafikskola nära dig som erbjuder en hög standard på utbildning och värnar om vår miljö</h2>
-          <div class="row">
-            <div class="col col-md-6 col-sm-12">
-              <div class="video-container">
-                <!--img(src="/" + imagePath + "video-1.jpg", alt="video-1")-->
-                <iframe src="https://www.youtube.com/embed/QafXcUBkOTQ?enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer" frameborder="0" allowfullscreen="true" showinfo="0" controls="0"></iframe>
-                <div class="description flex flex-vertical-center flex-between">
-                  <p>Vägen till körkort</p>
-                  <div class="play-btn"></div>
-                </div>
-              </div>
-            </div>
-            <div class="col col-md-6 col-sm-12">
-              <div class="video-container">
-                <!--img(src="/" + imagePath + "video-1.jpg", alt="video-2")-->
-                <iframe src="https://www.youtube.com/embed/tshiDexOecE?enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer" frameborder="0" allowfullscreen="true"></iframe>
-                <div class="description flex flex-vertical-center flex-between">
-                  <p>Vägen till körkort</p>
-                  <div class="play-btn"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section-charts">
-          <h2>Förarprovstatistik</h2>
-          <p class="headline">Antal godkända Körprov B som genomförts på Trafikverket, perioden Januari – Juli 2017</p>
-          <div class="row without-line header-table">
-            <div class="col col-md-3"></div>
-            <div class="col col-md-3">
-              <p class="label">Kvinnor</p>
-            </div>
-            <div class="col col-md-3">
-              <p class="label">Män</p>
-            </div>
-            <div class="col col-md-3">
-              <p class="label">Totalt</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col col-md-3 flex flex-vertical-center">
-              <p class="label">Farsta</p>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="40">
-                <figcaption></figcaption>
-                <p>42<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="45">
-                <figcaption></figcaption>
-                <p>44<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="40">
-                <figcaption></figcaption>
-                <p>43</p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col col-md-3 flex flex-vertical-center">
-              <p class="label">Jakobsberg</p>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="35">
-                <figcaption></figcaption>
-                <p>37<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="45">
-                <figcaption></figcaption>
-                <p>42<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="40">
-                <figcaption></figcaption>
-                <p>41<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col col-md-3 flex flex-vertical-center">
-              <p class="label">Sollentuna</p>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="35">
-                <figcaption></figcaption>
-                <p>38<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="40">
-                <figcaption></figcaption>
-                <p>40<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="40">
-                <figcaption></figcaption>
-                <p>39<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-          </div>
-          <div class="row without-line">
-            <div class="col col-md-3 flex flex-vertical-center">
-              <p class="label">Södertälje</p>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="40">
-                <figcaption></figcaption>
-                <p>43<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="45">
-                <figcaption></figcaption>
-                <p>45<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="45">
-                <figcaption></figcaption>
-                <p>43<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-          </div>
-          <p class="headline">Antal godkända Kunskapsprov B som genomförts på Trafikverket, Perioden Januari – Juni 2017</p>
-          <div class="row">
-            <div class="col col-md-3 flex flex-vertical-center">
-              <p class="label">Stockholm</p>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="45">
-                <figcaption></figcaption>
-                <p>46<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="35">
-                <figcaption></figcaption>
-                <p>38<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="40">
-                <figcaption></figcaption>
-                <p>41<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col col-md-3 flex flex-vertical-center">
-              <p class="label">Södertälje</p>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="50">
-                <figcaption></figcaption>
-                <p>48<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="35">
-                <figcaption></figcaption>
-                <p>35<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-            <div class="col col-md-3">
-              <figure class="chart" data-percent="40">
-                <figcaption></figcaption>
-                <p>40<span>%</span></p>
-                <svg width="72" height="72">
-                  <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
-                </svg>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="section-additional-info">
-        <div class="container">
-          <h2>Mer information</h2>
-          <p class="headline">Länkar till Transportstyrelse & Trafikverket</p>
-          <div class="row">
-            <div class="col col-md-4">
-              <div class="info-block license">
-                <div class="icon"></div>
-                <h3>Körkortsbehörigheter</h3>
-                <p>I tabellen hos Transportstyrelsen kan du se vilken ålder som krävs för att du ska kunna ta körkort för de olika behörigheterna.</p><a class="btn">Besök webbplatsen</a>
-              </div>
-            </div>
-            <div class="col col-md-4">
-              <div class="info-block category">
-                <div class="icon"></div>
-                <h3>Körkortstillstånd</h3>
-                <p>Hos Transportstyrelsen kan du ansöka om körkortstillstånd för AM, A1, A2, A, B, BE och traktorkort.</p><a class="btn">Besök webbplatsen</a>
-              </div>
-            </div>
-            <div class="col col-md-4">
-              <div class="info-block testing">
-                <div class="icon"></div>
-                <h3>Boka förarprov</h3>
-                <p>I tjänsten Boka förarprov hos Trafikverket kan du boka och avboka prov för alla körkortsbehörigheter.</p><a class="btn">Besök webbplatsen</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="section-contact">
-        <div class="container">
-          <h2>Välkommen att kontakta oss</h2>
-          <p class="headline">Har du några frågor och funderingar kring körkort eller körpaket, vi hjälper dig gärna.</p>
-          <div class="flex flex-center social-area"><a href="https://www.facebook.com/www.vasterorttrafikskola.se" target="_blank" id="fb">fb.com/intensivkurs</a><a href="mailto:intensivkurs@gmail.com" target="_blank" id="mail">intensivkurs@gmail.com</a></div>
-          <form action="#" method="">
-            <input type="text" name="name" placeholder="Namn">
-            <input type="email" name="email" placeholder="Email Adress">
-            <textarea placeholder="Skriv ditt meddelande här"></textarea>
-            <input class="btn-blue" type="submit" value="SKICKA">
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="ads-modal" tabindex="-1" role="dialog" aria-labelledby="ads" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal"></button>
-            <h4 class="modal-title">VÄLKOMMEN</h4>
-            <p>SOM NY BESÖKARE GER VI DIG IDAG</p>
-          </div>
-          <div class="modal-body">
-            <h2><span>10%</span>RABATT</h2>
-            <p>PÅ DITT FÖRSTA KÖP!</p>
-            <form class="flex flex-between" action="#" method="">
-              <input type="email" name="email" placeholder="Skriv in din email adress här">
-              <input class="btn-blue" type="submit" value="SKICKA">
+              <input class="btn-blue" type="submit" value="Välj en trafikskola">
             </form>
           </div>
-          <div class="modal-footer">
-            <p>Genom att fylla i din email adress godkänner du samtidigt att du får ta en del av intensivkurs Stockholms nyhetsbrev och kampanjer. Du kan närsomhelst avregistrera dig från nyhetsbrevet.</p>
+        </div>
+        <div class="school-view">
+          <button class="close" v-on:click="closeSchoolView"></button>
+          <h2>{{schoolView.name}}</h2>
+          <p class="description">Kvalitet och miljörevision IKS-17</p>
+          <div class="graph"></div>
+          <div class="table-statistic">
+            <div class="row">
+              <div class="col col-sm-5">
+                <p class="label">Kundsupport</p>
+              </div>
+              <div class="col col-sm-7">
+                <div class="block-statistic">
+                  <div class="progress-bar support"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-sm-5">
+                <p class="label">Lärarlegitimation</p>
+              </div>
+              <div class="col col-sm-7">
+                <div class="block-statistic">
+                  <div class="progress-bar registrationTeacher"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-sm-5">
+                <p class="label">Pedagogik</p>
+              </div>
+              <div class="col col-sm-7">
+                <div class="block-statistic">
+                  <div class="progress-bar pedagogical"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-sm-5">
+                <p class="label">Miljöfordon</p>
+              </div>
+              <div class="col col-sm-7">
+                <div class="block-statistic">
+                  <div class="progress-bar cleanVehicles"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-sm-5">
+                <p class="label">Rekommendation</p>
+              </div>
+              <div class="col col-sm-7">
+                <div class="block-statistic">
+                  <div class="progress-bar recommendation"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-info">
+            <div class="info-block location">{{schoolView.address}}</div>
+            <div class="info-block email">{{schoolView.email}}</div>
+            <div class="info-block phone">{{schoolView.phone}}</div>
+            <input class="btn-blue" type="button" value="Välj en trafikskola" data-target="#form-modal" data-toggle="modal">
           </div>
         </div>
       </div>
-    </div>
-    <div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="form" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal"></button>
-            <h4 class="modal-title">KONTAKTA OSS</h4>
-            <p>Standard system för kvalitet och miljö</p>
-            <p>Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.</p>
+      <!-- block CONTENT-->
+      <div class="content">
+        <div class="container">
+          <div class="plans">
+            <h2>Välj mellan olika körpaket</h2>
+            <ul class="nav nav-tabs flex flex-center" role="tablist">
+              <li class="active"><a href="#intensive" aria-controls="intensive" role="tab" data-toggle="tab">Intensivpaket</a></li>
+              <li><a href="#study" aria-controls="study" role="tab" data-toggle="tab">Övningspaket</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" role="tabpanel" id="intensive">
+                <div class="row">
+                  <div class="col col-md-3">
+                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="500ms" data-wow-offset="100">
+                      <div class="icon">1</div>
+                      <h3>KAMPANJ NY ELEV</h3>
+                      <div class="price">3650 kr</div>
+                      <ul>
+                        <li>Riskettan</li>
+                        <li>Risktvåan</li>
+                        <li>Körkortsboken</li>
+                        <li>Online teori</li>
+                      </ul>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('KAMPANJ NY ELEV', '3650')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                    </div>
+                  </div>
+                  <div class="col col-md-3">
+                    <div class="card flipInY active wow" data-wow-duration="1000ms" data-wow-delay="800ms" data-wow-offset="100">
+                      <div class="icon">2</div>
+                      <h3>INTENSIVPAKET 1 VECKA</h3>
+                      <div class="price">3650 kr</div>
+                      <ul>
+                        <li>11 Körlektioner</li>
+                        <li>50 min per körlektion</li>
+                        <li>Lånebil vid uppkörning</li>
+                        <li>Manuell eller Automat</li>
+                      </ul>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('INTENSIVPAKET 1 VECKA', '3650')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                    </div>
+                  </div>
+                  <div class="col col-md-3">
+                    <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="1100ms" data-wow-offset="100">
+                      <div class="icon">3</div>
+                      <h3>INTENSIVPAKET 2 VECKOR</h3>
+                      <div class="price">11 750 kr</div>
+                      <ul>
+                        <li>16 Körlektioner</li>
+                        <li>50 min per körlektion</li>
+                        <li>Lånebil vid uppkörning</li>
+                        <li>Manuell eller Automat</li>
+                      </ul>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('INTENSIVPAKET 2 VECKOR', '11 750')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                    </div>
+                  </div>
+                  <div class="col col-md-3">
+                    <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="300ms" data-wow-offset="100">
+                      <div class="icon">4</div>
+                      <h3>INTENSIVPAKET 3 VECKOR</h3>
+                      <div class="price">15 200 kr</div>
+                      <ul>
+                        <li>21 Körlektioner</li>
+                        <li>50 min per körlektion</li>
+                        <li>Lånebil vid uppkörning</li>
+                        <li>Manuell eller Automat</li>
+                      </ul>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('INTENSIVPAKET 3 VECKOR', '15 200')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" role="tabpanel" id="study">
+                <div class="row">
+                  <div class="col col-md-3">
+                    <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="500ms">
+                      <div class="icon">1</div>
+                      <h3>PROVA PA NY ELEV</h3>
+                      <div class="price">3650 kr</div>
+                      <ul>
+                        <li>Riskettan</li>
+                        <li>Risktvåan</li>
+                        <li>Körkortsboken</li>
+                        <li>Online teori</li>
+                      </ul>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('PROVA PA NY ELEV', '3650')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                    </div>
+                  </div>
+                  <div class="col col-md-3">
+                    <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="800ms">
+                      <div class="icon">2</div>
+                      <h3>ÖVNINGSPAKET 1 VECKA</h3>
+                      <div class="price">3650 kr</div>
+                      <ul>
+                        <li>11 Körlektioner</li>
+                        <li>50 min per körlektion</li>
+                        <li>Lånebil vid uppkörning</li>
+                        <li>Manuell eller Automat</li>
+                      </ul>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('ÖVNINGSPAKET 1 VECKA', '3650')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                    </div>
+                  </div>
+                  <div class="col col-md-3">
+                    <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="1100ms">
+                      <div class="icon">3</div>
+                      <h3>ÖVNINGSPAKET 2 VECKOR</h3>
+                      <div class="price">11 750 kr</div>
+                      <ul>
+                        <li>16 Körlektioner</li>
+                        <li>50 min per körlektion</li>
+                        <li>Lånebil vid uppkörning</li>
+                        <li>Manuell eller Automat</li>
+                      </ul>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('ÖVNINGSPAKET 2 VECKOR', '11 750')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                    </div>
+                  </div>
+                  <div class="col col-md-3">
+                    <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="300ms">
+                      <div class="icon">4</div>
+                      <h3>ÖVNINGSPAKET 3 VECKOR</h3>
+                      <div class="price">15 200 kr</div>
+                      <ul>
+                        <li>21 Körlektioner</li>
+                        <li>50 min per körlektion</li>
+                        <li>Lånebil vid uppkörning</li>
+                        <li>Manuell eller Automat</li>
+                      </ul>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('ÖVNINGSPAKET 3 VECKOR', '15 200')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="modal-body">
+          <div class="section-video">
+            <h2>Välj en trafikskola nära dig som erbjuder en hög standard på utbildning och värnar om vår miljö</h2>
+            <div class="row">
+              <div class="col col-md-6 col-sm-12">
+                <div class="video-container">
+                  <!--img(src="/" + imagePath + "video-1.jpg", alt="video-1")-->
+                  <iframe src="https://www.youtube.com/embed/QafXcUBkOTQ?enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer" frameborder="0" allowfullscreen="true" showinfo="0" controls="0"></iframe>
+                  <div class="description flex flex-vertical-center flex-between">
+                    <p>Vägen till körkort</p>
+                    <div class="play-btn"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-6 col-sm-12">
+                <div class="video-container">
+                  <!--img(src="/" + imagePath + "video-1.jpg", alt="video-2")-->
+                  <iframe src="https://www.youtube.com/embed/tshiDexOecE?enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer" frameborder="0" allowfullscreen="true"></iframe>
+                  <div class="description flex flex-vertical-center flex-between">
+                    <p>Vägen till körkort</p>
+                    <div class="play-btn"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section-charts">
+            <h2>Förarprovstatistik</h2>
+            <p class="headline">Antal godkända Körprov B som genomförts på Trafikverket, perioden Januari – Juli 2017</p>
+            <div class="row without-line header-table">
+              <div class="col col-md-3"></div>
+              <div class="col col-md-3">
+                <p class="label">Kvinnor</p>
+              </div>
+              <div class="col col-md-3">
+                <p class="label">Män</p>
+              </div>
+              <div class="col col-md-3">
+                <p class="label">Totalt</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-md-3 flex flex-vertical-center">
+                <p class="label">Farsta</p>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="40">
+                  <figcaption></figcaption>
+                  <p>42<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="45">
+                  <figcaption></figcaption>
+                  <p>44<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="40">
+                  <figcaption></figcaption>
+                  <p>43</p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-md-3 flex flex-vertical-center">
+                <p class="label">Jakobsberg</p>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="35">
+                  <figcaption></figcaption>
+                  <p>37<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="45">
+                  <figcaption></figcaption>
+                  <p>42<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="40">
+                  <figcaption></figcaption>
+                  <p>41<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-md-3 flex flex-vertical-center">
+                <p class="label">Sollentuna</p>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="35">
+                  <figcaption></figcaption>
+                  <p>38<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="40">
+                  <figcaption></figcaption>
+                  <p>40<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="40">
+                  <figcaption></figcaption>
+                  <p>39<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+            </div>
+            <div class="row without-line">
+              <div class="col col-md-3 flex flex-vertical-center">
+                <p class="label">Södertälje</p>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="40">
+                  <figcaption></figcaption>
+                  <p>43<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="45">
+                  <figcaption></figcaption>
+                  <p>45<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="45">
+                  <figcaption></figcaption>
+                  <p>43<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+            </div>
+            <p class="headline">Antal godkända Kunskapsprov B som genomförts på Trafikverket, Perioden Januari – Juni 2017</p>
+            <div class="row">
+              <div class="col col-md-3 flex flex-vertical-center">
+                <p class="label">Stockholm</p>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="45">
+                  <figcaption></figcaption>
+                  <p>46<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="35">
+                  <figcaption></figcaption>
+                  <p>38<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="40">
+                  <figcaption></figcaption>
+                  <p>41<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-md-3 flex flex-vertical-center">
+                <p class="label">Södertälje</p>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="50">
+                  <figcaption></figcaption>
+                  <p>48<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="35">
+                  <figcaption></figcaption>
+                  <p>35<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart" data-percent="40">
+                  <figcaption></figcaption>
+                  <p>40<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-additional-info">
+          <div class="container">
+            <h2>Mer information</h2>
+            <p class="headline">Länkar till Transportstyrelse & Trafikverket</p>
+            <div class="row">
+              <div class="col col-md-4">
+                <div class="info-block license">
+                  <div class="icon"></div>
+                  <h3>Körkortsbehörigheter</h3>
+                  <p>I tabellen hos Transportstyrelsen kan du se vilken ålder som krävs för att du ska kunna ta körkort för de olika behörigheterna.</p><a class="btn">Besök webbplatsen</a>
+                </div>
+              </div>
+              <div class="col col-md-4">
+                <div class="info-block category">
+                  <div class="icon"></div>
+                  <h3>Körkortstillstånd</h3>
+                  <p>Hos Transportstyrelsen kan du ansöka om körkortstillstånd för AM, A1, A2, A, B, BE och traktorkort.</p><a class="btn">Besök webbplatsen</a>
+                </div>
+              </div>
+              <div class="col col-md-4">
+                <div class="info-block testing">
+                  <div class="icon"></div>
+                  <h3>Boka förarprov</h3>
+                  <p>I tjänsten Boka förarprov hos Trafikverket kan du boka och avboka prov för alla körkortsbehörigheter.</p><a class="btn">Besök webbplatsen</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-contact">
+          <div class="container">
+            <h2>Välkommen att kontakta oss</h2>
+            <p class="headline">Har du några frågor och funderingar kring körkort eller körpaket, vi hjälper dig gärna.</p>
+            <div class="flex flex-center social-area"><a href="https://www.facebook.com/www.vasterorttrafikskola.se" target="_blank" id="fb">fb.com/intensivkurs</a><a href="mailto:intensivkurs@gmail.com" target="_blank" id="mail">intensivkurs@gmail.com</a></div>
             <form action="#" method="">
               <input type="text" name="name" placeholder="Namn">
               <input type="email" name="email" placeholder="Email Adress">
-              <input type="text" name="phone" placeholder="Telefonnumber">
-              <input type="text" name="code" placeholder="Rabattkod">
+              <textarea placeholder="Skriv ditt meddelande här"></textarea>
               <input class="btn-blue" type="submit" value="SKICKA">
             </form>
           </div>
-          <div class="modal-footer"></div>
+        </div>
+      </div>
+      <div class="modal fade" id="ads-modal" tabindex="-1" role="dialog" aria-labelledby="ads" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" type="button" data-dismiss="modal"></button>
+              <h4 class="modal-title">VÄLKOMMEN</h4>
+              <p>SOM NY BESÖKARE GER VI DIG IDAG</p>
+            </div>
+            <div class="modal-body">
+              <h2><span>10%</span>RABATT</h2>
+              <p>PÅ DITT FÖRSTA KÖP!</p>
+              <form class="flex flex-between" action="#" method="">
+                <input type="email" name="email" placeholder="Skriv in din email adress här">
+                <input class="btn-blue" type="submit" value="SKICKA">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <p>Genom att fylla i din email adress godkänner du samtidigt att du får ta en del av intensivkurs Stockholms nyhetsbrev och kampanjer. Du kan närsomhelst avregistrera dig från nyhetsbrevet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="form" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" type="button" data-dismiss="modal"></button>
+              <h4 class="modal-title">KONTAKTA OSS</h4>
+              <p>Standard system för kvalitet och miljö</p>
+              <p>Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.</p>
+            </div>
+            <div class="modal-body">
+              <form action="#" method="">
+                <input type="text" name="name" placeholder="Namn">
+                <input type="email" name="email" placeholder="Email Adress">
+                <input type="text" name="phone" placeholder="Telefonnumber">
+                <input type="text" name="code" placeholder="Rabattkod">
+                <input class="btn-blue" type="submit" value="SKICKA">
+              </form>
+            </div>
+            <div class="modal-footer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="packet-modal" tabindex="-1" role="dialog" aria-labelledby="form" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" type="button" data-dismiss="modal"></button>
+              <h4 class="modal-title">{{namePacket}}</h4>
+              <p>Standard system för kvalitet och miljö {{pricePacket}}</p>
+              <p>Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.</p>
+            </div>
+            <div class="modal-body">
+              <form action="#" method="">
+                <input type="text" name="name" placeholder="Namn">
+                <input type="email" name="email" placeholder="Email Adress">
+                <input type="text" name="phone" placeholder="Telefonnumber">
+                <input type="text" name="code" placeholder="Rabattkod">
+                <input class="btn-blue" type="submit" value="SKICKA">
+              </form>
+            </div>
+            <div class="modal-footer"></div>
+          </div>
         </div>
       </div>
     </div>
