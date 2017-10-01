@@ -275,6 +275,10 @@ let app = new Vue({
                 });
             });
         });
+        google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+            $('html').removeClass('loading');
+        });
+
     },
     methods:{
         openModalPacket(name, price){

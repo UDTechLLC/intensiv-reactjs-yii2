@@ -2,7 +2,7 @@
 - var imagePath = "assets/images/"
 
 doctype html
-html(lang="en")
+html(lang="en", class="loading")
 	head
 		meta(charset="utf-8")
 		meta(http-equiv="X-UA-Compatible")
@@ -501,7 +501,8 @@ html(lang="en")
 								input(type="text", name="code", placeholder="Rabattkod")
 								input(type="submit", value="SKICKA", class="btn-blue")
 						.modal-footer
-
+			.loader
+				.icon
 		block scripts
 			script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcQed-XICEOIuLN8MHRzJ2GtX6D8g8IXs")
 			script(src="https://code.jquery.com/jquery-2.2.4.min.js")
