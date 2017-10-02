@@ -19,6 +19,29 @@ $(function(){
     $('select').on('select2:open', function(e){
         $('.select2-results__options').scrollbar().parent().addClass('scrollbar-inner');
     });
+
+    //As you scroll, record the scrolltop position in global variable
+    let scrollTopPosition = 0;
+    let lastKnownScrollTopPosition = 0;
+    $(window).scroll(function () {
+        scrollTopPosition = $(document).scrollTop();
+        console.log(scrollTopPosition);
+    });
+
+    $('.modal')
+        .on('show.bs.modal', function (){
+            $('body').css({
+                top : scrollTopPosition * -1
+            });
+            //save this number for later
+            lastKnownScrollTopPosition = scrollTopPosition;
+        })
+        .on('hide.bs.modal', function (){
+            $('body').scrollTop(lastKnownScrollTopPosition);
+            setTimeout(function () {
+                $('body').css({top: 0});
+            }, 800);
+        });
 });
 
 /*create graph config school view*/
@@ -275,8 +298,12 @@ let app = new Vue({
                 });
             });
         });
+
         google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
-            $('html').removeClass('loading');
+            $('.loader').addClass('animated');
+            setTimeout(function () {
+                $('html').removeClass('loading');
+            }, 300);
         });
 
     },
