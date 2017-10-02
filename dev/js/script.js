@@ -4,9 +4,11 @@ $(function(){
 		e.preventDefault();
 	});
 
-    // if($('#ads-modal').length){
-    //     $('#ads-modal').modal('show')
-    // }
+    if($('#ads-modal').length){
+        setTimeout(function () {
+            $('#ads-modal').modal('show')
+        }, 10000);
+    }
 
 
 
@@ -261,7 +263,7 @@ let app = new Vue({
         // });
         new WOW().init();
         this.mapLocate = map;
-        fetch("/schools.json").then(r => r.json()).then(json => {
+        fetch("http://projects.udtech.co/intensivkurs/schools.json").then(r => r.json()).then(json => {
             this.schools = json;
             this.listSchools = this.schools;
             this.listPlaces = JSON.parse(JSON.stringify(json));

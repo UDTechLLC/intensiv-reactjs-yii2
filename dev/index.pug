@@ -1,5 +1,5 @@
 
-- var imagePath = "assets/images/"
+- var imagePath = "http://projects.udtech.co/intensivkurs/assets/images/"
 
 doctype html
 html(lang="en", class="loading")
@@ -27,7 +27,7 @@ html(lang="en", class="loading")
 				.filter-section(:class="{'open-school-view': schoolViewStatus}")
 					.flex.flex-center.header-filter
 						a(href="#").b_logo
-							img(src="/" + imagePath + "logo.svg", alt="Intensivkurs Logo")
+							img(src= imagePath + "logo.svg", alt="Intensivkurs Logo")
 					.body
 						h2 NÄRHET KVALITET & MILJÖ
 
