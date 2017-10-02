@@ -147,7 +147,7 @@ html(lang="en", class="loading")
 												li Risktvåan
 												li Körkortsboken
 												li Online teori
-											button.btn-blue.btn-small(v-on:click="openModalPacket('KAMPANJ NY ELEV', '3650')", data-target="#packet-modal", data-toggle="modal") Boka nu
+											button.btn-blue.btn-small(v-on:click="openModalPacket('KAMPANJ NY ELEV', '3650 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
 									.col.col-md-3
 										.card.flipInY.active.wow(data-wow-duration="1000ms", data-wow-delay="800ms", data-wow-offset="100")
 											.icon 2
@@ -158,7 +158,7 @@ html(lang="en", class="loading")
 												li 50 min per körlektion
 												li Lånebil vid uppkörning
 												li Manuell eller Automat
-											button.btn-blue.btn-small(v-on:click="openModalPacket('INTENSIVPAKET 1 VECKA', '3650')", data-target="#packet-modal", data-toggle="modal") Boka nu
+											button.btn-blue.btn-small(v-on:click="openModalPacket('INTENSIVPAKET 1 VECKA', '3650 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
 									.col.col-md-3
 										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="1100ms", data-wow-offset="100")
 											.icon 3
@@ -169,7 +169,7 @@ html(lang="en", class="loading")
 												li 50 min per körlektion
 												li Lånebil vid uppkörning
 												li Manuell eller Automat
-											button.btn-blue.btn-small(v-on:click="openModalPacket('INTENSIVPAKET 2 VECKOR', '11 750')", data-target="#packet-modal", data-toggle="modal") Boka nu
+											button.btn-blue.btn-small(v-on:click="openModalPacket('INTENSIVPAKET 2 VECKOR', '11 750 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
 									.col.col-md-3
 										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="300ms", data-wow-offset="100")
 											.icon 4
@@ -180,7 +180,7 @@ html(lang="en", class="loading")
 												li 50 min per körlektion
 												li Lånebil vid uppkörning
 												li Manuell eller Automat
-											button.btn-blue.btn-small(v-on:click="openModalPacket('INTENSIVPAKET 3 VECKOR', '15 200')", data-target="#packet-modal", data-toggle="modal") Boka nu
+											button.btn-blue.btn-small(v-on:click="openModalPacket('INTENSIVPAKET 3 VECKOR', '15 200 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
 
 							.tab-pane(role="tabpanel", id="study")
 								.row
@@ -194,7 +194,7 @@ html(lang="en", class="loading")
 												li Risktvåan
 												li Körkortsboken
 												li Online teori
-											button.btn-blue.btn-small(v-on:click="openModalPacket('PROVA PA NY ELEV', '3650')", data-target="#packet-modal", data-toggle="modal") Boka nu
+											button.btn-blue.btn-small(v-on:click="openModalPacket('PROVA PA NY ELEV', '3650 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
 									.col.col-md-3
 										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="800ms")
 											.icon 2
@@ -205,7 +205,7 @@ html(lang="en", class="loading")
 												li 50 min per körlektion
 												li Lånebil vid uppkörning
 												li Manuell eller Automat
-											button.btn-blue.btn-small(v-on:click="openModalPacket('ÖVNINGSPAKET 1 VECKA', '3650')", data-target="#packet-modal", data-toggle="modal") Boka nu
+											button.btn-blue.btn-small(v-on:click="openModalPacket('ÖVNINGSPAKET 1 VECKA', '3650 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
 									.col.col-md-3
 										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="1100ms")
 											.icon 3
@@ -216,7 +216,7 @@ html(lang="en", class="loading")
 												li 50 min per körlektion
 												li Lånebil vid uppkörning
 												li Manuell eller Automat
-											button.btn-blue.btn-small(v-on:click="openModalPacket('ÖVNINGSPAKET 2 VECKOR', '11 750')", data-target="#packet-modal", data-toggle="modal") Boka nu
+											button.btn-blue.btn-small(v-on:click="openModalPacket('ÖVNINGSPAKET 2 VECKOR', '11 750 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
 									.col.col-md-3
 										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="300ms")
 											.icon 4
@@ -227,20 +227,20 @@ html(lang="en", class="loading")
 												li 50 min per körlektion
 												li Lånebil vid uppkörning
 												li Manuell eller Automat
-											button.btn-blue.btn-small(v-on:click="openModalPacket('ÖVNINGSPAKET 3 VECKOR', '15 200')", data-target="#packet-modal", data-toggle="modal") Boka nu
+											button.btn-blue.btn-small(v-on:click="openModalPacket('ÖVNINGSPAKET 3 VECKOR', '15 200 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
 
 					.section-video
 						h2 Välj en trafikskola nära dig som erbjuder en hög standard på utbildning och värnar om vår miljö
 						.row
 							.col.col-md-6.col-sm-12
-								.video-container
+								.video-container.wow.fadeInUp(data-wow-delay="800ms", data-wow-offset="100")
 									//img(src="/" + imagePath + "video-1.jpg", alt="video-1")
 									iframe(src="https://www.youtube.com/embed/QafXcUBkOTQ?enablejsapi=1&version=3&playerapiid=ytplayer", frameborder="0", allowfullscreen="true", showinfo="0", controls="0")
 									.description.flex.flex-vertical-center.flex-between
 										p Vägen till körkort
 										.play-btn
 							.col.col-md-6.col-sm-12
-								.video-container
+								.video-container.wow.fadeInUp(data-wow-delay="500ms", data-wow-offset="100")
 									//img(src="/" + imagePath + "video-1.jpg", alt="video-2")
 									iframe(src="https://www.youtube.com/embed/tshiDexOecE?enablejsapi=1&version=3&playerapiid=ytplayer", frameborder="0", allowfullscreen="true")
 									.description.flex.flex-vertical-center.flex-between
@@ -264,21 +264,21 @@ html(lang="en", class="loading")
 							.col.col-md-3.flex.flex-vertical-center
 								p.label Farsta
 							.col.col-md-3
-								figure.chart(data-percent="40")
+								figure.chart.wow.fadeInUp(data-percent="40", data-wow-delay="500ms", data-wow-offset="60")
 									figcaption
 									p 42
 										span %
 									svg(width="72", height="72")
 										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
 							.col.col-md-3
-								figure.chart(data-percent="45")
+								figure.chart.wow.fadeInUp(data-percent="45", data-wow-delay="800ms", data-wow-offset="60")
 									figcaption
 									p 44
 										span %
 									svg(width="72", height="72")
 										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
 							.col.col-md-3
-								figure.chart(data-percent="40")
+								figure.chart.wow.fadeInUp(data-percent="40", data-wow-delay="300ms", data-wow-offset="60")
 									figcaption
 									p 43
 									svg(width="72", height="72")
@@ -288,21 +288,21 @@ html(lang="en", class="loading")
 							.col.col-md-3.flex.flex-vertical-center
 								p.label Jakobsberg
 							.col.col-md-3
-								figure.chart(data-percent="35")
+								figure.chart.wow.fadeInUp(data-percent="35", data-wow-delay="500ms", data-wow-offset="60")
 									figcaption
 									p 37
 										span %
 									svg(width="72", height="72")
 										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
 							.col.col-md-3
-								figure.chart(data-percent="45")
+								figure.chart.wow.fadeInUp(data-percent="45", data-wow-delay="800ms", data-wow-offset="60")
 									figcaption
 									p 42
 										span %
 									svg(width="72", height="72")
 										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
 							.col.col-md-3
-								figure.chart(data-percent="40")
+								figure.chart.wow.fadeInUp(data-percent="40", data-wow-delay="300ms", data-wow-offset="60")
 									figcaption
 									p 41
 										span %
@@ -313,21 +313,21 @@ html(lang="en", class="loading")
 							.col.col-md-3.flex.flex-vertical-center
 								p.label Sollentuna
 							.col.col-md-3
-								figure.chart(data-percent="35")
+								figure.chart.wow.fadeInUp(data-percent="35", data-wow-delay="500ms", data-wow-offset="60")
 									figcaption
 									p 38
 										span %
 									svg(width="72", height="72")
 										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
 							.col.col-md-3
-								figure.chart(data-percent="40")
+								figure.chart.wow.fadeInUp(data-percent="40", data-wow-delay="800ms", data-wow-offset="60")
 									figcaption
 									p 40
 										span %
 									svg(width="72", height="72")
 										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
 							.col.col-md-3
-								figure.chart(data-percent="40")
+								figure.chart.wow.fadeInUp(data-percent="40", data-wow-delay="300ms", data-wow-offset="60")
 									figcaption
 									p 39
 										span %
@@ -338,21 +338,21 @@ html(lang="en", class="loading")
 							.col.col-md-3.flex.flex-vertical-center
 								p.label Södertälje
 							.col.col-md-3
-								figure.chart(data-percent="40")
+								figure.chart.wow.fadeInUp(data-percent="40", data-wow-delay="500ms", data-wow-offset="60")
 									figcaption
 									p 43
 										span %
 									svg(width="72", height="72")
 										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
 							.col.col-md-3
-								figure.chart(data-percent="45")
+								figure.chart.wow.fadeInUp(data-percent="45", data-wow-delay="800ms", data-wow-offset="60")
 									figcaption
 									p 45
 										span %
 									svg(width="72", height="72")
 										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
 							.col.col-md-3
-								figure.chart(data-percent="45")
+								figure.chart.wow.fadeInUp(data-percent="45", data-wow-delay="300ms", data-wow-offset="60")
 									figcaption
 									p 43
 										span %
@@ -365,21 +365,21 @@ html(lang="en", class="loading")
 							.col.col-md-3.flex.flex-vertical-center
 								p.label Stockholm
 							.col.col-md-3
-								figure.chart(data-percent="45")
+								figure.chart.wow.fadeInUp(data-percent="45", data-wow-delay="500ms", data-wow-offset="60")
 									figcaption
 									p 46
 										span %
 									svg(width="72", height="72")
 										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
 							.col.col-md-3
-								figure.chart(data-percent="35")
+								figure.chart.wow.fadeInUp(data-percent="35", data-wow-delay="800ms", data-wow-offset="60")
 									figcaption
 									p 38
 										span %
 									svg(width="72", height="72")
 										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
 							.col.col-md-3
-								figure.chart(data-percent="40")
+								figure.chart.wow.fadeInUp(data-percent="40", data-wow-delay="300ms", data-wow-offset="60")
 									figcaption
 									p 41
 										span %
@@ -390,21 +390,21 @@ html(lang="en", class="loading")
 							.col.col-md-3.flex.flex-vertical-center
 								p.label Södertälje
 							.col.col-md-3
-								figure.chart(data-percent="50")
+								figure.chart.wow.fadeInUp(data-percent="50", data-wow-delay="500ms", data-wow-offset="60")
 									figcaption
 									p 48
 										span %
 									svg(width="72", height="72")
 										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
 							.col.col-md-3
-								figure.chart(data-percent="35")
+								figure.chart.wow.fadeInUp(data-percent="35", data-wow-delay="800ms", data-wow-offset="60")
 									figcaption
 									p 35
 										span %
 									svg(width="72", height="72")
 										circle.outer(cx="154", cy="36", stroke-linecap="round",  r="31", transform="rotate(-90, 95, 95)")
 							.col.col-md-3
-								figure.chart(data-percent="40")
+								figure.chart.wow.fadeInUp(data-percent="40", data-wow-delay="300ms", data-wow-offset="60")
 									figcaption
 									p 40
 										span %
@@ -417,19 +417,19 @@ html(lang="en", class="loading")
 						p.headline Länkar till Transportstyrelse & Trafikverket
 						.row
 							.col.col-md-4
-								.info-block.license
+								.info-block.license.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="500ms", data-wow-offset="100")
 									.icon
 									h3 Körkortsbehörigheter
 									p I tabellen hos Transportstyrelsen kan du se vilken ålder som krävs för att du ska kunna ta körkort för de olika behörigheterna.
 									a.btn Besök webbplatsen
 							.col.col-md-4
-								.info-block.category
+								.info-block.category.flipInY.active.wow(data-wow-duration="1000ms", data-wow-delay="800ms", data-wow-offset="100")
 									.icon
 									h3 Körkortstillstånd
 									p Hos Transportstyrelsen kan du ansöka om körkortstillstånd för AM, A1, A2, A, B, BE och traktorkort.
 									a.btn Besök webbplatsen
 							.col.col-md-4
-								.info-block.testing
+								.info-block.testing.flipInY.active.wow(data-wow-duration="1000ms", data-wow-delay="300ms", data-wow-offset="100")
 									.icon
 									h3 Boka förarprov
 									p I tjänsten Boka förarprov hos Trafikverket kan du boka och avboka prov för alla körkortsbehörigheter.
@@ -440,11 +440,11 @@ html(lang="en", class="loading")
 						h2 Välkommen att kontakta oss
 						p.headline Har du några frågor och funderingar kring körkort eller körpaket, vi hjälper dig gärna.
 
-						.flex.flex-center.social-area
+						.flex.flex-center.social-area.wow.zoomIn(data-wow-duration="1000ms", data-wow-delay="200ms", data-wow-offset="100")
 							a(href="https://www.facebook.com/www.vasterorttrafikskola.se", target="_blank", id="fb") fb.com/intensivkurs
 							a(href="mailto:intensivkurs@gmail.com", target="_blank", id="mail") intensivkurs@gmail.com
 
-						form(action="#", method="")
+						form.wow.zoomIn(action="#", method="", data-wow-duration="1000ms", data-wow-delay="200ms", data-wow-offset="100")
 							input(type="text", name="name", placeholder="Namn")
 							input(type="email", name="email", placeholder="Email Adress")
 							textarea(placeholder="Skriv ditt meddelande här")
@@ -490,11 +490,11 @@ html(lang="en", class="loading")
 					.modal-content
 						.modal-header
 							button.close(type="button", data-dismiss="modal")
-							h4.modal-title {{namePacket}}
-							p Standard system för kvalitet och miljö {{pricePacket}}
-							p Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.
+							h4.modal-title {{namePacket}} ({{pricePacket}})
+							p Vi stödjer kvalitet och miljömärkning för att stärka konsumenterna inför ett köpbeslut.
 						.modal-body
-							form(action="#", method="")
+							form(action="http://www.intensivkursstockholm.se/front/users/package_information", method="post")
+								input(type="hidden", name="package_type", v-model="pricePacket", readonly="true")
 								input(type="text", name="name", placeholder="Namn")
 								input(type="email", name="email", placeholder="Email Adress")
 								input(type="text", name="phone", placeholder="Telefonnumber")

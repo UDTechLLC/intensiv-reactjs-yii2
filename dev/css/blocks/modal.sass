@@ -17,7 +17,6 @@ body
           h4, h2
             color: $headingColor
             font-weight: $light
-            text-transform: uppercase
             text-align: center
           h4
             font-size: 30px
@@ -27,6 +26,7 @@ body
             font-size: 50px
             line-height: 50px
             margin-bottom: 10px
+            text-transform: uppercase
             span
               color: $mainColor
               font-weight: $semi-bold
@@ -90,6 +90,12 @@ body
               background-color: $mainColor
           &:focus, &:active
             outline: none
+
+      &#packet-modal
+        .modal-dialog
+          .modal-content
+            p
+              padding: 30px 20% 0
 
       &#ads-modal
         .modal-dialog

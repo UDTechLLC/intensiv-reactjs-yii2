@@ -25,7 +25,6 @@ $(function(){
     let lastKnownScrollTopPosition = 0;
     $(window).scroll(function () {
         scrollTopPosition = $(document).scrollTop();
-        console.log(scrollTopPosition);
     });
 
     $('.modal')
