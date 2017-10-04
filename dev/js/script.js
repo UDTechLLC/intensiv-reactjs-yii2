@@ -3,14 +3,14 @@ $(function(){
 	$("[role='button']").click(function(e){
 		e.preventDefault();
 	});
-
-    if($('#ads-modal').length){
+    console.log(getCookie('showAdsModal'));
+    if($('#ads-modal').length && (getCookie('showAdsModal') != true)){
+        setCookie('showAdsModal','1');
+        console.log(getCookie('showAdsModal'));
         setTimeout(function () {
             $('#ads-modal').modal('show')
         }, 10000);
     }
-
-
 
     // if($('.section select').length){
      //    $('.section select').select2({
@@ -44,6 +44,17 @@ $(function(){
             }, 800);
         });
 });
+
+function setCookie(key, value) {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+    document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+}
+
+function getCookie(key) {
+    var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+    return keyValue ? keyValue[2] : null;
+}
 
 /*create graph config school view*/
 function createConfig(details, data) {
