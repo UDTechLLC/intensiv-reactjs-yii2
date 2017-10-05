@@ -24,8 +24,12 @@
         display: inline-block
         padding: 0 10px
         margin: 0 29px
-        @media (min-width: 400px)
+
+        @media (max-width: 410px)
           margin: 0 10px
+        @media (max-width: 360px)
+          margin: 0
+
         &:after, &:before
           content: ""
           background: rgba($mainColor, 0.5)

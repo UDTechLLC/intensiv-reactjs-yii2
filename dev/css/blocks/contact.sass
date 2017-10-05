@@ -11,6 +11,7 @@
   .social-area
     padding-top: 14px
     padding-bottom: 33px
+    flex-wrap: wrap
     a
       color: $headingColor
       font-size: 14px
@@ -19,6 +20,10 @@
       position: relative
       padding-left: 64px
       transition: all 0.35s ease-in
+
+      @media (max-width: 560px)
+        display: block
+        width: 100%
       &:before
         content: ""
         display: block
@@ -37,6 +42,11 @@
         position: absolute
       &#fb
         padding-right: 137px
+        @media (max-width: 720px)
+          padding-right: 14%
+        @media (max-width: 560px)
+          padding-bottom: 20px
+          padding-right: 0
         &:after
           -webkit-mask-image: url(../images/icon-facebook.svg)
           mask-image: url(../images/icon-facebook.svg)
@@ -69,6 +79,10 @@
   form
     width: 48.64%
     margin: 0 auto
+    @media (max-width: 960px)
+      width: 80%
+    @media (max-width: 550px)
+      width: 100%
 
     input[type=submit]
       width: 53%

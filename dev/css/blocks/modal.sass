@@ -10,7 +10,7 @@ body
       .modal-dialog
         width: 696px
         @media (max-width: 720px)
-          width: 100%
+          @include calc(width, 100%, "100% - 20px")
         .modal-content
           box-shadow: 0 24px 59px rgba(51, 59, 69, 0.15)
           border-radius: $border-radius-btn-small
@@ -29,6 +29,11 @@ body
             line-height: 50px
             margin-bottom: 10px
             text-transform: uppercase
+
+            @media (max-width: 412px)
+              font-size: 42px
+            @media (max-width: 370px)
+              font-size: 34px
             span
               color: $mainColor
               font-weight: $semi-bold
@@ -36,6 +41,9 @@ body
             margin: 10px auto 0
             width: 52%
             display: block
+
+            @media (max-width: 476px)
+              width: 100%
           p
             color: $fontColor
             font-weight: $light
@@ -46,6 +54,11 @@ body
           .modal-body
             padding: 16px 62px 15px
 
+            @media (max-width: 490px)
+              padding: 16px 40px 15px
+            @media (max-width: 400px)
+              padding: 16px 20px 15px
+
           .modal-header
             position: relative
             border: none
@@ -55,6 +68,12 @@ body
             padding: 8px 45px 27px
             position: relative
             border: none
+
+            @media (max-width: 490px)
+              padding: 8px 35px 27px
+            @media (max-width: 400px)
+              padding: 8px 20px 27px
+
             p
               opacity: 0.5
               text-transform: inherit
@@ -99,6 +118,11 @@ body
             p
               padding: 30px 20% 0
 
+              @media (max-width: 490px)
+                padding: 30px 35px 0
+              @media (max-width: 400px)
+                padding: 30px 20px 0
+
       &#ads-modal
         .modal-dialog
           .modal-content
@@ -127,15 +151,33 @@ body
 
             .modal-body
               padding: 31px 45px 15px
+
+              @media (max-width: 490px)
+                padding: 31px 35px 15px
+              @media (max-width: 400px)
+                padding: 31px 20px 15px
+
               form
                 margin-top: 59px
+
+                @media (max-width: 476px)
+                  flex-wrap: wrap
+
               input[type=email]
                 width: 64%
                 margin: 0
+
+                @media (max-width: 476px)
+                  width: 100%
+                  margin-bottom: 20px
+
               input[type=submit]
                 width: 33%
                 margin: 0
                 display: inline-block
+
+                @media (max-width: 476px)
+                  width: 100%
 
               .close
                 &:before, &:after

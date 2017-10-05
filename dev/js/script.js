@@ -3,10 +3,8 @@ $(function(){
 	$("[role='button']").click(function(e){
 		e.preventDefault();
 	});
-    console.log(getCookie('showAdsModal'));
     if($('#ads-modal').length && (getCookie('showAdsModal') != true)){
         setCookie('showAdsModal','1');
-        console.log(getCookie('showAdsModal'));
         setTimeout(function () {
             $('#ads-modal').modal('show')
         }, 10000);
@@ -181,7 +179,6 @@ let app = new Vue({
 
         if($(window).width() < 960){
             $('.header .map').height($(window).height());
-            $('.school-view').css({'top':$(window).height()});
         }
         let myLatlng = new google.maps.LatLng(this.latitudeMap, this.longitudeMap);
         let map = new google.maps.Map(document.getElementById('map-layout'), {
@@ -271,7 +268,8 @@ let app = new Vue({
 
         new WOW({mobile: false}).init();
         this.mapLocate = map;
-        fetch("/schools.json").then(r => r.json()).then(json => {
+
+        fetch("http://projects.udtech.co/intensivkurs/schools.json").then(r => r.json()).then(json => {
             this.schools = json;
             this.listSchools = this.schools;
             this.listPlaces = JSON.parse(JSON.stringify(json));
@@ -280,6 +278,7 @@ let app = new Vue({
                 if(a.city > b.city) return 1;
                 return 0;
             });
+
             this.schools.forEach((school) => {
                 const position = new google.maps.LatLng(school.latitude, school.longitude);
                 const marker = new google.maps.Marker({
