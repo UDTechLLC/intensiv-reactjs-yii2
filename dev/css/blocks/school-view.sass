@@ -1,6 +1,14 @@
 body
-  .filter-section.open-school-view + .school-view
-      right: 0
+  .filter-section.open-school-view
+
+    @media (max-width: 1300px)
+      animation-delay: 2s
+      -webkit-animation: hideFilter 2s
+      animation: hideFilter 2s
+      animation-fill-mode: forwards
+      -webkit-animation-fill-mode: forwards
+    + .school-view
+        right: 0
 
   .school-view
     background-color: #edf4fa
@@ -157,3 +165,25 @@ body
             height: 15px
             -webkit-mask-image: url(../images/contact-phone.svg)
             mask-image: url(../images/contact-phone.svg)
+
+@-webkit-keyframes hideFilter
+  0%
+    opacity: 1
+  95%
+    opacity: 0
+    width: 370px
+  100%
+    opacity: 0
+    display: none
+    width: 0
+
+@keyframes hideFilter
+  0%
+    opacity: 1
+  95%
+    opacity: 0
+    width: 370px
+  100%
+    opacity: 0
+    display: none
+    width: 0

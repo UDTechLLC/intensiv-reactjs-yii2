@@ -17,6 +17,8 @@ p.headline
     border-bottom: 1px solid rgba($borderColor, 0.4)
     padding-bottom: 21px
     margin-bottom: 25px
+    @media (max-width: 770px)
+      flex-wrap: wrap
     &:last-child
       border-bottom: none
       margin-bottom: 3px
@@ -28,15 +30,29 @@ p.headline
       padding-bottom: 0
       margin-bottom: 0
       .col
+        @media (max-width: 770px)
+          &:first-child
+            display: none
         .label
           color: $headingColor
           font-size: 16px
           margin-bottom: 17px
   .col
     text-align: center
-
+    @media (max-width: 770px)
+      -webkit-flex: 0 0 33.3%
+      -webkit-flex--ms-flex: 0 0 33.3%
+      -webkit-flex--ms-flex-flex: 0 0 33.3%
+      max-width: 33.3%
     &.flex.flex-vertical-center
       padding: 0 0 0 9.4%
+      @media (max-width: 770px)
+        padding: 0
+        justify-content: center
+        -webkit-flex: 0 0 100%
+        -webkit-flex--ms-flex: 0 0 100%
+        -webkit-flex--ms-flex-flex: 0 0 100%
+        max-width: 100%
     .label
       color: $labelColor
       font-size: 20px
@@ -49,6 +65,9 @@ p.headline
       display: inline-block
       font-size: 20px
       text-align: center
+      @media (max-width: 770px)
+        margin: 1em 0
+
       figcaption
         width: 71px
         height: 71px
@@ -122,7 +141,41 @@ p.headline
         -webkit-animation: show25 2s
         animation: show25 2s
 
+      @media (max-width: 1030px)
+        &[data-percent='100'] .outer
+          stroke-dashoffset: 0
+          -webkit-animation: show100 2s
+          animation: show100 2s
 
+        &[data-percent='75'] .outer
+          stroke-dashoffset: 133
+          -webkit-animation: show75 2s
+          animation: show75 2s
+
+        &[data-percent='50'] .outer
+          stroke-dashoffset: 439
+          -webkit-animation: show50 2s
+          animation: show50 2s
+
+        &[data-percent='45'] .outer
+          stroke-dashoffset: 453
+          -webkit-animation: show45 2s
+          animation: show45 2s
+
+        &[data-percent='40'] .outer
+          stroke-dashoffset: 463
+          -webkit-animation: show40 2s
+          animation: show40 2s
+
+        &[data-percent='35'] .outer
+          stroke-dashoffset: 470
+          -webkit-animation: show35 2s
+          animation: show35 2s
+
+        &[data-percent='25'] .outer
+          stroke-dashoffset: 401
+          -webkit-animation: show25 2s
+          animation: show25 2s
 
 
 

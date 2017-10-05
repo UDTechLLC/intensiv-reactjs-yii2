@@ -24,6 +24,8 @@
         display: inline-block
         padding: 0 10px
         margin: 0 29px
+        @media (min-width: 400px)
+          margin: 0 10px
         &:after, &:before
           content: ""
           background: rgba($mainColor, 0.5)
@@ -55,6 +57,8 @@
 
   .tab-content
     padding: 20px 0
+    @media (min-width: 994px)
+      padding-bottom: 0
     > .tab-pane
       display: none
       visibility: hidden
@@ -62,11 +66,32 @@
         display: block
         visibility: visible
 
+    @media (max-width: 1120px)
+      .col
+        padding-left: 7px
+        padding-right: 7px
+    @media (max-width: 994px)
+      .col
+        -webkit-flex: 0 0 50%
+        -ms-flex: 0 0 50%
+        max-width: 50%
+        padding-left: 15px
+        padding-right: 15px
+        padding-bottom: 20px
+    @media (max-width: 720px)
+      .col
+        -webkit-flex: 0 0 100%
+        -ms-flex: 0 0 100%
+        max-width: 100%
+
     .card
       border-radius: $border-radius-main
       border: 2px dashed $borderColor
       padding-bottom: 15px
       transition: all 0.35s ease-in
+      @media (max-width: 1120px)
+        padding: 0 7px
+
       &.active, &:hover
         border-color: transparent
         box-shadow: 0 24px 59px rgba(51, 58, 69, 0.15)
@@ -116,7 +141,8 @@
           font-weight: $light
           line-height: 28px
           position: relative
-
+          @media (max-width: 1120px)
+            padding-left: 30px
           &:before
             content: ""
             position: absolute
@@ -128,7 +154,8 @@
             left: 20px
             top: 10px
             transition: all 250ms ease 0s
-
+            @media (max-width: 1120px)
+              left: 10px
 
 
 

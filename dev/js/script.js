@@ -179,6 +179,10 @@ let app = new Vue({
     },
     mounted: function () {
 
+        if($(window).width() < 960){
+            $('.header .map').height($(window).height());
+            $('.school-view').css({'top':$(window).height()});
+        }
         let myLatlng = new google.maps.LatLng(this.latitudeMap, this.longitudeMap);
         let map = new google.maps.Map(document.getElementById('map-layout'), {
             center: myLatlng,
@@ -264,17 +268,10 @@ let app = new Vue({
                 }
             ]
         });
-        // AOS.init({
-        //     /* easing: 'ease-in-out-sine'; */
-        //     duration: 1000,
-        //     disable: function () {
-        //         var maxWidth = 1024;
-        //         return window.innerWidth < maxWidth;
-        //     }
-        // });
-        new WOW().init();
+
+        new WOW({mobile: false}).init();
         this.mapLocate = map;
-        fetch("http://projects.udtech.co/intensivkurs/schools.json").then(r => r.json()).then(json => {
+        fetch("/schools.json").then(r => r.json()).then(json => {
             this.schools = json;
             this.listSchools = this.schools;
             this.listPlaces = JSON.parse(JSON.stringify(json));
