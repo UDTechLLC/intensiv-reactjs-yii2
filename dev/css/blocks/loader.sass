@@ -14,12 +14,20 @@ html.loading
       height: 100%
       background: url(../images/map.jpg) 0 0 no-repeat
       background-size: 100% auto
-      @media (max-width: 960px)
+
+      @media (max-width: 1180px) and (orientation: landscape)
+        background-size: 100% 100%
+        background-position: center center
+      @media (max-width: 960px) and (orientation: landscape)
+        background-size: 100% auto
+        background-position: center center
+      @media (max-width: 960px) and (orientation: portrait)
         background-size: auto 100%
         background-position: center center
+
       .icon
         width: 130px
-        height: 42px
+        height: 43px
         background: url(../images/b.svg) 0 0 no-repeat
         background-size: 100% auto
         position: absolute
@@ -32,20 +40,20 @@ html.loading
         &:before, &:after
           content: ""
           display: block
-          width: 23px
-          height: 23px
+          width: 22px
+          height: 22px
           background: url(../images/wheel.png)
           background-size: 100%
           position: absolute
-          bottom: -1px
-          left: 17px
+          bottom: 0
+          left: 16px
           -webkit-animation: spin 0.5s infinite linear
           -moz-animation: spin 0.5s infinite linear
           -o-animation: spin 0.5s infinite linear
           -ms-animation: spin 0.5s infinite linear
         &:after
           left: auto
-          right: 13px
+          right: 14px
 
 @-webkit-keyframes spin
   0%
