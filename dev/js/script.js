@@ -41,6 +41,38 @@ $(function(){
                 $('body').css({top: 0});
             }, 800);
         });
+
+    /*
+     * Replace all SVG images with inline SVG
+     */
+    jQuery('img.svg').each(function(){
+        var $img = jQuery(this);
+        var imgID = $img.attr('id');
+        var imgClass = $img.attr('class');
+        var imgURL = $img.attr('src');
+
+        jQuery.get(imgURL, function(data) {
+            // Get the SVG tag, ignore the rest
+            var $svg = jQuery(data).find('svg');
+
+            // Add replaced image's ID to the new SVG
+            if(typeof imgID !== 'undefined') {
+                $svg = $svg.attr('id', imgID);
+            }
+            // Add replaced image's classes to the new SVG
+            if(typeof imgClass !== 'undefined') {
+                $svg = $svg.attr('class', imgClass+' replaced-svg');
+            }
+
+            // Remove any invalid XML tags as per http://validator.w3.org
+            $svg = $svg.removeAttr('xmlns:a');
+
+            // Replace image with new SVG
+            $img.replaceWith($svg);
+
+        }, 'xml');
+    });
+
 });
 
 function setCookie(key, value) {
@@ -140,16 +172,16 @@ Vue.component('select2', {
                 vm.$emit('input', this.value)
             })
     },
-    watch: {
-        value: function (value) {
-            // update value
-            $(this.$el).val(value).trigger('change');
-        },
-        options: function (options) {
-            // update options
-            $(this.$el).empty().select2({ data: options });
-        }
-    },
+    // watch: {
+    //     value: function (value) {
+    //         // update value
+    //         $(this.$el).val(value).trigger('change');
+    //     },
+    //     options: function (options) {
+    //         // update options
+    //         $(this.$el).empty().select2({ data: options });
+    //     }
+    // },
     destroyed: function () {
         $(this.$el).off().select2('destroy')
     }
@@ -269,7 +301,7 @@ let app = new Vue({
         new WOW({mobile: false}).init();
         this.mapLocate = map;
 
-        fetch("http://projects.udtech.co/intensivkurs/schools.json").then(r => r.json()).then(json => {
+        fetch("/schools.json").then(r => r.json()).then(json => {
             this.schools = json;
             this.listSchools = this.schools;
             this.listPlaces = JSON.parse(JSON.stringify(json));
@@ -286,7 +318,7 @@ let app = new Vue({
                     map,
                     animation: google.maps.Animation.DROP,
                     schoolId: school.id,
-                    moto: school.moto,
+                    license: school.license,
                     icon: 'assets/images/map-marker.svg'
                 });
                 app.markersList.push(marker);
@@ -323,31 +355,34 @@ let app = new Vue({
             }
         },
         changeLicense(){
-            if(this.pickedLicense == 'a' || this.pickedLicense == 'a1' || this.pickedLicense == 'a2' || this.pickedLicense == 'am') {
-                this.listSchools = this.schools.filter(school => school.moto);
-                this.listPlaces = this.schools.filter(school => school.moto);
-            }else{
+            if(this.pickedLicense == 'b') {
                 this.listSchools = this.schools;
                 this.listPlaces = JSON.parse(JSON.stringify(this.schools)).sort(function(a, b){
                     if(a.city < b.city) return -1;
                     if(a.city > b.city) return 1;
                     return 0;
                 });
+            }else{
+                this.listSchools = this.schools.filter(school => (school.license.indexOf(this.pickedLicense) !== -1));
+                this.listPlaces = this.schools.filter(school => (school.license.indexOf(this.pickedLicense) !== -1));
             }
-            $('select-contain').each(
+            $('.select-contain').each(
                 function () {
-                    $(this).select2('update');
+                    $(this).select2("destroy");
+                    $(this).select2({
+                        minimumResultsForSearch: Infinity
+                    });
                 }
             );
             this.markersList.forEach((marker) => {
-                if (this.pickedLicense == 'a' || this.pickedLicense == 'a1' || this.pickedLicense == 'a2' || this.pickedLicense == 'am') {
-                    if (marker.moto){
+                if (this.pickedLicense == 'b' ) {
+                    marker.setVisible(true);
+                }else {
+                    if (marker.license.indexOf(this.pickedLicense) !== -1){
                         marker.setVisible(true);
                     }else {
                         marker.setVisible(false);
                     }
-                }else {
-                    marker.setVisible(true);
                 }
             });
         },

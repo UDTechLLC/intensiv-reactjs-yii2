@@ -40,9 +40,7 @@
           top: 23px
           right: 22px
           width: 23px
-          -webkit-mask-image: url(../images/arrow-down.svg)
-          mask-image: url(../images/arrow-down.svg)
-          background-color: white
+          background: url(../images/arrow-down.svg)
           background-repeat: no-repeat
           transition: all 0.3s ease-in-out
 
@@ -67,13 +65,15 @@
 
           &__arrow
             transform: rotateX(180deg)
-            background-color: $mainColor
+            background: url(../images/arrow-down-hover.svg)
+            background-repeat: no-repeat
 
     &:hover
       .select2-selection--single
         .select2-selection
           &__arrow
-            background-color: $mainColor
+            background: url(../images/arrow-down-hover.svg)
+            background-repeat: no-repeat
 
 
   &:focus, &.focus, .select2-container--focus

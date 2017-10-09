@@ -130,23 +130,25 @@
         text-transform: uppercase
         border: 1px solid transparent
         transition: all 0.35s ease-in
-        &:before
-         content: ""
+        .icon
          display: block
          position: absolute
          top: 33px
          left: 0
          right: 0
          margin: auto
-         background-color: white
          transition: all 0.35s ease-in
+         svg path
+          transition: all 0.35s ease-in
+          fill: white
 
        &:hover, &:checked
         + .wrap-btn
          color: $mainColor
 
-         &:before
-          background-color: $mainColor
+         .icon
+          svg path
+           fill: $mainColor
 
        &:checked
         + .wrap-btn
@@ -162,12 +164,10 @@
         border-left-color: rgba(#ffffff, 0.1)
         border-right-color: rgba(#ffffff, 0.1)
 
-        &:before
+        .icon
          top: 44px
          width: 52px
          height: 24px
-         -webkit-mask-image: url(../images/a.svg)
-         mask-image: url(../images/a.svg)
 
        .dropdown
         left: -104px
@@ -175,22 +175,18 @@
       &.b
        input[type=radio] + .wrap-btn
         border-bottom-left-radius: 5px
-        &:before
+        .icon
          top: 44px
          width: 69px
          height: 23px
-         -webkit-mask-image: url(../images/b.svg)
-         mask-image: url(../images/b.svg)
       &.am
        width: 33.4%
        input[type=radio] + .wrap-btn
         border-bottom-right-radius: 5px
-        &:before
+        .icon
          top: 33px
          width: 48px
          height: 35px
-         -webkit-mask-image: url(../images/am.svg)
-         mask-image: url(../images/am.svg)
      select
       height: 65px
       background: transparent

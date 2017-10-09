@@ -1,6 +1,5 @@
 
 - var imagePath = "http://projects.udtech.co/intensivkurs/assets/images/"
-
 doctype html
 html(lang="en", class="loading")
 	head
@@ -37,19 +36,25 @@ html(lang="en", class="loading")
 								.section.flex
 									.button-license.b
 										input(type="radio", name="license", value="b", v-model="pickedLicense", v-on:change="changeLicense")
-										.wrap-btn B
+										.wrap-btn
+											.icon
+												img(src= imagePath + "b.svg", alt="B Logo", class="svg")
+											|B
 										.dropdown.animated.fadeIn
 											input(type="radio", name="license", value="ub", id="license-ub", v-model="pickedLicense", v-on:change="changeLicense")
 											label(for="license-ub")
 												span UB
-												|släpvagn (Max 4.25 ton)
+												|Bil + Släpvagn (Max 4.25 ton)
 											input(type="radio", name="license", value="be", id="license-be", v-model="pickedLicense", v-on:change="changeLicense")
 											label(for="license-be")
 												span BE
-												|tung släpvagn (Max 3.5 ton)
+												|Tung släpvagn (Max 3.5 ton)
 									.button-license.a
 										input(type="radio", name="license", value="a", v-model="pickedLicense", v-on:change="changeLicense")
-										.wrap-btn A
+										.wrap-btn
+											.icon
+												img(src= imagePath + "a.svg", alt="A Logo", class="svg")
+											|A
 										.dropdown.animated.fadeIn
 											input(type="radio", name="license", value="a1", id="license-a1", v-model="pickedLicense", v-on:change="changeLicense")
 											label(for="license-a1")
@@ -61,7 +66,10 @@ html(lang="en", class="loading")
 												|Mellanstor motorcykel (Max 35 Kw)
 									.button-license.am
 										input(type="radio", name="license", value="am", v-model="pickedLicense", v-on:change="changeLicense")
-										.wrap-btn AM
+										.wrap-btn
+											.icon
+												img(src= imagePath + "am.svg", alt="AM Logo", class="svg")
+											|AM
 							.home
 								h3 Välj en ort eller en trafikskola
 								.section
@@ -80,8 +88,10 @@ html(lang="en", class="loading")
 							input(type="submit" value="Välj en trafikskola", class="btn-blue")
 				.school-view
 					button.close(v-on:click="closeSchoolView")
+						span.icon
+							img(src= imagePath + "arrow-down.svg", alt="arrow", class="svg")
 					h2 {{schoolView.name}}
-					p.description Kvalitet och miljörevision IKS-17
+					p.description Kvalitet och miljörevision TA-2017
 					.graph
 
 					.table-statistic
@@ -119,7 +129,7 @@ html(lang="en", class="loading")
 						.info-block.location {{schoolView.address}}
 						.info-block.email {{schoolView.email}}
 						.info-block.phone {{schoolView.phone}}
-						input.btn-blue(type="button", value="Välj en trafikskola", data-target="#form-modal", data-toggle="modal")
+						input.btn-blue(type="button", value="KONTAKTA OSS", data-target="#form-modal", data-toggle="modal")
 
 			// block CONTENT
 			.content
@@ -441,8 +451,14 @@ html(lang="en", class="loading")
 						p.headline Har du några frågor och funderingar kring körkort eller körpaket, vi hjälper dig gärna.
 
 						.flex.flex-center.social-area.wow.zoomIn(data-wow-duration="1000ms", data-wow-delay="200ms", data-wow-offset="100")
-							a(href="https://www.facebook.com/www.vasterorttrafikskola.se", target="_blank", id="fb") fb.com/intensivkurs
-							a(href="mailto:intensivkurs@gmail.com", target="_blank", id="mail") intensivkurs@gmail.com
+							a(href="https://www.facebook.com/www.vasterorttrafikskola.se", target="_blank", id="fb")
+								.icon
+									img(src= imagePath + "icon-facebook.svg", alt="facebook Logo", class="svg")
+								|fb.com/intensivkurs
+							a(href="mailto:intensivkurs@gmail.com", target="_blank", id="mail")
+								.icon
+									img(src= imagePath + "icon-mail.svg", alt="mail Logo", class="svg")
+								|intensivkurs@gmail.com
 
 						form.wow.zoomIn(action="#", method="", data-wow-duration="1000ms", data-wow-delay="200ms", data-wow-offset="100")
 							input(type="text", name="name", placeholder="Namn")
@@ -474,14 +490,13 @@ html(lang="en", class="loading")
 						.modal-header
 							button.close(type="button", data-dismiss="modal")
 							h4.modal-title KONTAKTA OSS
-							p Standard system för kvalitet och miljö
 							p Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.
 						.modal-body
 							form(action="#", method="")
 								input(type="text", name="name", placeholder="Namn")
 								input(type="email", name="email", placeholder="Email Adress")
 								input(type="text", name="phone", placeholder="Telefonnumber")
-								input(type="text", name="code", placeholder="Rabattkod")
+								textarea(type="text", name="message", placeholder="Meddelande")
 								input(type="submit", value="SKICKA", class="btn-blue")
 						.modal-footer
 

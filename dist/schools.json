@@ -12,7 +12,8 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": false,
-  "city": "Hässelby-Vällingby"
+  "license": "",
+  "city": "Vällingby"
 },
 {
   "id": 1,
@@ -28,6 +29,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": false,
+  "license": "",
   "city": "Sollentuna"
 },
 {
@@ -36,15 +38,16 @@
   "address": "Sturegatan 8 172 31 Sundbyberg",
   "email": "info@jpstrafikskola.nu",
   "phone": "08-29 99 90",
-  "latitude": "59.3368863",
-  "longitude": "18.073758099999964",
+  "latitude": "59.3612146",
+  "longitude": "17.97502570000006",
   "support": "81",
   "registrationTeacher": "100",
   "pedagogical": "90",
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": true,
-  "city": "Sundbyberg/Solna"
+  "license": "a, am, a1, a2",
+  "city": "Sundbyberg"
 },
 {
   "id": 3,
@@ -60,6 +63,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": false,
+  "license": "",
   "city": "Jakobsberg"
 },
 {
@@ -76,6 +80,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": true,
+  "license": "a, a1, a2, ub, be",
   "city": "Västermalm"
 },
 {
@@ -92,6 +97,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": false,
+  "license": "",
   "city": "Bromma"
 },
 {
@@ -108,6 +114,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": false,
+  "license": "am, ub, be",
   "city": "Tyresö"
 },
 {
@@ -124,6 +131,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": true,
+  "license": "a, a1, a2, ub, be",
   "city": "Farsta"
 },
 {
@@ -140,6 +148,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": true,
+  "license": "a, am, a1, a2, ub, be",
   "city": "Östermalm"
 },
 {
@@ -156,6 +165,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": true,
+  "license": "a, am, a1, a2, ub, be",
   "city": "Lidingö"
 },
 {
@@ -172,6 +182,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": false,
+  "license": "am",
   "city": "Nacka"
 },
 {
@@ -188,6 +199,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": false,
+  "license": "",
   "city": "Södermalm"
 },
 {
@@ -204,6 +216,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": false,
+  "license": "",
   "city": "Haninge"
 },
 {
@@ -220,6 +233,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": false,
+  "license": "",
   "city": "Huddinge"
 },
 {
@@ -236,7 +250,8 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": false,
-  "city": "Danderyd-Täby"
+  "license": "",
+  "city": "Danderyd"
 },
 {
   "id": 15,
@@ -252,6 +267,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": false,
+  "license": "",
   "city": "Upplands Väsby"
 },
 {
@@ -268,6 +284,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": true,
+  "license": "a, am, a1, a2",
   "city": "Norsborg"
 },
 {
@@ -284,6 +301,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": true,
+  "license": "a, a1, a2",
   "city": "Södertälje"
 },
 {
@@ -300,6 +318,7 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": true,
+  "license": "a, am, a1, a2",
   "city": "Nynäshamn"
 },
 {
@@ -316,5 +335,6 @@
   "cleanVehicles": "80",
   "recommendation": "95",
   "moto": false,
+  "license": "a, ub, be",
   "city": "Norrtälje"
 }]

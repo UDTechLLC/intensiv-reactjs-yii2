@@ -31,8 +31,7 @@ body
       border: 2px solid #cbd2de
       border-radius: $border-radius-circle
       background: none
-      &:before
-        content: ""
+      .icon
         display: block
         position: absolute
         top: 6px
@@ -40,9 +39,9 @@ body
         width: 24px
         height: 17px
         transform: rotate(90deg)
-        background-color: $mainColor
-        -webkit-mask-image: url(../images/arrow-down.svg)
-        mask-image: url(../images/arrow-down.svg)
+        svg path
+          fill: $mainColor
+          transition: all 0.35s ease-in
 
       &:hover
         color: $mainColor
@@ -53,8 +52,9 @@ body
         color: $mainColor
         border-color: $mainColor
         background: $mainColor
-        &:before
-          background-color: white
+        .icon
+          svg path
+            fill: white
 
     h2
       color: $headingColor
@@ -148,7 +148,6 @@ body
           position: absolute
           top: 10px
           left: 0
-          background-color: $mainColor
 
         &.location
           &:after
@@ -156,16 +155,14 @@ body
             height: 17px
             top: 21px
             left: 12px
-            -webkit-mask-image: url(../images/marker.svg)
-            mask-image: url(../images/marker.svg)
+            background: url(../images/marker.svg)
         &.email
           &:after
             width: 15px
             height: 12px
             top: 22px
             left: 11px
-            -webkit-mask-image: url(../images/contact-email.svg)
-            mask-image: url(../images//contact-email.svg)
+            background: url(../images//contact-email.svg)
         &.phone
           margin-bottom: 30px
           &:after
@@ -173,8 +170,7 @@ body
             left: 12px
             width: 15px
             height: 15px
-            -webkit-mask-image: url(../images/contact-phone.svg)
-            mask-image: url(../images/contact-phone.svg)
+            background: url(../images/contact-phone.svg)
 
 @-webkit-keyframes hideFilter
   0%

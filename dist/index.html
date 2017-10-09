@@ -26,17 +26,21 @@
                 <div class="section flex">
                   <div class="button-license b">
                     <input type="radio" name="license" value="b" v-model="pickedLicense" v-on:change="changeLicense">
-                    <div class="wrap-btn">B</div>
+                    <div class="wrap-btn">
+                      <div class="icon"><img class="svg" src="http://projects.udtech.co/intensivkurs/assets/images/b.svg" alt="B Logo"></div>B
+                    </div>
                     <div class="dropdown animated fadeIn">
                       <input type="radio" name="license" value="ub" id="license-ub" v-model="pickedLicense" v-on:change="changeLicense">
-                      <label for="license-ub"><span>UB</span>släpvagn (Max 4.25 ton)</label>
+                      <label for="license-ub"><span>UB</span>Bil + Släpvagn (Max 4.25 ton)</label>
                       <input type="radio" name="license" value="be" id="license-be" v-model="pickedLicense" v-on:change="changeLicense">
-                      <label for="license-be"><span>BE</span>tung släpvagn (Max 3.5 ton)</label>
+                      <label for="license-be"><span>BE</span>Tung släpvagn (Max 3.5 ton)</label>
                     </div>
                   </div>
                   <div class="button-license a">
                     <input type="radio" name="license" value="a" v-model="pickedLicense" v-on:change="changeLicense">
-                    <div class="wrap-btn">A</div>
+                    <div class="wrap-btn">
+                      <div class="icon"><img class="svg" src="http://projects.udtech.co/intensivkurs/assets/images/a.svg" alt="A Logo"></div>A
+                    </div>
                     <div class="dropdown animated fadeIn">
                       <input type="radio" name="license" value="a1" id="license-a1" v-model="pickedLicense" v-on:change="changeLicense">
                       <label for="license-a1"><span>A1</span>Lätt motorcykel (Max 11 Kw)</label>
@@ -46,7 +50,9 @@
                   </div>
                   <div class="button-license am">
                     <input type="radio" name="license" value="am" v-model="pickedLicense" v-on:change="changeLicense">
-                    <div class="wrap-btn">AM</div>
+                    <div class="wrap-btn">
+                      <div class="icon"><img class="svg" src="http://projects.udtech.co/intensivkurs/assets/images/am.svg" alt="AM Logo"></div>AM
+                    </div>
                   </div>
                 </div>
               </div>
@@ -73,9 +79,9 @@
           </div>
         </div>
         <div class="school-view">
-          <button class="close" v-on:click="closeSchoolView"></button>
+          <button class="close" v-on:click="closeSchoolView"><span class="icon"><img class="svg" src="http://projects.udtech.co/intensivkurs/assets/images/arrow-down.svg" alt="arrow"></span></button>
           <h2>{{schoolView.name}}</h2>
-          <p class="description">Kvalitet och miljörevision IKS-17</p>
+          <p class="description">Kvalitet och miljörevision TA-2017</p>
           <div class="graph"></div>
           <div class="table-statistic">
             <div class="row">
@@ -133,7 +139,7 @@
             <div class="info-block location">{{schoolView.address}}</div>
             <div class="info-block email">{{schoolView.email}}</div>
             <div class="info-block phone">{{schoolView.phone}}</div>
-            <input class="btn-blue" type="button" value="Välj en trafikskola" data-target="#form-modal" data-toggle="modal">
+            <input class="btn-blue" type="button" value="KONTAKTA OSS" data-target="#form-modal" data-toggle="modal">
           </div>
         </div>
       </div>
@@ -537,7 +543,9 @@
           <div class="container">
             <h2>Välkommen att kontakta oss</h2>
             <p class="headline">Har du några frågor och funderingar kring körkort eller körpaket, vi hjälper dig gärna.</p>
-            <div class="flex flex-center social-area wow zoomIn" data-wow-duration="1000ms" data-wow-delay="200ms" data-wow-offset="100"><a href="https://www.facebook.com/www.vasterorttrafikskola.se" target="_blank" id="fb">fb.com/intensivkurs</a><a href="mailto:intensivkurs@gmail.com" target="_blank" id="mail">intensivkurs@gmail.com</a></div>
+            <div class="flex flex-center social-area wow zoomIn" data-wow-duration="1000ms" data-wow-delay="200ms" data-wow-offset="100"><a href="https://www.facebook.com/www.vasterorttrafikskola.se" target="_blank" id="fb">
+                <div class="icon"><img class="svg" src="http://projects.udtech.co/intensivkurs/assets/images/icon-facebook.svg" alt="facebook Logo"></div>fb.com/intensivkurs</a><a href="mailto:intensivkurs@gmail.com" target="_blank" id="mail">
+                <div class="icon"><img class="svg" src="http://projects.udtech.co/intensivkurs/assets/images/icon-mail.svg" alt="mail Logo"></div>intensivkurs@gmail.com</a></div>
             <form class="wow zoomIn" action="#" method="" data-wow-duration="1000ms" data-wow-delay="200ms" data-wow-offset="100">
               <input type="text" name="name" placeholder="Namn">
               <input type="email" name="email" placeholder="Email Adress">
@@ -575,7 +583,6 @@
             <div class="modal-header">
               <button class="close" type="button" data-dismiss="modal"></button>
               <h4 class="modal-title">KONTAKTA OSS</h4>
-              <p>Standard system för kvalitet och miljö</p>
               <p>Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.</p>
             </div>
             <div class="modal-body">
@@ -583,7 +590,7 @@
                 <input type="text" name="name" placeholder="Namn">
                 <input type="email" name="email" placeholder="Email Adress">
                 <input type="text" name="phone" placeholder="Telefonnumber">
-                <input type="text" name="code" placeholder="Rabattkod">
+                <textarea type="text" name="message" placeholder="Meddelande"></textarea>
                 <input class="btn-blue" type="submit" value="SKICKA">
               </form>
             </div>

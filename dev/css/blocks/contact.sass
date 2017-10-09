@@ -35,10 +35,8 @@
         top: -4px
         left: -3px
         transition: all 0.35s ease-in
-      &:after
-        content: ""
+      .icon
         display: block
-        background-color: $mainColor
         position: absolute
       &#fb
         padding-right: 137px
@@ -47,20 +45,16 @@
         @media (max-width: 560px)
           padding-bottom: 20px
           padding-right: 0
-        &:after
-          -webkit-mask-image: url(../images/icon-facebook.svg)
-          mask-image: url(../images/icon-facebook.svg)
+        .icon
           width: 11px
           height: 22px
-          top: 9px
-          left: 14px
+          top: 6px
+          left: 15px
       &#mail
-        &:after
-          -webkit-mask-image: url(../images/icon-mail.svg)
-          mask-image: url(../images/icon-mail.svg)
+        .icon
           width: 18px
           height: 14px
-          top: 13px
+          top: 2px
           left: 12px
 
       &:hover
@@ -73,8 +67,9 @@
         &:before
           border-color: $mainColor
           background: $mainColor
-        &:after
-          background-color: white
+        .icon
+          svg path
+            fill: white
 
   form
     width: 48.64%
