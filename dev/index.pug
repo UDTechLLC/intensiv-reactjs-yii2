@@ -28,7 +28,9 @@ html(lang="en", class="loading")
 						a(href="#").b_logo
 							img(src= imagePath + "logo.svg", alt="Intensivkurs Logo")
 					.body
-						h2 NÄRHET KVALITET & MILJÖ
+						h2
+							span NÄRHET
+							| KVALITET & MILJÖ
 
 						form(method="POST", action="#", v-on:submit.prevent="openSchoolView")
 							.drive
@@ -495,7 +497,7 @@ html(lang="en", class="loading")
 							form(action="#", method="")
 								input(type="text", name="name", placeholder="Namn")
 								input(type="email", name="email", placeholder="Email Adress")
-								input(type="text", name="phone", placeholder="Telefonnumber")
+								input(type="text", name="phone", placeholder="Telefonnummer")
 								textarea(type="text", name="message", placeholder="Meddelande")
 								input(type="submit", value="SKICKA", class="btn-blue")
 						.modal-footer
@@ -512,7 +514,7 @@ html(lang="en", class="loading")
 								input(type="hidden", name="package_type", v-model="pricePacket", readonly="true")
 								input(type="text", name="name", placeholder="Namn")
 								input(type="email", name="email", placeholder="Email Adress")
-								input(type="text", name="phone", placeholder="Telefonnumber")
+								input(type="text", name="phone", placeholder="Telefonnummber")
 								input(type="text", name="code", placeholder="Rabattkod")
 								input(type="submit", value="SKICKA", class="btn-blue")
 						.modal-footer
