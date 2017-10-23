@@ -301,7 +301,7 @@ let app = new Vue({
         new WOW({mobile: false}).init();
         this.mapLocate = map;
 
-        fetch("/schools.json").then(r => r.json()).then(json => {
+        fetch("http://projects.udtech.co/intensivkurs/schools.json").then(r => r.json()).then(json => {
             this.schools = json;
             this.listSchools = this.schools;
             this.listPlaces = JSON.parse(JSON.stringify(json));
@@ -319,7 +319,7 @@ let app = new Vue({
                     animation: google.maps.Animation.DROP,
                     schoolId: school.id,
                     license: school.license,
-                    icon: 'assets/images/map-marker.svg'
+                    icon: 'assets/images/map-marker.png'
                 });
                 app.markersList.push(marker);
                 google.maps.event.addListener(marker, 'click', function(event){
@@ -333,7 +333,7 @@ let app = new Vue({
                     }else{
                         app.openSchoolView(marker.schoolId)
                     }
-                    marker.setIcon('assets/images/marker-active.svg');
+                    marker.setIcon('assets/images/marker-active.png');
 
                 });
             });
@@ -430,7 +430,7 @@ let app = new Vue({
                     schoolId = self.selectSchool;
                 }
                 if(marker.schoolId == schoolId){
-                    marker.setIcon('assets/images/marker-active.svg');
+                    marker.setIcon('assets/images/marker-active.png');
                 }
             });
         },
@@ -444,7 +444,7 @@ let app = new Vue({
             $('.progress-bar.recommendation').width(0)
 
             this.markersList.forEach(function(marker) {
-                marker.setIcon('assets/images/map-marker.svg');
+                marker.setIcon('assets/images/map-marker.png');
             });
 
             setTimeout(function () {
