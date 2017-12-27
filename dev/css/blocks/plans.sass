@@ -1,6 +1,6 @@
 .plans
   padding-top: 41px
-  h2
+  &_title
     text-align: center
     color: $headingColor
     font-size: 30px
@@ -8,12 +8,11 @@
     line-height: 40px
     margin-bottom: 20px
 
-  .nav-tabs
+  &_tabs
     margin-bottom: 13px
     >li
       float: left
       margin-bottom: -1px
-
       > a
         border: none
         color: $headingColor
@@ -93,6 +92,7 @@
       border: 2px dashed $borderColor
       padding-bottom: 15px
       transition: all 0.35s ease-in
+      padding: 0 18px
       @media (max-width: 1120px)
         padding: 0 7px
 
@@ -160,7 +160,3 @@
             transition: all 250ms ease 0s
             @media (max-width: 1120px)
               left: 10px
-
-
-
-

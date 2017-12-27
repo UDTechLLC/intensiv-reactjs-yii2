@@ -1,5 +1,9 @@
 
-- var imagePath = "https://projects.udtech.co/intensivkurs/assets/images/"
+//- var imagePath = "https://projects.udtech.co/intensivkurs/assets/images/"
+- var imagePath = "assets/images/"
+include mixins/plan_tab
+
+
 doctype html
 html(lang="en", class="loading")
 	head
@@ -139,107 +143,71 @@ html(lang="en", class="loading")
 					block mainSiteContent
 
 					.plans
-						h2 Välj mellan olika körpaket
-						ul.nav.nav-tabs.flex.flex-center(role="tablist")
+						h2.plans_title Välj mellan olika körpaket
+
+						ul.plans_tabs.nav.nav-tabs.flex.flex-center(role="tablist")
 							li.active
 								a(href="#intensive", aria-controls="intensive", role="tab", data-toggle="tab") Intensivpaket
 							li
 								a(href="#study", aria-controls="study", role="tab", data-toggle="tab") Övningspaket
+							li
+								a(href="#other", aria-controls="other", role="tab", data-toggle="tab") Övriga tjänster
+							li
+								a(href="#courses", aria-controls="other", role="tab", data-toggle="tab") Kurser
 
 						.tab-content
 							.tab-pane.active(role="tabpanel", id="intensive")
 								.row
-									.col.col-md-3
-										.card.wow.flipInY(data-wow-duration="1000ms", data-wow-delay="500ms", data-wow-offset="100")
-											.icon 1
-											h3 KAMPANJ NY ELEV
-											.price 3650 kr
-											ul
-												li Riskettan
-												li Risktvåan
-												li Körkortsboken
-												li Online teori
-											button.btn-blue.btn-small(v-on:click="openModalPacket('KAMPANJ NY ELEV', '3650 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
-									.col.col-md-3
-										.card.flipInY.active.wow(data-wow-duration="1000ms", data-wow-delay="800ms", data-wow-offset="100")
-											.icon 2
-											h3 INTENSIVPAKET 1 VECKA
-											.price 8300 kr
-											ul
-												li 11 Körlektioner
-												li 50 min per körlektion
-												li Lånebil vid uppkörning
-												li Manuell eller Automat
-											button.btn-blue.btn-small(v-on:click="openModalPacket('INTENSIVPAKET 1 VECKA', '8300 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
-									.col.col-md-3
-										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="1100ms", data-wow-offset="100")
-											.icon 3
-											h3 INTENSIVPAKET 2 VECKOR
-											.price 11 750 kr
-											ul
-												li 16 Körlektioner
-												li 50 min per körlektion
-												li Lånebil vid uppkörning
-												li Manuell eller Automat
-											button.btn-blue.btn-small(v-on:click="openModalPacket('INTENSIVPAKET 2 VECKOR', '11 750 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
-									.col.col-md-3
-										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="300ms", data-wow-offset="100")
-											.icon 4
-											h3 INTENSIVPAKET 3 VECKOR
-											.price 15 200 kr
-											ul
-												li 21 Körlektioner
-												li 50 min per körlektion
-												li Lånebil vid uppkörning
-												li Manuell eller Automat
-											button.btn-blue.btn-small(v-on:click="openModalPacket('INTENSIVPAKET 3 VECKOR', '15 200 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
+									- var list1 = ["Riskettan", "Risktvåan", "Körkortsboken", "Online teori"]
+									+plan_tab("600","INGÅR I INTENSIVKURSEN", "3650", list1)
+
+									- var list2 = ["10 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automati"]
+									+plan_tab("800","INTENSIVPAKET 1 VECKA", "10500", list2, "active")
+
+									- var list3 = ["15 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automati"]
+									+plan_tab("800","INTENSIVPAKET 2 VECKOR", "14 000", list3)
+
+									- var list4 = ["20 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automati"]
+									+plan_tab("300","INTENSIVPAKET 3 VECKOR", "17 500", list4)
 
 							.tab-pane(role="tabpanel", id="study")
 								.row
-									.col.col-md-3
-										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="500ms")
-											.icon 1
-											h3 PROVA PA NY ELEV
-											.price 3950 kr
-											ul
-												li Riskettan
-												li Risktvåan
-												li Körkortsboken
-												li Online teori
-											button.btn-blue.btn-small(v-on:click="openModalPacket('PROVA PA NY ELEV', '3950 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
-									.col.col-md-3
-										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="800ms")
-											.icon 2
-											h3 ÖVNINGSPAKET 1 VECKA
-											.price 7400 kr
-											ul
-												li 11 Körlektioner
-												li 50 min per körlektion
-												li Lånebil vid uppkörning
-												li Manuell eller Automat
-											button.btn-blue.btn-small(v-on:click="openModalPacket('ÖVNINGSPAKET 1 VECKA', '7400 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
-									.col.col-md-3
-										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="1100ms")
-											.icon 3
-											h3 ÖVNINGSPAKET 2 VECKOR
-											.price 10 850 kr
-											ul
-												li 16 Körlektioner
-												li 50 min per körlektion
-												li Lånebil vid uppkörning
-												li Manuell eller Automat
-											button.btn-blue.btn-small(v-on:click="openModalPacket('ÖVNINGSPAKET 2 VECKOR', '10 850 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
-									.col.col-md-3
-										.card.flipInY.wow(data-wow-duration="1000ms", data-wow-delay="300ms")
-											.icon 4
-											h3 ÖVNINGSPAKET 3 VECKOR
-											.price 14 300 kr
-											ul
-												li 21 Körlektioner
-												li 50 min per körlektion
-												li Lånebil vid uppkörning
-												li Manuell eller Automat
-											button.btn-blue.btn-small(v-on:click="openModalPacket('ÖVNINGSPAKET 3 VECKOR', '14 300 kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
+									- var list5 = ["Riskettan", "Risktvåan", "Körkortsboken", "Online teori"]
+									+plan_tab("600","Övningspaket", "3400", list5)
+
+									- var list6 = ["10 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automati"]
+									+plan_tab("800","Övningspaket", "6700", list6)
+
+									- var list7 = ["15 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automati"]
+									+plan_tab("800","Övningspaket", "9900", list7)
+
+									- var list8 = ["20 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automati"]
+									+plan_tab("300","Övningspaket", "13 000", list8)
+
+							.tab-pane(role="tabpanel", id="other")
+								.row
+									+plan_tab("600","TEORIUNDERVISNING", "2000")
+										p För dig som är intresserad av extra hjälp med teorin så erbjuder vi en personlig undervisning. En personlig plan utarbetas och undervisningen finns på fyra olika språk.
+	
+									+plan_tab("800","SISTA MINUTEN", "395")
+										p För dig som är intresserad av körlektioner för halva priset så erbjuder vi en sista minuten lista. Skriv in dig och få ett meddelande av oss när ett sådant tillfälle dyker upp.
+
+									+plan_tab("800","KVÄLL/HELG", "890")
+										p För dig som inte hinner med att övningsköra under veckodagarna mellan 07:00-18:00, får chansen att göra det med oss. Vi erbjuder kvälls- och helgkörning för 890 kr per körlektion.
+
+									+plan_tab("300","LÅNEBIL", "1400")
+										p Lånebil gäller i 100 minuter, uppkörning inkl en övningslektion. Elever som inte är inskrivna i Västerort Trafikskola måste först bedömas vara lämpliga för en uppkörning.
+
+							.tab-pane(role="tabpanel", id="courses")
+								.row.flex-center
+									+plan_tab("600","Introduktionskurs", "2000")
+										p För dig som vill övningsköra privat är en introduktionskurs obligatorisk. Det gäller även den personen som du ska övningsköra med. Kursens mål är att öka förståelsen för trafiksäkerheten.
+	
+									+plan_tab("800","Riskettan", "395")
+										p En obligatorisk riskutbildning som kallas för Risk 1 för B-körkort. Med Risk 1 får du lära dig om riskerna med bland annat alkohol, droger och trötthet. Vi informerar även om dolda trafikrisker.
+
+									+plan_tab("800","Risktvåan", "890")
+										p En obligatorisk riskutbildning som även kallas för halkbana för B-körkort. Syftet med denna kurs är att du ska lära dig hantera riskfyllda situationer och manövrering på halt underlag.
 
 					.section-video
 						h2 Välj en trafikskola nära dig som erbjuder en hög standard på utbildning och värnar om vår miljö

@@ -191,7 +191,8 @@ Vue.component('select2', {
 let app = new Vue({
     el: '#app',
     data: {
-        domain: 'https://projects.udtech.co/intensivkurs/',
+        //domain: 'https://projects.udtech.co/intensivkurs/',
+        domain: 'http://localhost:3002/',
         latitudeMap: 59.339783,
         longitudeMap: 17.939713,
         mapLocate: null,
