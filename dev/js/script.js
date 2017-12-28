@@ -147,18 +147,15 @@ let app = new Vue({
     el: '#app',
     data: {
 
-        latitudeMap: 59.339783,
-        longitudeMap: 17.939713,
-        markersList: [],
-        pickedLicense: '',
-        schools: null,
-        listSchools: null,
-        listPlaces: null,
+        latitudeMap: 59.36238216425002,
+        longitudeMap: 17.878558634460425,
         schoolViewStatus: false,
-        selectSchool: '',
+        markersList: '',
         selectPlace: '',
         schoolView: '',
         closeZoomMode: true,
+        namePacket: '',
+        pricePacket: '',
     },
     mounted: function () {
 
@@ -168,7 +165,7 @@ let app = new Vue({
         let myLatlng = new google.maps.LatLng(this.latitudeMap, this.longitudeMap);
         let map = new google.maps.Map(document.getElementById('map-layout'), {
             center: myLatlng,
-            zoom: 9,
+            zoom: 15,
             styles: [
                 {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
                 {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
@@ -254,18 +251,50 @@ let app = new Vue({
         new WOW({mobile: false}).init();
 
         createGraph( [
-            81,
+            85,
             100,
+            95,
             90,
-            80,
             95
         ]);
+        var infowindow = new google.maps.InfoWindow();
+
+        this.markersList = [{
+            "latitude": "59.36171969999999",
+            "longitude": "17.865397499999972",
+            "content": "1"
+        },
+        {
+            "latitude": "59.36382554928936",
+            "longitude": "17.87141859406278",
+            "content": "Ny besöksadress 2018-04-01"
+        }];
+
+        this.markersList.forEach((item) => {
+            const position = new google.maps.LatLng(item.latitude, item.longitude);
+            const marker = new google.maps.Marker({
+                position,
+                map,
+                content: item.content,
+                animation: google.maps.Animation.DROP,
+                icon: 'https://projects.udtech.co/intensivkurs/assets/images/map-marker.png'
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(this.content);
+                infowindow.open(map, this);
+            });
+        });
 
         google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
             $('.loader').addClass('animated');
             setTimeout(function () {
                 $('html').removeClass('loading');
             }, 300);
+        });
+
+        google.maps.event.addListener(map, 'dragend', function () {
+            console.log(this.getCenter());
+            console.log(this.getCenter().lat() + ' ' + this.getCenter().lng());
         });
 
     },
@@ -278,13 +307,10 @@ let app = new Vue({
         },
 
         openSchoolView(){
-            createGraph( [
-                self.schoolView.support,
-                self.schoolView.registrationTeacher,
-                self.schoolView.pedagogical,
-                self.schoolView.cleanVehicles,
-                self.schoolView.recommendation
-            ]);
+            this.schoolViewStatus = true;
+        },
+        closeSchoolView(){
+            this.schoolViewStatus = false
         },
     }
 });

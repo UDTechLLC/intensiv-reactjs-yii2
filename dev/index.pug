@@ -42,19 +42,19 @@ html(lang="en", class="loading")
 								h3 Fordonbehörighet
 								.section.flex
 									.button-license.b
-										input(type="radio", name="license", value="b", v-model="pickedLicense", v-on:change="changeLicense")
+										input(type="radio", name="license", value="b")
 										.wrap-btn
 											.icon
 												img(src= imagePath + "b.svg", alt="B Logo", class="svg")
 											|B
 									.button-license.a
-										input(type="radio", name="license", value="a", v-model="pickedLicense", v-on:change="changeLicense")
+										input(type="radio", name="license", value="a")
 										.wrap-btn
 											.icon
 												img(src= imagePath + "automatic.svg", alt="A Logo", class="svg")
 											|Automat
 									.button-license.am
-										input(type="radio", name="license", value="am", v-model="pickedLicense", v-on:change="changeLicense")
+										input(type="radio", name="license", value="am")
 										.wrap-btn
 											.icon
 												img(src= imagePath + "manual.svg", alt="AM Logo", class="svg")
@@ -79,7 +79,7 @@ html(lang="en", class="loading")
 					button.close(v-on:click="closeSchoolView")
 						span.icon
 							img(src= imagePath + "arrow-down.svg", alt="arrow", class="svg")
-					h2 Västerort Trafikskola
+					h2 Intensivkurs Stockholm
 					p.description Kvalitet och miljörevision TA-2017
 					.graph
 
@@ -89,7 +89,7 @@ html(lang="en", class="loading")
 								p.label Kundsupport
 							.col.col-sm-7
 								.block-statistic
-									.progress-bar.support(style="width:81%")
+									.progress-bar.support(style="width:85%")
 						.row
 							.col.col-sm-5
 								p.label Lärarlegitimation
@@ -101,13 +101,13 @@ html(lang="en", class="loading")
 								p.label Pedagogik
 							.col.col-sm-7
 								.block-statistic
-									.progress-bar.pedagogical(style="width:90%")
+									.progress-bar.pedagogical(style="width:95%")
 						.row
 							.col.col-sm-5
 								p.label Miljöfordon
 							.col.col-sm-7
 								.block-statistic
-									.progress-bar.cleanVehicles(style="width:80%")
+									.progress-bar.cleanVehicles(style="width:90%")
 						.row
 							.col.col-sm-5
 								p.label Rekommendation
