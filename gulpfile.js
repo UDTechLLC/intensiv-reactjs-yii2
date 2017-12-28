@@ -37,7 +37,7 @@ var pug = require('gulp-pug'),
 // path
 var path = {
 	dev: {
-		html: ['dev/**/*.pug','!dev/blocks/**/*.pug', '!dev/tpl/**/*.pug'],
+		html: ['dev/**/*.pug','!dev/pug_blocks/**/*.pug', '!dev/mixins/**/*.pug'],
 		css: 'dev/css/main.sass',
 		js: 'dev/js/script.js',
 		fonts: 'dev/fonts/**/*.*',

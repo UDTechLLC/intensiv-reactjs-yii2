@@ -1,0 +1,15 @@
+.modal.fade(id="form-modal", tabindex="-1", role="dialog", aria-labelledby="form" aria-hidden="true")
+	.modal-dialog
+		.modal-content
+			.modal-header
+				button.close(type="button", data-dismiss="modal")
+				h4.modal-title KONTAKTA OSS
+				p Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.
+			.modal-body
+				form(action="#", method="")
+					input(type="text", name="name", placeholder="Namn")
+					input(type="email", name="email", placeholder="Email Adress")
+					input(type="text", name="phone", placeholder="Telefonnummer")
+					textarea(type="text", name="message", placeholder="Meddelande")
+					input(type="submit", value="SKICKA", class="btn-blue")
+			.modal-footer

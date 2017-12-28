@@ -1,0 +1,17 @@
+.modal.fade(id="ads-modal", tabindex="-1", role="dialog", aria-labelledby="ads" aria-hidden="true")
+	.modal-dialog
+		.modal-content
+			.modal-header
+				button.close(type="button", data-dismiss="modal")
+				h4.modal-title VÄLKOMMEN
+				p SOM NY BESÖKARE GER VI DIG IDAG
+			.modal-body
+				h2
+					span 10%
+					| RABATT
+				p PÅ DITT FÖRSTA KÖP!
+				form.flex.flex-between(action="#", method="")
+					input(type="email", name="email", placeholder="Skriv in ditt mobilnummer här")
+					input(type="submit", value="SKICKA", class="btn-blue")
+			.modal-footer
+				p Genom att fylla i ditt mobilnummer godkänner du samtidigt att du får ta en del av Västerort trafikskolas kampanjer. Du kan närsomhels avregistrera dig från denna tjänst genom ett enkel sms (Avrgistrer mig).

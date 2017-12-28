@@ -1,7 +1,7 @@
-mixin plan_tab(delay, title, price, indexval, activeclass)
+mixin plan_tab(delay, title, price, indexval, iconclass, activeclass)
 	.col.col-md-3
 		.card.wow.flipInY(data-wow-duration="1000ms", data-wow-delay= delay + "ms", data-wow-offset="100" class!= activeclass)
-			.icon 1
+			.icon(class!= iconclass)
 			h3!= title
 			.price!= price
 				| &nbsp;kr
@@ -11,4 +11,4 @@ mixin plan_tab(delay, title, price, indexval, activeclass)
 						li= val
 			else
 				block
-			button.btn-blue.btn-small(v-on:click="openModalPacket('" + title + "', '" + price + "kr')", data-target="#packet-modal", data-toggle="modal") Boka nu
+			button.btn.btn-blue.btn-small(v-on:click="openModalPacket('" + title + "', '" + price + "kr')", data-target="#packet-modal", data-toggle="modal") Boka nu

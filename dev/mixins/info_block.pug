@@ -1,0 +1,7 @@
+mixin info_block(title, content, delay, iconclass)
+	.col.col-lg-4.col-12
+		.info-block.license.flipInY.wow(data-wow-duration="1000ms", data-wow-delay= delay + "ms", data-wow-offset="100")
+			.icon(class!= iconclass)
+			h3= title
+			p= content
+			block

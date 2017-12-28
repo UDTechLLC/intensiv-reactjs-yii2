@@ -1,0 +1,16 @@
+.modal.fade(id="packet-modal", tabindex="-1", role="dialog", aria-labelledby="form" aria-hidden="true")
+	.modal-dialog
+		.modal-content
+			.modal-header
+				button.close(type="button", data-dismiss="modal")
+				h4.modal-title {{namePacket}} ({{pricePacket}})
+				p Vi stödjer kvalitet och miljömärkning för att stärka konsumenterna inför ett köpbeslut.
+			.modal-body
+				form(action="http://www.intensivkursstockholm.se/front/users/package_information", method="post")
+					input(type="hidden", name="package_type", v-model="pricePacket", readonly="true")
+					input(type="text", name="name", placeholder="Namn")
+					input(type="email", name="email", placeholder="Email Adress")
+					input(type="text", name="phone", placeholder="Telefonnummber")
+					input(type="text", name="code", placeholder="Rabattkod")
+					input(type="submit", value="SKICKA", class="btn-blue")
+			.modal-footer
