@@ -31,8 +31,7 @@ html(lang="en", class="loading")
 					//img(src="" + imagePath + "map.jpg", alt="map")
 				.filter-section(:class="{'open-school-view': schoolViewStatus}")
 					.flex.flex-center.header-filter
-						a(href="#").b_logo
-							img(src= imagePath + "logo.svg", alt="Intensivkurs Logo")
+						h2.logo Västerort Trafikskola
 					.body
 						h2
 							span NÄRHET
@@ -40,7 +39,7 @@ html(lang="en", class="loading")
 
 						form(method="POST", action="#", v-on:submit.prevent="openSchoolView")
 							.drive
-								h3 Välj ett fordon
+								h3 Fordonbehörighet
 								.section.flex
 									.button-license.b
 										input(type="radio", name="license", value="b", v-model="pickedLicense", v-on:change="changeLicense")
@@ -48,57 +47,39 @@ html(lang="en", class="loading")
 											.icon
 												img(src= imagePath + "b.svg", alt="B Logo", class="svg")
 											|B
-										.dropdown.animated.fadeIn
-											input(type="radio", name="license", value="ub", id="license-ub", v-model="pickedLicense", v-on:change="changeLicense")
-											label(for="license-ub")
-												span UB
-												|Bil + Släpvagn (Max 4.25 ton)
-											input(type="radio", name="license", value="be", id="license-be", v-model="pickedLicense", v-on:change="changeLicense")
-											label(for="license-be")
-												span BE
-												|Tung släpvagn (Max 3.5 ton)
 									.button-license.a
 										input(type="radio", name="license", value="a", v-model="pickedLicense", v-on:change="changeLicense")
 										.wrap-btn
 											.icon
-												img(src= imagePath + "a.svg", alt="A Logo", class="svg")
-											|A
-										.dropdown.animated.fadeIn
-											input(type="radio", name="license", value="a1", id="license-a1", v-model="pickedLicense", v-on:change="changeLicense")
-											label(for="license-a1")
-												span A1
-												|Lätt motorcykel (Max 11 Kw)
-											input(type="radio", name="license", value="a2", id="license-a2", v-model="pickedLicense", v-on:change="changeLicense")
-											label(for="license-a2")
-												span A2
-												|Mellanstor motorcykel (Max 35 Kw)
+												img(src= imagePath + "automatic.svg", alt="A Logo", class="svg")
+											|Automat
 									.button-license.am
 										input(type="radio", name="license", value="am", v-model="pickedLicense", v-on:change="changeLicense")
 										.wrap-btn
 											.icon
-												img(src= imagePath + "am.svg", alt="AM Logo", class="svg")
-											|AM
+												img(src= imagePath + "manual.svg", alt="AM Logo", class="svg")
+											|Manuell
 							.home
-								h3 Välj en ort eller en trafikskola
+								h3 Medlem
 								.section
 
-									select2(name="search_area_map", class="select-contain", v-model="selectPlace")
-										option(disabled, selected, value="placeholder") Välj ort
-										option(v-for="place in listPlaces", :value="place.id") {{place.city}}
+									div.select2.select2-container--default
+										div.select2-selection--single
+											span.select2-selection__rendered Sveriges Trafikskolors Riksförbund
 
-									select2(name="search_name", class="select-contain", v-model="selectSchool")
-										option(disabled, selected, value="placeholder") Välj trafikskola
-										option(v-for="school in listSchools", :value="school.id") {{school.name}}
+									div.select2.select2-container--default
+										div.select2-selection--single
+											span.select2-selection__rendered Intensivkurs Stockholm
 
 									script(type="text/x-template", id="select2-template")
 										select
 											slot
-							input(type="submit" value="Välj en trafikskola", class="btn-blue")
+							input(type="submit" value="Se omdöme", class="btn-blue")
 				.school-view
 					button.close(v-on:click="closeSchoolView")
 						span.icon
 							img(src= imagePath + "arrow-down.svg", alt="arrow", class="svg")
-					h2 {{schoolView.name}}
+					h2 Västerort Trafikskola
 					p.description Kvalitet och miljörevision TA-2017
 					.graph
 
@@ -108,35 +89,35 @@ html(lang="en", class="loading")
 								p.label Kundsupport
 							.col.col-sm-7
 								.block-statistic
-									.progress-bar.support
+									.progress-bar.support(style="width:81%")
 						.row
 							.col.col-sm-5
 								p.label Lärarlegitimation
 							.col.col-sm-7
 								.block-statistic
-									.progress-bar.registrationTeacher
+									.progress-bar.registrationTeacher(style="width:100%")
 						.row
 							.col.col-sm-5
 								p.label Pedagogik
 							.col.col-sm-7
 								.block-statistic
-									.progress-bar.pedagogical
+									.progress-bar.pedagogical(style="width:90%")
 						.row
 							.col.col-sm-5
 								p.label Miljöfordon
 							.col.col-sm-7
 								.block-statistic
-									.progress-bar.cleanVehicles
+									.progress-bar.cleanVehicles(style="width:80%")
 						.row
 							.col.col-sm-5
 								p.label Rekommendation
 							.col.col-sm-7
 								.block-statistic
-									.progress-bar.recommendation
+									.progress-bar.recommendation(style="width:95%")
 					.contact-info
-						.info-block.location {{schoolView.address}}
-						.info-block.email {{schoolView.email}}
-						.info-block.phone {{schoolView.phone}}
+						.info-block.location Grimstagatan 160, 162 58 Vällingby
+						.info-block.email info@vasterorttrafikskola.se
+						.info-block.phone 08-533 301 01
 						input.btn-blue(type="button", value="KONTAKTA OSS", data-target="#form-modal", data-toggle="modal")
 
 			// block CONTENT

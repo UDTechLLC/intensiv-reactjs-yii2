@@ -17,56 +17,44 @@
           <!--img(src="" + imagePath + "map.jpg", alt="map")-->
         </div>
         <div class="filter-section" :class="{'open-school-view': schoolViewStatus}">
-          <div class="flex flex-center header-filter"><a class="b_logo" href="#"><img src="assets/images/logo.svg" alt="Intensivkurs Logo"></a></div>
+          <div class="flex flex-center header-filter">
+            <h2 class="logo">Västerort Trafikskola</h2>
+          </div>
           <div class="body">
             <h2><span>NÄRHET</span>KVALITET & MILJÖ</h2>
             <form method="POST" action="#" v-on:submit.prevent="openSchoolView">
               <div class="drive">
-                <h3>Välj ett fordon</h3>
+                <h3>Fordonbehörighet</h3>
                 <div class="section flex">
                   <div class="button-license b">
                     <input type="radio" name="license" value="b" v-model="pickedLicense" v-on:change="changeLicense">
                     <div class="wrap-btn">
                       <div class="icon"><img class="svg" src="assets/images/b.svg" alt="B Logo"></div>B
                     </div>
-                    <div class="dropdown animated fadeIn">
-                      <input type="radio" name="license" value="ub" id="license-ub" v-model="pickedLicense" v-on:change="changeLicense">
-                      <label for="license-ub"><span>UB</span>Bil + Släpvagn (Max 4.25 ton)</label>
-                      <input type="radio" name="license" value="be" id="license-be" v-model="pickedLicense" v-on:change="changeLicense">
-                      <label for="license-be"><span>BE</span>Tung släpvagn (Max 3.5 ton)</label>
-                    </div>
                   </div>
                   <div class="button-license a">
                     <input type="radio" name="license" value="a" v-model="pickedLicense" v-on:change="changeLicense">
                     <div class="wrap-btn">
-                      <div class="icon"><img class="svg" src="assets/images/a.svg" alt="A Logo"></div>A
-                    </div>
-                    <div class="dropdown animated fadeIn">
-                      <input type="radio" name="license" value="a1" id="license-a1" v-model="pickedLicense" v-on:change="changeLicense">
-                      <label for="license-a1"><span>A1</span>Lätt motorcykel (Max 11 Kw)</label>
-                      <input type="radio" name="license" value="a2" id="license-a2" v-model="pickedLicense" v-on:change="changeLicense">
-                      <label for="license-a2"><span>A2</span>Mellanstor motorcykel (Max 35 Kw)</label>
+                      <div class="icon"><img class="svg" src="assets/images/automatic.svg" alt="A Logo"></div>Automat
                     </div>
                   </div>
                   <div class="button-license am">
                     <input type="radio" name="license" value="am" v-model="pickedLicense" v-on:change="changeLicense">
                     <div class="wrap-btn">
-                      <div class="icon"><img class="svg" src="assets/images/am.svg" alt="AM Logo"></div>AM
+                      <div class="icon"><img class="svg" src="assets/images/manual.svg" alt="AM Logo"></div>Manuell
                     </div>
                   </div>
                 </div>
               </div>
               <div class="home">
-                <h3>Välj en ort eller en trafikskola</h3>
+                <h3>Medlem</h3>
                 <div class="section">
-                  <select2 class="select-contain" name="search_area_map" v-model="selectPlace">
-                    <option disabled selected value="placeholder">Välj ort</option>
-                    <option v-for="place in listPlaces" :value="place.id">{{place.city}}</option>
-                  </select2>
-                  <select2 class="select-contain" name="search_name" v-model="selectSchool">
-                    <option disabled selected value="placeholder">Välj trafikskola</option>
-                    <option v-for="school in listSchools" :value="school.id">{{school.name}}</option>
-                  </select2>
+                  <div class="select2 select2-container--default">
+                    <div class="select2-selection--single"><span class="select2-selection__rendered">Sveriges Trafikskolors Riksförbund</span></div>
+                  </div>
+                  <div class="select2 select2-container--default">
+                    <div class="select2-selection--single"><span class="select2-selection__rendered">Intensivkurs Stockholm</span></div>
+                  </div>
                   <script type="text/x-template" id="select2-template">
                     <select>
                       <slot></slot>
@@ -74,13 +62,13 @@
                   </script>
                 </div>
               </div>
-              <input class="btn-blue" type="submit" value="Välj en trafikskola">
+              <input class="btn-blue" type="submit" value="Se omdöme">
             </form>
           </div>
         </div>
         <div class="school-view">
           <button class="close" v-on:click="closeSchoolView"><span class="icon"><img class="svg" src="assets/images/arrow-down.svg" alt="arrow"></span></button>
-          <h2>{{schoolView.name}}</h2>
+          <h2>Västerort Trafikskola</h2>
           <p class="description">Kvalitet och miljörevision TA-2017</p>
           <div class="graph"></div>
           <div class="table-statistic">
@@ -90,7 +78,7 @@
               </div>
               <div class="col col-sm-7">
                 <div class="block-statistic">
-                  <div class="progress-bar support"></div>
+                  <div class="progress-bar support" style="width:81%;"></div>
                 </div>
               </div>
             </div>
@@ -100,7 +88,7 @@
               </div>
               <div class="col col-sm-7">
                 <div class="block-statistic">
-                  <div class="progress-bar registrationTeacher"></div>
+                  <div class="progress-bar registrationTeacher" style="width:100%;"></div>
                 </div>
               </div>
             </div>
@@ -110,7 +98,7 @@
               </div>
               <div class="col col-sm-7">
                 <div class="block-statistic">
-                  <div class="progress-bar pedagogical"></div>
+                  <div class="progress-bar pedagogical" style="width:90%;"></div>
                 </div>
               </div>
             </div>
@@ -120,7 +108,7 @@
               </div>
               <div class="col col-sm-7">
                 <div class="block-statistic">
-                  <div class="progress-bar cleanVehicles"></div>
+                  <div class="progress-bar cleanVehicles" style="width:80%;"></div>
                 </div>
               </div>
             </div>
@@ -130,15 +118,15 @@
               </div>
               <div class="col col-sm-7">
                 <div class="block-statistic">
-                  <div class="progress-bar recommendation"></div>
+                  <div class="progress-bar recommendation" style="width:95%;"></div>
                 </div>
               </div>
             </div>
           </div>
           <div class="contact-info">
-            <div class="info-block location">{{schoolView.address}}</div>
-            <div class="info-block email">{{schoolView.email}}</div>
-            <div class="info-block phone">{{schoolView.phone}}</div>
+            <div class="info-block location">Grimstagatan 160, 162 58 Vällingby</div>
+            <div class="info-block email">info@vasterorttrafikskola.se</div>
+            <div class="info-block phone">08-533 301 01</div>
             <input class="btn-blue" type="button" value="KONTAKTA OSS" data-target="#form-modal" data-toggle="modal">
           </div>
         </div>

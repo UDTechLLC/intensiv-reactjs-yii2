@@ -10,16 +10,6 @@ $(function(){
         }, 10000);
     }
 
-    // if($('.section select').length){
-     //    $('.section select').select2({
-     //        minimumResultsForSearch: Infinity
-     //    });
-	// }
-
-    $('select').on('select2:open', function(e){
-        $('.select2-results__options').scrollbar().parent().addClass('scrollbar-inner');
-    });
-
     //As you scroll, record the scrolltop position in global variable
     let scrollTopPosition = 0;
     let lastKnownScrollTopPosition = 0;
@@ -153,49 +143,12 @@ function createGraph(data) {
     });
 };
 
-/*select 2 component*/
-Vue.component('select2', {
-    props: ['options', 'value'],
-    template: '#select2-template',
-    mounted: function () {
-        let vm = this
-        $(this.$el)
-        // init select2
-            .select2({
-                data: this.options,
-                minimumResultsForSearch: Infinity
-            })
-            .val('placeholder')
-            .trigger('change')
-            // emit event on change.
-            .on('change', function () {
-                vm.$emit('input', this.value)
-            })
-    },
-    // watch: {
-    //     value: function (value) {
-    //         // update value
-    //         $(this.$el).val(value).trigger('change');
-    //     },
-    //     options: function (options) {
-    //         // update options
-    //         $(this.$el).empty().select2({ data: options });
-    //     }
-    // },
-    destroyed: function () {
-        $(this.$el).off().select2('destroy')
-    }
-});
-
-
 let app = new Vue({
     el: '#app',
     data: {
-        //domain: 'https://projects.udtech.co/intensivkurs/',
-        domain: 'http://localhost:3002/',
+
         latitudeMap: 59.339783,
         longitudeMap: 17.939713,
-        mapLocate: null,
         markersList: [],
         pickedLicense: '',
         schools: null,
@@ -206,8 +159,6 @@ let app = new Vue({
         selectPlace: '',
         schoolView: '',
         closeZoomMode: true,
-        namePacket: '',
-        pricePacket: '',
     },
     mounted: function () {
 
@@ -301,45 +252,14 @@ let app = new Vue({
         });
 
         new WOW({mobile: false}).init();
-        this.mapLocate = map;
 
-        fetch(this.domain + "schools.json").then(r => r.json()).then(json => {
-            this.schools = json;
-            this.listSchools = this.schools;
-            this.listPlaces = JSON.parse(JSON.stringify(json));
-            this.listPlaces.sort(function(a, b){
-                if(a.city < b.city) return -1;
-                if(a.city > b.city) return 1;
-                return 0;
-            });
-
-            this.schools.forEach((school) => {
-                const position = new google.maps.LatLng(school.latitude, school.longitude);
-                const marker = new google.maps.Marker({
-                    position,
-                    map,
-                    animation: google.maps.Animation.DROP,
-                    schoolId: school.id,
-                    license: school.license,
-                    icon: app.domain + 'assets/images/map-marker.png'
-                });
-                app.markersList.push(marker);
-                google.maps.event.addListener(marker, 'click', function(event){
-                    // app.schoolViewStatus = true;
-                    if(app.schoolViewStatus){
-                        app.closeZoomMode = false;
-                        app.closeSchoolView();
-                        setTimeout(function () {
-                            app.openSchoolView(marker.schoolId)
-                        },400);
-                    }else{
-                        app.openSchoolView(marker.schoolId)
-                    }
-                    marker.setIcon(app.domain + 'assets/images/marker-active.png');
-
-                });
-            });
-        });
+        createGraph( [
+            81,
+            100,
+            90,
+            80,
+            95
+        ]);
 
         google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
             $('.loader').addClass('animated');
@@ -356,140 +276,16 @@ let app = new Vue({
                 this.pricePacket = price;
             }
         },
-        changeLicense(){
-            if(this.pickedLicense == 'b') {
-                this.listSchools = this.schools;
-                this.listPlaces = JSON.parse(JSON.stringify(this.schools)).sort(function(a, b){
-                    if(a.city < b.city) return -1;
-                    if(a.city > b.city) return 1;
-                    return 0;
-                });
-            }else{
-                this.listSchools = this.schools.filter(school => (school.license.indexOf(this.pickedLicense) !== -1));
-                this.listPlaces = this.schools.filter(school => (school.license.indexOf(this.pickedLicense) !== -1));
-            }
-            $('.select-contain').each(
-                function () {
-                    $(this).select2("destroy");
-                    $(this).select2({
-                        minimumResultsForSearch: Infinity
-                    });
-                }
-            );
-            this.markersList.forEach((marker) => {
-                if (this.pickedLicense == 'b' ) {
-                    marker.setVisible(true);
-                }else {
-                    if (marker.license.indexOf(this.pickedLicense) !== -1){
-                        marker.setVisible(true);
-                    }else {
-                        marker.setVisible(false);
-                    }
-                }
-            });
+
+        openSchoolView(){
+            createGraph( [
+                self.schoolView.support,
+                self.schoolView.registrationTeacher,
+                self.schoolView.pedagogical,
+                self.schoolView.cleanVehicles,
+                self.schoolView.recommendation
+            ]);
         },
-
-        openSchoolView(markerId){
-            this.schoolViewStatus = true;
-            let self = this;
-            this.schools.filter(function( school) {
-                let schoolId = '';
-                if(Number.isInteger(markerId)){
-                    schoolId = markerId;
-                }else if(self.selectSchool === ''){
-                    schoolId = self.selectPlace;
-                }else{
-                    schoolId = self.selectSchool;
-                }
-                if( school.id == schoolId){
-                    self.schoolView = school
-                    $('.progress-bar.support').width(parseInt(self.schoolView.support) +'%')
-                    $('.progress-bar.registrationTeacher').width(parseInt(self.schoolView.registrationTeacher) +'%')
-                    $('.progress-bar.pedagogical').width(parseInt(self.schoolView.pedagogical) +'%')
-                    $('.progress-bar.cleanVehicles').width(parseInt(self.schoolView.cleanVehicles) +'%')
-                    $('.progress-bar.recommendation').width(parseInt(self.schoolView.recommendation) +'%')
-                    createGraph( [
-                        self.schoolView.support,
-                        self.schoolView.registrationTeacher,
-                        self.schoolView.pedagogical,
-                        self.schoolView.cleanVehicles,
-                        self.schoolView.recommendation
-                    ]);
-                    setTimeout(function () {
-                        app.smoothZoomMap(app.mapLocate, 15, app.mapLocate.getZoom(), true);
-                        let myLatlng = new google.maps.LatLng(school.latitude, school.longitude);
-                        app.mapLocate.panTo(myLatlng);
-                    },400);
-                }
-            });
-            this.markersList.filter(function(marker) {
-                let schoolId = '';
-                if(Number.isInteger(markerId)){
-                    schoolId = markerId;
-                }else if(self.selectSchool === ''){
-                    schoolId = self.selectPlace;
-                }else{
-                    schoolId = self.selectSchool;
-                }
-                if(marker.schoolId == schoolId){
-                    marker.setIcon(app.domain + 'assets/images/marker-active.png');
-                }
-            });
-        },
-        closeSchoolView(){
-            this.schoolViewStatus = false
-            let self = this;
-            $('.progress-bar.support').width(0)
-            $('.progress-bar.registrationTeacher').width(0)
-            $('.progress-bar.pedagogical').width(0)
-            $('.progress-bar.cleanVehicles').width(0)
-            $('.progress-bar.recommendation').width(0)
-
-            this.markersList.forEach(function(marker) {
-                marker.setIcon(app.domain + 'assets/images/map-marker.png');
-            });
-
-            setTimeout(function () {
-                $('.graph .chart-container').remove();
-                if(app.closeZoomMode) {
-                    app.smoothZoomMap(app.mapLocate, 8, app.mapLocate.getZoom(), false);
-                    let myLatlng = new google.maps.LatLng(app.latitudeMap, app.longitudeMap);
-                    app.mapLocate.panTo(myLatlng);
-                }else{
-                    app.closeZoomMode = true;
-                }
-            },400)
-
-        },
-
-        smoothZoomMap(map, level, cnt, mode) {
-            //alert('Count: ' + cnt + 'and Max: ' + level);
-
-            if(mode == true) {
-
-                if (cnt >= level) {
-                    return;
-                }
-                else {
-                    var z = google.maps.event.addListener(map, 'zoom_changed', function(event){
-                        google.maps.event.removeListener(z);
-                        app.smoothZoomMap(map, level, cnt + 1, true);
-                    });
-                    setTimeout(function(){map.setZoom(cnt)}, 80);
-                }
-            } else {
-                if (cnt <= level) {
-                    return;
-                }
-                else {
-                    var z = google.maps.event.addListener(map, 'zoom_changed', function(event) {
-                        google.maps.event.removeListener(z);
-                        app.smoothZoomMap(map, level, cnt - 1, false);
-                    });
-                    setTimeout(function(){map.setZoom(cnt)}, 80);
-                }
-            }
-        }
     }
 });
 
