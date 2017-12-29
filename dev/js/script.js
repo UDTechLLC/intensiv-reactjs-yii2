@@ -63,6 +63,56 @@ $(function(){
         }, 'xml');
     });
 
+    // var options = {
+    //     feedbackIcons: {
+    //         valid: 'glyphicon glyphicon-ok',
+    //         invalid: 'glyphicon glyphicon-remove',
+    //         validating: 'glyphicon glyphicon-refresh'
+    //     },
+    //     fields: {
+    //         'name': {
+    //             validators: {
+    //                 notEmpty: {
+    //                     message: 'Please enter your name.'
+    //                 }
+    //             }
+    //         },
+    //         'code': {
+    //             validators: {
+    //                 notEmpty: {
+    //                     message: 'Please enter your code.'
+    //                 }
+    //             }
+    //         },
+    //         'billing_email': {
+    //             validators: {
+    //                 emailAddress: {
+    //                     enabled: false
+    //                 },
+    //                 regexp: {
+    //                     enabled: false,
+    //                     regexp: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i,
+    //                     message: 'Please enter a valid email address'
+    //                 },
+    //                 notEmpty: {
+    //                     message: 'Please enter your email.'
+    //                 }
+    //             }
+    //         },
+    //         'phone': {
+    //             validators: {
+    //                 notEmpty: {
+    //                     message: 'Please enter your phone.'
+    //                 }
+    //             }
+    //         }
+    //     }
+    // };
+    $('#packet-modal form').validator();
+    $('#form-modal form').validator();
+    $('#ads-modal form').validator();
+    $('.section-contact form').validator();
+
 });
 
 function setCookie(key, value) {

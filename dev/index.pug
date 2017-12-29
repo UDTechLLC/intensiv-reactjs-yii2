@@ -290,9 +290,15 @@ html(lang="en", class="loading")
 										span 08-533 301 01
 
 							form.wow.zoomIn(action="#", method="", data-wow-duration="1000ms", data-wow-delay="200ms", data-wow-offset="100")
-								input(type="text", name="name", placeholder="Namу")
-								input(type="tel", name="tel", placeholder="Telefonnummer")
-								input(type="email", name="email", placeholder="Email Adress")
+								div.form-group
+									input(type="text", name="name", placeholder="Namу", required)
+									.help-block
+								div.form-group
+									input(type="tel", name="tel", placeholder="Telefonnummer", required, pattern="^[_A-z0-9]{1,}$")
+									.help-block
+								div.form-group
+									input(type="email", name="email", placeholder="Email Adress", required, data-error="Email address is invalid")
+									.help-block
 								textarea(placeholder="Skriv ditt meddelande här")
 								input(type="submit", value="SKICKA", class="btn-blue")
 

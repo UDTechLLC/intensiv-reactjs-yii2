@@ -7,9 +7,15 @@
 				p Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.
 			.modal-body
 				form(action="#", method="")
-					input(type="text", name="name", placeholder="Namn")
-					input(type="email", name="email", placeholder="Email Adress")
-					input(type="text", name="phone", placeholder="Telefonnummer")
+					div.form-group
+						input(type="text", name="name", placeholder="Namn", required)
+						.help-block
+					div.form-group
+						input(type="email", name="email", placeholder="Email Adress", required, data-error="Email address is invalid")
+						.help-block
+					div.form-group
+						input(type="text", name="phone", placeholder="Telefonnummer", required, pattern="^[_A-z0-9]{1,}$")
+						.help-block
 					textarea(type="text", name="message", placeholder="Meddelande")
 					input(type="submit", value="SKICKA", class="btn-blue")
 			.modal-footer

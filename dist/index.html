@@ -450,9 +450,18 @@
                 </li>
               </ul>
               <form class="wow zoomIn" action="#" method="" data-wow-duration="1000ms" data-wow-delay="200ms" data-wow-offset="100">
-                <input type="text" name="name" placeholder="Namу">
-                <input type="tel" name="tel" placeholder="Telefonnummer">
-                <input type="email" name="email" placeholder="Email Adress">
+                <div class="form-group">
+                  <input type="text" name="name" placeholder="Namу" required>
+                  <div class="help-block"></div>
+                </div>
+                <div class="form-group">
+                  <input type="tel" name="tel" placeholder="Telefonnummer" required pattern="^[_A-z0-9]{1,}$">
+                  <div class="help-block"></div>
+                </div>
+                <div class="form-group">
+                  <input type="email" name="email" placeholder="Email Adress" required data-error="Email address is invalid">
+                  <div class="help-block"></div>
+                </div>
                 <textarea placeholder="Skriv ditt meddelande här"></textarea>
                 <input class="btn-blue" type="submit" value="SKICKA">
               </form>
@@ -494,9 +503,18 @@
             </div>
             <div class="modal-body">
               <form action="#" method="">
-                <input type="text" name="name" placeholder="Namn">
-                <input type="email" name="email" placeholder="Email Adress">
-                <input type="text" name="phone" placeholder="Telefonnummer">
+                <div class="form-group">
+                  <input type="text" name="name" placeholder="Namn" required>
+                  <div class="help-block"></div>
+                </div>
+                <div class="form-group">
+                  <input type="email" name="email" placeholder="Email Adress" required data-error="Email address is invalid">
+                  <div class="help-block"></div>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="phone" placeholder="Telefonnummer" required pattern="^[_A-z0-9]{1,}$">
+                  <div class="help-block"></div>
+                </div>
                 <textarea type="text" name="message" placeholder="Meddelande"></textarea>
                 <input class="btn-blue" type="submit" value="SKICKA">
               </form>
@@ -517,9 +535,18 @@
             <div class="modal-body">
               <form action="http://www.intensivkursstockholm.se/front/users/package_information" method="post">
                 <input type="hidden" name="package_type" v-model="pricePacket" readonly="true">
-                <input type="text" name="name" placeholder="Namn">
-                <input type="email" name="email" placeholder="Email Adress">
-                <input type="text" name="phone" placeholder="Telefonnummber">
+                <div class="form-group">
+                  <input type="text" name="name" placeholder="Namn" required>
+                  <div class="help-block"></div>
+                </div>
+                <div class="form-group">
+                  <input type="email" name="email" placeholder="Email Adress" required data-error="Email address is invalid">
+                  <div class="help-block"></div>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="phone" placeholder="Telefonnummber" required pattern="^[_A-z0-9]{1,}$">
+                  <div class="help-block"></div>
+                </div>
                 <input type="text" name="code" placeholder="Rabattkod">
                 <input class="btn-blue" type="submit" value="SKICKA">
               </form>

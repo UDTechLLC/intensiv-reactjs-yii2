@@ -8,9 +8,15 @@
 			.modal-body
 				form(action="http://www.intensivkursstockholm.se/front/users/package_information", method="post")
 					input(type="hidden", name="package_type", v-model="pricePacket", readonly="true")
-					input(type="text", name="name", placeholder="Namn")
-					input(type="email", name="email", placeholder="Email Adress")
-					input(type="text", name="phone", placeholder="Telefonnummber")
+					div.form-group
+						input(type="text", name="name", placeholder="Namn", required)
+						.help-block
+					div.form-group
+						input(type="email", name="email", placeholder="Email Adress", required, data-error="Email address is invalid")
+						.help-block
+					div.form-group
+						input(type="text", name="phone", placeholder="Telefonnummber", required, pattern="^[_A-z0-9]{1,}$")
+						.help-block
 					input(type="text", name="code", placeholder="Rabattkod")
 					input(type="submit", value="SKICKA", class="btn-blue")
 			.modal-footer
