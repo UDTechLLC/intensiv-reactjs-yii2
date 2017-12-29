@@ -29,19 +29,19 @@
                   <div class="button-license b">
                     <input type="radio" name="license" value="b">
                     <div class="wrap-btn">
-                      <div class="icon"><img class="svg" src="assets/images/b.svg" alt="B Logo"></div>B
+                      <div class="icon"><img src="assets/images/b.svg" alt="B Logo"></div>B
                     </div>
                   </div>
                   <div class="button-license a">
                     <input type="radio" name="license" value="a">
                     <div class="wrap-btn">
-                      <div class="icon"><img class="svg" src="assets/images/automatic.svg" alt="A Logo"></div>Automat
+                      <div class="icon"><img src="assets/images/automatic.svg" alt="Automat Logo" id="automatic-logo"></div>Automat
                     </div>
                   </div>
                   <div class="button-license am">
                     <input type="radio" name="license" value="am">
                     <div class="wrap-btn">
-                      <div class="icon"><img class="svg" src="assets/images/manual.svg" alt="AM Logo"></div>Manuell
+                      <div class="icon"><img src="assets/images/manual.svg" alt="Manuell Logo" id="manual-logo"></div>Manuell
                     </div>
                   </div>
                 </div>
@@ -130,6 +130,9 @@
             <input class="btn-blue" type="button" value="KONTAKTA OSS" data-target="#form-modal" data-toggle="modal">
           </div>
         </div>
+        <div class="block-absolute-links" :class="{'open-view-info': schoolViewStatus}"><a href="https://www.instagram.com/vasterorttrafikskola/" target="_blank" id="instagram">
+            <div class="icon"><img class="svg" src="assets/images/location-icon.svg" alt="mail Logo"></div></a><a class="text-link" href="#">E-handel</a><a class="text-link" href="http://www.trbokning.se/elevportal/" target="_blank">Elevcentralen</a><a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank" id="facebook">
+            <div class="icon"><img class="svg" src="assets/images/icon-facebook.svg" alt="facebook Logo"></div></a></div>
       </div>
       <!-- block CONTENT-->
       <div class="content">
@@ -430,7 +433,7 @@
             <div class="b_section_content">
               <ul class="social-area wow zoomIn" data-wow-duration="1000ms" data-wow-delay="200ms" data-wow-offset="100">
                 <li>
-                  <!-- facebook--><a href="#" target="_blank">
+                  <!-- facebook--><a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank">
                     <div class="icon"><img class="svg" src="assets/images/icon-facebook.svg" alt="facebook Logo"></div><span>fb.com/www.vasterorttrafikskola.se</span></a>
                 </li>
                 <li>
@@ -438,8 +441,8 @@
                     <div class="icon"><img class="svg" src="assets/images/icon-mail.svg" alt="mail Logo"></div><span>info@vasterorttrafikskola.se </span></a>
                 </li>
                 <li>
-                  <!-- insta--><a href="#" target="_blank">
-                    <div class="icon"><img class="svg" src="assets/images/insta_normal.svg" alt="mail Logo"></div><span>info@vasterorttrafikskola.se </span></a>
+                  <!-- insta--><a href="https://www.instagram.com/vasterorttrafikskola/" target="_blank">
+                    <div class="icon"><img class="svg" src="assets/images/insta_normal.svg" alt="mail Logo"></div><span>vasterorttrafikskola</span></a>
                 </li>
                 <li>
                   <!-- phone--><a href="tel:0853330101" target="_blank">

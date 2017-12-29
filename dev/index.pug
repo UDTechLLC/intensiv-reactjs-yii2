@@ -45,19 +45,19 @@ html(lang="en", class="loading")
 										input(type="radio", name="license", value="b")
 										.wrap-btn
 											.icon
-												img(src= imagePath + "b.svg", alt="B Logo", class="svg")
+												img(src= imagePath + "b.svg", alt="B Logo", class="")
 											|B
 									.button-license.a
 										input(type="radio", name="license", value="a")
 										.wrap-btn
 											.icon
-												img(src= imagePath + "automatic.svg", alt="A Logo", class="svg")
+												img(src= imagePath + "automatic.svg", alt="Automat Logo", class="", id="automatic-logo")
 											|Automat
 									.button-license.am
 										input(type="radio", name="license", value="am")
 										.wrap-btn
 											.icon
-												img(src= imagePath + "manual.svg", alt="AM Logo", class="svg")
+												img(src= imagePath + "manual.svg", alt="Manuell Logo", class="", id="manual-logo")
 											|Manuell
 							.home
 								h3 Medlem
@@ -120,6 +120,15 @@ html(lang="en", class="loading")
 						.info-block.phone 08-533 301 01
 						input.btn-blue(type="button", value="KONTAKTA OSS", data-target="#form-modal", data-toggle="modal")
 
+				div.block-absolute-links(:class="{'open-view-info': schoolViewStatus}")
+					a(href="https://www.instagram.com/vasterorttrafikskola/", target="_blank" id="instagram")
+						.icon
+							img(src= imagePath + "location-icon.svg", alt="mail Logo", class="svg")
+					a.text-link(href="#") E-handel
+					a.text-link(href="http://www.trbokning.se/elevportal/", target="_blank") Elevcentralen
+					a(href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/", target="_blank", id="facebook")
+						.icon
+							img(src= imagePath + "icon-facebook.svg", alt="facebook Logo", class="svg")
 			// block CONTENT
 			.content
 
@@ -256,7 +265,7 @@ html(lang="en", class="loading")
 								li
 
 									// facebook
-									a(href="#", target="_blank")
+									a(href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/", target="_blank")
 										.icon
 											img(src= imagePath + "icon-facebook.svg", alt="facebook Logo", class="svg")
 										span fb.com/www.vasterorttrafikskola.se
@@ -269,10 +278,10 @@ html(lang="en", class="loading")
 
 								li
 									// insta
-									a(href="#", target="_blank")
+									a(href="https://www.instagram.com/vasterorttrafikskola/", target="_blank")
 										.icon
 											img(src= imagePath + "insta_normal.svg", alt="mail Logo", class="svg")
-										span info@vasterorttrafikskola.se 
+										span vasterorttrafikskola
 								li
 									// phone
 									a(href="tel:0853330101", target="_blank")

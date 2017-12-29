@@ -147,8 +147,8 @@ let app = new Vue({
     el: '#app',
     data: {
 
-        latitudeMap: 59.36238216425002,
-        longitudeMap: 17.878558634460425,
+        latitudeMap: 59.36408797633658,
+        longitudeMap: 17.87746429318235,
         schoolViewStatus: false,
         markersList: '',
         selectPlace: '',
@@ -160,7 +160,9 @@ let app = new Vue({
     mounted: function () {
 
         if($(window).width() < 960){
-            $('.header .map').height($(window).height());
+            $('.header #map-layout').height($(window).height());
+            this.latitudeMap = "59.3625133836089";
+            this.longitudeMap = "17.8686666476135";
         }
         let myLatlng = new google.maps.LatLng(this.latitudeMap, this.longitudeMap);
         let map = new google.maps.Map(document.getElementById('map-layout'), {
