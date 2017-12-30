@@ -196,9 +196,8 @@ function createGraph(data) {
 let app = new Vue({
     el: '#app',
     data: {
-
-        latitudeMap: 59.36408797633658,
-        longitudeMap: 17.87746429318235,
+        latitudeMap: 59.36382554928936,
+        longitudeMap: 17.87141859406278,
         schoolViewStatus: false,
         markersList: '',
         selectPlace: '',
@@ -206,6 +205,7 @@ let app = new Vue({
         closeZoomMode: true,
         namePacket: '',
         pricePacket: '',
+
     },
     mounted: function () {
 
@@ -314,7 +314,7 @@ let app = new Vue({
         this.markersList = [{
             "latitude": "59.36171969999999",
             "longitude": "17.865397499999972",
-            "content": "1"
+            "content": "08-533 301 01"
         },
         {
             "latitude": "59.36382554928936",

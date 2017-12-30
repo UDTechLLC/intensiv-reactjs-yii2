@@ -39,7 +39,7 @@ html(lang="en", class="loading")
 
 						form(method="POST", action="#", v-on:submit.prevent="openSchoolView")
 							.drive
-								h3 Fordonbehörighet
+								h3 Fordonsbehörighet
 								.section.flex
 									.button-license.b
 										input(type="radio", name="license", value="b")
@@ -153,27 +153,27 @@ html(lang="en", class="loading")
 									- var list1 = ["Riskettan", "Risktvåan", "Körkortsboken", "Online teori"]
 									+plan_tab("600","INGÅR I INTENSIVKURSEN", "3650", list1, "icon-time")
 
-									- var list2 = ["10 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automati"]
+									- var list2 = ["10 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automat"]
 									+plan_tab("800","INTENSIVPAKET 1 VECKA", "10500", list2, "icon-1", "active")
 
-									- var list3 = ["15 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automati"]
+									- var list3 = ["15 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automat"]
 									+plan_tab("800","INTENSIVPAKET 2 VECKOR", "14 000", list3, "icon-2")
 
-									- var list4 = ["20 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automati"]
+									- var list4 = ["20 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automat"]
 									+plan_tab("300","INTENSIVPAKET 3 VECKOR", "17 500", list4, "icon-3")
 
 							.tab-pane(role="tabpanel", id="study")
 								.row
-									- var list5 = ["Riskettan", "Risktvåan", "Körkortsboken", "Online teori"]
-									+plan_tab("600","Övningspaket", "3400", list5, "icon-1")
+									- var list5 = ["5 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automat"]
+									+plan_tab("600","Övningspaket", "3450", list5, "icon-1")
 
-									- var list6 = ["10 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automati"]
+									- var list6 = ["10 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automat"]
 									+plan_tab("800","Övningspaket", "6700", list6, "icon-2")
 
-									- var list7 = ["15 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automati"]
+									- var list7 = ["15 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automat"]
 									+plan_tab("800","Övningspaket", "9900", list7, "icon-3")
 
-									- var list8 = ["20 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automati"]
+									- var list8 = ["20 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automat"]
 									+plan_tab("300","Övningspaket", "13 000", list8, "icon-4")
 
 							.tab-pane(role="tabpanel", id="other")
@@ -239,7 +239,7 @@ html(lang="en", class="loading")
 				section.b_section.b_section-colored.more-inform
 					.container
 						h2.b_section_title Mer information
-						p.b_section_subtitle Länkar till Transportstyrelse & Trafikverket
+						p.b_section_subtitle Länkar till Transportstyrelsen & Trafikverket
 						.b_section_content
 
 							.row
@@ -257,7 +257,7 @@ html(lang="en", class="loading")
 				section.b_section.section-contact
 					.container
 						h2.b_section_title Välkommen att kontakta oss
-						p.b_section_subtitle Kontakta oss gärna vid frågor om körkort, övningspacket eller övriga tjänster.
+						p.b_section_subtitle Kontakta oss gärna vid frågor om körkort, övningspaket eller övriga tjänster.
 
 						.b_section_content
 
@@ -291,7 +291,7 @@ html(lang="en", class="loading")
 
 							form.wow.zoomIn(action="#", method="", data-wow-duration="1000ms", data-wow-delay="200ms", data-wow-offset="100")
 								div.form-group
-									input(type="text", name="name", placeholder="Namу", required)
+									input(type="text", name="name", placeholder="Namn", required)
 									.help-block
 								div.form-group
 									input(type="tel", name="tel", placeholder="Telefonnummer", required, pattern="^[_A-z0-9]{1,}$")

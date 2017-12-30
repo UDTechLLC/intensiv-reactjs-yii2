@@ -4,7 +4,6 @@
 			.modal-header
 				button.close(type="button", data-dismiss="modal")
 				h4.modal-title {{namePacket}} ({{pricePacket}})
-				p Vi stödjer kvalitet och miljömärkning för att stärka konsumenterna inför ett köpbeslut.
 			.modal-body
 				form(action="http://www.intensivkursstockholm.se/front/users/package_information", method="post")
 					input(type="hidden", name="package_type", v-model="pricePacket", readonly="true")
