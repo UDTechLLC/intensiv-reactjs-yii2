@@ -80,7 +80,7 @@ html(lang="en", class="loading")
 						span.icon
 							img(src= imagePath + "arrow-down.svg", alt="arrow", class="svg")
 					h2 Intensivkurs Stockholm
-					p.description Kvalitet och miljörevision TA-2017
+					p.description Kvalitet och miljö TA-2017
 					.graph
 
 					.table-statistic
@@ -165,16 +165,16 @@ html(lang="en", class="loading")
 							.tab-pane(role="tabpanel", id="study")
 								.row
 									- var list5 = ["5 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automat"]
-									+plan_tab("600","Övningspaket", "3450", list5, "icon-1")
+									+plan_tab("600","ÖVNINGSPAKET", "3450", list5, "icon-1")
 
 									- var list6 = ["10 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automat"]
-									+plan_tab("800","Övningspaket", "6700", list6, "icon-2")
+									+plan_tab("800","ÖVNINGSPAKET", "6700", list6, "icon-2")
 
 									- var list7 = ["15 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automat"]
-									+plan_tab("800","Övningspaket", "9900", list7, "icon-3")
+									+plan_tab("800","ÖVNINGSPAKET", "9900", list7, "icon-3")
 
 									- var list8 = ["20 Körlektioner", "50 min per körlektion", "Lånebil vid uppkörning", "Manuell eller Automat"]
-									+plan_tab("300","Övningspaket", "13 000", list8, "icon-4")
+									+plan_tab("300","ÖVNINGSPAKET", "13 000", list8, "icon-4")
 
 							.tab-pane(role="tabpanel", id="other")
 								.row
@@ -192,13 +192,13 @@ html(lang="en", class="loading")
 
 							.tab-pane(role="tabpanel", id="courses")
 								.row.flex-center
-									+plan_tab("600","Introduktionskurs", "2000", "", "icon-kurser")
+									+plan_tab("600","Introduktionskurs", "500", "", "icon-kurser")
 										p För dig som vill övningsköra privat är en introduktionskurs obligatorisk. Det gäller även den personen som du ska övningsköra med. Kursens mål är att öka förståelsen för trafiksäkerheten.
 
-									+plan_tab("800","Riskettan", "395", "", "icon-kurser1")
+									+plan_tab("800","Riskettan", "500", "", "icon-kurser1")
 										p En obligatorisk riskutbildning som kallas för Risk 1 för B-körkort. Med Risk 1 får du lära dig om riskerna med bland annat alkohol, droger och trötthet. Vi informerar även om dolda trafikrisker.
 
-									+plan_tab("800","Risktvåan", "890", "", "icon-kurser2")
+									+plan_tab("800","Risktvåan", "1900", "", "icon-kurser2")
 										p En obligatorisk riskutbildning som även kallas för halkbana för B-körkort. Syftet med denna kurs är att du ska lära dig hantera riskfyllda situationer och manövrering på halt underlag.
 
 				// start school inform section
@@ -247,7 +247,7 @@ html(lang="en", class="loading")
 								+info_block("Körkortsbehörigheter", "I tabellen hos Transportstyrelsen kan du se vilken ålder som krävs för att du ska kunna ta körkort för de olika behörigheterna.", "500", "license")
 									a.btn(href="https://www.transportstyrelsen.se/sv/vagtrafik/Korkort/har-korkort/fordon-du-far-kora/", target="_blank" ) Besök webbplatsen
 
-								+info_block("Körkortstillstånd`", "Hos Transportstyrelsen kan du ansöka om körkortstillstånd för AM, A1, A2, A, B, BE och traktorkörkort.", "400", "category")
+								+info_block("Körkortstillstånd", "Hos Transportstyrelsen kan du ansöka om körkortstillstånd för AM, A1, A2, A, B, BE och traktorkörkort.", "400", "category")
 									a.btn(href="https://etjanst.transportstyrelsen.se/extweb/kktillstgrI", target="_blank" ) Besök webbplatsen
 
 								+info_block("Boka förarprov", "I tjänsten Boka förarprov hos Trafikverket kan du boka och avboka prov för alla körkortsbehörigheter.", "300", "testing")
