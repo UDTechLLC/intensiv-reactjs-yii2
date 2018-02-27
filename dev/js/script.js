@@ -319,7 +319,7 @@ let app = new Vue({
         {
             "latitude": "59.36382554928936",
             "longitude": "17.87141859406278",
-            "content": "Ny besöksadress 2018-04-01"
+            "content": "Mötesplats"
         }];
 
         this.markersList.forEach((item) => {
