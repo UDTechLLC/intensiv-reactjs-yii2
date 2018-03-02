@@ -205,6 +205,7 @@ let app = new Vue({
         closeZoomMode: true,
         namePacket: '',
         pricePacket: '',
+        packId: 0,
 
     },
     mounted: function () {
@@ -351,10 +352,11 @@ let app = new Vue({
 
     },
     methods:{
-        openModalPacket(name, price){
+        openModalPacket(name, price, pack_id){
             if(name != '' && price != ''){
                 this.namePacket = name;
                 this.pricePacket = price;
+                this.packId = pack_id;
             }
         },
 
