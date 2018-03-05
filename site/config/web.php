@@ -50,6 +50,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
+                'admin' => 'package-detail/index',
                 'admin/login' => 'site/login',
                 'admin/logout' => 'site/logout',
                 'admin/packages' => 'package/index',
