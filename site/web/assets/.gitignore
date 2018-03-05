@@ -1,2 +1,7 @@
 *
 !.gitignore
+!css
+!fonts
+!images
+!js
+!/css/
