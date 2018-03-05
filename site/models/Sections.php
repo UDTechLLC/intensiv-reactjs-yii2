@@ -17,4 +17,14 @@ class Sections
             self::KURSES => 'Kurser',
         ];
     }
+
+    public static function getAliases()
+    {
+        return [
+            self::INTENSIV_PAKET => 'intensive',
+            self::OVNINGS_PAKET => 'study',
+            self::OVRIGA_TJANSTER => 'other',
+            self::KURSES => 'courses',
+        ];
+    }
 }

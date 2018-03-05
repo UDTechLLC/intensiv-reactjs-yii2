@@ -225,7 +225,7 @@ class PackageController extends Controller
                 'name' => 'Risktvåan',
                 'description' => '<p>En obligatorisk riskutbildning som även kallas för halkbana för B-körkort. Syftet med denna kurs är att du ska lära dig hantera riskfyllda situationer och manövrering på halt underlag.</p>',
                 'price' => 1900,
-                'image' => 'icon-kurser1',
+                'image' => 'icon-kurser2',
                 'section' => Sections::KURSES,
                 'sort_index' => 15,
                 'start_date'=> null,

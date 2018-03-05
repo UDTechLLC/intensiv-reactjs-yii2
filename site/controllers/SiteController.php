@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Package;
+use app\models\Sections;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -19,7 +21,7 @@ class SiteController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only' => ['logout'],
                 'rules' => [
                     [
@@ -30,7 +32,7 @@ class SiteController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -61,7 +63,22 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $packages = [];
+        $aliases = Sections::getAliases();
+        foreach ($aliases as $sectionId => $alias) {
+            $packages[$sectionId] = Package::find()
+                                                ->andWhere(['section' => $sectionId])
+                                                ->orderBy('sort_index')
+                                                ->cache(300)
+                                                ->all();
+        }
+
+        $this->layout = false;
+        return $this->render('index', [
+            'sections' => Sections::getList(),
+            'sectionsAliases' => $aliases,
+            'packages' => $packages,
+        ]);
     }
 
     /**

@@ -16,6 +16,9 @@ use Yii;
  * @property int $sort_index
  * @property string $start_date
  * @property int $required_test_lesson
+ *
+ * @property string $price_formatted
+ * @property string $display_name
  */
 class Package extends \yii\db\ActiveRecord
 {
@@ -71,7 +74,7 @@ class Package extends \yii\db\ActiveRecord
 
     public function getDisplay_name()
     {
-        $formatPrice = Yii::$app->formatter->asCurrency($this->price);
+        $formatPrice = $this->price_formatted;
         return $this->name.' ('.str_replace('&nbsp;', ' ', $formatPrice).')';
     }
 
@@ -83,5 +86,14 @@ class Package extends \yii\db\ActiveRecord
             $ret[$id] = $item->display_name;
         }
         return $ret;
+    }
+
+    public function getPrice_formatted()
+    {
+        return str_replace(
+                Yii::$app->formatter->decimalSeparator.'00',
+                '',
+                Yii::$app->formatter->asCurrency($this->price)
+        );
     }
 }
