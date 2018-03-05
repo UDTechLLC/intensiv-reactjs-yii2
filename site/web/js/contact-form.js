@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var data = $(this).serialize();
 
-        if ('name' in data && data['name'] !== '') {
+        if (data['name'] !== '') {
             $.post(
                 'contact-form/submit',
                 data,
