@@ -91,7 +91,10 @@ class Package extends \yii\db\ActiveRecord
     public function getPrice_formatted()
     {
         return str_replace(
-                Yii::$app->formatter->decimalSeparator.'00',
+                [
+                    Yii::$app->formatter->decimalSeparator.'00',
+                    ':00',
+                ],
                 '',
                 Yii::$app->formatter->asCurrency($this->price)
         );
