@@ -18,7 +18,9 @@ class m180302_155915_create_contact_form_table extends Migration
             'name' => $this->string()->notNull(),
             'email' => $this->string()->notNull(),
             'phone' => $this->string()->notNull(),
-            'message' => $this->text()
+            'message' => $this->text(),
+            'created_at' => $this->integer()->unsigned(),
+            'updated_at' => $this->integer()->unsigned(),
         ]);
     }
 

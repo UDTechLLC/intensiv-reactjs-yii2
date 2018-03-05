@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ],
             'message:ntext',
+            'created_at:datetime',
 
             [
                 'class' => 'yii\grid\ActionColumn',

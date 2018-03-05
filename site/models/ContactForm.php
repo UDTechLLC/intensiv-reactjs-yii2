@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "{{%contact_form}}".
@@ -12,6 +13,8 @@ use Yii;
  * @property string $email
  * @property string $phone
  * @property string $message
+ * @property string $created_at
+ * @property string $updated_at
  */
 class ContactForm extends \yii\db\ActiveRecord
 {
@@ -32,6 +35,7 @@ class ContactForm extends \yii\db\ActiveRecord
             [['name', 'email', 'phone'], 'required'],
             [['message'], 'string'],
             [['name', 'email', 'phone'], 'string', 'max' => 255],
+            [['created_at', 'updated_at'], 'integer'],
         ];
     }
 
@@ -47,5 +51,10 @@ class ContactForm extends \yii\db\ActiveRecord
             'phone' => Yii::t('app', 'Phone'),
             'message' => Yii::t('app', 'Message'),
         ];
+    }
+
+    public function behaviors()
+    {
+        return [TimestampBehavior::class];
     }
 }
