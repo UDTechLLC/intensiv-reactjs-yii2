@@ -1,6 +1,9 @@
 *
 !.gitignore
-!/fonts/
-!/images/
-!/js/
-!/css/
+!/fonts/*
+!/images/*
+!/images/icons/*
+!/js/*
+!/js/libs/*
+!/css/*
+!/css/libs/*
