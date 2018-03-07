@@ -69,7 +69,7 @@ class SiteController extends Controller
             $packages[$sectionId] = Package::find()
                                                 ->andWhere(['section' => $sectionId])
                                                 ->orderBy('sort_index')
-                                                ->cache(300)
+                                                ->cache(60)
                                                 ->all();
         }
 
