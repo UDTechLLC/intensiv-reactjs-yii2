@@ -350,7 +350,8 @@
                 <div class="modal-header">
                     <button class="close" type="button" data-dismiss="modal"></button>
                     <h4 class="modal-title">KONTAKTA OSS</h4>
-                    <p>Vill du boka in dig på en kurs eller har du några frågor och funderingar  kring våra paket och priser, så är du välkommen att kontakta oss.</p>
+                    <p>Vill du boka in dig på en kurs eller har du några frågor och funderingar  t
+kring våra paket och priser, så är du välkommen att kontakta oss.</p>
                 </div>
                 <div class="modal-body">
                     <form action="#" method="">
@@ -415,7 +416,7 @@
 <script src="assets/js/libs.js"></script>
 <script src="https://unpkg.com/vue@2.4.2/dist/vue.js"></script>
 <script src="assets/js/script.js"></script>
-<script src="js/contact-form.js"></script>
-<script src="js/packet-form.js"></script>
+<script src="assets/js/contact-form.js"></script>
+<script src="assets/js/packet-form.js"></script>
 </body>
 </html>
