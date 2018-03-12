@@ -289,7 +289,7 @@
         <section class="b_section section-contact">
             <div class="container">
                 <h2 class="b_section_title">Välkommen att kontakta oss</h2>
-                <p class="b_section_subtitle">Har du några frågor och funderingar kring våra paket och priser, så är du välkommen att kontakta oss.</p>
+                <p class="b_section_subtitle">Kontakta oss gärna vid frågor om körkort, övningspaket eller övriga tjänster.</p>
                 <div class="b_section_content">
                     <ul class="social-area wow zoomIn" data-wow-duration="1000ms" data-wow-delay="200ms" data-wow-offset="100">
                         <li>
@@ -359,8 +359,7 @@
                 <div class="modal-header">
                     <button class="close" type="button" data-dismiss="modal"></button>
                     <h4 class="modal-title">KONTAKTA OSS</h4>
-                    <p>Vill du boka in dig på en kurs eller har du några frågor och funderingar  t
-kring våra paket och priser, så är du välkommen att kontakta oss.</p>
+                    <p>Har du några frågor och funderingar kring våra paket och priser, så är du välkommen att kontakta oss.</p>
                 </div>
                 <div class="modal-body">
                     <form action="#" method="">
