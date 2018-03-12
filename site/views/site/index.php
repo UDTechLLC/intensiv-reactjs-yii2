@@ -55,7 +55,7 @@
                         <h3>Medlem</h3>
                         <div class="section">
                             <div class="select2 select2-container--default">
-                                <div class="select2-selection--single"><span class="select2-selection__rendered">Sveriges Trafikskolors Riksförbund</span></div>
+                                <div class="select2-selection--single"><span class="select2-selection__rendered">Trafikutbildarnas Riksorganisation</span></div>
                             </div>
                             <div class="select2 select2-container--default">
                                 <div class="select2-selection--single"><span class="select2-selection__rendered">Intensivkurs Stockholm</span></div>
@@ -231,13 +231,22 @@
                 <p class="b_section_subtitle">Att köra bil kräver kunskap och skicklighet. Därför har vi valt att öka förståelsen för vissa trafiksituationer med hjälp av Transportstyrelsens informationsfilmer</p>
                 <div class="b_section_content">
                     <div class="row">
-                        <div class="col col-md-4 col-12"><img src="assets/images/auto1.png" alt="">
+                        <div class="col col-md-4 col-12">
+                            <iframe width="370" height="256" frameBorder="0"
+                                    src="https://www.youtube.com/embed/M75DVzrVlZs">
+                            </iframe>
                             <p>Ska man köra motsols? Vem har väjningsplikt? När ska man blinka i cirkulationsplatsen?</p>
                         </div>
-                        <div class="col col-md-4 col-12"><img src="assets/images/auto2.png" alt="">
+                        <div class="col col-md-4 col-12">
+                            <iframe width="370" height="256" frameBorder="0"
+                                    src="https://www.youtube.com/embed/pe2lq1ZZ4Sk">
+                            </iframe>
                             <p>Vem är en gående? Vem är en fordonsförare? Bevakat eller obevakat övergångsställe?</p>
                         </div>
-                        <div class="col col-md-4 col-12"><img src="assets/images/auto3.png" alt="">
+                        <div class="col col-md-4 col-12">
+                            <iframe width="370" height="256" frameBorder="0"
+                                    src="https://www.youtube.com/embed/VLVQIO9aIqM">
+                            </iframe>
                             <p>Vem är cyklande? Vad är en cykelpassage? Vad är en cykelöverfart? Bevakad eller obevakad?</p>
                         </div>
                     </div>
@@ -280,7 +289,7 @@
         <section class="b_section section-contact">
             <div class="container">
                 <h2 class="b_section_title">Välkommen att kontakta oss</h2>
-                <p class="b_section_subtitle">Kontakta oss gärna vid frågor om körkort, övningspaket eller övriga tjänster.</p>
+                <p class="b_section_subtitle">Har du några frågor och funderingar kring våra paket och priser, så är du välkommen att kontakta oss.</p>
                 <div class="b_section_content">
                     <ul class="social-area wow zoomIn" data-wow-duration="1000ms" data-wow-delay="200ms" data-wow-offset="100">
                         <li>
@@ -331,7 +340,7 @@
                 </div>
                 <div class="modal-body">
                     <h2><span>40%</span>RABATT</h2>
-                    <p>PÅ DITT KÖP AV HANDLEARKURSEN</p>
+                    <p>PÅ DITT KÖP AV HANDLEDARKURSEN</p>
                     <form class="flex flex-between" action="#" method="">
                         <input type="email" name="email" placeholder="Skriv in ditt mobilnummer här">
                         <input class="btn-blue" type="submit" value="SKICKA">
