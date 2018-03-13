@@ -232,21 +232,27 @@
                 <div class="b_section_content">
                     <div class="row">
                         <div class="col col-md-4 col-12">
-                            <iframe width="370" height="256" frameBorder="0"
+                            <div style="max-width: 370px; max-height: 256px">
+                            <iframe width="100%" height="100%" frameBorder="0"
                                     src="https://www.youtube.com/embed/M75DVzrVlZs">
                             </iframe>
+                            </div>
                             <p>Ska man köra motsols? Vem har väjningsplikt? När ska man blinka i cirkulationsplatsen?</p>
                         </div>
                         <div class="col col-md-4 col-12">
-                            <iframe width="370" height="256" frameBorder="0"
+                            <div style="max-width: 370px; max-height: 256px">
+                            <iframe width="100%" height="100%" frameBorder="0"
                                     src="https://www.youtube.com/embed/pe2lq1ZZ4Sk">
                             </iframe>
+                            </div>
                             <p>Vem är en gående? Vem är en fordonsförare? Bevakat eller obevakat övergångsställe?</p>
                         </div>
                         <div class="col col-md-4 col-12">
-                            <iframe width="370" height="256" frameBorder="0"
+                            <div style="max-width: 370px; max-height: 256px">
+                            <iframe width="100%" height="100%" frameBorder="0"
                                     src="https://www.youtube.com/embed/VLVQIO9aIqM">
                             </iframe>
+                            </div>
                             <p>Vem är cyklande? Vad är en cykelpassage? Vad är en cykelöverfart? Bevakad eller obevakad?</p>
                         </div>
                     </div>
