@@ -141,7 +141,7 @@
                     <img class="svg" src="assets/images/location-icon.svg" alt="mail Logo">
                 </div>
             </a>
-            <a class="text-link" href="http://www.trbokning.se/elevportal/" target="_blank">Elevportalen</a>
+            <a class="text-link" href="http://www.trbokning.se/elevportal/?pid=1036515&sid=1074363478650" target="_blank">Elevportalen</a>
             <a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank" id="facebook">
                 <div class="icon"><img class="svg" src="assets/images/icon-facebook.svg" alt="facebook Logo"></div>
             </a>
