@@ -135,9 +135,17 @@
                 <input class="btn-blue" type="button" value="KONTAKTA OSS" data-target="#form-modal" data-toggle="modal">
             </div>
         </div>
-        <div class="block-absolute-links" :class="{'open-view-info': schoolViewStatus}"><a href="https://www.instagram.com/vasterorttrafikskola/" target="_blank" id="instagram">
-                <div class="icon"><img class="svg" src="assets/images/location-icon.svg" alt="mail Logo"></div></a><a class="text-link" href="http://www.trbokning.se/elevportal/" target="_blank">Elevportalen</a><a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank" id="facebook">
-                <div class="icon"><img class="svg" src="assets/images/icon-facebook.svg" alt="facebook Logo"></div></a></div>
+        <div class="block-absolute-links" :class="{'open-view-info': schoolViewStatus}">
+            <a href="https://www.instagram.com/vasterorttrafikskola/" target="_blank" id="instagram">
+                <div class="icon">
+                    <img class="svg" src="assets/images/location-icon.svg" alt="mail Logo">
+                </div>
+            </a>
+            <a class="text-link" href="http://www.trbokning.se/elevportal/" target="_blank">Elevportalen</a>
+            <a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank" id="facebook">
+                <div class="icon"><img class="svg" src="assets/images/icon-facebook.svg" alt="facebook Logo"></div>
+            </a>
+        </div>
     </div>
     <!-- block CONTENT-->
     <div class="content">
@@ -432,5 +440,15 @@
 <script src="assets/js/script.js"></script>
 <script src="assets/js/contact-form.js"></script>
 <script src="assets/js/packet-form.js"></script>
+<script type="text/javascript">
+    var tr={
+        'style':{'radius':'6px','border':'3px solid #cad8e9','bg':'#336699','txtcol':'#fff'},
+        'text':'Boka mina körlektioner nu',
+        'pid':'1036515',
+        'sid':'1074363478650'
+    };
+</script>
+<script type="text/javascript"
+        src="//www.trbokning.se/code/js/remote/elevportal.js"></script>
 </body>
 </html>
