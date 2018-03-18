@@ -440,15 +440,5 @@
 <script src="assets/js/script.js"></script>
 <script src="assets/js/contact-form.js"></script>
 <script src="assets/js/packet-form.js"></script>
-<script type="text/javascript">
-    var tr={
-        'style':{'radius':'6px','border':'3px solid #cad8e9','bg':'#336699','txtcol':'#fff'},
-        'text':'Boka mina körlektioner nu',
-        'pid':'1036515',
-        'sid':'1074363478650'
-    };
-</script>
-<script type="text/javascript"
-        src="//www.trbokning.se/code/js/remote/elevportal.js"></script>
 </body>
 </html>

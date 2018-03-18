@@ -13,8 +13,8 @@ use yii\behaviors\TimestampBehavior;
  * @property string $email
  * @property string $phone
  * @property string $message
- * @property string $created_at
- * @property string $updated_at
+ * @property int $created_at
+ * @property int $updated_at
  */
 class ContactForm extends \yii\db\ActiveRecord
 {
