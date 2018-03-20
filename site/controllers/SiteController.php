@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\OfferDiscount;
 use app\models\Package;
 use app\models\Sections;
 use Yii;
@@ -35,6 +36,7 @@ class SiteController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
+                    'index' => ['get', 'post'],
                 ],
             ],
         ];
@@ -63,6 +65,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if (Yii::$app->request->isPost) {
+            $model = new OfferDiscount(Yii::$app->request->post());
+            if (!$model->save()) {
+                Yii::error($model->errors, __METHOD__);
+            }
+        }
         $packages = [];
         $aliases = Sections::getAliases();
         foreach ($aliases as $sectionId => $alias) {

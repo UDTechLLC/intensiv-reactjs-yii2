@@ -2,6 +2,7 @@
     /** @var array $packages */
     /** @var array $sectionsAliases */
     /** @var array $sections */
+    /* @var $this \yii\web\View */
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="en">
@@ -355,9 +356,9 @@
                 <div class="modal-body">
                     <h2><span>40%</span>RABATT</h2>
                     <p>PÅ DITT KÖP AV HANDLEDARKURSEN</p>
-                    <form class="flex flex-between" action="#" method="">
-                        <input type="email" name="email" placeholder="Skriv in ditt mobilnummer här">
-                        <input class="btn-blue" type="submit" value="SKICKA">
+                    <form class="flex flex-between" action="/offer-discount" method="POST">
+                        <input type="text" name="phone" placeholder="Skriv in ditt mobilnummer här" required>
+                        <input class="btn-blue" type="submit" value="SKICKA" onclick="">
                     </form>
                 </div>
                 <div class="modal-footer">
