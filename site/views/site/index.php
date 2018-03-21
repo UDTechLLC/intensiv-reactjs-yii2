@@ -377,7 +377,7 @@
                     <p>Har du några frågor och funderingar kring våra paket och priser, så är du välkommen att kontakta oss.</p>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="">
+                    <form action="#" method="POST">
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Namn" required>
                             <div class="help-block"></div>
