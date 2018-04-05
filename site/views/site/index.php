@@ -22,32 +22,47 @@
         <div class="map" id="map-layout">
             <!--img(src="" + imagePath + "map.jpg", alt="map")-->
         </div>
-        <div class="filter-section" :class="{'open-school-view': schoolViewStatus}">
-            <div class="flex flex-center header-filter">
-                <h2 class="logo">Västerort Trafikskola</h2>
-            </div>
+        <div class="filter-section">
+            <div class="flex flex-center header-filter"><a class="b_logo" href="#"><img src="assets/images/logo.svg" alt="Intensivkurs Logo"></a></div>
             <div class="body">
-                <h2><span>NÄRHET</span>KVALITET & MILJÖ</h2>
                 <form method="POST" action="#" v-on:submit.prevent="openSchoolView">
                     <div class="drive">
                         <h3>Fordonsbehörighet</h3>
                         <div class="section flex">
                             <div class="button-license b">
-                                <input type="radio" name="license" value="b">
+                                <input type="radio" name="license" value="b" v-model="pickedLicense" v-on:change="changeLicense">
                                 <div class="wrap-btn">
-                                    <div class="icon"><img src="assets/images/b.svg" alt="B Logo"></div>B
+                                    <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/b.svg" alt="B Logo"></div>B
+                                </div>
+                                <div class="dropdown animated fadeIn">
+                                    <input type="radio" name="license" value="ub" id="license-ub" v-model="pickedLicense" v-on:change="changeLicense">
+                                    <label for="license-ub"><span>UB</span>Bil + Släpvagn (Max 4.25 ton)</label>
+                                    <input type="radio" name="license" value="be" id="license-be" v-model="pickedLicense" v-on:change="changeLicense">
+                                    <label for="license-be"><span>BE</span>Tung släpvagn (Max 3.5 ton)</label>
                                 </div>
                             </div>
                             <div class="button-license a">
-                                <input type="radio" name="license" value="a">
+                                <input type="radio" name="license" value="a" v-model="pickedLicense" v-on:change="changeLicense">
                                 <div class="wrap-btn">
-                                    <div class="icon"><img src="assets/images/automatic.svg" alt="Automat Logo" id="automatic-logo"></div>Automat
+                                    <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/a.svg" alt="A Logo"></div>A
+                                </div>
+                                <div class="dropdown animated fadeIn">
+                                    <input type="radio" name="license" value="a1" id="license-a1" v-model="pickedLicense" v-on:change="changeLicense">
+                                    <label for="license-a1"><span>A1</span>Lätt motorcykel (Max 11 Kw)</label>
+                                    <input type="radio" name="license" value="a2" id="license-a2" v-model="pickedLicense" v-on:change="changeLicense">
+                                    <label for="license-a2"><span>A2</span>Mellanstor motorcykel (Max 35 Kw)</label>
                                 </div>
                             </div>
                             <div class="button-license am">
-                                <input type="radio" name="license" value="am">
+                                <input type="radio" name="license" value="am" v-model="pickedLicense" v-on:change="changeLicense">
                                 <div class="wrap-btn">
-                                    <div class="icon"><img src="assets/images/manual.svg" alt="Manuell Logo" id="manual-logo"></div>Manuell
+                                    <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/am.svg" alt="AM Logo"></div>AM
+                                </div>
+                                <div class="dropdown animated fadeIn">
+                                    <input type="radio" name="license" value="am-45" id="license-am-1" v-model="pickedLicense" v-on:change="changeLicense">
+                                    <label for="license-am-1"><span>Klass 1</span>, Körkort 45 km/h</label>
+                                    <input type="radio" name="license" value="am-25" id="license-am-2" v-model="pickedLicense" v-on:change="changeLicense">
+                                    <label for="license-am-2"><span>Klass 2</span>, Förarbevis 25 km/h  </label>
                                 </div>
                             </div>
                         </div>
@@ -55,12 +70,14 @@
                     <div class="home">
                         <h3>Medlem</h3>
                         <div class="section">
-                            <div class="select2 select2-container--default">
-                                <div class="select2-selection--single"><span class="select2-selection__rendered">Trafikutbildarnas Riksorganisation</span></div>
-                            </div>
-                            <div class="select2 select2-container--default">
-                                <div class="select2-selection--single"><span class="select2-selection__rendered">Intensivkurs Stockholm</span></div>
-                            </div>
+                            <select2 class="select-contain" name="search_area_map" v-model="selectPlace">
+                                <option disabled selected value="placeholder">Välj ort</option>
+                                <option v-for="place in listPlaces" :value="place.id">{{place.city}}</option>
+                            </select2>
+                            <select2 class="select-contain" name="search_name" v-model="selectSchool">
+                                <option disabled selected value="placeholder">Välj trafikskola</option>
+                                <option v-for="school in listSchools" :value="school.id">{{school.name}}</option>
+                            </select2>
                             <script type="text/x-template" id="select2-template">
                                 <select>
                                     <slot></slot>
@@ -136,17 +153,6 @@
                 <input class="btn-blue" type="button" value="KONTAKTA OSS" data-target="#form-modal" data-toggle="modal">
             </div>
         </div>
-        <div class="block-absolute-links" :class="{'open-view-info': schoolViewStatus}">
-            <a href="https://www.instagram.com/vasterorttrafikskola/" target="_blank" id="instagram">
-                <div class="icon">
-                    <img class="svg" src="assets/images/location-icon.svg" alt="mail Logo">
-                </div>
-            </a>
-            <a class="text-link" href="http://www.trbokning.se/elevportal/?pid=1036515&sid=1074363478650" target="_blank">Elevportalen</a>
-            <a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank" id="facebook">
-                <div class="icon"><img class="svg" src="assets/images/icon-facebook.svg" alt="facebook Logo"></div>
-            </a>
-        </div>
     </div>
     <!-- block CONTENT-->
     <div class="content">
@@ -166,7 +172,7 @@
                 <div class="tab-content">
                     <?php foreach ($packages as $sectionId => $packList) { ?>
                     <div class="tab-pane<?=$sectionId == 1 ? ' active' : '';?>" role="tabpanel" id="<?=$sectionsAliases[$sectionId];?>">
-                        <div class="row flex-center">
+                        <div class="row">
                             <?php /** @var \app\models\Package $pack */
                             foreach ($packList as $pack) { ?>
                             <div class="col col-md-3">

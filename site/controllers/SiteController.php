@@ -4,9 +4,11 @@ namespace app\controllers;
 
 use app\models\OfferDiscount;
 use app\models\Package;
+use app\models\School;
 use app\models\Sections;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -149,5 +151,21 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    /**
+     * Lists all School models.
+     * @return mixed
+     */
+    public function actionSchoolList()
+    {
+        $list = School::find()->all();
+        if (count($list) > 0) {
+            foreach ($list as $item) {
+                $out[] = ['title' => $item['title'], 'info' => $item['info'], 'lat' => $item['lat'], 'lng' => $item['lng'],];
+            }
+            // Shows how you can preselect a value
+            echo Json::encode(['output' => $out]);
+        }
     }
 }

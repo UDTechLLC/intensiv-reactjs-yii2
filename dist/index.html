@@ -17,44 +17,56 @@
           <!--img(src="" + imagePath + "map.jpg", alt="map")-->
         </div>
         <div class="filter-section" :class="{'open-school-view': schoolViewStatus}">
-          <div class="flex flex-center header-filter">
-            <h2 class="logo">Västerort Trafikskola</h2>
-          </div>
+          <div class="flex flex-center header-filter"><a class="b_logo" href="#"><img src="https://projects.udtech.co/intensivkurs/assets/images/logo.svg" alt="Intensivkurs Logo"></a></div>
           <div class="body">
             <h2><span>NÄRHET</span>KVALITET & MILJÖ</h2>
             <form method="POST" action="#" v-on:submit.prevent="openSchoolView">
               <div class="drive">
-                <h3>Fordonsbehörighet</h3>
+                <h3>Välj ett fordon</h3>
                 <div class="section flex">
                   <div class="button-license b">
-                    <input type="radio" name="license" value="b">
+                    <input type="radio" name="license" value="b" v-model="pickedLicense" v-on:change="changeLicense">
                     <div class="wrap-btn">
-                      <div class="icon"><img src="assets/images/b.svg" alt="B Logo"></div>B
+                      <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/b.svg" alt="B Logo"></div>B
+                    </div>
+                    <div class="dropdown animated fadeIn">
+                      <input type="radio" name="license" value="ub" id="license-ub" v-model="pickedLicense" v-on:change="changeLicense">
+                      <label for="license-ub"><span>UB</span>Bil + Släpvagn (Max 4.25 ton)</label>
+                      <input type="radio" name="license" value="be" id="license-be" v-model="pickedLicense" v-on:change="changeLicense">
+                      <label for="license-be"><span>BE</span>Tung släpvagn (Max 3.5 ton)</label>
                     </div>
                   </div>
                   <div class="button-license a">
-                    <input type="radio" name="license" value="a">
+                    <input type="radio" name="license" value="a" v-model="pickedLicense" v-on:change="changeLicense">
                     <div class="wrap-btn">
-                      <div class="icon"><img src="assets/images/automatic.svg" alt="Automat Logo" id="automatic-logo"></div>Automat
+                      <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/a.svg" alt="A Logo"></div>A
+                    </div>
+                    <div class="dropdown animated fadeIn">
+                      <input type="radio" name="license" value="a1" id="license-a1" v-model="pickedLicense" v-on:change="changeLicense">
+                      <label for="license-a1"><span>A1</span>Lätt motorcykel (Max 11 Kw)</label>
+                      <input type="radio" name="license" value="a2" id="license-a2" v-model="pickedLicense" v-on:change="changeLicense">
+                      <label for="license-a2"><span>A2</span>Mellanstor motorcykel (Max 35 Kw)</label>
                     </div>
                   </div>
                   <div class="button-license am">
-                    <input type="radio" name="license" value="am">
+                    <input type="radio" name="license" value="am" v-model="pickedLicense" v-on:change="changeLicense">
                     <div class="wrap-btn">
-                      <div class="icon"><img src="assets/images/manual.svg" alt="Manuell Logo" id="manual-logo"></div>Manuell
+                      <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/am.svg" alt="AM Logo"></div>AM
                     </div>
                   </div>
                 </div>
               </div>
               <div class="home">
-                <h3>Medlem</h3>
+                <h3>Välj en ort eller en trafikskola</h3>
                 <div class="section">
-                  <div class="select2 select2-container--default">
-                    <div class="select2-selection--single"><span class="select2-selection__rendered">Sveriges Trafikskolors Riksförbund</span></div>
-                  </div>
-                  <div class="select2 select2-container--default">
-                    <div class="select2-selection--single"><span class="select2-selection__rendered">Intensivkurs Stockholm</span></div>
-                  </div>
+                  <select2 class="select-contain" name="search_area_map" v-model="selectPlace">
+                    <option disabled selected value="placeholder">Välj ort</option>
+                    <option v-for="place in listPlaces" :value="place.id">{{place.city}}</option>
+                  </select2>
+                  <select2 class="select-contain" name="search_name" v-model="selectSchool">
+                    <option disabled selected value="placeholder">Välj trafikskola</option>
+                    <option v-for="school in listSchools" :value="school.id">{{school.name}}</option>
+                  </select2>
                   <script type="text/x-template" id="select2-template">
                     <select>
                       <slot></slot>
@@ -62,14 +74,14 @@
                   </script>
                 </div>
               </div>
-              <input class="btn-blue" type="submit" value="Se omdöme">
+              <input class="btn-blue" type="submit" value="Välj en trafikskola">
             </form>
           </div>
         </div>
         <div class="school-view">
-          <button class="close" v-on:click="closeSchoolView"><span class="icon"><img class="svg" src="assets/images/arrow-down.svg" alt="arrow"></span></button>
-          <h2>Intensivkurs Stockholm</h2>
-          <p class="description">Kvalitet och miljö TA-2017</p>
+          <button class="close" v-on:click="closeSchoolView"><span class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/arrow-down.svg" alt="arrow"></span></button>
+          <h2>{{schoolView.name}}</h2>
+          <p class="description">Kvalitet och miljörevision TA-2017</p>
           <div class="graph"></div>
           <div class="table-statistic">
             <div class="row">
@@ -78,7 +90,7 @@
               </div>
               <div class="col col-sm-7">
                 <div class="block-statistic">
-                  <div class="progress-bar support" style="width:85%;"></div>
+                  <div class="progress-bar support"></div>
                 </div>
               </div>
             </div>
@@ -88,7 +100,7 @@
               </div>
               <div class="col col-sm-7">
                 <div class="block-statistic">
-                  <div class="progress-bar registrationTeacher" style="width:100%;"></div>
+                  <div class="progress-bar registrationTeacher"></div>
                 </div>
               </div>
             </div>
@@ -98,7 +110,7 @@
               </div>
               <div class="col col-sm-7">
                 <div class="block-statistic">
-                  <div class="progress-bar pedagogical" style="width:95%;"></div>
+                  <div class="progress-bar pedagogical"></div>
                 </div>
               </div>
             </div>
@@ -108,7 +120,7 @@
               </div>
               <div class="col col-sm-7">
                 <div class="block-statistic">
-                  <div class="progress-bar cleanVehicles" style="width:90%;"></div>
+                  <div class="progress-bar cleanVehicles"></div>
                 </div>
               </div>
             </div>
@@ -118,91 +130,85 @@
               </div>
               <div class="col col-sm-7">
                 <div class="block-statistic">
-                  <div class="progress-bar recommendation" style="width:95%;"></div>
+                  <div class="progress-bar recommendation"></div>
                 </div>
               </div>
             </div>
           </div>
           <div class="contact-info">
-            <div class="info-block location">Grimstagatan 160, 162 58 Vällingby</div>
-            <div class="info-block email">info@vasterorttrafikskola.se</div>
-            <div class="info-block phone">08-533 301 01</div>
+            <div class="info-block location">{{schoolView.address}}</div>
+            <div class="info-block email">{{schoolView.email}}</div>
+            <div class="info-block phone">{{schoolView.phone}}</div>
             <input class="btn-blue" type="button" value="KONTAKTA OSS" data-target="#form-modal" data-toggle="modal">
           </div>
         </div>
-        <div class="block-absolute-links" :class="{'open-view-info': schoolViewStatus}"><a href="https://www.instagram.com/vasterorttrafikskola/" target="_blank" id="instagram">
-            <div class="icon"><img class="svg" src="assets/images/location-icon.svg" alt="mail Logo"></div></a><a class="text-link" href="http://www.trbokning.se/elevportal/" target="_blank">Elevportalen</a><a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank" id="facebook">
-            <div class="icon"><img class="svg" src="assets/images/icon-facebook.svg" alt="facebook Logo"></div></a></div>
       </div>
       <!-- block CONTENT-->
       <div class="content">
-        <!-- start plan section-->
-        <section class="b_section plans">
-          <div class="container">
-            <h2 class="b_section_title">Välj mellan olika körpaket</h2>
-            <ul class="plans_tabs nav nav-tabs" role="tablist">
+        <div class="container">
+          <div class="plans">
+            <h2>Välj mellan olika körpaket</h2>
+            <ul class="nav nav-tabs flex flex-center" role="tablist">
               <li class="active"><a href="#intensive" aria-controls="intensive" role="tab" data-toggle="tab">Intensivpaket</a></li>
               <li><a href="#study" aria-controls="study" role="tab" data-toggle="tab">Övningspaket</a></li>
-              <li><a href="#other" aria-controls="other" role="tab" data-toggle="tab">Övriga tjänster</a></li>
-              <li><a href="#courses" aria-controls="other" role="tab" data-toggle="tab">Kurser</a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" role="tabpanel" id="intensive">
                 <div class="row">
                   <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="600ms" data-wow-offset="100">
-                      <div class="icon icon-time"></div>
-                      <h3>INGÅR I INTENSIVKURSEN</h3>
-                      <div class="price">3650&nbsp;kr</div>
+                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="500ms" data-wow-offset="100">
+                      <div class="icon">1</div>
+                      <h3>KAMPANJ NY ELEV</h3>
+                      <div class="price">3650 kr</div>
                       <ul>
                         <li>Riskettan</li>
                         <li>Risktvåan</li>
                         <li>Körkortsboken</li>
                         <li>Online teori</li>
                       </ul>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('INGÅR I INTENSIVKURSEN', '3650kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('KAMPANJ NY ELEV', '3650 kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
                     </div>
                   </div>
                   <div class="col col-md-3">
-                    <div class="card wow flipInY active" data-wow-duration="1000ms" data-wow-delay="800ms" data-wow-offset="100">
-                      <div class="icon icon-1"></div>
+                    <div class="card flipInY active wow" data-wow-duration="1000ms" data-wow-delay="800ms" data-wow-offset="100">
+                      <div class="icon">2</div>
                       <h3>INTENSIVPAKET 1 VECKA</h3>
-                      <div class="price">10500&nbsp;kr</div>
+                      <div class="price">8300 kr</div>
                       <ul>
-                        <li>10 Körlektioner</li>
+                        <li>11 Körlektioner</li>
                         <li>50 min per körlektion</li>
                         <li>Lånebil vid uppkörning</li>
                         <li>Manuell eller Automat</li>
                       </ul>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('INTENSIVPAKET 1 VECKA', '10500kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('INTENSIVPAKET 1 VECKA', '8300 kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
                     </div>
                   </div>
                   <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="800ms" data-wow-offset="100">
-                      <div class="icon icon-2"></div>
+                    <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="1100ms" data-wow-offset="100">
+                      <div class="icon">3</div>
                       <h3>INTENSIVPAKET 2 VECKOR</h3>
-                      <div class="price">14 000&nbsp;kr</div>
+                      <div class="price">11 750 kr</div>
                       <ul>
-                        <li>15 Körlektioner</li>
+                        <li>16 Körlektioner</li>
                         <li>50 min per körlektion</li>
                         <li>Lånebil vid uppkörning</li>
                         <li>Manuell eller Automat</li>
                       </ul>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('INTENSIVPAKET 2 VECKOR', '14 000kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('INTENSIVPAKET 2 VECKOR', '11 750 kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
                     </div>
                   </div>
                   <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms" data-wow-offset="100">
-                      <div class="icon icon-3"></div>
+                    <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="300ms" data-wow-offset="100">
+                      <div class="icon">4</div>
                       <h3>INTENSIVPAKET 3 VECKOR</h3>
-                      <div class="price">17 500&nbsp;kr</div>
+                      <div class="price">15 200 kr</div>
                       <ul>
-                        <li>20 Körlektioner</li>
+                        <li>21 Körlektioner</li>
                         <li>50 min per körlektion</li>
                         <li>Lånebil vid uppkörning</li>
                         <li>Manuell eller Automat</li>
                       </ul>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('INTENSIVPAKET 3 VECKOR', '17 500kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('INTENSIVPAKET 3 VECKOR', '15 200 kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
                     </div>
                   </div>
                 </div>
@@ -210,269 +216,345 @@
               <div class="tab-pane" role="tabpanel" id="study">
                 <div class="row">
                   <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="600ms" data-wow-offset="100">
-                      <div class="icon icon-1"></div>
-                      <h3>ÖVNINGSPAKET</h3>
-                      <div class="price">3450&nbsp;kr</div>
+                    <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="500ms">
+                      <div class="icon">1</div>
+                      <h3>PROVA PA NY ELEV</h3>
+                      <div class="price">3950 kr</div>
                       <ul>
-                        <li>5 Körlektioner</li>
+                        <li>Riskettan</li>
+                        <li>Risktvåan</li>
+                        <li>Körkortsboken</li>
+                        <li>Online teori</li>
+                      </ul>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('PROVA PA NY ELEV', '3950 kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                    </div>
+                  </div>
+                  <div class="col col-md-3">
+                    <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="800ms">
+                      <div class="icon">2</div>
+                      <h3>ÖVNINGSPAKET 1 VECKA</h3>
+                      <div class="price">7400 kr</div>
+                      <ul>
+                        <li>11 Körlektioner</li>
                         <li>50 min per körlektion</li>
                         <li>Lånebil vid uppkörning</li>
                         <li>Manuell eller Automat</li>
                       </ul>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('ÖVNINGSPAKET', '3450kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('ÖVNINGSPAKET 1 VECKA', '7400 kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
                     </div>
                   </div>
                   <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="800ms" data-wow-offset="100">
-                      <div class="icon icon-2"></div>
-                      <h3>ÖVNINGSPAKET</h3>
-                      <div class="price">6700&nbsp;kr</div>
+                    <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="1100ms">
+                      <div class="icon">3</div>
+                      <h3>ÖVNINGSPAKET 2 VECKOR</h3>
+                      <div class="price">10 850 kr</div>
                       <ul>
-                        <li>10 Körlektioner</li>
+                        <li>16 Körlektioner</li>
                         <li>50 min per körlektion</li>
                         <li>Lånebil vid uppkörning</li>
                         <li>Manuell eller Automat</li>
                       </ul>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('ÖVNINGSPAKET', '6700kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('ÖVNINGSPAKET 2 VECKOR', '10 850 kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
                     </div>
                   </div>
                   <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="800ms" data-wow-offset="100">
-                      <div class="icon icon-3"></div>
-                      <h3>ÖVNINGSPAKET</h3>
-                      <div class="price">9900&nbsp;kr</div>
+                    <div class="card flipInY wow" data-wow-duration="1000ms" data-wow-delay="300ms">
+                      <div class="icon">4</div>
+                      <h3>ÖVNINGSPAKET 3 VECKOR</h3>
+                      <div class="price">14 300 kr</div>
                       <ul>
-                        <li>15 Körlektioner</li>
+                        <li>21 Körlektioner</li>
                         <li>50 min per körlektion</li>
                         <li>Lånebil vid uppkörning</li>
                         <li>Manuell eller Automat</li>
                       </ul>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('ÖVNINGSPAKET', '9900kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
-                    </div>
-                  </div>
-                  <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms" data-wow-offset="100">
-                      <div class="icon icon-4"></div>
-                      <h3>ÖVNINGSPAKET</h3>
-                      <div class="price">13 000&nbsp;kr</div>
-                      <ul>
-                        <li>20 Körlektioner</li>
-                        <li>50 min per körlektion</li>
-                        <li>Lånebil vid uppkörning</li>
-                        <li>Manuell eller Automat</li>
-                      </ul>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('ÖVNINGSPAKET', '13 000kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" role="tabpanel" id="other">
-                <div class="row">
-                  <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="600ms" data-wow-offset="100">
-                      <div class="icon icon-tjanster"></div>
-                      <h3>TEORIUNDERVISNING</h3>
-                      <div class="price">2000&nbsp;kr</div>
-                      <p>För dig som är intresserad av extra hjälp med teorin så erbjuder vi en personlig undervisning. En personlig plan utarbetas och undervisningen finns på fyra olika språk.</p>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('TEORIUNDERVISNING', '2000kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
-                    </div>
-                  </div>
-                  <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="800ms" data-wow-offset="100">
-                      <div class="icon icon-sista"></div>
-                      <h3>SISTA MINUTEN</h3>
-                      <div class="price">395&nbsp;kr</div>
-                      <p>För dig som är intresserad av körlektioner för halva priset så erbjuder vi en sista minuten lista. Skriv in dig och få ett meddelande av oss när ett sådant tillfälle dyker upp.</p>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('SISTA MINUTEN', '395kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
-                    </div>
-                  </div>
-                  <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="800ms" data-wow-offset="100">
-                      <div class="icon icon-helg"></div>
-                      <h3>KVÄLL/HELG</h3>
-                      <div class="price">890&nbsp;kr</div>
-                      <p>För dig som inte hinner med att övningsköra under veckodagarna mellan 07:00-18:00, får chansen att göra det med oss. Vi erbjuder kvälls- och helgkörning för 890 kr per körlektion.</p>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('KVÄLL/HELG', '890kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
-                    </div>
-                  </div>
-                  <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms" data-wow-offset="100">
-                      <div class="icon icon-lanebil"></div>
-                      <h3>LÅNEBIL</h3>
-                      <div class="price">1400&nbsp;kr</div>
-                      <p>Lånebil gäller i 100 minuter, uppkörning inkl en övningslektion. Elever som inte är inskrivna i Västerort Trafikskola måste först bedömas vara lämpliga för en uppkörning.</p>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('LÅNEBIL', '1400kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" role="tabpanel" id="courses">
-                <div class="row flex-center">
-                  <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="600ms" data-wow-offset="100">
-                      <div class="icon icon-kurser"></div>
-                      <h3>Introduktionskurs</h3>
-                      <div class="price">500&nbsp;kr</div>
-                      <p>För dig som vill övningsköra privat är en introduktionskurs obligatorisk. Det gäller även den personen som du ska övningsköra med. Kursens mål är att öka förståelsen för trafiksäkerheten.</p>
-                      <div class="date_time"><span>2108-03-28</span><span>17:30</span></div>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('Introduktionskurs', '500kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
-                    </div>
-                  </div>
-                  <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="800ms" data-wow-offset="100">
-                      <div class="icon icon-kurser1"></div>
-                      <h3>Riskettan</h3>
-                      <div class="price">500&nbsp;kr</div>
-                      <p>En obligatorisk riskutbildning som kallas för Risk 1 för B-körkort. Med Risk 1 får du lära dig om riskerna med bland annat alkohol, droger och trötthet. Vi informerar även om dolda trafikrisker.</p>
-                      <div class="date_time"><span>2108-03-28</span><span>17:30</span></div>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('Riskettan', '500kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
-                    </div>
-                  </div>
-                  <div class="col col-md-3">
-                    <div class="card wow flipInY" data-wow-duration="1000ms" data-wow-delay="800ms" data-wow-offset="100">
-                      <div class="icon icon-kurser2"></div>
-                      <h3>Risktvåan</h3>
-                      <div class="price">1900&nbsp;kr</div>
-                      <p>En obligatorisk riskutbildning som även kallas för halkbana för B-körkort. Syftet med denna kurs är att du ska lära dig hantera riskfyllda situationer och manövrering på halt underlag.</p>
-                      <div class="date_time"><span>En testlektion krävs</span></div>
-                      <button class="btn btn-blue btn-small" v-on:click="openModalPacket('Risktvåan', '1900kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
+                      <button class="btn-blue btn-small" v-on:click="openModalPacket('ÖVNINGSPAKET 3 VECKOR', '14 300 kr')" data-target="#packet-modal" data-toggle="modal">Boka nu</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-        <!-- start school inform section-->
-        <section class="b_section regions b_section-colored">
+          <div class="section-video">
+            <h2>Välj en trafikskola nära dig som erbjuder en hög standard på utbildning och värnar om vår miljö</h2>
+            <div class="row">
+              <div class="col col-md-6 col-sm-12 col-xs-12">
+                <div class="video-container wow fadeInUp" data-wow-delay="800ms" data-wow-offset="100">
+                  <!--img(src="/" + imagePath + "video-1.jpg", alt="video-1")-->
+                  <iframe src="https://www.youtube.com/embed/QafXcUBkOTQ?enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer" frameborder="0" allowfullscreen="true" showinfo="0" controls="0"></iframe>
+                  <div class="description flex flex-vertical-center flex-between">
+                    <p>Vägen till körkort</p>
+                    <div class="play-btn"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-md-6 col-sm-12 col-12">
+                <div class="video-container wow fadeInUp" data-wow-delay="500ms" data-wow-offset="100">
+                  <!--img(src="/" + imagePath + "video-1.jpg", alt="video-2")-->
+                  <iframe src="https://www.youtube.com/embed/tshiDexOecE?enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer" frameborder="0" allowfullscreen="true"></iframe>
+                  <div class="description flex flex-vertical-center flex-between">
+                    <p>Vägen till körkort</p>
+                    <div class="play-btn"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section-charts">
+            <h2>Förarprovstatistik</h2>
+            <p class="headline">Antal godkända Körprov B som genomförts på Trafikverket, perioden Januari – Juli 2017</p>
+            <div class="row without-line header-table">
+              <div class="col col-md-3"></div>
+              <div class="col col-md-3">
+                <p class="label">Kvinnor</p>
+              </div>
+              <div class="col col-md-3">
+                <p class="label">Män</p>
+              </div>
+              <div class="col col-md-3">
+                <p class="label">Totalt</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-md-3 flex flex-vertical-center">
+                <p class="label">Farsta</p>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="40" data-wow-delay="500ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>42<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="45" data-wow-delay="800ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>44<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="40" data-wow-delay="300ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>43</p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-md-3 flex flex-vertical-center">
+                <p class="label">Jakobsberg</p>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="35" data-wow-delay="500ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>37<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="45" data-wow-delay="800ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>42<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="40" data-wow-delay="300ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>41<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-md-3 flex flex-vertical-center">
+                <p class="label">Sollentuna</p>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="35" data-wow-delay="500ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>38<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="40" data-wow-delay="800ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>40<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="40" data-wow-delay="300ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>39<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+            </div>
+            <div class="row without-line">
+              <div class="col col-md-3 flex flex-vertical-center">
+                <p class="label">Södertälje</p>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="40" data-wow-delay="500ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>43<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="45" data-wow-delay="800ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>45<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="45" data-wow-delay="300ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>43<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+            </div>
+            <p class="headline">Antal godkända Kunskapsprov B som genomförts på Trafikverket, Perioden Januari – Juni 2017</p>
+            <div class="row">
+              <div class="col col-md-3 flex flex-vertical-center">
+                <p class="label">Stockholm</p>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="45" data-wow-delay="500ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>46<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="35" data-wow-delay="800ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>38<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="40" data-wow-delay="300ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>41<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-md-3 flex flex-vertical-center">
+                <p class="label">Södertälje</p>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="50" data-wow-delay="500ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>48<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="35" data-wow-delay="800ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>35<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+              <div class="col col-md-3">
+                <figure class="chart wow fadeInUp" data-percent="40" data-wow-delay="300ms" data-wow-offset="60">
+                  <figcaption></figcaption>
+                  <p>40<span>%</span></p>
+                  <svg width="72" height="72">
+                    <circle class="outer" cx="154" cy="36" stroke-linecap="round" r="31" transform="rotate(-90, 95, 95)"></circle>
+                  </svg>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-additional-info">
           <div class="container">
-            <h2 class="b_section_title">Välkommen till västerort trafikskola</h2>
-            <p class="b_section_subtitle">Här är våra övningsområden i Västerort</p>
-            <div class="b_section_content">
-              <div class="row">
-                <div class="col col-lg-4 col-12">
-                  <div class="info-block license flipInY wow" data-wow-duration="1000ms" data-wow-delay="500ms" data-wow-offset="100">
-                    <div class="icon hasselby"></div>
-                    <h3>Hässelby</h3>
-                    <p>Hässelby är ett område i Västerort i Stockholms kommun, vilket omfattar stadsdelarna Hässelby gård, Hässelby strand och Hässelby villastad. Stadsdelen har många bra övningsområden för tätort, cirkulationsplatser och vägar med dubbelkörfält.</p>
-                  </div>
+            <h2>Mer information</h2>
+            <p class="headline">Länkar till Transportstyrelse & Trafikverket</p>
+            <div class="row">
+              <div class="col col-lg-4 col-12">
+                <div class="info-block license flipInY wow" data-wow-duration="1000ms" data-wow-delay="500ms" data-wow-offset="100">
+                  <div class="icon"></div>
+                  <h3>Körkortsbehörigheter</h3>
+                  <p>I tabellen hos Transportstyrelsen kan du se vilken ålder som krävs för att du ska kunna ta körkort för de olika behörigheterna.</p><a class="btn" href="https://www.transportstyrelsen.se/sv/vagtrafik/Korkort/har-korkort/fordon-du-far-kora/" target="_blank">Besök webbplatsen</a>
                 </div>
-                <div class="col col-lg-4 col-12">
-                  <div class="info-block license flipInY wow" data-wow-duration="1000ms" data-wow-delay="400ms" data-wow-offset="100">
-                    <div class="icon bromma"></div>
-                    <h3>Bromma</h3>
-                    <p>Bromma är en närförort inom Västerort i Stockholms kommun med ett läge intill Stockholms innerstad. Stadsdelen är känd för att ha en komplex trafik med högt tempo. Trafikområdet är utmärkt för att testa kunskaper och förmågor.</p>
-                  </div>
+              </div>
+              <div class="col col-lg-4 col-12">
+                <div class="info-block category flipInY active wow" data-wow-duration="1000ms" data-wow-delay="800ms" data-wow-offset="100">
+                  <div class="icon"></div>
+                  <h3>Körkortstillstånd</h3>
+                  <p>Hos Transportstyrelsen kan du ansöka om körkortstillstånd för AM, A1, A2, A, B, BE och traktorkort.</p><a class="btn" href="https://etjanst.transportstyrelsen.se/extweb/kktillstgrI" target="_blank">Besök webbplatsen</a>
                 </div>
-                <div class="col col-lg-4 col-12">
-                  <div class="info-block license flipInY wow" data-wow-duration="1000ms" data-wow-delay="300ms" data-wow-offset="100">
-                    <div class="icon spanga"></div>
-                    <h3>Spånga</h3>
-                    <p>Spånga är samlingsnamnet för stadsdelarna inom Spånga-Tensta stadsdelsområde i Västerort inom Stockholms kommun. Spånga har många bra övningsområden för nybörjare. Trafikområdet erbjuder stora körfält med många trafikljuskorsningar.</p>
-                  </div>
+              </div>
+              <div class="col col-lg-4 col-12">
+                <div class="info-block testing flipInY active wow" data-wow-duration="1000ms" data-wow-delay="300ms" data-wow-offset="100">
+                  <div class="icon"></div>
+                  <h3>Boka förarprov</h3>
+                  <p>I tjänsten Boka förarprov hos Trafikverket kan du boka och avboka prov för alla körkortsbehörigheter.</p><a class="btn" href="https://fp.trafikverket.se/Boka/#/" target="_blank">Besök webbplatsen</a>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-        <!-- start MY MOVEMENT section-->
-        <section class="b_section traffic">
+        </div>
+        <div class="section-contact">
           <div class="container">
-            <h2 class="b_section_title">MITT I TRAFIKEN</h2>
-            <p class="b_section_subtitle">Att köra bil kräver kunskap och skicklighet. Därför har vi valt att öka förståelsen för vissa trafiksituationer med hjälp av Transportstyrelsens informationsfilmer</p>
-            <div class="b_section_content">
-              <div class="row">
-                <div class="col col-md-4 col-12"><img src="assets/images/auto1.png" alt="">
-                  <p>Ska man köra motsols? Vem har väjningsplikt? När ska man blinka i cirkulationsplatsen?</p>
-                </div>
-                <div class="col col-md-4 col-12"><img src="assets/images/auto2.png" alt="">
-                  <p>Vem är en gående? Vem är en fordonsförare? Bevakat eller obevakat övergångsställe?</p>
-                </div>
-                <div class="col col-md-4 col-12"><img src="assets/images/auto3.png" alt="">
-                  <p>Vem är cyklande? Vad är en cykelpassage? Vad är en cykelöverfart? Bevakad eller obevakad?</p>
-                </div>
-              </div>
-            </div>
+            <h2>Välkommen att kontakta oss</h2>
+            <p class="headline">Har du några frågor och funderingar kring körkort eller körpaket, vi hjälper dig gärna.</p>
+            <div class="flex flex-center social-area wow zoomIn" data-wow-duration="1000ms" data-wow-delay="200ms" data-wow-offset="100"><a href="https://www.facebook.com/www.vasterorttrafikskola.se" target="_blank" id="fb">
+                <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/icon-facebook.svg" alt="facebook Logo"></div>fb.com/intensivkurs</a><a href="mailto:intensivkurs@gmail.com" target="_blank" id="mail">
+                <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/icon-mail.svg" alt="mail Logo"></div>intensivkurs@gmail.com</a></div>
+            <form class="wow zoomIn" action="#" method="" data-wow-duration="1000ms" data-wow-delay="200ms" data-wow-offset="100">
+              <input type="text" name="name" placeholder="Namn">
+              <input type="email" name="email" placeholder="Email Adress">
+              <textarea placeholder="Skriv ditt meddelande här"></textarea>
+              <input class="btn-blue" type="submit" value="SKICKA">
+            </form>
           </div>
-        </section>
-        <!-- start MER INFORMATION section-->
-        <section class="b_section b_section-colored more-inform">
-          <div class="container">
-            <h2 class="b_section_title">Mer information</h2>
-            <p class="b_section_subtitle">Länkar till Transportstyrelsen & Trafikverket</p>
-            <div class="b_section_content">
-              <div class="row">
-                <div class="col col-lg-4 col-12">
-                  <div class="info-block license flipInY wow" data-wow-duration="1000ms" data-wow-delay="500ms" data-wow-offset="100">
-                    <div class="icon license"></div>
-                    <h3>Körkortsbehörigheter</h3>
-                    <p>I tabellen hos Transportstyrelsen kan du se vilken ålder som krävs för att du ska kunna ta körkort för de olika behörigheterna.</p><a class="btn" href="https://www.transportstyrelsen.se/sv/vagtrafik/Korkort/har-korkort/fordon-du-far-kora/" target="_blank">Besök webbplatsen</a>
-                  </div>
-                </div>
-                <div class="col col-lg-4 col-12">
-                  <div class="info-block license flipInY wow" data-wow-duration="1000ms" data-wow-delay="400ms" data-wow-offset="100">
-                    <div class="icon category"></div>
-                    <h3>Körkortstillstånd</h3>
-                    <p>Hos Transportstyrelsen kan du ansöka om körkortstillstånd för AM, A1, A2, A, B, BE och traktorkörkort.</p><a class="btn" href="https://etjanst.transportstyrelsen.se/extweb/kktillstgrI" target="_blank">Besök webbplatsen</a>
-                  </div>
-                </div>
-                <div class="col col-lg-4 col-12">
-                  <div class="info-block license flipInY wow" data-wow-duration="1000ms" data-wow-delay="300ms" data-wow-offset="100">
-                    <div class="icon testing"></div>
-                    <h3>Boka förarprov</h3>
-                    <p>I tjänsten Boka förarprov hos Trafikverket kan du boka och avboka prov för alla körkortsbehörigheter.</p><a class="btn" href="https://fp.trafikverket.se/Boka/#/" target="_blank">Besök webbplatsen</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- start CONTACTS section-->
-        <section class="b_section section-contact">
-          <div class="container">
-            <h2 class="b_section_title">Välkommen att kontakta oss</h2>
-            <p class="b_section_subtitle">Kontakta oss gärna vid frågor om körkort, övningspaket eller övriga tjänster.</p>
-            <div class="b_section_content">
-              <ul class="social-area wow zoomIn" data-wow-duration="1000ms" data-wow-delay="200ms" data-wow-offset="100">
-                <li>
-                  <!-- facebook--><a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank">
-                    <div class="icon"><img class="svg" src="assets/images/icon-facebook.svg" alt="facebook Logo"></div><span>fb.com/www.vasterorttrafikskola.se</span></a>
-                </li>
-                <li>
-                  <!-- mail--><a href="mailto:info@vasterorttrafikskola.se " target="_blank">
-                    <div class="icon"><img class="svg" src="assets/images/icon-mail.svg" alt="mail Logo"></div><span>info@vasterorttrafikskola.se </span></a>
-                </li>
-                <li>
-                  <!-- insta--><a href="https://www.instagram.com/vasterorttrafikskola/" target="_blank">
-                    <div class="icon"><img class="svg" src="assets/images/insta_normal.svg" alt="mail Logo"></div><span>vasterorttrafikskola</span></a>
-                </li>
-                <li>
-                  <!-- phone--><a href="tel:0853330101" target="_blank">
-                    <div class="icon"><img class="svg" src="assets/images/phone_normal.svg" alt="mail Logo"></div><span>08-533 301 01</span></a>
-                </li>
-              </ul>
-              <form class="wow zoomIn" action="#" method="" data-wow-duration="1000ms" data-wow-delay="200ms" data-wow-offset="100">
-                <div class="form-group">
-                  <input type="text" name="name" placeholder="Namn" required>
-                  <div class="help-block"></div>
-                </div>
-                <div class="form-group">
-                  <input type="tel" name="tel" placeholder="Telefonnummer" required pattern="^[_A-z0-9]{1,}$">
-                  <div class="help-block"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" name="email" placeholder="Email Adress" required data-error="Email address is invalid">
-                  <div class="help-block"></div>
-                </div>
-                <textarea placeholder="Skriv ditt meddelande här"></textarea>
-                <input class="btn-blue" type="submit" value="SKICKA">
-              </form>
-            </div>
-          </div>
-        </section>
+        </div>
       </div>
-      <!-- start ADS modal-->
       <div class="modal fade" id="ads-modal" tabindex="-1" role="dialog" aria-labelledby="ads" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -482,20 +564,19 @@
               <p>SOM NY BESÖKARE GER VI DIG IDAG</p>
             </div>
             <div class="modal-body">
-              <h2><span>40%</span>RABATT</h2>
-              <p>PÅ DITT KÖP AV HANDLEARKURSEN</p>
+              <h2><span>10%</span>RABATT</h2>
+              <p>PÅ DITT FÖRSTA KÖP!</p>
               <form class="flex flex-between" action="#" method="">
-                <input type="email" name="email" placeholder="Skriv in ditt mobilnummer här">
+                <input type="email" name="email" placeholder="Skriv in din email adress här">
                 <input class="btn-blue" type="submit" value="SKICKA">
               </form>
             </div>
             <div class="modal-footer">
-              <p>Genom att fylla i ditt mobilnummer godkänner du samtidigt att du får ta del av Västerort trafikskolas kampanjer. Du kan närsomhels avregistrera dig från denna tjänst genom ett enkel sms (Avregistrera mig).</p>
+              <p>Genom att fylla i din email adress godkänner du samtidigt att du får ta en del av intensivkurs Stockholms nyhetsbrev och kampanjer. Du kan närsomhelst avregistrera dig från nyhetsbrevet.</p>
             </div>
           </div>
         </div>
       </div>
-      <!-- start FORM modal-->
       <div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="form" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -506,18 +587,9 @@
             </div>
             <div class="modal-body">
               <form action="#" method="">
-                <div class="form-group">
-                  <input type="text" name="name" placeholder="Namn" required>
-                  <div class="help-block"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" name="email" placeholder="Email Adress" required data-error="Email address is invalid">
-                  <div class="help-block"></div>
-                </div>
-                <div class="form-group">
-                  <input type="text" name="phone" placeholder="Telefonnummer" required pattern="^[_A-z0-9]{1,}$">
-                  <div class="help-block"></div>
-                </div>
+                <input type="text" name="name" placeholder="Namn">
+                <input type="email" name="email" placeholder="Email Adress">
+                <input type="text" name="phone" placeholder="Telefonnummer">
                 <textarea type="text" name="message" placeholder="Meddelande"></textarea>
                 <input class="btn-blue" type="submit" value="SKICKA">
               </form>
@@ -526,29 +598,20 @@
           </div>
         </div>
       </div>
-      <!-- start PACKET modal-->
       <div class="modal fade" id="packet-modal" tabindex="-1" role="dialog" aria-labelledby="form" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <button class="close" type="button" data-dismiss="modal"></button>
               <h4 class="modal-title">{{namePacket}} ({{pricePacket}})</h4>
+              <p>Vi stödjer kvalitet och miljömärkning för att stärka konsumenterna inför ett köpbeslut.</p>
             </div>
             <div class="modal-body">
               <form action="http://www.intensivkursstockholm.se/front/users/package_information" method="post">
                 <input type="hidden" name="package_type" v-model="pricePacket" readonly="true">
-                <div class="form-group">
-                  <input type="text" name="name" placeholder="Namn" required>
-                  <div class="help-block"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" name="email" placeholder="Email Adress" required data-error="Email address is invalid">
-                  <div class="help-block"></div>
-                </div>
-                <div class="form-group">
-                  <input type="text" name="phone" placeholder="Telefonnummer" required pattern="^[_A-z0-9]{1,}$">
-                  <div class="help-block"></div>
-                </div>
+                <input type="text" name="name" placeholder="Namn">
+                <input type="email" name="email" placeholder="Email Adress">
+                <input type="text" name="phone" placeholder="Telefonnummber">
                 <input type="text" name="code" placeholder="Rabattkod">
                 <input class="btn-blue" type="submit" value="SKICKA">
               </form>
@@ -557,7 +620,6 @@
           </div>
         </div>
       </div>
-      <!-- start LOADER-->
       <div class="loader bounceOutRight">
         <div class="icon"></div>
       </div>

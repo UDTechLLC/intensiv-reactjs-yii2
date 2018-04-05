@@ -10,6 +10,16 @@ $(function(){
         }, 10000);
     }
 
+    // if($('.section select').length){
+     //    $('.section select').select2({
+     //        minimumResultsForSearch: Infinity
+     //    });
+	// }
+
+    $('select').on('select2:open', function(e){
+        $('.select2-results__options').scrollbar().parent().addClass('scrollbar-inner');
+    });
+
     //As you scroll, record the scrolltop position in global variable
     let scrollTopPosition = 0;
     let lastKnownScrollTopPosition = 0;
@@ -63,56 +73,6 @@ $(function(){
         }, 'xml');
     });
 
-    // var options = {
-    //     feedbackIcons: {
-    //         valid: 'glyphicon glyphicon-ok',
-    //         invalid: 'glyphicon glyphicon-remove',
-    //         validating: 'glyphicon glyphicon-refresh'
-    //     },
-    //     fields: {
-    //         'name': {
-    //             validators: {
-    //                 notEmpty: {
-    //                     message: 'Please enter your name.'
-    //                 }
-    //             }
-    //         },
-    //         'code': {
-    //             validators: {
-    //                 notEmpty: {
-    //                     message: 'Please enter your code.'
-    //                 }
-    //             }
-    //         },
-    //         'billing_email': {
-    //             validators: {
-    //                 emailAddress: {
-    //                     enabled: false
-    //                 },
-    //                 regexp: {
-    //                     enabled: false,
-    //                     regexp: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i,
-    //                     message: 'Please enter a valid email address'
-    //                 },
-    //                 notEmpty: {
-    //                     message: 'Please enter your email.'
-    //                 }
-    //             }
-    //         },
-    //         'phone': {
-    //             validators: {
-    //                 notEmpty: {
-    //                     message: 'Please enter your phone.'
-    //                 }
-    //             }
-    //         }
-    //     }
-    // };
-    $('#packet-modal form').validator();
-    $('#form-modal form').validator();
-    $('#ads-modal form').validator();
-    $('.section-contact form').validator();
-
 });
 
 function setCookie(key, value) {
@@ -126,99 +86,70 @@ function getCookie(key) {
     return keyValue ? keyValue[2] : null;
 }
 
-/*create graph config school view*/
-function createConfig(details, data) {
-    return {
-        type: 'line',
-        data: {
-            labels: ['Kundsupport', 'Lärarlegitimation', 'Pedagogik', 'Miljöfordon', 'Rekommendation'],
-            datasets: [{
-                label: '',
-                steppedLine: details.steppedLine,
-                data: data,
-                borderColor: details.color,
-                borderWidth: 9,
-                pointBackgroundColor: '#0eb4fc',
-                pointRadius: 8,
-                pointHoverRadius: 8,
-                pointBorderWidth: 6,
-                pointHoverBorderWidth: 6,
-                pointBorderColor: '#274f7a',
-                fill: false,
-            }]
-        },
-        options: {
-            responsive: false,
-            maintainAspectRatio:false,
-            title: {
-                display:false,
-                text: false,
-            },
-            scales: {
-                xAxes: [{
-                    display: false
-                }]
-            },
-            layout: {
-                padding: {
-                    top: 15,
-                    bottom:15,
-                    right:15
-                }
-            },
-        }
-    };
-}
-function createGraph(data) {
-    var container = document.querySelector('.graph');
+/*select 2 component*/
+Vue.component('select2', {
+    props: ['options', 'value'],
+    template: '#select2-template',
+    mounted: function () {
+        let vm = this
+        $(this.$el)
+        // init select2
+            .select2({
+                data: this.options,
+                minimumResultsForSearch: Infinity
+            })
+            .val('placeholder')
+            .trigger('change')
+            // emit event on change.
+            .on('change', function () {
+                vm.$emit('input', this.value)
+            })
+    },
+    // watch: {
+    //     value: function (value) {
+    //         // update value
+    //         $(this.$el).val(value).trigger('change');
+    //     },
+    //     options: function (options) {
+    //         // update options
+    //         $(this.$el).empty().select2({ data: options });
+    //     }
+    // },
+    destroyed: function () {
+        $(this.$el).off().select2('destroy')
+    }
+});
 
-    var steppedLineSettings = [{
-        steppedLine: "",
-        label: "",
-        color: '#028fcc'
-    }];
-
-    steppedLineSettings.forEach(function(details) {
-        var div = document.createElement('div');
-        div.classList.add('chart-container');
-
-        var canvas = document.createElement('canvas');
-        div.appendChild(canvas);
-        container.appendChild(div);
-
-        var ctx = canvas.getContext('2d');
-        var config = createConfig(details, data);
-        Chart.defaults.global.legend.display = false;
-        new Chart(ctx, config);
-    });
-};
 
 let app = new Vue({
     el: '#app',
     data: {
-        latitudeMap: 59.36382554928936,
-        longitudeMap: 17.87141859406278,
+        domain: 'https://projects.udtech.co/intensivkurs/',
+        latitudeMap: 59.339783,
+        longitudeMap: 17.939713,
+        mapLocate: null,
+        markersList: [],
+        pickedLicense: '',
+        schools: null,
+        listSchools: null,
+        listPlaces: null,
         schoolViewStatus: false,
-        markersList: '',
+        selectSchool: '',
         selectPlace: '',
         schoolView: '',
         closeZoomMode: true,
         namePacket: '',
         pricePacket: '',
-        packId: 0,
-
     },
     mounted: function () {
 
         if($(window).width() < 960){
-            $('.header #map-layout').height($(window).height());
-            this.latitudeMap = "59.3625133836089";
-            this.longitudeMap = "17.8686666476135";
+            $('.header .map').height($(window).height());
         }
         let myLatlng = new google.maps.LatLng(this.latitudeMap, this.longitudeMap);
         let map = new google.maps.Map(document.getElementById('map-layout'), {
             center: myLatlng,
-            zoom: 15,
+            zoom: 9,
             styles: [
                 {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
                 {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
@@ -302,39 +233,32 @@ let app = new Vue({
         });
 
         new WOW({mobile: false}).init();
+        this.mapLocate = map;
 
-        createGraph( [
-            85,
-            100,
-            95,
-            90,
-            95
-        ]);
-        var infowindow = new google.maps.InfoWindow();
-
-        this.markersList = [{
-            "latitude": "59.36171969999999",
-            "longitude": "17.865397499999972",
-            "content": "08-533 301 01"
-        },
-        {
-            "latitude": "59.36382554928936",
-            "longitude": "17.87141859406278",
-            "content": "Mötesplats"
-        }];
-
-        this.markersList.forEach((item) => {
-            const position = new google.maps.LatLng(item.latitude, item.longitude);
-            const marker = new google.maps.Marker({
-                position,
-                map,
-                content: item.content,
-                animation: google.maps.Animation.DROP,
-                icon: 'https://projects.udtech.co/intensivkurs/assets/images/map-marker.png'
+        fetch(this.domain + "schools.json").then(r => r.json()).then(json => {
+            this.schools = json;
+            this.listSchools = this.schools;
+            this.listPlaces = JSON.parse(JSON.stringify(json));
+            this.listPlaces.sort(function(a, b){
+                if(a.city < b.city) return -1;
+                if(a.city > b.city) return 1;
+                return 0;
             });
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.setContent(this.content);
-                infowindow.open(map, this);
+
+            this.schools.forEach((school) => {
+                const position = new google.maps.LatLng(school.latitude, school.longitude);
+                const marker = new google.maps.Marker({
+                    position,
+                    map,
+                    animation: google.maps.Animation.DROP,
+                    schoolId: school.id,
+                    license: school.license,
+                    icon: app.domain + 'assets/images/map-marker.png'
+                });
+                app.markersList.push(marker);
+                google.maps.event.addListener(marker, 'click', function(event){
+                    marker.setIcon(app.domain + 'assets/images/marker-active.png');
+                });
             });
         });
 
@@ -345,27 +269,44 @@ let app = new Vue({
             }, 300);
         });
 
-        google.maps.event.addListener(map, 'dragend', function () {
-            console.log(this.getCenter());
-            console.log(this.getCenter().lat() + ' ' + this.getCenter().lng());
-        });
-
     },
     methods:{
-        openModalPacket(name, price, pack_id){
+        openModalPacket(name, price){
             if(name != '' && price != ''){
                 this.namePacket = name;
                 this.pricePacket = price;
-                this.packId = pack_id;
             }
         },
 
-        openSchoolView(){
-            this.schoolViewStatus = true;
-        },
-        closeSchoolView(){
-            this.schoolViewStatus = false
-        },
+
+        smoothZoomMap(map, level, cnt, mode) {
+            //alert('Count: ' + cnt + 'and Max: ' + level);
+
+            if(mode == true) {
+
+                if (cnt >= level) {
+                    return;
+                }
+                else {
+                    var z = google.maps.event.addListener(map, 'zoom_changed', function(event){
+                        google.maps.event.removeListener(z);
+                        app.smoothZoomMap(map, level, cnt + 1, true);
+                    });
+                    setTimeout(function(){map.setZoom(cnt)}, 80);
+                }
+            } else {
+                if (cnt <= level) {
+                    return;
+                }
+                else {
+                    var z = google.maps.event.addListener(map, 'zoom_changed', function(event) {
+                        google.maps.event.removeListener(z);
+                        app.smoothZoomMap(map, level, cnt - 1, false);
+                    });
+                    setTimeout(function(){map.setZoom(cnt)}, 80);
+                }
+            }
+        }
     }
 });
 

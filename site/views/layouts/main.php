@@ -43,6 +43,7 @@ AppAsset::register($this);
     if (Yii::$app->user->isGuest) {
         $items[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
+        $items[] = ['label' => 'Schools', 'url' => ['/admin/schools']];
         $items[] = ['label' => 'Packages', 'url' => ['/admin/packages']];
         $items[] = ['label' => 'Package Details', 'url' => ['/admin/package-details']];
         $items[] = ['label' => 'Contacts', 'url' => ['/admin/contact-form']];
