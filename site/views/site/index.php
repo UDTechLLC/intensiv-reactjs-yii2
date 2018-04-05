@@ -30,38 +30,38 @@
                         <h3>Fordonsbehörighet</h3>
                         <div class="section flex">
                             <div class="button-license b">
-                                <input type="radio" name="license" value="b" v-model="pickedLicense" v-on:change="changeLicense">
+                                <input type="radio" name="license" value="b">
                                 <div class="wrap-btn">
                                     <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/b.svg" alt="B Logo"></div>B
                                 </div>
                                 <div class="dropdown animated fadeIn">
-                                    <input type="radio" name="license" value="ub" id="license-ub" v-model="pickedLicense" v-on:change="changeLicense">
+                                    <input type="radio" name="license" value="ub" id="license-ub">
                                     <label for="license-ub"><span>UB</span>Bil + Släpvagn (Max 4.25 ton)</label>
-                                    <input type="radio" name="license" value="be" id="license-be" v-model="pickedLicense" v-on:change="changeLicense">
+                                    <input type="radio" name="license" value="be" id="license-be">
                                     <label for="license-be"><span>BE</span>Tung släpvagn (Max 3.5 ton)</label>
                                 </div>
                             </div>
                             <div class="button-license a">
-                                <input type="radio" name="license" value="a" v-model="pickedLicense" v-on:change="changeLicense">
+                                <input type="radio" name="license" value="a">
                                 <div class="wrap-btn">
                                     <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/a.svg" alt="A Logo"></div>A
                                 </div>
                                 <div class="dropdown animated fadeIn">
-                                    <input type="radio" name="license" value="a1" id="license-a1" v-model="pickedLicense" v-on:change="changeLicense">
+                                    <input type="radio" name="license" value="a1" id="license-a1">
                                     <label for="license-a1"><span>A1</span>Lätt motorcykel (Max 11 Kw)</label>
-                                    <input type="radio" name="license" value="a2" id="license-a2" v-model="pickedLicense" v-on:change="changeLicense">
+                                    <input type="radio" name="license" value="a2" id="license-a2">
                                     <label for="license-a2"><span>A2</span>Mellanstor motorcykel (Max 35 Kw)</label>
                                 </div>
                             </div>
                             <div class="button-license am">
-                                <input type="radio" name="license" value="am" v-model="pickedLicense" v-on:change="changeLicense">
+                                <input type="radio" name="license" value="am">
                                 <div class="wrap-btn">
                                     <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/am.svg" alt="AM Logo"></div>AM
                                 </div>
                                 <div class="dropdown animated fadeIn">
-                                    <input type="radio" name="license" value="am-45" id="license-am-1" v-model="pickedLicense" v-on:change="changeLicense">
+                                    <input type="radio" name="license" value="am-45" id="license-am-1">
                                     <label for="license-am-1"><span>Klass 1</span>, Körkort 45 km/h</label>
-                                    <input type="radio" name="license" value="am-25" id="license-am-2" v-model="pickedLicense" v-on:change="changeLicense">
+                                    <input type="radio" name="license" value="am-25" id="license-am-2">
                                     <label for="license-am-2"><span>Klass 2</span>, Förarbevis 25 km/h  </label>
                                 </div>
                             </div>
@@ -70,13 +70,12 @@
                     <div class="home">
                         <h3>Medlem</h3>
                         <div class="section">
-                            <select2 class="select-contain" name="search_area_map" v-model="selectPlace">
+                            <select2 class="select-contain" name="search_area_map">
                                 <option disabled selected value="placeholder">Välj ort</option>
-                                <option v-for="place in listPlaces" :value="place.id">{{place.city}}</option>
+                                <!--<option v-for="place in listPlaces" :value="place.id">{{place.city}}</option>-->
                             </select2>
-                            <select2 class="select-contain" name="search_name" v-model="selectSchool">
+                            <select2 class="select-contain" name="search_name">
                                 <option disabled selected value="placeholder">Välj trafikskola</option>
-                                <option v-for="school in listSchools" :value="school.id">{{school.name}}</option>
                             </select2>
                             <script type="text/x-template" id="select2-template">
                                 <select>
@@ -441,6 +440,7 @@
     </div>
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcQed-XICEOIuLN8MHRzJ2GtX6D8g8IXs"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.2.0/vue-resource.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="assets/js/libs.js"></script>
 <script src="https://unpkg.com/vue@2.4.2/dist/vue.js"></script>

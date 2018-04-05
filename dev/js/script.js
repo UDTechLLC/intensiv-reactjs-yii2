@@ -120,7 +120,7 @@ Vue.component('select2', {
     }
 });
 
-
+Vue.use(VueResource);
 let app = new Vue({
     el: '#app',
     data: {
@@ -129,7 +129,6 @@ let app = new Vue({
         longitudeMap: 17.939713,
         mapLocate: null,
         markersList: [],
-        pickedLicense: '',
         schools: null,
         listSchools: null,
         listPlaces: null,
@@ -235,32 +234,31 @@ let app = new Vue({
         new WOW({mobile: false}).init();
         this.mapLocate = map;
 
-        fetch(this.domain + "schools.json").then(r => r.json()).then(json => {
-            this.schools = json;
-            this.listSchools = this.schools;
-            this.listPlaces = JSON.parse(JSON.stringify(json));
-            this.listPlaces.sort(function(a, b){
-                if(a.city < b.city) return -1;
-                if(a.city > b.city) return 1;
-                return 0;
-            });
-
-            this.schools.forEach((school) => {
-                const position = new google.maps.LatLng(school.latitude, school.longitude);
-                const marker = new google.maps.Marker({
-                    position,
-                    map,
-                    animation: google.maps.Animation.DROP,
-                    schoolId: school.id,
-                    license: school.license,
-                    icon: app.domain + 'assets/images/map-marker.png'
-                });
-                app.markersList.push(marker);
-                google.maps.event.addListener(marker, 'click', function(event){
-                    marker.setIcon(app.domain + 'assets/images/marker-active.png');
-                });
-            });
-        });
+        // fetch(this.domain + "schools.json").then(r => r.json()).then(json => {
+        //     this.schools = json;
+        //     this.listSchools = this.schools;
+        //     this.listPlaces = JSON.parse(JSON.stringify(json));
+        //     this.listPlaces.sort(function(a, b){
+        //         if(a.city < b.city) return -1;
+        //         if(a.city > b.city) return 1;
+        //         return 0;
+        //     });
+        //
+        //     this.schools.forEach((school) => {
+        //         const position = new google.maps.LatLng(school.latitude, school.longitude);
+        //         const marker = new google.maps.Marker({
+        //             position,
+        //             map,
+        //             animation: google.maps.Animation.DROP,
+        //             schoolId: school.id,
+        //             icon: app.domain + 'assets/images/map-marker.png'
+        //         });
+        //         app.markersList.push(marker);
+        //         google.maps.event.addListener(marker, 'click', function(event){
+        //             marker.setIcon(app.domain + 'assets/images/marker-active.png');
+        //         });
+        //     });
+        // });
 
         google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
             $('.loader').addClass('animated');
@@ -268,6 +266,14 @@ let app = new Vue({
                 $('html').removeClass('loading');
             }, 300);
         });
+
+      // this.$http.get('/web/site/school-list').then((response) => {
+      //   //this.listSchools = response.data.message;
+      //   console.log(response);
+      // });
+      this.$http.get('/web/site/school-list').then((resp) => {
+        console.log(JSON.stringify(resp.data));
+      });
 
     },
     methods:{
