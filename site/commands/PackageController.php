@@ -14,7 +14,7 @@ class PackageController extends Controller
         $data = [
             [
                 'id' => 1,
-                'name' => '',
+                'name' => '-',
                 'description' => '<ul>
                         <li></li>
                         <li></li>
@@ -90,7 +90,7 @@ class PackageController extends Controller
 
             [
                 'id' => 5,
-                'name' => '',
+                'name' => '-',
                 'description' => '<ul>
                         <li>Riskettan</li>
                         <li>Risktvåan</li>
@@ -166,7 +166,7 @@ class PackageController extends Controller
 
             [
                 'id' => 9,
-                'name' => '',
+                'name' => '-',
                 'description' => '<ul>
                         <li></li>
                         <li></li>
@@ -184,7 +184,7 @@ class PackageController extends Controller
             ],
             [
                 'id' => 10,
-                'name' => '',
+                'name' => '-',
                 'description' => '<ul>
                         <li></li>
                         <li></li>

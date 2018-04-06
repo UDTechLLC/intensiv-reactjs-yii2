@@ -10,6 +10,8 @@
 
   .nav-tabs
     margin-bottom: 13px
+    display: flex
+    justify-content: center
     >li
       float: left
       margin-bottom: -1px
@@ -69,6 +71,10 @@
       &.active
         display: block
         visibility: visible
+        .row
+          width: 100%
+          .btn-small
+            margin: 11px auto 15px !important
 
     @media (max-width: 1120px)
       .col
@@ -92,7 +98,21 @@
       border-radius: $border-radius-main
       border: 2px dashed $borderColor
       padding-bottom: 15px
+      overflow: hidden
       transition: all 0.35s ease-in
+
+      .sale-percent
+        display: block
+        color: white
+        background: red
+        position: absolute
+        transform: rotate(45deg)
+        text-align: center
+        line-height: 30px
+        width: 150px
+        right: -40px
+        top: 20px
+
       @media (max-width: 1120px)
         padding: 0 7px
 
@@ -135,6 +155,18 @@
         font-weight: $semi-bold
         line-height: 30px
         margin-bottom: 5px
+        .cross
+          padding-right: 15px
+          position: relative
+          &:before
+            height: 1px
+            display: block
+            content: ""
+            position: absolute
+            top: 9px
+            left: 0
+            width: 90%
+            background: red
 
       ul
         padding-left: 9px

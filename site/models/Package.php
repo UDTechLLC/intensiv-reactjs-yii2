@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "{{%package}}".
@@ -20,6 +21,9 @@ use Yii;
  * @property int $required_test_lesson
  *
  * @property string $price_formatted
+ * @property string $sale_price_formatted
+ * @property string $full_price_formatted
+ * @property string $sale_percent_formatted
  * @property string $display_name
  */
 class Package extends \yii\db\ActiveRecord
@@ -104,7 +108,7 @@ class Package extends \yii\db\ActiveRecord
         );
     }
 
-    public function getSalePrice_formatted()
+    public function getSale_price_formatted()
     {
         return str_replace(
             [
@@ -116,8 +120,21 @@ class Package extends \yii\db\ActiveRecord
         );
     }
 
-    public function getSalePercent_formatted()
+    public function getFull_price_formatted()
     {
-        return $this->sale_percent . '%';
+        $html = '';
+        if($this->sale_price){
+            $html = Html::tag('span', $this->price_formatted, ['class' => 'cross']) . $this->sale_price_formatted;
+        }else{
+            if($this->price){
+                $html = $this->price_formatted;
+            }
+        }
+        return $html;
+    }
+
+    public function getSale_percent_formatted()
+    {
+        return $this->sale_percent ? Html::tag('span', $this->sale_percent . '%', ['class' => 'sale-percent']) : '';
     }
 }

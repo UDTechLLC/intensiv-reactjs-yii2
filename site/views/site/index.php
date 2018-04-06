@@ -60,9 +60,9 @@
                                 </div>
                                 <div class="dropdown animated fadeIn">
                                     <input type="radio" name="license" value="am-1" id="license-am-1">
-                                    <label for="license-am-1"><span>Klass 1</span>, Körkort 45 km/h</label>
+                                    <label for="license-am-1"><span>Klass 1</span> Körkort 45 km/h</label>
                                     <input type="radio" name="license" value="am-2" id="license-am-2">
-                                    <label for="license-am-2"><span>Klass 2</span>, Förarbevis 25 km/h  </label>
+                                    <label for="license-am-2"><span>Klass 2</span> Förarbevis 25 km/h  </label>
                                 </div>
                             </div>
                         </div>
@@ -83,12 +83,14 @@
                                     <slot></slot>
                                 </select>
                             </script>
-                            <div class="form-group">
-                                <input type="text" name="phone" placeholder="Lämna ditt mobilnummer" required pattern="^[_A-z0-9]{1,}$">
-                                <div class="help-block"></div>
-                            </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <input type="text" name="phone" placeholder="Lämna ditt mobilnummer" required pattern="^[_A-z0-9]{1,}$">
+                        <div class="help-block"></div>
+                    </div>
+
                     <input class="btn-blue" type="submit" value="SKICKA INTRESSEANMÄLAN">
                 </form>
             </div>
@@ -128,9 +130,10 @@
                             foreach ($packList as $pack) { ?>
                             <div class="col col-md-3">
                                 <div class="card wow flipInY<?=$pack->id == 2 ? ' active' : '';?>" data-wow-duration="1000ms" data-wow-delay="600ms" data-wow-offset="100">
+                                    <?= $pack->sale_percent_formatted; ?>
                                     <div class="icon <?=$pack->image;?>"></div>
                                     <h3><?=$pack->name;?></h3>
-                                    <div class="price"><?=$pack->price_formatted;?></div>
+                                    <div class="price"><?=$pack->full_price_formatted;?></div>
                                     <?=$pack->description;?>
                                     <?php if (!empty($pack->start_date)) { ?>
                                     <div class="date_time">
