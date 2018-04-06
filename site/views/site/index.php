@@ -161,75 +161,45 @@
                 </div>
             </div>
         </section>
-        <!-- start school inform section-->
-        <section class="b_section regions b_section-colored">
+        <div class="section-video">
             <div class="container">
-                <h2 class="b_section_title">Välkommen till västerort trafikskola</h2>
-                <p class="b_section_subtitle">Här är våra övningsområden i Västerort</p>
-                <div class="b_section_content">
-                    <div class="row">
-                        <div class="col col-lg-4 col-12">
-                            <div class="info-block license flipInY wow" data-wow-duration="1000ms" data-wow-delay="500ms" data-wow-offset="100">
-                                <div class="icon hasselby"></div>
-                                <h3>Hässelby</h3>
-                                <p>Hässelby är ett område i Västerort i Stockholms kommun, vilket omfattar stadsdelarna Hässelby gård, Hässelby strand och Hässelby villastad. Stadsdelen har många bra övningsområden för tätort, cirkulationsplatser och vägar med dubbelkörfält.</p>
+                <h2>Välj en trafikskola nära dig som erbjuder en hög standard på utbildning och värnar om vår miljö</h2>
+                <div class="row">
+                    <div class="col col-md-6 col-sm-12 col-xs-12">
+                        <div class="video-container wow fadeInUp" data-wow-delay="800ms" data-wow-offset="100">
+                            <iframe src="https://www.youtube.com/embed/QafXcUBkOTQ?enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer" frameborder="0" allowfullscreen="true" showinfo="0" controls="0"></iframe>
+                            <div class="description flex flex-vertical-center flex-between">
+                                <p>Vägen till körkort</p>
+                                <div class="play-btn"></div>
                             </div>
                         </div>
-                        <div class="col col-lg-4 col-12">
-                            <div class="info-block license flipInY wow" data-wow-duration="1000ms" data-wow-delay="400ms" data-wow-offset="100">
-                                <div class="icon bromma"></div>
-                                <h3>Bromma</h3>
-                                <p>Bromma är en närförort inom Västerort i Stockholms kommun med ett läge intill Stockholms innerstad. Stadsdelen är känd för att ha en komplex trafik med högt tempo. Trafikområdet är utmärkt för att testa kunskaper och förmågor.</p>
-                            </div>
-                        </div>
-                        <div class="col col-lg-4 col-12">
-                            <div class="info-block license flipInY wow" data-wow-duration="1000ms" data-wow-delay="300ms" data-wow-offset="100">
-                                <div class="icon spanga"></div>
-                                <h3>Spånga</h3>
-                                <p>Spånga är samlingsnamnet för stadsdelarna inom Spånga-Tensta stadsdelsområde i Västerort inom Stockholms kommun. Spånga har många bra övningsområden för nybörjare. Trafikområdet erbjuder stora körfält med många trafikljuskorsningar.</p>
+                    </div>
+                    <div class="col col-md-6 col-sm-12 col-12">
+                        <div class="video-container wow fadeInUp" data-wow-delay="500ms" data-wow-offset="100">
+                            <iframe src="https://www.youtube.com/embed/tshiDexOecE?enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer" frameborder="0" allowfullscreen="true"></iframe>
+                            <div class="description flex flex-vertical-center flex-between">
+                                <p>Vägen till körkort</p>
+                                <div class="play-btn"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- start MY MOVEMENT section-->
-        <section class="b_section traffic">
+        </div>
+
+        <section class="text-area plans">
             <div class="container">
-                <h2 class="b_section_title">MITT I TRAFIKEN</h2>
-                <p class="b_section_subtitle">Att köra bil kräver kunskap och skicklighet. Därför har vi valt att öka förståelsen för vissa trafiksituationer med hjälp av Transportstyrelsens informationsfilmer</p>
-                <div class="b_section_content">
-                    <div class="row">
-                        <div class="col col-md-4 col-12">
-                            <div style="max-width: 370px; max-height: 256px">
-                            <iframe width="100%" height="100%" frameBorder="0"
-                                    src="https://www.youtube.com/embed/M75DVzrVlZs">
-                            </iframe>
-                            </div>
-                            <p>Ska man köra motsols? Vem har väjningsplikt? När ska man blinka i cirkulationsplatsen?</p>
-                        </div>
-                        <div class="col col-md-4 col-12">
-                            <div style="max-width: 370px; max-height: 256px">
-                            <iframe width="100%" height="100%" frameBorder="0"
-                                    src="https://www.youtube.com/embed/pe2lq1ZZ4Sk">
-                            </iframe>
-                            </div>
-                            <p>Vem är en gående? Vem är en fordonsförare? Bevakat eller obevakat övergångsställe?</p>
-                        </div>
-                        <div class="col col-md-4 col-12">
-                            <div style="max-width: 370px; max-height: 256px">
-                            <iframe width="100%" height="100%" frameBorder="0"
-                                    src="https://www.youtube.com/embed/VLVQIO9aIqM">
-                            </iframe>
-                            </div>
-                            <p>Vem är cyklande? Vad är en cykelpassage? Vad är en cykelöverfart? Bevakad eller obevakad?</p>
-                        </div>
-                    </div>
-                </div>
+                <h2>Upptäck nya möjligheter!</h2>
+                <p>På vår webbplats intensivkursstockholm.se får du möjligheten att få ett nytt erbjudande till ett kraftigt rabatterat pris på olika körpaket från topptrafikskolor nära dig. Vi gör ständigt vårt bästa för att kunna erbjuda dig oslagbara priser inom körlektioner och kurser, allt för att kunna erbjuda dig kvalitet till ett riktigt bra pris.</p>
+                <h2>Endast erbjudanden som vi själva gillar!</h2>
+                <p>Vi på Intensivkurs Stockholm vet att priset är endast en del av äventyret - därför erbjuder vi dig bara rabatter hos trafikskolor som vi själva skulle uppskatta. Du som köper ett körpaket hos oss ska känna dig trygg i att du alltid får hög kvalitet till ett oerhört bra pris.</p>
+                <h2>Pålitliga trafikskolor!</h2>
+                <p>Det är viktigt för oss på intensivkurs Stockholm att du som kund alltid ska vara nöjd med dina erbjudanden och köp så att du vill komma tillbaka till oss och hitta nya möjligheter. Därför strävar vi alltid efter att du ska kunna få en möjlighet att prova och jämföra innan en kraftig satsning.</p>
+
             </div>
         </section>
         <!-- start MER INFORMATION section-->
-        <section class="b_section b_section-colored more-inform">
+        <section class="b_section b_section-colored more-inform section-additional-info">
             <div class="container">
                 <h2 class="b_section_title">Mer information</h2>
                 <p class="b_section_subtitle">Länkar till Transportstyrelsen & Trafikverket</p>
