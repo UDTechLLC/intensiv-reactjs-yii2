@@ -14,7 +14,7 @@ class Sections
         return [
             self::INTENSIV_PAKET => 'Intensivpaket',
             self::OVNINGS_PAKET => 'Övningspaket',
-            self::OVNINGS_PAKET => 'Studentpaket',
+            self::STUDENT_PAKET => 'Studentpaket',
 //            self::OVRIGA_TJANSTER => 'Övriga tjänster',
 //            self::KURSES => 'Kurser',
         ];

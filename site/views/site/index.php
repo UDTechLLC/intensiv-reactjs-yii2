@@ -72,7 +72,7 @@
                         <div class="section">
                             <select2 class="select-contain" name="search_area_map">
                                 <option disabled selected value="placeholder">Välj ort</option>
-                                <!--<option v-for="place in listPlaces" :value="place.id">{{place.city}}</option>-->
+                                <option v-for="place in listPlaces" :value="place.city">{{place.city}}</option>
                             </select2>
                             <select2 class="select-contain" name="search_name">
                                 <option disabled selected value="placeholder">Välj trafikskola</option>
@@ -92,59 +92,6 @@
             <button class="close"><span class="icon"><img class="svg" src="assets/images/arrow-down.svg" alt="arrow"></span></button>
             <h2>Intensivkurs Stockholm</h2>
             <p class="description">Kvalitet och miljö TA-2017</p>
-            <div class="graph"></div>
-            <div class="table-statistic">
-                <div class="row">
-                    <div class="col col-sm-5">
-                        <p class="label">Kundsupport</p>
-                    </div>
-                    <div class="col col-sm-7">
-                        <div class="block-statistic">
-                            <div class="progress-bar support" style="width:85%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col col-sm-5">
-                        <p class="label">Lärarlegitimation</p>
-                    </div>
-                    <div class="col col-sm-7">
-                        <div class="block-statistic">
-                            <div class="progress-bar registrationTeacher" style="width:100%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col col-sm-5">
-                        <p class="label">Pedagogik</p>
-                    </div>
-                    <div class="col col-sm-7">
-                        <div class="block-statistic">
-                            <div class="progress-bar pedagogical" style="width:95%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col col-sm-5">
-                        <p class="label">Miljöfordon</p>
-                    </div>
-                    <div class="col col-sm-7">
-                        <div class="block-statistic">
-                            <div class="progress-bar cleanVehicles" style="width:90%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col col-sm-5">
-                        <p class="label">Rekommendation</p>
-                    </div>
-                    <div class="col col-sm-7">
-                        <div class="block-statistic">
-                            <div class="progress-bar recommendation" style="width:95%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="contact-info">
                 <div class="info-block location">Grimstagatan 160, 162 58 Vällingby</div>
                 <div class="info-block email">info@vasterorttrafikskola.se</div>
