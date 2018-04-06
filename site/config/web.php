@@ -57,6 +57,7 @@ $config = [
                 'admin/packages' => 'package/index',
                 'admin/packages/<action:\w>' => 'package/<action>',
                 'admin/schools' => 'school/index',
+                'admin/header-form' => 'header-form/index',
                 'admin/schools/<action:\w>' => 'school/<action>',
                 'admin/package-details' => 'package-detail/index',
                 'admin/package-details/<action:\w>' => 'package-detail/<action>',

@@ -124,21 +124,56 @@ Vue.use(VueResource);
 let app = new Vue({
     el: '#app',
     data: {
-        domain: 'https://projects.udtech.co/intensivkurs/',
         latitudeMap: 59.339783,
         longitudeMap: 17.939713,
         mapLocate: null,
         markersList: [],
         schools: null,
         listSchools: null,
-        listPlaces: null,
         schoolViewStatus: false,
         selectSchool: '',
         selectPlace: '',
         schoolView: '',
         closeZoomMode: true,
+        listPlaces: [
+          {'city': 'Botkyrka'},
+          {'city': 'Bromma'},
+          {'city': 'Danderyd'},
+          {'city': 'Ekerö'},
+          {'city': 'Farsta'},
+          {'city': 'Haninge'},
+          {'city': 'Huddinge'},
+          {'city': 'Järfälla'},
+          {'city': 'Kista'},
+          {'city': 'Kungsholmen'},
+          {'city': 'Lidingö'},
+          {'city': 'Nacka'},
+          {'city': 'Norrmalm'},
+          {'city': 'Salem'},
+          {'city': 'Sigtuna'},
+          {'city': 'Sollentuna'},
+          {'city': 'Solna'},
+          {'city': 'Södermalm'},
+          {'city': 'Sundbyberg'},
+          {'city': 'Tyresö'},
+          {'city': 'Täby'},
+          {'city': 'Upplands-Bro'},
+          {'city': 'Upplands Väsby'},
+          {'city': 'Vallentuna'},
+          {'city': 'Vaxholm'},
+          {'city': 'Vasastan'},
+          {'city': 'Vällingby'},
+          {'city': 'Värmdö'},
+          {'city': 'Östermalm'},
+        ],
+        listPackages: [
+          {'section': 'Intensivpaket'},
+          {'section': 'Övningspaket'},
+          {'section': 'Studentpaket'},
+        ],
         namePacket: '',
         pricePacket: '',
+        packId: 0,
     },
     mounted: function () {
 
@@ -234,53 +269,50 @@ let app = new Vue({
         new WOW({mobile: false}).init();
         this.mapLocate = map;
 
-        // fetch(this.domain + "schools.json").then(r => r.json()).then(json => {
-        //     this.schools = json;
-        //     this.listSchools = this.schools;
-        //     this.listPlaces = JSON.parse(JSON.stringify(json));
-        //     this.listPlaces.sort(function(a, b){
-        //         if(a.city < b.city) return -1;
-        //         if(a.city > b.city) return 1;
-        //         return 0;
-        //     });
-        //
-        //     this.schools.forEach((school) => {
-        //         const position = new google.maps.LatLng(school.latitude, school.longitude);
-        //         const marker = new google.maps.Marker({
-        //             position,
-        //             map,
-        //             animation: google.maps.Animation.DROP,
-        //             schoolId: school.id,
-        //             icon: app.domain + 'assets/images/map-marker.png'
-        //         });
-        //         app.markersList.push(marker);
-        //         google.maps.event.addListener(marker, 'click', function(event){
-        //             marker.setIcon(app.domain + 'assets/images/marker-active.png');
-        //         });
-        //     });
-        // });
-
         google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
             $('.loader').addClass('animated');
             setTimeout(function () {
                 $('html').removeClass('loading');
             }, 300);
         });
+        let activeMarker;
+        this.$http.get('/web/site/school-list').then((resp) => {
+          this.schools = resp.data.output;
+              const infoWindow = new google.maps.InfoWindow;
+              this.schools.forEach((school) => {
+                  const position = new google.maps.LatLng(school.lat, school.lng);
+                  const marker = new google.maps.Marker({
+                      position,
+                      map,
+                      animation: google.maps.Animation.DROP,
+                      title: school.title,
+                      icon: '/assets/images/map-marker.png'
+                  });
+                  app.markersList.push(marker);
+                  google.maps.event.addListener(marker, 'click', function(event){
 
-      // this.$http.get('/web/site/school-list').then((response) => {
-      //   //this.listSchools = response.data.message;
-      //   console.log(response);
-      // });
-      this.$http.get('/web/site/school-list').then((resp) => {
-        console.log(JSON.stringify(resp.data));
-      });
+                      infoWindow.setContent(school.info);
+                      infoWindow.open(map, marker);
+                      // check to see if activeMarker is set
+                      // if so, set the icon back to the default
+                      activeMarker && activeMarker.setIcon('/assets/images/map-marker.png');
+
+                      // set the icon for the clicked marker
+                      marker.setIcon('/assets/images/marker-active.png');
+
+                      // update the value of activeMarker
+                      activeMarker = marker;
+                  });
+              });
+        });
 
     },
     methods:{
-        openModalPacket(name, price){
+        openModalPacket(name, price, pack_id){
             if(name != '' && price != ''){
-                this.namePacket = name;
-                this.pricePacket = price;
+              this.namePacket = name;
+              this.pricePacket = price;
+              this.packId = pack_id;
             }
         },
 

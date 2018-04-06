@@ -46,6 +46,7 @@ AppAsset::register($this);
         $items[] = ['label' => 'Schools', 'url' => ['/admin/schools']];
         $items[] = ['label' => 'Packages', 'url' => ['/admin/packages']];
         $items[] = ['label' => 'Package Details', 'url' => ['/admin/package-details']];
+        $items[] = ['label' => 'Header site Form', 'url' => ['/admin/header-form']];
         $items[] = ['label' => 'Contacts', 'url' => ['/admin/contact-form']];
         $items[] = ['label' => 'Rabatt Erbjudande', 'url' => ['/admin/offer-discount']];
         $items[] = '<li>'

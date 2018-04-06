@@ -25,7 +25,7 @@
         <div class="filter-section">
             <div class="flex flex-center header-filter"><a class="b_logo" href="#"><img src="assets/images/logo.svg" alt="Intensivkurs Logo"></a></div>
             <div class="body">
-                <form method="POST" action="#" v-on:submit.prevent="openSchoolView">
+                <form method="POST" id="phone-header-form" action="#">
                     <div class="drive">
                         <h3>Fordonsbehörighet</h3>
                         <div class="section flex">
@@ -59,9 +59,9 @@
                                     <div class="icon"><img class="svg" src="assets/images/am.svg" alt="AM Logo"></div>AM
                                 </div>
                                 <div class="dropdown animated fadeIn">
-                                    <input type="radio" name="license" value="am-45" id="license-am-1">
+                                    <input type="radio" name="license" value="am-1" id="license-am-1">
                                     <label for="license-am-1"><span>Klass 1</span>, Körkort 45 km/h</label>
-                                    <input type="radio" name="license" value="am-25" id="license-am-2">
+                                    <input type="radio" name="license" value="am-2" id="license-am-2">
                                     <label for="license-am-2"><span>Klass 2</span>, Förarbevis 25 km/h  </label>
                                 </div>
                             </div>
@@ -70,21 +70,26 @@
                     <div class="home">
                         <h3>Medlem</h3>
                         <div class="section">
-                            <select2 class="select-contain" name="search_area_map">
+                            <select2 class="select-contain" name="place">
                                 <option disabled selected value="placeholder">Välj ort</option>
                                 <option v-for="place in listPlaces" :value="place.city">{{place.city}}</option>
                             </select2>
-                            <select2 class="select-contain" name="search_name">
-                                <option disabled selected value="placeholder">Välj trafikskola</option>
+                            <select2 class="select-contain" name="packet">
+                                <option disabled selected value="placeholder">Välj körpaket</option>
+                                <option v-for="package in listPackages" :value="package.section">{{package.section}}</option>
                             </select2>
                             <script type="text/x-template" id="select2-template">
                                 <select>
                                     <slot></slot>
                                 </select>
                             </script>
+                            <div class="form-group">
+                                <input type="text" name="phone" placeholder="Lämna ditt mobilnummer" required pattern="^[_A-z0-9]{1,}$">
+                                <div class="help-block"></div>
+                            </div>
                         </div>
                     </div>
-                    <input class="btn-blue" type="submit" value="Se omdöme">
+                    <input class="btn-blue" type="submit" value="SKICKA INTRESSEANMÄLAN">
                 </form>
             </div>
         </div>
