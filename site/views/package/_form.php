@@ -19,6 +19,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput(['type' => 'number', 'min' => 0, 'step' => 1]) ?>
 
+    <?= $form->field($model, 'sale_price')->textInput(['type' => 'number', 'min' => 0, 'step' => 1]) ?>
+
+    <?= $form->field($model, 'sale_percent')->textInput(['type' => 'number', 'min' => 0, 'step' => 1]) ?>
+
     <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'section')->dropDownList(\app\models\Sections::getList()) ?>

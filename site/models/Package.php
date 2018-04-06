@@ -11,6 +11,8 @@ use Yii;
  * @property string $name
  * @property string $description
  * @property double $price
+ * @property double $sale_price
+ * @property double $sale_percent
  * @property string $image
  * @property int $section
  * @property int $sort_index
@@ -38,7 +40,7 @@ class Package extends \yii\db\ActiveRecord
         return [
             [['name', 'section'], 'required'],
             [['description'], 'string'],
-            [['price'], 'number'],
+            [['price', 'sale_price', 'sale_percent'], 'number'],
             [['section', 'sort_index'], 'integer'],
             [['start_date'], 'safe'],
             [['name', 'image'], 'string', 'max' => 255],
@@ -56,6 +58,8 @@ class Package extends \yii\db\ActiveRecord
             'name' => Yii::t('app', 'Name'),
             'description' => Yii::t('app', 'Description'),
             'price' => Yii::t('app', 'Price'),
+            'sale_price' => Yii::t('app', 'Sale Price'),
+            'sale_percent' => Yii::t('app', 'Sale Percent'),
             'image' => Yii::t('app', 'Image'),
             'section' => Yii::t('app', 'Section'),
             'sort_index' => Yii::t('app', 'Sort'),
@@ -98,5 +102,22 @@ class Package extends \yii\db\ActiveRecord
                 '',
                 Yii::$app->formatter->asCurrency($this->price)
         );
+    }
+
+    public function getSalePrice_formatted()
+    {
+        return str_replace(
+            [
+                Yii::$app->formatter->decimalSeparator.'00',
+                ':00',
+            ],
+            '',
+            Yii::$app->formatter->asCurrency($this->sale_price)
+        );
+    }
+
+    public function getSalePercent_formatted()
+    {
+        return $this->sale_percent . '%';
     }
 }

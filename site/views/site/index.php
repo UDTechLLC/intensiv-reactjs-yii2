@@ -32,7 +32,7 @@
                             <div class="button-license b">
                                 <input type="radio" name="license" value="b">
                                 <div class="wrap-btn">
-                                    <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/b.svg" alt="B Logo"></div>B
+                                    <div class="icon"><img class="svg" src="assets/images/b.svg" alt="B Logo"></div>B
                                 </div>
                                 <div class="dropdown animated fadeIn">
                                     <input type="radio" name="license" value="ub" id="license-ub">
@@ -44,7 +44,7 @@
                             <div class="button-license a">
                                 <input type="radio" name="license" value="a">
                                 <div class="wrap-btn">
-                                    <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/a.svg" alt="A Logo"></div>A
+                                    <div class="icon"><img class="svg" src="assets/images/a.svg" alt="A Logo"></div>A
                                 </div>
                                 <div class="dropdown animated fadeIn">
                                     <input type="radio" name="license" value="a1" id="license-a1">
@@ -56,7 +56,7 @@
                             <div class="button-license am">
                                 <input type="radio" name="license" value="am">
                                 <div class="wrap-btn">
-                                    <div class="icon"><img class="svg" src="https://projects.udtech.co/intensivkurs/assets/images/am.svg" alt="AM Logo"></div>AM
+                                    <div class="icon"><img class="svg" src="assets/images/am.svg" alt="AM Logo"></div>AM
                                 </div>
                                 <div class="dropdown animated fadeIn">
                                     <input type="radio" name="license" value="am-45" id="license-am-1">
@@ -89,7 +89,7 @@
             </div>
         </div>
         <div class="school-view">
-            <button class="close" @click="closeSchoolView"><span class="icon"><img class="svg" src="assets/images/arrow-down.svg" alt="arrow"></span></button>
+            <button class="close"><span class="icon"><img class="svg" src="assets/images/arrow-down.svg" alt="arrow"></span></button>
             <h2>Intensivkurs Stockholm</h2>
             <p class="description">Kvalitet och miljö TA-2017</p>
             <div class="graph"></div>

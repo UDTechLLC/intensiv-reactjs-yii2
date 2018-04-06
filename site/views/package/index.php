@@ -31,6 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'html',
             ],
             'price:currency',
+            'sale_price:currency',
+            'sale_percent',
             'image',
             [
                 'attribute' => 'section',
