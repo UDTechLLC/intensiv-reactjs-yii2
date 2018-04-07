@@ -32,7 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'price:currency',
             'sale_price:currency',
-            'sale_percent',
+            [
+                'attribute' => 'sale_percent',
+                'format' => 'html',
+                'value' => function($model) {
+                    return $model->sale_percent_formatted;
+                },
+            ],
             'image',
             [
                 'attribute' => 'section',
