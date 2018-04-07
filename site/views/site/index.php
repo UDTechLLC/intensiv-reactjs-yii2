@@ -187,14 +187,14 @@
             </div>
         </div>
 
-        <section class="text-area plans">
+        <section class="b_section b_section-text-area">
             <div class="container">
-                <h2>Upptäck nya möjligheter!</h2>
-                <p>På vår webbplats intensivkursstockholm.se får du möjligheten att få ett nytt erbjudande till ett kraftigt rabatterat pris på olika körpaket från topptrafikskolor nära dig. Vi gör ständigt vårt bästa för att kunna erbjuda dig oslagbara priser inom körlektioner och kurser, allt för att kunna erbjuda dig kvalitet till ett riktigt bra pris.</p>
-                <h2>Endast erbjudanden som vi själva gillar!</h2>
-                <p>Vi på Intensivkurs Stockholm vet att priset är endast en del av äventyret - därför erbjuder vi dig bara rabatter hos trafikskolor som vi själva skulle uppskatta. Du som köper ett körpaket hos oss ska känna dig trygg i att du alltid får hög kvalitet till ett oerhört bra pris.</p>
-                <h2>Pålitliga trafikskolor!</h2>
-                <p>Det är viktigt för oss på intensivkurs Stockholm att du som kund alltid ska vara nöjd med dina erbjudanden och köp så att du vill komma tillbaka till oss och hitta nya möjligheter. Därför strävar vi alltid efter att du ska kunna få en möjlighet att prova och jämföra innan en kraftig satsning.</p>
+                <h2 class="b_section_title">Upptäck nya möjligheter!</h2>
+                <p class="b_section_subtitle">På vår webbplats intensivkursstockholm.se får du möjligheten att få ett nytt erbjudande till ett kraftigt rabatterat pris på olika körpaket från topptrafikskolor nära dig. Vi gör ständigt vårt bästa för att kunna erbjuda dig oslagbara priser inom körlektioner och kurser, allt för att kunna erbjuda dig kvalitet till ett riktigt bra pris.</p>
+                <h2 class="b_section_title">Endast erbjudanden som vi själva gillar!</h2>
+                <p class="b_section_subtitle">Vi på Intensivkurs Stockholm vet att priset är endast en del av äventyret - därför erbjuder vi dig bara rabatter hos trafikskolor som vi själva skulle uppskatta. Du som köper ett körpaket hos oss ska känna dig trygg i att du alltid får hög kvalitet till ett oerhört bra pris.</p>
+                <h2 class="b_section_title">Pålitliga trafikskolor!</h2>
+                <p class="b_section_subtitle">Det är viktigt för oss på intensivkurs Stockholm att du som kund alltid ska vara nöjd med dina erbjudanden och köp så att du vill komma tillbaka till oss och hitta nya möjligheter. Därför strävar vi alltid efter att du ska kunna få en möjlighet att prova och jämföra innan en kraftig satsning.</p>
 
             </div>
         </section>
