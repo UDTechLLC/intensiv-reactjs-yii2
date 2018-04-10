@@ -276,7 +276,7 @@ let app = new Vue({
             }, 300);
         });
         let activeMarker;
-        this.$http.get('/web/site/school-list').then((resp) => {
+        this.$http.get('/site/school-list').then((resp) => {
           this.schools = resp.data.output;
               const infoWindow = new google.maps.InfoWindow;
               this.schools.forEach((school) => {
