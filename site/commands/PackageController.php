@@ -14,12 +14,12 @@ class PackageController extends Controller
         $data = [
             [
                 'id' => 1,
-                'name' => '-',
+                'name' => 'TESTLEKTION ÄR ETT KRAV VID KÖP AV INTENSIVKURS',
                 'description' => '<ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Grundläggande manövrering</li>
+                        <li>Riskbeteende och reaktion</li>
+                        <li>Avsökning och samspel</li>
+                        <li>Regler och tillämpning</li>
                       </ul>',
                 'price' => 590,
                 'sale_price' => 500,
@@ -90,7 +90,7 @@ class PackageController extends Controller
 
             [
                 'id' => 5,
-                'name' => '-',
+                'name' => 'KAMPANJ NY ELEV',
                 'description' => '<ul>
                         <li>Riskettan</li>
                         <li>Risktvåan</li>
@@ -166,12 +166,13 @@ class PackageController extends Controller
 
             [
                 'id' => 9,
-                'name' => '-',
+                'name' => 'ERBJUDANDET GÄLLER ENDAST STUDENTER MED STUDIEINTYG',
                 'description' => '<ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Universitet</li>
+                        <li>Högskola</li>
+                        <li>Folkhögskola</li>
+                        <li>Yrkeshögskola</li>
+                        <li>Komvux</li>
                       </ul>',
                 'price' => 0,
                 'sale_price' => 0,
@@ -184,12 +185,12 @@ class PackageController extends Controller
             ],
             [
                 'id' => 10,
-                'name' => '-',
+                'name' => 'TESTLEKTION ÄR ETT KRAV VID KÖP AV INTENSIVKURS',
                 'description' => '<ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Grundläggande manövrering</li>
+                        <li>Riskbeteende och reaktion</li>
+                        <li>Avsökning och samspel</li>
+                        <li>Regler och tillämpning</li>
                       </ul>',
                 'price' => 590,
                 'sale_price' => 470,
@@ -206,7 +207,7 @@ class PackageController extends Controller
                 'description' => '<ul>
                         <li>3 Körlektioner</li>
                         <li>50 min per körlektion</li>
-                        <li></li>
+                        <li>Inledande manövrering</li>
                         <li>Manuell eller Automat</li>
                       </ul>',
                 'price' => 2070,
@@ -224,7 +225,7 @@ class PackageController extends Controller
                 'description' => '<ul>
                         <li>5 Körlektioner</li>
                         <li>50 min per körlektion</li>
-                        <li></li>
+                        <li>Motoriska förmågan </li>
                         <li>Manuell eller Automat</li>
                       </ul>',
                 'price' => 3400,

@@ -27,7 +27,7 @@
             <div class="body">
                 <form method="POST" id="phone-header-form" action="#">
                     <div class="drive">
-                        <h3>Fordonsbehörighet</h3>
+                        <h3>Välj en fordonsbehörighet</h3>
                         <div class="section flex">
                             <div class="button-license b">
                                 <input type="radio" name="license" value="b">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="home">
-                        <h3>Medlem</h3>
+                        <h3>Område och utbildningspaket</h3>
                         <div class="section">
                             <select2 class="select-contain" name="place">
                                 <option disabled selected value="placeholder">Välj ort</option>
@@ -112,7 +112,8 @@
         <!-- start plan section-->
         <section class="b_section plans">
             <div class="container">
-                <h2 class="b_section_title">Välj mellan olika körpaket</h2>
+                <h2 class="b_section_title">ERBJUDANDE FRÅN VÄSTERORT TRAFIKSKOLA</h2>
+                <p class="b_section_subtitle b_section_subtitle_bottom_mg">Gäller endast nya elever med en adress utanför Västerort (Endast ett paket)</p>
                 <ul class="plans_tabs nav nav-tabs" role="tablist">
                     <?php foreach ($sections as $sectionId => $name) { ?>
                         <li<?=$sectionId == 1 ? ' class="active"' : '';?>>
@@ -161,9 +162,23 @@
                 </div>
             </div>
         </section>
+
+        <section class="b_section b_section-text-area">
+            <div class="container">
+                <h2 class="b_section_title">INTENSIVKURS STOCKHOLM HAR ALLTID KVALITÉN I FOKUS</h2>
+                <h3 class="b_section_title b_section_title_small">Upptäck nya möjligheter!</h3>
+                <p class="b_section_subtitle">På vår webbplats intensivkursstockholm.se får du möjligheten att få ett nytt erbjudande till ett kraftigt rabatterat pris på olika körpaket från topptrafikskolor nära dig. Vi gör ständigt vårt bästa för att kunna erbjuda dig oslagbara priser inom körlektioner och kurser, allt för att kunna erbjuda dig kvalitet till ett riktigt bra pris.</p>
+                <h3 class="b_section_title b_section_title_small">Endast erbjudanden som vi själva gillar!</h3>
+                <p class="b_section_subtitle">Vi på Intensivkurs Stockholm vet att priset är endast en del av äventyret - därför erbjuder vi dig bara rabatter hos trafikskolor som vi själva skulle uppskatta. Du som köper ett körpaket hos oss ska känna dig trygg i att du alltid får hög kvalitet till ett oerhört bra pris.</p>
+                <h3 class="b_section_title b_section_title_small">Pålitliga trafikskolor!</h3>
+                <p class="b_section_subtitle">Det är viktigt för oss på intensivkurs Stockholm att du som kund alltid ska vara nöjd med dina erbjudanden och köp så att du vill komma tillbaka till oss och hitta nya möjligheter. Därför strävar vi alltid efter att du ska kunna få en möjlighet att prova och jämföra innan en kraftig satsning.</p>
+            </div>
+        </section>
+
         <div class="section-video">
             <div class="container">
-                <h2>Välj en trafikskola nära dig som erbjuder en hög standard på utbildning och värnar om vår miljö</h2>
+                <h2 class="b_section_title">VÄGEN TILL KÖRKORT & KÖRPROV FÖR PERSONBIL</h2>
+                <p class="b_section_subtitle b_section_subtitle_bottom_mg">Kontakta oss för en snabb och effektiv körkortsutbildning</p>
                 <div class="row">
                     <div class="col col-md-6 col-sm-12 col-xs-12">
                         <div class="video-container wow fadeInUp" data-wow-delay="800ms" data-wow-offset="100">
@@ -187,17 +202,6 @@
             </div>
         </div>
 
-        <section class="b_section b_section-text-area">
-            <div class="container">
-                <h2 class="b_section_title">Upptäck nya möjligheter!</h2>
-                <p class="b_section_subtitle">På vår webbplats intensivkursstockholm.se får du möjligheten att få ett nytt erbjudande till ett kraftigt rabatterat pris på olika körpaket från topptrafikskolor nära dig. Vi gör ständigt vårt bästa för att kunna erbjuda dig oslagbara priser inom körlektioner och kurser, allt för att kunna erbjuda dig kvalitet till ett riktigt bra pris.</p>
-                <h2 class="b_section_title">Endast erbjudanden som vi själva gillar!</h2>
-                <p class="b_section_subtitle">Vi på Intensivkurs Stockholm vet att priset är endast en del av äventyret - därför erbjuder vi dig bara rabatter hos trafikskolor som vi själva skulle uppskatta. Du som köper ett körpaket hos oss ska känna dig trygg i att du alltid får hög kvalitet till ett oerhört bra pris.</p>
-                <h2 class="b_section_title">Pålitliga trafikskolor!</h2>
-                <p class="b_section_subtitle">Det är viktigt för oss på intensivkurs Stockholm att du som kund alltid ska vara nöjd med dina erbjudanden och köp så att du vill komma tillbaka till oss och hitta nya möjligheter. Därför strävar vi alltid efter att du ska kunna få en möjlighet att prova och jämföra innan en kraftig satsning.</p>
-
-            </div>
-        </section>
         <!-- start MER INFORMATION section-->
         <section class="b_section b_section-colored more-inform section-additional-info">
             <div class="container">
@@ -281,18 +285,18 @@
                 <div class="modal-header">
                     <button class="close" type="button" data-dismiss="modal"></button>
                     <h4 class="modal-title">VÄLKOMMEN</h4>
-                    <p>SOM NY BESÖKARE GER VI DIG IDAG</p>
+                    <p>FÅ OSLAGBARA ERBJUDANDE FRÅN DIN LOKALA TRAFIKSKOLA</p>
                 </div>
                 <div class="modal-body">
-                    <h2><span>40%</span>RABATT</h2>
-                    <p>PÅ DITT KÖP AV HANDLEDARKURSEN</p>
+                    <h2>RABATTER UPPTILL <span>50%</span></h2>
+                    <p>PÅ KÖRPAKET OCH KURSER</p>
                     <form class="flex flex-between" action="/offer-discount" method="POST">
                         <input type="text" name="phone" placeholder="Skriv in ditt mobilnummer här" required>
                         <input class="btn-blue" type="submit" value="SKICKA" onclick="">
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <p>Genom att fylla i ditt mobilnummer godkänner du samtidigt att du får ta del av Västerort trafikskolas kampanjer. Du kan närsomhels avregistrera dig från denna tjänst genom ett enkel sms (Avregistrera mig).</p>
+                    <p>BÖRJA MED ATT VÄLJA FRÅN MENYN VILKEN FORDONSBEHÖRIGHET DU VILL HA, VÄLJ SEDAN ORT OCH UTBILDNINGPAKET. LÄMNAR DÄREFTER DITT MOBILNUMMER FÖR ATT FÅ SUPERBERBJUDANDEN I ETT MEDDELANDE.</p>
                 </div>
             </div>
         </div>
