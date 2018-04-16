@@ -78,8 +78,8 @@ class PackageController extends Controller
                         <li>Lånebil vid uppkörning</li>
                         <li>Manuell eller Automat</li>
                       </ul>',
-                'price' => 138900,
-                'sale_price' => 7700,
+                'price' => 13800,
+                'sale_price' => 9700,
                 'sale_percent' => 30,
                 'image' => 'icon-4',
                 'section' => Sections::INTENSIV_PAKET,
