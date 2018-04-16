@@ -112,8 +112,8 @@
         <!-- start plan section-->
         <section class="b_section plans">
             <div class="container">
-                <h2 class="b_section_title">ERBJUDANDE FRÅN VÄSTERORT TRAFIKSKOLA</h2>
-                <p class="b_section_subtitle b_section_subtitle_bottom_mg">Gäller endast nya elever med en adress utanför Västerort (Endast ett paket)</p>
+                <h2 class="b_section_title">ERBJUDANDE FRÅN INTENSIVKURS STOCKHOLM</h2>
+                <p class="b_section_subtitle b_section_subtitle_bottom_mg">Gäller endast nya elever och ett utbildningspaket</p>
                 <ul class="plans_tabs nav nav-tabs" role="tablist">
                     <?php foreach ($sections as $sectionId => $name) { ?>
                         <li<?=$sectionId == 1 ? ' class="active"' : '';?>>
@@ -165,7 +165,7 @@
 
         <section class="b_section b_section-text-area">
             <div class="container">
-                <h2 class="b_section_title">INTENSIVKURS STOCKHOLM HAR ALLTID KVALITÉN I FOKUS</h2>
+                <h2 class="b_section_title">INTENSIVKURS STOCKHOLM</h2><!-- INTENSIVKURS STOCKHOLM HAR ALLTID KVALITÉN I FOKUS -->
                 <h3 class="b_section_title b_section_title_small">Upptäck nya möjligheter!</h3>
                 <p class="b_section_subtitle">På vår webbplats intensivkursstockholm.se får du möjligheten att få ett nytt erbjudande till ett kraftigt rabatterat pris på olika körpaket från topptrafikskolor nära dig. Vi gör ständigt vårt bästa för att kunna erbjuda dig oslagbara priser inom körlektioner och kurser, allt för att kunna erbjuda dig kvalitet till ett riktigt bra pris.</p>
                 <h3 class="b_section_title b_section_title_small">Endast erbjudanden som vi själva gillar!</h3>
@@ -177,7 +177,7 @@
 
         <div class="section-video">
             <div class="container">
-                <h2 class="b_section_title">VÄGEN TILL KÖRKORT & KÖRPROV FÖR PERSONBIL</h2>
+                <h2 class="b_section_title">VÄGEN TILL KÖRKORT</h2>
                 <p class="b_section_subtitle b_section_subtitle_bottom_mg">Kontakta oss för en snabb och effektiv körkortsutbildning</p>
                 <div class="row">
                     <div class="col col-md-6 col-sm-12 col-xs-12">
@@ -238,7 +238,7 @@
         <section class="b_section section-contact">
             <div class="container">
                 <h2 class="b_section_title">Välkommen att kontakta oss</h2>
-                <p class="b_section_subtitle">Kontakta oss gärna vid frågor om körkort, övningspaket eller övriga tjänster.</p>
+                <p class="b_section_subtitle">Alla utbildningspaket som köpes via INTENSIVKURS STOCKHOLMS hemsida, utbildas av VÄSTERORT TRAFIKSKOLA i Vällingby</p>
                 <div class="b_section_content">
                     <ul class="social-area wow zoomIn" data-wow-duration="1000ms" data-wow-delay="200ms" data-wow-offset="100">
                         <li>
@@ -277,6 +277,12 @@
                 </div>
             </div>
         </section>
+        <section class="copyright">
+            <div class="container">
+                <p>Copyrite &#169; 2018 INTENSIVKURS STOCKHOLM All rättigheter förbehålls.</p>
+                <p>INTENSIVKURS STOCKHOLM i samarbete med VÄSTERORT TRAFIKSKOLA </p>
+            </div>
+        </section>
     </div>
     <!-- start ADS modal-->
     <div class="modal fade" id="ads-modal" tabindex="-1" role="dialog" aria-labelledby="ads" aria-hidden="true">
@@ -285,7 +291,7 @@
                 <div class="modal-header">
                     <button class="close" type="button" data-dismiss="modal"></button>
                     <h4 class="modal-title">VÄLKOMMEN</h4>
-                    <p>FÅ OSLAGBARA ERBJUDANDE FRÅN DIN LOKALA TRAFIKSKOLA</p>
+                    <p>FÅ EXKLUSIVA ERBJUDANDE FRÅN DINA LOKALA TRAFIKSKOLOR</p>
                 </div>
                 <div class="modal-body">
                     <h2>RABATTER UPPTILL <span>50%</span></h2>
@@ -296,7 +302,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <p>BÖRJA MED ATT VÄLJA FRÅN MENYN VILKEN FORDONSBEHÖRIGHET DU VILL HA, VÄLJ SEDAN ORT OCH UTBILDNINGPAKET. LÄMNAR DÄREFTER DITT MOBILNUMMER FÖR ATT FÅ SUPERBERBJUDANDEN I ETT MEDDELANDE.</p>
+                    <p>BÖRJA MED ATT VÄLJA</p><p>1. FORDONSBEHÖRIGHET</p><p>2. ORT OCH UTBILDNINGPAKET</p><p>3. LÄMNA MOBILNUMMER OCH SKICKA IN DIN INTRESSEANMÄLAN.</p>
                 </div>
             </div>
         </div>

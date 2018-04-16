@@ -183,7 +183,7 @@ let app = new Vue({
         let myLatlng = new google.maps.LatLng(this.latitudeMap, this.longitudeMap);
         let map = new google.maps.Map(document.getElementById('map-layout'), {
             center: myLatlng,
-            zoom: 9,
+            zoom: 10,
             styles: [
                 {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
                 {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
