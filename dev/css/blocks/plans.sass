@@ -12,9 +12,14 @@
     margin-bottom: 13px
     display: flex
     justify-content: center
+    @media (max-width: 660px)
+      display: block
+      text-align: center
     >li
       float: left
       margin-bottom: -1px
+      @media (max-width: 660px)
+        float: none
 
       > a
         border: none
@@ -73,6 +78,9 @@
         visibility: visible
         .row
           width: 100%
+          @media (max-width: 800px)
+            width: 100%
+            margin: 0
           .btn-small
             margin: 11px auto 15px !important
 
