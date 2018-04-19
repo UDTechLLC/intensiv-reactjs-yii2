@@ -145,14 +145,16 @@
                                     <?php if ($pack->required_test_lesson) { ?>
                                         <div class="date_time"><span>En testlektion krävs</span></div>
                                     <?php } ?>
-                                    <button
-                                        class="btn btn-blue btn-small"
-                                        @click="openModalPacket('<?=$pack->name;?>',
-                                                                '<?=$pack->price_formatted;?>',
-                                                                <?=$pack->id;?>)"
-                                        data-target="#packet-modal"
-                                        data-toggle="modal"
-                                    >Boka nu</button>
+                                    <?php if (!$pack->hide_button) { ?>
+                                        <button
+                                            class="btn btn-blue btn-small"
+                                            @click="openModalPacket('<?=$pack->name;?>',
+                                                                    '<?=$pack->price_formatted;?>',
+                                                                    <?=$pack->id;?>)"
+                                            data-target="#packet-modal"
+                                            data-toggle="modal"
+                                        >Boka nu</button>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <?php } ?>

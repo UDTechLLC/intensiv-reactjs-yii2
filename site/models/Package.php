@@ -19,6 +19,7 @@ use yii\helpers\Html;
  * @property int $sort_index
  * @property string $start_date
  * @property int $required_test_lesson
+ * @property int $hide_button
  *
  * @property string $price_formatted
  * @property string $sale_price_formatted
@@ -48,7 +49,7 @@ class Package extends \yii\db\ActiveRecord
             [['section', 'sort_index'], 'integer'],
             [['start_date'], 'safe'],
             [['name', 'image'], 'string', 'max' => 255],
-            [['required_test_lesson'], 'boolean'],
+            [['required_test_lesson', 'hide_button'], 'boolean'],
         ];
     }
 
@@ -69,6 +70,7 @@ class Package extends \yii\db\ActiveRecord
             'sort_index' => Yii::t('app', 'Sort'),
             'start_date' => Yii::t('app', 'Start Date'),
             'required_test_lesson' => Yii::t('app', 'Test Lesson'),
+            'hide_button' => Yii::t('app', 'Hide button "Boka nu"'),
         ];
     }
 

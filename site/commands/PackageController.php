@@ -29,6 +29,7 @@ class PackageController extends Controller
                 'sort_index' => 1,
                 'start_date'=> null,
                 'required_test_lesson' => 0,
+                'hide_button' => 0,
             ],
 
             [
@@ -48,6 +49,7 @@ class PackageController extends Controller
                 'sort_index' => 2,
                 'start_date'=> null,
                 'required_test_lesson' => 0,
+                'hide_button' => 0,
             ],
 
             [
@@ -67,6 +69,7 @@ class PackageController extends Controller
                 'sort_index' => 3,
                 'start_date'=> null,
                 'required_test_lesson' => 0,
+                'hide_button' => 0,
             ],
 
             [
@@ -86,6 +89,7 @@ class PackageController extends Controller
                 'sort_index' => 4,
                 'start_date'=> null,
                 'required_test_lesson' => 0,
+                'hide_button' => 0,
             ],
 
             [
@@ -105,6 +109,7 @@ class PackageController extends Controller
                 'sort_index' => 5,
                 'start_date'=> null,
                 'required_test_lesson' => 0,
+                'hide_button' => 0,
             ],
 
             [
@@ -124,6 +129,7 @@ class PackageController extends Controller
                 'sort_index' => 6,
                 'start_date'=> null,
                 'required_test_lesson' => 0,
+                'hide_button' => 0,
             ],
 
             [
@@ -143,6 +149,7 @@ class PackageController extends Controller
                 'sort_index' => 7,
                 'start_date'=> null,
                 'required_test_lesson' => 0,
+                'hide_button' => 0,
             ],
 
             [
@@ -162,6 +169,7 @@ class PackageController extends Controller
                 'sort_index' => 8,
                 'start_date'=> null,
                 'required_test_lesson' => 0,
+                'hide_button' => 0,
             ],
 
             [
@@ -182,6 +190,7 @@ class PackageController extends Controller
                 'sort_index' => 9,
                 'start_date'=> null,
                 'required_test_lesson' => 0,
+                'hide_button' => 1,
             ],
             [
                 'id' => 10,
@@ -200,6 +209,7 @@ class PackageController extends Controller
                 'sort_index' => 9,
                 'start_date'=> null,
                 'required_test_lesson' => 0,
+                'hide_button' => 0,
             ],
             [
                 'id' => 11,
@@ -218,6 +228,7 @@ class PackageController extends Controller
                 'sort_index' => 11,
                 'start_date'=> null,
                 'required_test_lesson' => 0,
+                'hide_button' => 0,
             ],
             [
                 'id' => 12,
@@ -236,6 +247,7 @@ class PackageController extends Controller
                 'sort_index' => 12,
                 'start_date'=> null,
                 'required_test_lesson' => 0,
+                'hide_button' => 0,
             ],
         ];
 

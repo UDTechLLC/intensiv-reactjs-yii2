@@ -38,7 +38,7 @@ use yii\widgets\ActiveForm;
         ]) ?>
 
     <?= $form->field($model, 'required_test_lesson')->checkbox() ?>
-
+    <?= $form->field($model, 'hide_button')->checkbox() ?>
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
