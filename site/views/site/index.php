@@ -154,7 +154,9 @@
                                             data-target="#packet-modal"
                                             data-toggle="modal"
                                         >Boka nu</button>
-                                    <?php } ?>
+                                    <?php }else{
+                                        echo '<div class="block-hide-button"></div>';
+                                    } ?>
                                 </div>
                             </div>
                             <?php } ?>
