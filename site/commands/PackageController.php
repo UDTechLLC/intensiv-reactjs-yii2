@@ -162,7 +162,7 @@ class PackageController extends Controller
                         <li>Manuell eller Automat</li>
                       </ul>',
                 'price' => 13000,
-                'sale_price' => 1100,
+                'sale_price' => 11000,
                 'sale_percent' => 15,
                 'image' => 'icon-4',
                 'section' => Sections::OVNINGS_PAKET,
