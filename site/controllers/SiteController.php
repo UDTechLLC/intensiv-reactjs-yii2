@@ -165,7 +165,7 @@ class SiteController extends Controller
                 $out[] = ['title' => $item['title'], 'info' => $item['info'], 'lat' => $item['lat'], 'lng' => $item['lng'],];
             }
             // Shows how you can preselect a value
-            echo Json::encode(['output' => $out]);
+            return Json::encode(['output' => $out]);
         }
     }
 }
