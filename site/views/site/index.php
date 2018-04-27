@@ -401,6 +401,8 @@
                 $('#car-licence').text(checval.toUpperCase());
                 $('.scooter-block .wrap-btn, .bike-block .wrap-btn').removeClass('checked');
                 $('.car-block .wrap-btn').addClass('checked');
+                $('#scooter-licence').text('AM');
+                $('#bike-licence').text('A');
             } else {
                 $('#car-licence').text('B');
             }
@@ -412,6 +414,8 @@
                 $('#bike-licence').text(checval.toUpperCase());
                 $('.car-block .wrap-btn, .scooter-block .wrap-btn').removeClass('checked');
                 $('.bike-block .wrap-btn').addClass('checked');
+                $('#car-licence').text('B');
+                $('#scooter-licence').text('AM');
             } else {
                 $('#bike-licence').text('A');
             }
@@ -423,6 +427,8 @@
                 $('#scooter-licence').text(checval.toUpperCase());
                 $('.car-block .wrap-btn, .bike-block .wrap-btn').removeClass('checked');
                 $('.scooter-block .wrap-btn').addClass('checked');
+                $('#bike-licence').text('A');
+                $('#car-licence').text('B');
             } else {
                 $('#scooter-licence').text('AM');
             }
