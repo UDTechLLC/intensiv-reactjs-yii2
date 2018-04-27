@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="assets/css/libs.css">
     <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
 <div class="page" id="app">
@@ -29,10 +30,13 @@
                     <div class="drive">
                         <h3>Välj en fordonsbehörighet</h3>
                         <div class="section flex">
-                            <div class="button-license b">
+                            <div class="button-license b car-block">
                                 <input type="radio" name="license" value="b">
                                 <div class="wrap-btn">
-                                    <div class="icon"><img class="svg" src="assets/images/b.svg" alt="B Logo"></div>B
+                                    <div class="icon">
+                                        <img class="svg" src="assets/images/b.svg" alt="B Logo">
+                                    </div>
+                                    <span id="car-licence">B</span>
                                 </div>
                                 <div class="dropdown animated fadeIn">
                                     <input type="radio" name="license" value="ub" id="license-ub">
@@ -41,10 +45,11 @@
                                     <label for="license-be"><span>BE</span>Tung släpvagn (Max 3.5 ton)</label>
                                 </div>
                             </div>
-                            <div class="button-license a">
+                            <div class="button-license a bike-block">
                                 <input type="radio" name="license" value="a">
                                 <div class="wrap-btn">
-                                    <div class="icon"><img class="svg" src="assets/images/a.svg" alt="A Logo"></div>A
+                                    <div class="icon"><img class="svg" src="assets/images/a.svg" alt="A Logo"></div>
+                                    <span id="bike-licence">A</span>
                                 </div>
                                 <div class="dropdown animated fadeIn">
                                     <input type="radio" name="license" value="a1" id="license-a1">
@@ -53,10 +58,11 @@
                                     <label for="license-a2"><span>A2</span>Mellanstor motorcykel (Max 35 Kw)</label>
                                 </div>
                             </div>
-                            <div class="button-license am">
+                            <div class="button-license am scooter-block">
                                 <input type="radio" name="license" value="am">
                                 <div class="wrap-btn">
-                                    <div class="icon"><img class="svg" src="assets/images/am.svg" alt="AM Logo"></div>AM
+                                    <div class="icon"><img class="svg" src="assets/images/am.svg" alt="AM Logo"></div>
+                                    <span id="scooter-licence">AM</span>
                                 </div>
                                 <div class="dropdown animated fadeIn">
                                     <input type="radio" name="license" value="am-1" id="license-am-1">
@@ -283,8 +289,9 @@
         </section>
         <section class="copyright">
             <div class="container">
-                <p>Copyrite &#169; 2018 INTENSIVKURS STOCKHOLM All rättigheter förbehålls.</p>
-                <p>INTENSIVKURS STOCKHOLM i samarbete med VÄSTERORT TRAFIKSKOLA </p>
+                <p>Copyrite &#169; 2018 VÄSTERORT TRAFIKSKOLA Org Nr. 559150–0904 Alla rättigheter förbehålls.</p>
+                <p>SNI – 85530 Trafikskoleverksamhet<br>
+                SNI – 85600 Stödverksamhet för utbildningsväsendet</p>
             </div>
         </section>
     </div>
@@ -386,5 +393,41 @@
 <script src="assets/js/script.js"></script>
 <script src="assets/js/contact-form.js"></script>
 <script src="assets/js/packet-form.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.car-block [name=license]').on('change', function() {
+            let checval = $('.car-block [name=license]:checked').val();
+            if (checval) {
+                $('#car-licence').text(checval.toUpperCase());
+                $('.scooter-block .wrap-btn, .bike-block .wrap-btn').removeClass('checked');
+                $('.car-block .wrap-btn').addClass('checked');
+            } else {
+                $('#car-licence').text('B');
+            }
+        });
+
+        $('.bike-block [name=license]').on('change', function() {
+            let checval = $('.bike-block [name=license]:checked').val();
+            if (checval) {
+                $('#bike-licence').text(checval.toUpperCase());
+                $('.car-block .wrap-btn, .scooter-block .wrap-btn').removeClass('checked');
+                $('.bike-block .wrap-btn').addClass('checked');
+            } else {
+                $('#bike-licence').text('A');
+            }
+        });
+
+        $('.scooter-block [name=license]').on('change', function() {
+            let checval = $('.scooter-block [name=license]:checked').val();
+            if (checval) {
+                $('#scooter-licence').text(checval.toUpperCase());
+                $('.car-block .wrap-btn, .bike-block .wrap-btn').removeClass('checked');
+                $('.scooter-block .wrap-btn').addClass('checked');
+            } else {
+                $('#scooter-licence').text('AM');
+            }
+        });
+    });
+</script>
 </body>
 </html>
