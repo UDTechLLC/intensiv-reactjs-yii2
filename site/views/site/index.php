@@ -289,9 +289,8 @@
         </section>
         <section class="copyright">
             <div class="container">
-                <p>Copyrite &#169; 2018 VÄSTERORT TRAFIKSKOLA Org Nr. 559150–0904 Alla rättigheter förbehålls.</p>
-                <p>SNI – 85530 Trafikskoleverksamhet<br>
-                SNI – 85600 Stödverksamhet för utbildningsväsendet</p>
+                <p>Copyrite &#169; 2018 INTENSIVKURS STOCKHOLM All rättigheter förbehålls.</p>
+                <p>INTENSIVKURS STOCKHOLM i samarbete med VÄSTERORT TRAFIKSKOLA </p>
             </div>
         </section>
     </div>
