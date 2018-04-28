@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="assets/css/libs.css">
     <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
 <div class="page" id="app">
@@ -341,6 +342,13 @@
                         <input class="btn-blue" type="submit" value="SKICKA">
                     </form>
                 </div>
+            </div>
+        </section>
+        <section class="copyright">
+            <div class="container">
+                <p>Copyrite &#169; 2018 VÄSTERORT TRAFIKSKOLA Org Nr. 559150–0904 Alla rättigheter förbehålls.</p>
+                <p>SNI – 85530 Trafikskoleverksamhet<br>
+                    SNI – 85600 Stödverksamhet för utbildningsväsendet</p>
             </div>
         </section>
     </div>

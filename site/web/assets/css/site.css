@@ -1,0 +1,15 @@
+
+.header .filter-section .body .section .button-license .wrap-btn.checked {
+    border-color: #028fcc !important;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+body section.copyright {
+    padding: 40px 0;
+    background: rgba(40,43,56,.95);
+}
+
+body section.copyright .container {
+    display: flex;
+    justify-content: space-between;
+}
