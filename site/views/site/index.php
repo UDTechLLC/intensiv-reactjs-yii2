@@ -346,9 +346,19 @@
         </section>
         <section class="copyright">
             <div class="container">
-                <p>Copyrite &#169; 2018 VÄSTERORT TRAFIKSKOLA Org Nr. 559150–0904 Alla rättigheter förbehålls.</p>
-                <p>SNI – 85530 Trafikskoleverksamhet<br>
-                    SNI – 85600 Stödverksamhet för utbildningsväsendet</p>
+                <div class="col col-md-5 col-sm-12 col-12">
+                    <p>Copyrite © 2018 VÄSTERORT TRAFIKSKOLA</p>
+                    <p>Org Nr. 559150-0904 Alla rättigheter förbehålls </p>
+                </div>
+                <div class="col col-md-2 col-sm-12 col-12">
+                    <div class="footer_logo">
+                        <img class="svg" src="assets/images/location-icon.svg" alt="mail Logo">
+                    </div>
+                </div>
+                <div class="col col-md-5 col-sm-12 col-12 last">
+                    <p>SNI – 85530 Trafikskoleverksamhet</p>
+                    <p>SNI – 85600 85600 Stödverksamhet för utbildningsväsendet </p>
+                </div>
             </div>
         </section>
     </div>

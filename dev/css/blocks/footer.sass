@@ -1,0 +1,33 @@
+body
+  .footer_logo img
+    width: 120px
+    margin: 10px auto
+    display: block
+
+  section.copyright
+    padding: 40px 0
+    background: rgba(40,43,56,.95)
+    .container
+      display: flex
+      justify-content: space-between
+      @media (max-width: 1170px)
+        width: 96%
+        padding: 0 5px
+      @media (max-width: 800px)
+        display: block
+        .col
+          width: 100%
+          -webkit-flex: 0 0 100%
+          -webkit-flex--ms-flex: 0 0 100%
+          -webkit-flex--ms-flex-flex: 0 0 100%
+          max-width: 100%
+          margin-bottom: 20px
+          padding: 0
+    p
+      text-align: left
+      line-height: 24px
+      margin: 0
+      font-size: 13px
+      color: #fff
+      @media (max-width: 800px)
+        text-align: center
