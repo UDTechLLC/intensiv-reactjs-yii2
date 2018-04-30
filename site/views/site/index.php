@@ -289,8 +289,17 @@
         </section>
         <section class="copyright">
             <div class="container">
-                <p>Copyrite &#169; 2018 INTENSIVKURS STOCKHOLM All rättigheter förbehålls.</p>
-                <p>INTENSIVKURS STOCKHOLM i samarbete med VÄSTERORT TRAFIKSKOLA </p>
+                <div class="col col-md-5 col-sm-12 col-12">
+                    <p>Copyrite &#169; 2018 INTENSIVKURS STOCKHOLM</p>
+                    <p>All rättigheter förbehålls.</p>
+                </div>
+                <div class="col col-md-2 col-sm-12 col-12">
+                    <a class="footer_logo" href="#"><img src="assets/images/logo.svg" alt="Intensivkurs Logo"></a>
+                </div>
+                <div class="col col-md-5 col-sm-12 col-12 last">
+                    <p>INTENSIVKURS STOCKHOLM i samarbete med</p>
+                    <p>VÄSTERORT TRAFIKSKOLA i Vällingby - Grimsta </p>
+                </div>
             </div>
         </section>
     </div>
