@@ -357,7 +357,7 @@
                 </div>
                 <div class="col col-md-5 col-sm-12 col-12 last">
                     <p>SNI – 85530 Trafikskoleverksamhet</p>
-                    <p>SNI – 85600 85600 Stödverksamhet för utbildningsväsendet </p>
+                    <p>SNI – 85600 Stödverksamhet för utbildningsväsendet </p>
                 </div>
             </div>
         </section>
