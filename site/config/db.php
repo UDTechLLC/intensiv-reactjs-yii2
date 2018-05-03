@@ -6,7 +6,7 @@ return [
 
     'dsn' => 'mysql:host=localhost;dbname=intensivkurs', // dev
     'username' => 'root',
-    'password' => '',
+    'password' => 'root',
 
 //    'dsn' => 'mysql:host=localhost;dbname=iefsfvbw_intensivkurs', // prod
 //    'username' => 'iefsfvbw_intensivkusr',
