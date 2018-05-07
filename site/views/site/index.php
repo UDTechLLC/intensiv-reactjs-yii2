@@ -347,7 +347,7 @@
         <section class="copyright">
             <div class="container">
                 <div class="col col-md-5 col-sm-12 col-12">
-                    <p>Copyrite © 2018 VÄSTERORT TRAFIKSKOLA</p>
+                    <p>Copyright © 2018 VÄSTERORT TRAFIKSKOLA</p>
                     <p>Org Nr. 559150-0904 Alla rättigheter förbehålls </p>
                 </div>
                 <div class="col col-md-2 col-sm-12 col-12">
