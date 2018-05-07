@@ -290,7 +290,7 @@
         <section class="copyright">
             <div class="container">
                 <div class="col col-md-5 col-sm-12 col-12">
-                    <p>Copyrite &#169; 2018 INTENSIVKURS STOCKHOLM</p>
+                    <p>Copyright &#169; 2018 INTENSIVKURS STOCKHOLM</p>
                     <p>All rättigheter förbehålls.</p>
                 </div>
                 <div class="col col-md-2 col-sm-12 col-12">
