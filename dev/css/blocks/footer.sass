@@ -23,6 +23,18 @@ body
           max-width: 100%
           margin-bottom: 20px
           padding: 0
+      .col.col-md-5
+        padding-left: 4%
+        &.last
+          padding-left: 11.5%
+          padding-right: 0
+          @media (max-width: 800px)
+            padding-left: 15px
+            padding-right: 15px
+        @media (max-width: 1200px)
+          padding-left: 15px
+          &.last
+            padding-left: 5%
     p
       text-align: left
       line-height: 24px
