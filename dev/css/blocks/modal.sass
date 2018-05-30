@@ -201,3 +201,13 @@ body
                 text-transform: inherit
                 line-height: 26px
                 margin-bottom: 0
+
+      &#info-modal
+        .modal-dialog
+          width: 860px
+          @media (max-width: 900px)
+            @include calc(width, 100%, "100% - 20px")
+          h3
+            text-transform: uppercase
+          p
+            text-align: left
