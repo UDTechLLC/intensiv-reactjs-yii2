@@ -23,6 +23,14 @@
         <div class="map" id="map-layout">
             <!--img(src="" + imagePath + "map.jpg", alt="map")-->
         </div>
+        <div class="block-absolute-links">
+            <a href="#" target="_blank" id="instagram">
+                <div class="icon">
+                    <img class="svg" src="assets/images/logo.svg" alt="mail Logo">
+                </div>
+            </a>
+            <div class="modal-info-button" data-target="#info-modal" data-toggle="modal">GDPR</div>
+        </div>
         <div class="filter-section">
             <div class="flex flex-center header-filter"><a class="b_logo" href="#"><img src="assets/images/logo.svg" alt="Intensivkurs Logo"></a></div>
             <div class="body">
