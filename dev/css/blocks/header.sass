@@ -22,10 +22,12 @@
   @media (max-width: 900px)
    @include calc(width, 70%, "100% - 36px")
    top: 815px
+  @media (max-width: 500px)
+   padding-right: 64px
   @media (max-width: 350px)
    @include calc(width, 70%, "100% - 18px")
    left: 9px
-   padding-right: 62px
+   padding-right: 54px
 
   .text-link
    color: #ffffff
@@ -37,6 +39,21 @@
    @media (max-width: 410px)
     padding: 0 9px
     font-size: 13px
+  .modal-info-button
+   float: left
+   color: white
+   font-family: Montserrat
+   font-size: 16px
+   padding: 0
+   font-weight: 300
+   line-height: 65px
+   margin-left: 48px
+   cursor: pointer
+   @media (max-width: 500px)
+    margin-left: 20px
+   @media (max-width: 350px)
+    margin-left: 20px
+    font-size: 14px
   #instagram
    margin-top: 13px
    display: inline-block

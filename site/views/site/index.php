@@ -154,6 +154,7 @@
                     <img class="svg" src="assets/images/location-icon.svg" alt="mail Logo">
                 </div>
             </a>
+            <div class="modal-info-button" data-target="#info-modal" data-toggle="modal">GDPR</div>
             <a class="text-link" href="http://www.trbokning.se/elevportal/?pid=1036515&sid=1074363478650" target="_blank">Elevportalen</a>
             <a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank" id="facebook">
                 <div class="icon"><img class="svg" src="assets/images/icon-facebook.svg" alt="facebook Logo"></div>
@@ -453,6 +454,42 @@
                         <input type="text" name="discount_code" placeholder="Rabattkod">
                         <input class="btn-blue" type="submit" value="SKICKA">
                     </form>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+    <!-- start INFO modal-->
+    <div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="form" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal"></button>
+                    <h4 class="modal-title">Här kan du läsa om Västerort Trafikskolas integritetspolicy (GDPR).</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>INSAMLING OCH BEHANDLING AV PERSONUPPGIFTER</h3>
+                    <p>För att kunna erbjuda dig våra tjänster behöver vi behandla dina personuppgifter. Du kan direkt eller indirekt komma att ge oss information om dig själv genom att maila, ringa eller besöka oss.</p>
+                    <p>Ändamålet med behandlingen av dina uppgifter är för att säkerställa vem du är, kunna kontakta dig och att administrera din utbildning och dina köp hos oss. För ovan syfte samlar Västerort Trafikskola in namn, adress, mobilnummer, e-postadress och personnummer.</p>
+                    <h3>SAMTYCKE TILL BEHANDLING</h3>
+                    <p>Genom att använda någon utav Västerort Trafikskolas tjänster accepterar du vår integritetspolicy och vår behandling av dina personuppgifter såsom de framgår nedan. När du skriver in dig på Västerort Trafikskola samtycker du till dessa villkor och att du ger Västerort Trafikskola rätt att behandla dina personuppgifter, utbildningskort och köpinformation i enlighet med dessa villkor. Du samtycker även till att ta emot direktmarknadsföring från Intensivkurs Stockholm och Västerort Trafikskola via e-post och sms. Du har när som helst rätt att avsluta ditt medlemskap och återkalla dina samtycken.</p>
+                    <h3>VEM KAN FÅ DEL AV DIN INFORMATION?</h3>
+                    <p>Dina uppgifter lagras genom ett slutet system som är utvecklat av en betrodd tredje part Trafikutbildningarnas riksorganisation. Västerort Trafikskola säljer leads som kan innehålla information om dig till någon annan men i vissa fall behöver vi dela information med en annan, för att kunna erbjuda tjänsterna lokalt.</p>
+                    <h3>Leverantörer och underleverantörer </h3>
+                    <p>Vi kan komma att dela din information med leverantörer eller underleverantörer (tex e-post, teleoperatör, finansieringspartners, kreditupplysningsföretag, faktureringspartners, Trafikskolor) för utförandet av våra tjänster gentemot dig.</p>
+                    <h3>Målsman</h3>
+                    <p>Om eleven är under 18 år kan målsman komma att kontakta Västerort Trafikskola för att utföra ärenden för elevens räkning. Om eleven är myndig måste eleven ge sitt samtycke till Västerort Trafikskola att tredje part utför ärende för elevens räkning.  </p>
+                    <h3>Myndigheter</h3>
+                    <p>Vi är skyldiga att rapportera viss genomförd utbildning till Transportstyrelsen, det gäller tex Introduktionsutbildning och Riskutbildning. För bokning av förarprov behöver vi dela information med Trafikverket.</p>    
+                    <p>I annat fall kommer Västerort Trafikskola inte att lämna ut dina uppgifter till tredje part, om detta inte är nödvändigt till följd av en lagstadgad skyldighet, tex Skatteverket.</p>
+                    <h3>HUR LÄNGE SPARAR VI DIN INFORMSTION?</h3>
+                    <p>Vi behandlar bara din information så länge som det krävs enligt lag eller annars så länge vi har ett berättigat intresse eller som vi behöver den för att kunna utföra våra tjänster mot dig.</p>
+                    <h3>DINA RÄTTIGHETER: RÄTTA, RADERA OCH FÅ TILLGÅNG TILL INFORMATION</h3>
+                    <p>Du kan när som helst skriva till Västerort Trafikskola AB och begära att dina personuppgifter rättas, tas bort eller för att återkalla dina samtycken. Du har även rätt att en gång per år begära information om vilka uppgifter om dig som vi behandlar.</p>
+                    <h3>VILLKORSÄNDRINGAR</h3>
+                    <p>Västerort Trafikskola förbehåller sig rätten att ändra innehållet i integritetspolicyn med beaktande av dina rättigheter enligt gällande lagar och regler. Vi betydande förändringar kommer vi att meddela dig via e-post eller via telefon.</p>
+                    <h3>KONTAKT</h3>
+                    <p>Om du inte är nöjd med vår hantering av dina personuppgifter eller om du har några frågor om Västerort Trafikskolas behandling av personuppgifter ber vi dig att kontakta oss.</p>
                 </div>
                 <div class="modal-footer"></div>
             </div>
