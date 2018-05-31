@@ -3,12 +3,15 @@ $(function(){
 	$("[role='button']").click(function(e){
 		e.preventDefault();
 	});
-    if($('#ads-modal').length && (getCookie('showAdsModal') != true)){
-        setCookie('showAdsModal','1');
-        setTimeout(function () {
-            $('#ads-modal').modal('show')
-        }, 10000);
-    }
+    // if($('#ads-modal').length && (getCookie('showAdsModal') != true)){
+    //     setCookie('showAdsModal','1');
+    //     setTimeout(function () {
+    //         $('#ads-modal').modal('show')
+    //     }, 10000);
+    // }
+  setTimeout(function () {
+    $('#ads-modal').modal('show')
+  }, 10000);
 
     //As you scroll, record the scrolltop position in global variable
     let scrollTopPosition = 0;

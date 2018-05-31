@@ -484,7 +484,7 @@
                     <p>I annat fall kommer Västerort Trafikskola inte att lämna ut dina uppgifter till tredje part, om detta inte är nödvändigt till följd av en lagstadgad skyldighet, tex Skatteverket.</p>
                     <h3>HUR LÄNGE SPARAR VI DIN INFORMSTION?</h3>
                     <p>Vi behandlar bara din information så länge som det krävs enligt lag eller annars så länge vi har ett berättigat intresse eller som vi behöver den för att kunna utföra våra tjänster mot dig.</p>
-                    <h3>DINA RÄTTIGHETER: RÄTTA, RADERA OCH FÅ TILLGÅNG TILL INFORMATION</h3>
+                    <h3>DINA RÄTTIGHETER</h3>
                     <p>Du kan när som helst skriva till Västerort Trafikskola AB och begära att dina personuppgifter rättas, tas bort eller för att återkalla dina samtycken. Du har även rätt att en gång per år begära information om vilka uppgifter om dig som vi behandlar.</p>
                     <h3>VILLKORSÄNDRINGAR</h3>
                     <p>Västerort Trafikskola förbehåller sig rätten att ändra innehållet i integritetspolicyn med beaktande av dina rättigheter enligt gällande lagar och regler. Vi betydande förändringar kommer vi att meddela dig via e-post eller via telefon.</p>
