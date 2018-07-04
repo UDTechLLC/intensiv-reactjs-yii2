@@ -199,8 +199,8 @@ function createGraph(data) {
 let app = new Vue({
     el: '#app',
     data: {
-        latitudeMap: 59.36382554928936,
-        longitudeMap: 17.87141859406278,
+        latitudeMap: 59.362988157308024,
+        longitudeMap: 17.865869568786593,
         schoolViewStatus: false,
         markersList: '',
         selectPlace: '',
@@ -215,8 +215,8 @@ let app = new Vue({
 
         if($(window).width() < 960){
             $('.header #map-layout').height($(window).height());
-            this.latitudeMap = "59.3625133836089";
-            this.longitudeMap = "17.8686666476135";
+            this.latitudeMap = "59.36171969999999";
+            this.longitudeMap = "17.865397499999972";
         }
         let myLatlng = new google.maps.LatLng(this.latitudeMap, this.longitudeMap);
         let map = new google.maps.Map(document.getElementById('map-layout'), {
@@ -318,12 +318,7 @@ let app = new Vue({
         this.markersList = [{
             "latitude": "59.36171969999999",
             "longitude": "17.865397499999972",
-            "content": "08-533 301 01"
-        },
-        {
-            "latitude": "59.36382554928936",
-            "longitude": "17.87141859406278",
-            "content": "Mötesplats"
+            "content": "Grimstagatan 160"
         }];
 
         this.markersList.forEach((item) => {
@@ -333,7 +328,7 @@ let app = new Vue({
                 map,
                 content: item.content,
                 animation: google.maps.Animation.DROP,
-                icon: 'https://projects.udtech.co/intensivkurs/assets/images/map-marker.png'
+                icon: 'http://www.vasterorttrafikskola.se/images/map-marker.png'
             });
             google.maps.event.addListener(marker, 'click', function() {
                 infowindow.setContent(this.content);
