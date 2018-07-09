@@ -33,6 +33,11 @@ $(function(){
             setTimeout(function () {
                 $('body').css({top: 0});
             }, 800);
+
+          if($(this).hasClass('response-body')){
+              $(this).removeClass('response-body');
+          }
+
         });
 
     /*

@@ -125,6 +125,13 @@ body
           &:focus, &:active
             outline: none
 
+      .response-message
+            display: none
+            button
+              display: block
+              margin: 35px auto 0
+              max-width: 250px
+
       &#packet-modal
         .modal-dialog
           .modal-content
@@ -211,3 +218,9 @@ body
             font-size: 20px
           p
             text-align: left
+
+      &.response-body
+        .response-message
+          display: block
+        #packet-form
+          display: none

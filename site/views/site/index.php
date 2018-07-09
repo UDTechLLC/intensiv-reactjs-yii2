@@ -454,6 +454,10 @@
                         <input type="text" name="discount_code" placeholder="Rabattkod">
                         <input class="btn-blue" type="submit" value="SKICKA">
                     </form>
+                    <div class="response-message">
+                        <h4>Tack för visat intresse, vi kommer att kontakta dig så fort vi kan!</h4>
+                        <button class="btn-blue" type="button" data-dismiss="modal">OK</button>
+                    </div>
                 </div>
                 <div class="modal-footer"></div>
             </div>
