@@ -5,7 +5,7 @@ class Sections
 {
     const INTENSIV_PAKET = 1;
     const OVNINGS_PAKET = 2;
-    const STUDENT_PAKET = 3;
+//    const STUDENT_PAKET = 3;
 //    const OVRIGA_TJANSTER = 3;
 //    const KURSES = 4;
 
@@ -14,7 +14,7 @@ class Sections
         return [
             self::INTENSIV_PAKET => 'Intensivpaket',
             self::OVNINGS_PAKET => 'Övningspaket',
-            self::STUDENT_PAKET => 'Studentpaket',
+//            self::STUDENT_PAKET => 'Studentpaket',
 //            self::OVRIGA_TJANSTER => 'Övriga tjänster',
 //            self::KURSES => 'Kurser',
         ];
@@ -25,7 +25,7 @@ class Sections
         return [
             self::INTENSIV_PAKET => 'intensive',
             self::OVNINGS_PAKET => 'study',
-            self::STUDENT_PAKET => 'student',
+//            self::STUDENT_PAKET => 'student',
 //            self::OVRIGA_TJANSTER => 'other',
 //            self::KURSES => 'courses',
         ];

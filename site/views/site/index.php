@@ -184,12 +184,12 @@
         <section class="b_section b_section-text-area">
             <div class="container">
                 <h2 class="b_section_title">INTENSIVKURS STOCKHOLM</h2><!-- INTENSIVKURS STOCKHOLM HAR ALLTID KVALITÉN I FOKUS -->
-                <h3 class="b_section_title b_section_title_small">Upptäck nya möjligheter!</h3>
+                <h3 class="b_section_title b_section_title_small">Upptäck nya möjligheter</h3>
                 <p class="b_section_subtitle">På vår webbplats intensivkursstockholm.se får du möjligheten att få ett nytt erbjudande till ett kraftigt rabatterat pris på olika körpaket från topptrafikskolor nära dig. Vi gör ständigt vårt bästa för att kunna erbjuda dig oslagbara priser inom körlektioner och kurser, allt för att kunna erbjuda dig kvalitet till ett riktigt bra pris.</p>
-                <h3 class="b_section_title b_section_title_small">Endast erbjudanden som vi själva gillar!</h3>
-                <p class="b_section_subtitle">Vi på Intensivkurs Stockholm vet att priset är endast en del av äventyret - därför erbjuder vi dig bara rabatter hos trafikskolor som vi själva skulle uppskatta. Du som köper ett körpaket hos oss ska känna dig trygg i att du alltid får hög kvalitet till ett oerhört bra pris.</p>
-                <h3 class="b_section_title b_section_title_small">Pålitliga trafikskolor!</h3>
-                <p class="b_section_subtitle">Det är viktigt för oss på intensivkurs Stockholm att du som kund alltid ska vara nöjd med dina erbjudanden och köp så att du vill komma tillbaka till oss och hitta nya möjligheter. Därför strävar vi alltid efter att du ska kunna få en möjlighet att prova och jämföra innan en kraftig satsning.</p>
+                <h3 class="b_section_title b_section_title_small">FÅ EN SNABB UPPKÖRNINGSTID NÄRA DIG</h3>
+                <p class="b_section_subtitle">Att boka en privat uppkörning kan ta månader på grund av långa väntetider. Vi på Intensivkurs Stockholm i samarbete med våra trafikskolor kan erbjuda dig en snabb uppkörningstid i en ort nära dig. Trafikskolornas uppgift är att utbilda dig väl så att du kan klara av ett körprov på ditt första försök.</p>
+                <h3 class="b_section_title b_section_title_small">PÅLITLIGA TRAFIKSKOLOR</h3>
+                <p class="b_section_subtitle">Intensivkurs Stockholm samarbetar endast med trafikskolor som har ett braresultat på kunskaps-och uppkörningsproven hos Trafikverket i Stockholm. Statistiken är en kvalitetskontroll påden utbildning som eleverna får hos trafikskolan. Trafikskolorna väljer själva om de vill delta med sin statistik hos Trafikverket. Flertalet av trafikskolorna i Stockholm saknar idag statistik hos Trafikverket, därför väljer vi att endast erbjuda paket hos trafikskolor som har god statistik.</p>
             </div>
         </section>
 
@@ -318,18 +318,18 @@
                 <div class="modal-header">
                     <button class="close" type="button" data-dismiss="modal"></button>
                     <h4 class="modal-title">VÄLKOMMEN</h4>
-                    <p>FÅ EXKLUSIVA ERBJUDANDE FRÅN DINA LOKALA TRAFIKSKOLOR</p>
+                    <p>EXKLUSIVA ERBJUDANDEN FRÅN INTENSIVKURS STOCKHOLM</p>
                 </div>
                 <div class="modal-body">
-                    <h2>RABATTER UPPTILL <span>50%</span></h2>
-                    <p>PÅ KÖRPAKET OCH KURSER</p>
+                    <h2>KÖP 3 KÖRLEKTIONER OCH FÅ <span>50%</span> RABATT</h2>
+                    <p>NU FÖR ENDAST 1100:- HOS VÄSTERORT TRAFIKSKOLA</p>
                     <form class="flex flex-between" action="/offer-discount" method="POST">
                         <input type="text" name="phone" placeholder="Skriv in ditt mobilnummer här" required>
                         <input class="btn-blue" type="submit" value="SKICKA" onclick="">
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <p>BÖRJA MED ATT VÄLJA</p><p>1. FORDONSBEHÖRIGHET</p><p>2. ORT OCH UTBILDNINGPAKET</p><p>3. LÄMNA MOBILNUMMER OCH SKICKA IN DIN INTRESSEANMÄLAN.</p>
+                    <p>Genom att fylla i ditt mobilnummer godkänner du samtidigt att ta del av Västerort trafikskolas kampanjer. Du kan närsomhelst avregistrera dig från denna tjänst genom ett enkelt sms (Avregistrera mig). Erbjudandet gäller endast nya elever samt folkbokförda utanför Västerort. </p>
                 </div>
             </div>
         </div>
@@ -391,6 +391,10 @@
                         <input type="text" name="discount_code" placeholder="Rabattkod">
                         <input class="btn-blue" type="submit" value="SKICKA">
                     </form>
+                    <div class="response-message">
+                        <h4>Tack för visat intresse, vi kommer att kontakta dig så fort vi kan!</h4>
+                        <button class="btn-blue" type="button" data-dismiss="modal">OK</button>
+                    </div>
                 </div>
                 <div class="modal-footer"></div>
             </div>

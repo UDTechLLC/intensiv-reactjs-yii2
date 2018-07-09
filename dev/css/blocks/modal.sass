@@ -121,6 +121,13 @@ body
           &:focus, &:active
             outline: none
 
+      .response-message
+        display: none
+        button
+          display: block
+          margin: 35px auto 0
+          max-width: 250px
+
       &#packet-modal
         .modal-dialog
           .modal-content
@@ -134,12 +141,15 @@ body
 
       &#ads-modal
         .modal-dialog
+          .modal-header
+            p
+              margin-bottom: 0
           .modal-content
             background-color: #021725
             h4, h2
               color: white
             h2
-              font-size: 45px
+              font-size: 26px
             h4
               margin-bottom: 3px
             p
@@ -161,16 +171,15 @@ body
               margin: auto
 
             .modal-body
-              padding: 31px 45px 15px
+              padding: 0 45px 15px
 
               @media (max-width: 490px)
-                padding: 31px 35px 15px
+                padding: 0 35px 15px
               @media (max-width: 400px)
-                padding: 31px 20px 15px
+                padding: 0 20px 15px
 
               form
-                display: none
-                margin-top: 59px
+                margin-top: 30px
 
                 @media (max-width: 476px)
                   flex-wrap: wrap
@@ -185,6 +194,8 @@ body
 
               input[type=submit]
                 width: 33%
+                height: 50px
+                line-height: 15px
                 margin: 0
                 display: inline-block
 
@@ -212,3 +223,9 @@ body
             font-size: 20px
           p
             text-align: left
+
+      &.response-body
+        .response-message
+          display: block
+        #packet-form
+          display: none

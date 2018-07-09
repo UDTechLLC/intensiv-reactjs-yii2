@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 data,
                 function (data) {
                     if (data === 1) {
-                        alert('Success');
+                        //alert('Success');
+                      $('#packet-form').closest('.modal').addClass('response-body');
+
                     } else {
                         console.error(data);
                     }

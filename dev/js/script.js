@@ -43,6 +43,9 @@ $(function(){
             setTimeout(function () {
                 $('body').css({top: 0});
             }, 800);
+            if($(this).hasClass('response-body')){
+                $(this).removeClass('response-body');
+            }
         });
 
     /*
@@ -139,40 +142,20 @@ let app = new Vue({
         schoolView: '',
         closeZoomMode: true,
         listPlaces: [
-          {'city': 'Botkyrka'},
           {'city': 'Bromma'},
-          {'city': 'Danderyd'},
-          {'city': 'Ekerö'},
-          {'city': 'Farsta'},
-          {'city': 'Haninge'},
-          {'city': 'Huddinge'},
           {'city': 'Järfälla'},
           {'city': 'Kista'},
           {'city': 'Kungsholmen'},
-          {'city': 'Lidingö'},
-          {'city': 'Nacka'},
           {'city': 'Norrmalm'},
-          {'city': 'Salem'},
-          {'city': 'Sigtuna'},
           {'city': 'Sollentuna'},
           {'city': 'Solna'},
           {'city': 'Södermalm'},
           {'city': 'Sundbyberg'},
-          {'city': 'Tyresö'},
-          {'city': 'Täby'},
-          {'city': 'Upplands-Bro'},
-          {'city': 'Upplands Väsby'},
-          {'city': 'Vallentuna'},
-          {'city': 'Vaxholm'},
-          {'city': 'Vasastan'},
-          {'city': 'Vällingby'},
-          {'city': 'Värmdö'},
           {'city': 'Östermalm'},
         ],
         listPackages: [
           {'section': 'Intensivpaket'},
-          {'section': 'Övningspaket'},
-          {'section': 'Studentpaket'},
+          {'section': 'Övningspaket'}
         ],
         namePacket: '',
         pricePacket: '',
