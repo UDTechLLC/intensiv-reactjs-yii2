@@ -187,9 +187,9 @@
                 <h3 class="b_section_title b_section_title_small">Upptäck nya möjligheter</h3>
                 <p class="b_section_subtitle">På vår webbplats intensivkursstockholm.se får du möjligheten att få ett nytt erbjudande till ett kraftigt rabatterat pris på olika körpaket från topptrafikskolor nära dig. Vi gör ständigt vårt bästa för att kunna erbjuda dig oslagbara priser inom körlektioner och kurser, allt för att kunna erbjuda dig kvalitet till ett riktigt bra pris.</p>
                 <h3 class="b_section_title b_section_title_small">FÅ EN SNABB UPPKÖRNINGSTID NÄRA DIG</h3>
-                <p class="b_section_subtitle">Att boka en privat uppkörning kan ta månader på grund av långa väntetider. Vi på Intensivkurs Stockholm i samarbete med våra trafikskolor kan erbjuda dig en snabb uppkörningstid i en ort nära dig. Trafikskolornas uppgift är att utbilda dig väl så att du kan klara av ett körprov på ditt första försök.</p>
+                <p class="b_section_subtitle">Att boka en privat uppkörning kan ta månader på grund av långa väntetider. Vi på Intensivkurs Stockholm i samarbete med våra trafikskolor kan erbjuda dig en snabb uppkörningstid i en ort nära dig (Jakobsberg, Sollentuna & Farsta). Trafikskolornas uppdrag är att erbjuda dig en resultatrik körkortsutbildning, så att du kan klara av ett körprov på ditt första försök. Uppkörningstiderna kan variera mellan en vecka till två månader.</p>
                 <h3 class="b_section_title b_section_title_small">PÅLITLIGA TRAFIKSKOLOR</h3>
-                <p class="b_section_subtitle">Intensivkurs Stockholm samarbetar endast med trafikskolor som har ett braresultat på kunskaps-och uppkörningsproven hos Trafikverket i Stockholm. Statistiken är en kvalitetskontroll påden utbildning som eleverna får hos trafikskolan. Trafikskolorna väljer själva om de vill delta med sin statistik hos Trafikverket. Flertalet av trafikskolorna i Stockholm saknar idag statistik hos Trafikverket, därför väljer vi att endast erbjuda paket hos trafikskolor som har god statistik.</p>
+                <p class="b_section_subtitle">Intensivkurs Stockholm samarbetar endast med trafikskolor som har ett bra resultat på kunskaps- och uppkörningsproven hos Trafikverket i Stockholm. Statistiken är en kvalitetskontroll på den utbildning som eleverna får hos trafikskolorna. Trafikskolorna väljer själva om de vill medverka med sina resultat hos Trafikverket. Flertalet av trafikskolorna i Stockholm saknar idag statistik hos myndigheten, därför väljer vi att endast erbjuda körpaket hos trafikskolor som medverkar med sin statistik.</p>
             </div>
         </section>
 
@@ -322,7 +322,7 @@
                 </div>
                 <div class="modal-body">
                     <h2>KÖP 3 KÖRLEKTIONER OCH FÅ <span>50%</span> RABATT</h2>
-                    <p>NU FÖR ENDAST 1100:- HOS VÄSTERORT TRAFIKSKOLA</p>
+                    <p>NU FÖR ENDAST <span>1100:-</span> HOS VÄSTERORT TRAFIKSKOLA</p>
                     <form class="flex flex-between" action="/offer-discount" method="POST">
                         <input type="text" name="phone" placeholder="Skriv in ditt mobilnummer här" required>
                         <input class="btn-blue" type="submit" value="SKICKA" onclick="">
