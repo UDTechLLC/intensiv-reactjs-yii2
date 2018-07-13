@@ -9,9 +9,19 @@ $(function(){
     //         $('#ads-modal').modal('show')
     //     }, 10000);
     // }
-  setTimeout(function () {
-    $('#ads-modal').modal('show')
-  }, 10000);
+  var openModal = true;
+  setInterval(function () {
+      if(openModal){
+          if(!($('body').hasClass('modal-open'))){
+            $('#ads-modal').modal('show');
+            openModal = false;
+          }
+      }
+
+    },10000 );
+  // setTimeout(function () {
+  //   $('#ads-modal').modal('show')
+  // }, 10000);
 
     // if($('.section select').length){
      //    $('.section select').select2({
@@ -27,7 +37,7 @@ $(function(){
     let scrollTopPosition = 0;
     let lastKnownScrollTopPosition = 0;
     $(window).scroll(function () {
-        scrollTopPosition = $(document).scrollTop();
+        scrollTopPosition = getBodyScrollTop();
     });
 
     $('.modal')
@@ -80,6 +90,11 @@ $(function(){
     });
 
 });
+
+function getBodyScrollTop() {
+    const el = document.scrollingElement || document.documentElement
+  return el.scrollTop
+}
 
 function setCookie(key, value) {
     var expires = new Date();
