@@ -9,8 +9,14 @@ $(function(){
     //         $('#ads-modal').modal('show')
     //     }, 10000);
     // }
-  setTimeout(function () {
-    $('#ads-modal').modal('show')
+  var openModal = true;
+  setInterval(function () {
+    if(openModal){
+      if(!($('body').hasClass('modal-open'))){
+        $('#ads-modal').modal('show');
+        openModal = false;
+      }
+    }
   }, 10000);
 
     //As you scroll, record the scrolltop position in global variable
