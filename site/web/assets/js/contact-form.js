@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 data,
                 function (data) {
                     if (data === 1) {
-                        alert('Success');
-                        document.location.reload();
+                        $('#contact-form, #form-modal form')[0].reset();
+                        showThankPopup();
                     } else {
                         console.error(data);
                     }
@@ -35,8 +35,8 @@ document.addEventListener("DOMContentLoaded", function() {
         data,
         function (data) {
           if (data === 1) {
-            alert('Success');
-            document.location.reload();
+            $('#phone-header-form')[0].reset();
+            showThankPopup();
           } else {
             console.error(data);
           }

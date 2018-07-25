@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="assets/css/libs.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="assets/css/site.css">
+<!--    <link rel="stylesheet" href="assets/css/site.css">-->
 </head>
 <body>
 <div class="page" id="app">
@@ -323,7 +323,7 @@
                 <div class="modal-body">
                     <h2>KÖP 3 KÖRLEKTIONER OCH FÅ <span>50%</span> RABATT</h2>
                     <p>NU FÖR ENDAST <span>1100:-</span> HOS VÄSTERORT TRAFIKSKOLA</p>
-                    <form class="flex flex-between" action="/offer-discount" method="POST">
+                    <form class="flex flex-between" action="/offer-discount" method="POST" id="ads-modal-form">
                         <input type="text" name="phone" placeholder="Skriv in ditt mobilnummer här" required>
                         <input class="btn-blue" type="submit" value="SKICKA" onclick="">
                     </form>
@@ -437,6 +437,25 @@
             </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="thank-modal" tabindex="-1" role="dialog" aria-labelledby="form" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Tack för visat intresse, vi kommer att kontakta dig så fort vi kan!</h4>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-blue" type="button" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- start LOADER-->
     <div class="loader bounceOutRight">
         <div class="icon"></div>
@@ -490,7 +509,25 @@
                 $('#scooter-licence').text('AM');
             }
         });
+
+        $('#ads-modal-form').submit(function(e) {
+            e.stopPropagation();
+
+            $.post(
+                $(this).attr("action"),
+                $(this).serialize()
+            );
+
+            $("#ads-modal").modal("hide");
+            setTimeout(showThankPopup, 500);
+
+            return false;
+        });
     });
+    
+    function showThankPopup() {
+        $('#thank-modal').modal('show');
+    }
 </script>
 </body>
 </html>
