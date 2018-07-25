@@ -10,8 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 data,
                 function (data) {
                     if (data === 1) {
-                        alert('Success');
-                        document.location.reload();
+                        $('#form-modal').modal("hide");
+                        setTimeout(showThankPopup, 500);
+                        $('#contact-form, #form-modal form')[0].reset();
                     } else {
                         console.error(data);
                     }

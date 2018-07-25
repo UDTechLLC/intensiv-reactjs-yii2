@@ -386,7 +386,7 @@
                 <div class="modal-body">
                     <h2><span>40%</span>RABATT</h2>
                     <p>PÅ DITT KÖP AV HANDLEDARKURSEN</p>
-                    <form class="flex flex-between" action="/offer-discount" method="POST">
+                    <form class="flex flex-between" action="/offer-discount" method="POST" id="ads-modal-form">
                         <input type="text" name="phone" placeholder="Skriv in ditt mobilnummer här" required>
                         <input class="btn-blue" type="submit" value="SKICKA" onclick="">
                     </form>
@@ -499,6 +499,23 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="thank-modal" tabindex="-1" role="dialog" aria-labelledby="form" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Tack för visat intresse, vi kommer att kontakta dig så fort vi kan!</h4>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-blue" type="button" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- start LOADER-->
     <div class="loader bounceOutRight">
         <div class="icon"></div>
@@ -506,10 +523,31 @@
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcQed-XICEOIuLN8MHRzJ2GtX6D8g8IXs"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="assets/js/libs.js"></script>
 <script src="https://unpkg.com/vue@2.4.2/dist/vue.js"></script>
+<script src="assets/js/libs.js"></script>
 <script src="assets/js/script.js"></script>
 <script src="assets/js/contact-form.js"></script>
 <script src="assets/js/packet-form.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#ads-modal-form').submit(function(e) {
+            e.stopPropagation();
+
+            $.post(
+                $(this).attr("action"),
+                $(this).serialize()
+            );
+
+            $("#ads-modal").modal("hide");
+            setTimeout(showThankPopup, 500);
+
+            return false;
+        });
+    });
+
+    function showThankPopup() {
+        $('#thank-modal').modal('show');
+    }
+</script>
 </body>
 </html>
