@@ -155,6 +155,7 @@
                 </div>
             </a>
             <div class="modal-info-button" data-target="#info-modal" data-toggle="modal">GDPR</div>
+            <span class="modal-book-button" data-target="#book-test-drive-modal" data-toggle="modal">Boka mitt förarprov</span>
             <a class="text-link" href="http://www.trbokning.se/elevportal/?pid=1036515&sid=1074363478650" target="_blank">Elevportalen</a>
             <a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank" id="facebook">
                 <div class="icon"><img class="svg" src="assets/images/icon-facebook.svg" alt="facebook Logo"></div>
@@ -512,6 +513,78 @@
                 <div class="modal-footer">
                     <button class="btn-blue" type="button" data-dismiss="modal">OK</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="book-test-drive-success-modal" tabindex="-1" role="dialog" aria-labelledby="form" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal"></button>
+                    <h4 class="modal-title">BOKA MITT FÖRARPROV</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Tack för visat intresse, vi kommer att kontakta dig så fort vi kan!</p>
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button class="btn-blue-small" type="button" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="book-test-drive-modal" tabindex="-1" role="dialog" aria-labelledby="form" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal"></button>
+                    <h4 class="modal-title">BOKA MITT FÖRARPROV</h4>
+                    <p>Behöver du en snabb uppkörningstid i Stockholm? Nu kan du boka den via oss!</p>
+                    <p>Vi bokar och utbildar dig så att du klarar av kraven som ställs på dig från Trafikverket. </p>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="POST">
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <select name="month">
+                                    <option value="" disabled selected>Välj månad</option>
+                                    <option value="Januari">Januari</option>
+                                    <option value="Februari">Februari</option>
+                                    <option value="Mars">Mars</option>
+                                    <option value="April">April</option>
+                                    <option value="Maj">Maj</option>
+                                    <option value="Juni">Juni</option>
+                                    <option value="Juli">Juli</option>
+                                    <option value="Augusti">Augusti</option>
+                                    <option value="September">September</option>
+                                    <option value="Oktober">Oktober</option>
+                                    <option value="November">November</option>
+                                    <option value="December">December</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="personnummer" placeholder="Personnummer" required>
+                                <div class="help-block"></div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <select name="city">
+                                    <option value="" disabled selected>Välj ort</option>
+                                    <option value="Jakobsberg">Jakobsberg</option>
+                                    <option value="Sollentuna">Sollentuna</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="mobilnummer" placeholder="Mobilnummer" required pattern="^[_A-z0-9]{1,}$">
+                                <div class="help-block"></div>
+                            </div>
+                        </div>
+                        <input class="btn-blue" type="submit" value="SKICKA">
+                    </form>
+                </div>
+                <div class="modal-footer"></div>
             </div>
         </div>
     </div>
