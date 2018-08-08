@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\BookTestDrive;
+use app\models\BookTestDriveSearch;
 use Yii;
-use app\models\ContactForm;
-use app\models\ContactFormSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -54,12 +54,12 @@ class TestDriveFormController extends Controller
     }
 
     /**
-     * Lists all ContactForm models.
+     * Lists all BookTestDrive models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ContactFormSearch();
+        $searchModel = new BookTestDriveSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -69,7 +69,7 @@ class TestDriveFormController extends Controller
     }
 
     /**
-     * Deletes an existing ContactForm model.
+     * Deletes an existing BookTestDrive model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -88,9 +88,8 @@ class TestDriveFormController extends Controller
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $params = Yii::$app->request->post();
-        return 1;
 
-        $model = new ContactForm($params);
+        $model = new BookTestDrive($params);
         if (! $model->save()) {
             return $model->getErrors();
         }
@@ -98,15 +97,15 @@ class TestDriveFormController extends Controller
     }
 
     /**
-     * Finds the ContactForm model based on its primary key value.
+     * Finds the BookTestDrive model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return ContactForm the loaded model
+     * @return BookTestDrive the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ContactForm::findOne($id)) !== null) {
+        if (($model = BookTestDrive::findOne($id)) !== null) {
             return $model;
         }
 

@@ -547,7 +547,7 @@
                     <form action="#" method="POST">
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <select name="month">
+                                <select name="month" required>
                                     <option value="" disabled selected>Välj månad</option>
                                     <option value="Januari">Januari</option>
                                     <option value="Februari">Februari</option>
@@ -564,20 +564,20 @@
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" name="personnummer" placeholder="Personnummer" required>
+                                <input type="text" name="name" placeholder="Personnummer" required>
                                 <div class="help-block"></div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <select name="city">
+                                <select name="city" required>
                                     <option value="" disabled selected>Välj ort</option>
                                     <option value="Jakobsberg">Jakobsberg</option>
                                     <option value="Sollentuna">Sollentuna</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" name="mobilnummer" placeholder="Mobilnummer" required pattern="^[_A-z0-9]{1,}$">
+                                <input type="text" name="mobile" placeholder="Mobilnummer" required pattern="^[_A-z0-9]{1,}$">
                                 <div class="help-block"></div>
                             </div>
                         </div>

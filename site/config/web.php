@@ -62,6 +62,8 @@ $config = [
                 'admin/contact-form/<action:\w>' => 'contact-form/<action>',
                 'admin/offer-discount' => 'offer-discount/index',
                 'admin/offer-discount/<action:\w>' => 'offer-discount/<action>',
+                'admin/test-drive' => 'test-drive-form/index',
+                'admin/test-drive/<action:\w>' => 'test-drive-form/<action>',
             ],
         ],
 

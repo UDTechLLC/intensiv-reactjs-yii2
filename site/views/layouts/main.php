@@ -46,6 +46,7 @@ AppAsset::register($this);
         $items[] = ['label' => 'Packages', 'url' => ['/admin/packages']];
         $items[] = ['label' => 'Package Details', 'url' => ['/admin/package-details']];
         $items[] = ['label' => 'Contacts', 'url' => ['/admin/contact-form']];
+        $items[] = ['label' => 'Boka mitt förarprov', 'url' => ['/admin/test-drive']];
         $items[] = ['label' => 'Rabatt Erbjudande', 'url' => ['/admin/offer-discount']];
         $items[] = '<li>'
         . Html::beginForm(['/site/logout'], 'post')

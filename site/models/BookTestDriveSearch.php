@@ -6,7 +6,10 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
-class OfferDiscountSearch extends OfferDiscount
+/**
+ * BookTestDriveSearch represents the model behind the search form of `app\models\BookTestDrive`.
+ */
+class BookTestDriveSearch extends BookTestDrive
 {
     /**
      * @inheritdoc
@@ -15,7 +18,7 @@ class OfferDiscountSearch extends OfferDiscount
     {
         return [
             [['id'], 'integer'],
-            [['phone'], 'safe'],
+            [['name', 'month', 'city', 'mobile'], 'safe'],
         ];
     }
 
@@ -37,7 +40,7 @@ class OfferDiscountSearch extends OfferDiscount
      */
     public function search($params)
     {
-        $query = OfferDiscount::find();
+        $query = BookTestDrive::find();
 
         // add conditions that should always apply here
 
@@ -59,7 +62,10 @@ class OfferDiscountSearch extends OfferDiscount
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'phone', $this->phone]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'city', $this->city])
+            ->andFilterWhere(['like', 'mobile', $this->mobile])
+            ->andFilterWhere(['like', 'month', $this->month]);
 
         return $dataProvider;
     }
