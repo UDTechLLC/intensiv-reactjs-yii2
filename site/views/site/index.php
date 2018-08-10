@@ -155,7 +155,10 @@
                 </div>
             </a>
             <div class="modal-info-button" data-target="#info-modal" data-toggle="modal">GDPR</div>
-            <span class="modal-book-button" data-target="#book-test-drive-modal" data-toggle="modal">Boka mitt förarprov</span>
+            <span class="modal-book-button" data-target="#book-test-drive-modal" data-toggle="modal">
+                <img src="images/test-drive.png" class="mobile test-drive-icon" alt="Boka mitt förarprov" align="middle">
+                <span class="desktop">Boka mitt förarprov</span>
+            </span>
             <a class="text-link" href="http://www.trbokning.se/elevportal/?pid=1036515&sid=1074363478650" target="_blank">Elevportalen</a>
             <a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank" id="facebook">
                 <div class="icon"><img class="svg" src="assets/images/icon-facebook.svg" alt="facebook Logo"></div>
