@@ -159,7 +159,7 @@
                 <img src="images/test-drive.png" class="mobile test-drive-icon" alt="Boka mitt förarprov" align="middle">
                 <span class="desktop">Boka mitt förarprov</span>
             </span>
-            <a class="text-link" href="http://www.trbokning.se/elevportal/?pid=1036515&sid=1074363478650" target="_blank">Elevportalen</a>
+            <a class="text-link elevportalen" href="http://www.trbokning.se/elevportal/?pid=1036515&sid=1074363478650" target="_blank">Elevportalen</a>
             <a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank" id="facebook">
                 <div class="icon"><img class="svg" src="assets/images/icon-facebook.svg" alt="facebook Logo"></div>
             </a>
@@ -388,7 +388,7 @@
                     <p>SOM NY BESÖKARE GER VI DIG IDAG</p>
                 </div>
                 <div class="modal-body">
-                    <h2><span>40%</span>RABATT</h2>
+                    <h2><span>20%</span>RABATT</h2>
                     <p>PÅ DITT KÖP AV HANDLEDARKURSEN</p>
                     <form class="flex flex-between" action="/offer-discount" method="POST" id="ads-modal-form">
                         <input type="text" name="phone" placeholder="Skriv in ditt mobilnummer här" required>
