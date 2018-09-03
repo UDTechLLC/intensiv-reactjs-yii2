@@ -85,6 +85,20 @@ body select:active, body select:focus {
 .desktop {
     display:inline-block;
 }
+.plans .tab-content .card ul li.info-item:before {
+    background: transparent url(/images/i.png) no-repeat center center !important;
+    width: 16px !important;
+    height: 20px !important;
+    border-radius: 0 !important;
+    top: 4px !important;
+    left: 13px !important;
+}
+
+@media (max-width: 1120px) {
+    .plans .tab-content .card ul li.info-item:before {
+        left: 6px !important;
+    }
+}
 
 @media only screen and (max-width: 560px) {
     .elevportalen {

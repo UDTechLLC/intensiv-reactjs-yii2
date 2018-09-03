@@ -156,8 +156,8 @@
             </a>
             <div class="modal-info-button" data-target="#info-modal" data-toggle="modal">GDPR</div>
             <span class="modal-book-button" data-target="#book-test-drive-modal" data-toggle="modal">
-                <img src="images/test-drive.png" class="mobile test-drive-icon" alt="Boka mitt förarprov" align="middle">
-                <span class="desktop">Boka mitt förarprov</span>
+                <img src="images/test-drive.png" class="mobile test-drive-icon" alt="Boka min uppkörning" align="middle">
+                <span class="desktop">Boka min uppkörning</span>
             </span>
             <a class="text-link elevportalen" href="http://www.trbokning.se/elevportal/?pid=1036515&sid=1074363478650" target="_blank">Elevportalen</a>
             <a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank" id="facebook">
@@ -374,6 +374,9 @@
                 <div class="col col-md-5 col-sm-12 col-12 last">
                     <p>SNI – 85530 Trafikskoleverksamhet</p>
                     <p>SNI – 85600 Stödverksamhet för utbildningsväsendet </p>
+                    <p>Swish: 123 569 4906</p>
+                    <p>Bankgiro: 5267-9420</p>
+                    <p>FU – Flerspråkig undervisning i teori och praktik</p>
                 </div>
             </div>
         </section>
@@ -525,7 +528,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button class="close" type="button" data-dismiss="modal"></button>
-                    <h4 class="modal-title">BOKA MITT FÖRARPROV</h4>
+                    <h4 class="modal-title">BOKA MIN UPPKÖRNING</h4>
                 </div>
                 <div class="modal-body">
                     <p>Tack för visat intresse, vi kommer att kontakta dig så fort vi kan!</p>
@@ -542,7 +545,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button class="close" type="button" data-dismiss="modal"></button>
-                    <h4 class="modal-title">BOKA MITT FÖRARPROV</h4>
+                    <h4 class="modal-title">BOKA MIN UPPKÖRNING</h4>
                     <p>Behöver du en snabb uppkörningstid i Stockholm? Nu kan du boka den via oss!</p>
                     <p>Vi bokar och utbildar dig så att du klarar av kraven som ställs på dig från Trafikverket. </p>
                 </div>
