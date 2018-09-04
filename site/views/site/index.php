@@ -365,6 +365,7 @@
                 <div class="col col-md-5 col-sm-12 col-12">
                     <p>Copyright © 2018 VÄSTERORT TRAFIKSKOLA</p>
                     <p>Org Nr. 559150-0904 Alla rättigheter förbehålls </p>
+                    <p>Swish: 123 569 4906 Bankgiro: 5267-9420</p>
                 </div>
                 <div class="col col-md-2 col-sm-12 col-12">
                     <div class="footer_logo">
@@ -374,8 +375,6 @@
                 <div class="col col-md-5 col-sm-12 col-12 last">
                     <p>SNI – 85530 Trafikskoleverksamhet</p>
                     <p>SNI – 85600 Stödverksamhet för utbildningsväsendet </p>
-                    <p>Swish: 123 569 4906</p>
-                    <p>Bankgiro: 5267-9420</p>
                     <p>FU – Flerspråkig undervisning i teori och praktik</p>
                 </div>
             </div>
@@ -621,6 +620,20 @@
             setTimeout(showThankPopup, 500);
 
             return false;
+        });
+
+        $("li.info-item").click(function(e) {
+            e.stopPropagation();
+            var $title = $(this).find(".title");
+            if (!$title.length) {
+                $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
+            } else {
+                $title.remove();
+            }
+        });
+
+        $("body").click(function() {
+            $("span.title").remove();
         });
     });
 
