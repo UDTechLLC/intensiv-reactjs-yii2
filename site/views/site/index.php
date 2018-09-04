@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="assets/css/libs.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/site.css?v=1">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -622,23 +622,28 @@
             return false;
         });
 
-        $("li.info-item").click(function(e) {
-            e.stopPropagation();
-            var $title = $(this).find(".title");
-            if (!$title.length) {
-                $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
-            } else {
-                $title.remove();
-            }
-        });
+        $("li.info-item").click(showTitle);
+        $("li.info-item").hover(showTitle, hideTitle);
 
-        $("body").click(function() {
-            $("span.title").remove();
-        });
+        $("body").click(hideTitle);
     });
 
     function showThankPopup() {
         $('#thank-modal').modal('show');
+    }
+
+    function hideTitle() {
+        $("span.title").remove();
+    }
+
+    function showTitle(e) {
+        e.stopPropagation();
+        var $title = $(this).find(".title");
+        if (!$title.length) {
+            $(this).append('<span class="title">' + $(this).data("title") + '</span>');
+        } else {
+            $title.remove();
+        }
     }
 </script>
 </body>
