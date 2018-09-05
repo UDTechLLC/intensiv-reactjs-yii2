@@ -98,7 +98,7 @@ body select:active, body select:focus {
     z-index: 100;
     position: absolute;
     top: 30px;
-    background: #000;
+    background: #028fcc;
     padding: 10px;
     left: 0;
     max-width: 300px;
