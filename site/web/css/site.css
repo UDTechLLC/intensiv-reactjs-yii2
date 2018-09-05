@@ -1,0 +1,26 @@
+.plans .tab-content .card ul li.info-item:before {
+    background: transparent url(/images/i.png) no-repeat center center !important;
+    width: 16px !important;
+    height: 20px !important;
+    border-radius: 0 !important;
+    top: 4px !important;
+    left: 13px !important;
+}
+
+.info-item .title {
+    z-index: 100;
+    position: absolute;
+    top: 30px;
+    background: #028fcc;
+    padding: 10px;
+    left: 0;
+    max-width: 300px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+@media (max-width: 1120px) {
+    .plans .tab-content .card ul li.info-item:before {
+        left: 6px !important;
+    }
+}
