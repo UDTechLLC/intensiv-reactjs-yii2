@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="assets/css/libs.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 <div class="page" id="app">
