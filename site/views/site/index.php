@@ -523,10 +523,29 @@
 
             return false;
         });
+
+        $("li.info-item").click(showTitle);
+        $("li.info-item").hover(showTitle, hideTitle);
+
+        $("body").click(hideTitle);
     });
-    
+
     function showThankPopup() {
         $('#thank-modal').modal('show');
+    }
+
+    function hideTitle() {
+        $("span.title").remove();
+    }
+
+    function showTitle(e) {
+        e.stopPropagation();
+        var $title = $(this).find(".title");
+        if (!$title.length) {
+            $(this).append('<span class="title">' + $(this).data("title") + '</span>');
+        } else {
+            $title.remove();
+        }
     }
 </script>
 </body>
