@@ -26,13 +26,15 @@
         <div class="block-absolute-links">
             <a href="#" target="_blank" id="instagram">
                 <div class="icon">
-                    <img class="svg" src="assets/images/logo.svg" alt="mail Logo">
+                    <img class="svg" src="assets/images/logo.png" alt="logo Intensivkurs Stockholm" style="width:177px">
                 </div>
             </a>
             <div class="modal-info-button" data-target="#info-modal" data-toggle="modal">GDPR</div>
         </div>
         <div class="filter-section">
-            <div class="flex flex-center header-filter"><a class="b_logo" href="#"><img src="assets/images/logo.svg" alt="Intensivkurs Logo"></a></div>
+            <div class="flex flex-center header-filter">
+                <a class="b_logo" href="#"><img src="assets/images/logo.png" alt="Intensivkurs Logo"></a>
+            </div>
             <div class="body">
                 <form method="POST" id="phone-header-form" action="#">
                     <div class="drive">
@@ -302,7 +304,9 @@
                     <p>All rättigheter förbehålls.</p>
                 </div>
                 <div class="col col-md-2 col-sm-12 col-12">
-                    <a class="footer_logo" href="#"><img src="assets/images/logo.svg" alt="Intensivkurs Logo"></a>
+                    <a class="footer_logo" href="#">
+                        <img src="assets/images/logo.png" alt="Intensivkurs Logo">
+                    </a>
                 </div>
                 <div class="col col-md-5 col-sm-12 col-12 last">
                     <p>INTENSIVKURS STOCKHOLM i samarbete med</p>
