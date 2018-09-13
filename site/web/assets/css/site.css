@@ -1,3 +1,4 @@
+button:focus { outline: none; }
 
 .header .filter-section .body .section .button-license .wrap-btn.checked {
     border-color: #028fcc !important;
@@ -106,6 +107,26 @@ body select:active, body select:focus {
     color: #fff;
 }
 
+#scroll-to-top-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+#scroll-to-top {
+    border-radius: 25px;
+    background-color: #028fcc;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 25px;
+    font-weight: 600;
+    border: 0;
+    cursor: pointer;
+    line-height: 40px;
+    text-transform: uppercase;
+    transition: all .3s ease-in;
+}
+
 @media (max-width: 1120px) {
     .plans .tab-content .card ul li.info-item:before {
         left: 6px !important;
@@ -126,5 +147,11 @@ body select:active, body select:focus {
     }
     .desktop {
         display:none;
+    }
+}
+
+@media (min-width: 768px) {
+    #scroll-to-top-container {
+        display: none;
     }
 }

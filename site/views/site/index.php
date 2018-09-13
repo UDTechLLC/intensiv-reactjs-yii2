@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="assets/css/libs.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="assets/css/site.css?v=1">
+    <link rel="stylesheet" href="assets/css/site.css">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -594,6 +594,10 @@
         </div>
     </div>
 
+    <div id="scroll-to-top-container">
+        <button id="scroll-to-top">Topp</button>
+    </div>
+
     <!-- start LOADER-->
     <div class="loader bounceOutRight">
         <div class="icon"></div>
@@ -608,6 +612,13 @@
 <script src="assets/js/packet-form.js"></script>
 <script>
     $(document).ready(function() {
+        $("#scroll-to-top").click(function() {
+            $("html, body").animate({ scrollTop: 0 }, "fast");
+            return false;
+        });
+
+        $(window).scroll(onWinScroll);
+
         $('#ads-modal-form').submit(function(e) {
             e.stopPropagation();
 
@@ -626,6 +637,8 @@
         $("li.info-item").hover(showTitle, hideTitle);
 
         $("body").click(hideTitle);
+
+        onWinScroll();
     });
 
     function showThankPopup() {
@@ -644,6 +657,10 @@
         } else {
             $title.remove();
         }
+    }
+
+    function onWinScroll() {
+        $("#scroll-to-top").toggle($(this).scrollTop() > screen.height * 0.7)
     }
 </script>
 </body>
