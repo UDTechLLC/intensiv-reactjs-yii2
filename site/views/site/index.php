@@ -459,11 +459,15 @@
         </div>
     </div>
 
+    <div id="scroll-to-top-container">
+        <button id="scroll-to-top">Topp</button>
+    </div>
 
     <!-- start LOADER-->
     <div class="loader bounceOutRight">
         <div class="icon"></div>
     </div>
+
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcQed-XICEOIuLN8MHRzJ2GtX6D8g8IXs"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.2.0/vue-resource.js"></script>
@@ -475,6 +479,13 @@
 <script src="assets/js/packet-form.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+        $("#scroll-to-top").click(function() {
+            $("html, body").animate({ scrollTop: 0 }, "fast");
+            return false;
+        });
+
+        $(window).scroll(onWinScroll);
+
         $('.car-block [name=license]').on('change', function() {
             let checval = $('.car-block [name=license]:checked').val();
             if (checval) {
@@ -532,6 +543,8 @@
         $("li.info-item").hover(showTitle, hideTitle);
 
         $("body").click(hideTitle);
+
+        onWinScroll();
     });
 
     function showThankPopup() {
@@ -550,6 +563,10 @@
         } else {
             $title.remove();
         }
+    }
+
+    function onWinScroll() {
+        $("#scroll-to-top").toggle($(this).scrollTop() > screen.height * 0.7)
     }
 </script>
 </body>
