@@ -154,6 +154,7 @@
                     <img class="svg" src="assets/images/location-icon.svg" alt="mail Logo">
                 </div>
             </a>
+            <a class="left-text-link" href="https://www.csn.se/bidrag-och-lan/korkortslan.html" target="_blank"><span class="desktop">Körkortslån</span> CSN</a>
             <div class="modal-info-button" data-target="#info-modal" data-toggle="modal">GDPR</div>
             <span class="modal-book-button" data-target="#book-test-drive-modal" data-toggle="modal">
                 <img src="images/test-drive.png" class="mobile test-drive-icon" alt="Boka min uppkörning" align="middle">
