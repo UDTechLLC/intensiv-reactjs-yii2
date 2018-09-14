@@ -21,7 +21,7 @@
     <!-- block HEADER-->
     <div class="header flex">
         <div class="map" id="map-layout">
-            <!--img(src="" + imagePath + "map.jpg", alt="map")-->
+
         </div>
         <div class="block-absolute-links">
             <a href="#" target="_blank" id="instagram">
@@ -29,6 +29,7 @@
                     <img class="svg" src="assets/images/logo.png" alt="logo Intensivkurs Stockholm" style="width:177px">
                 </div>
             </a>
+            <a class="left-text-link" href="https://www.csn.se/bidrag-och-lan/korkortslan.html" target="_blank"><span class="desktop">Körkortslån</span> CSN</a>
             <div class="modal-info-button" data-target="#info-modal" data-toggle="modal">GDPR</div>
         </div>
         <div class="filter-section">
