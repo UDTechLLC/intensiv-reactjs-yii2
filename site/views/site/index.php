@@ -202,6 +202,15 @@
                                     <?php if ($pack->required_test_lesson) { ?>
                                         <div class="date_time"><span>En testlektion krävs</span></div>
                                     <?php } ?>
+                                    <?php if (empty($pack->price)) { ?>
+                                        <button
+                                            data-target="#form-modal"
+                                            data-toggle="modal"
+                                            class="btn btn-blue btn-small"
+                                        >
+                                            KONTAKTA OSS
+                                        </button>
+                                    <?php } else { ?>
                                     <button
                                         class="btn btn-blue btn-small"
                                         @click="openModalPacket('<?=$pack->name;?>',
@@ -210,6 +219,7 @@
                                         data-target="#packet-modal"
                                         data-toggle="modal"
                                     >Boka nu</button>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <?php } ?>

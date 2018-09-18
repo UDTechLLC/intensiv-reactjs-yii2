@@ -7,6 +7,7 @@ class Sections
     const OVNINGS_PAKET = 2;
     const OVRIGA_TJANSTER = 3;
     const KURSES = 4;
+    const OPPETTIDER = 5;
 
     public static function getList()
     {
@@ -15,6 +16,7 @@ class Sections
             self::OVNINGS_PAKET => 'Övningspaket',
             self::OVRIGA_TJANSTER => 'Övriga tjänster',
             self::KURSES => 'Kurser',
+            self::OPPETTIDER => 'Öppettider',
         ];
     }
 
@@ -25,6 +27,7 @@ class Sections
             self::OVNINGS_PAKET => 'study',
             self::OVRIGA_TJANSTER => 'other',
             self::KURSES => 'courses',
+            self::OPPETTIDER => 'oppettider',
         ];
     }
 }
