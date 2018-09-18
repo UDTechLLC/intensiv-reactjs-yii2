@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="assets/css/libs.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/site.css?v=<?=filemtime(__DIR__.'/../../web/assets/css/site.css');?>">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -154,8 +154,8 @@
                     <img class="svg" src="assets/images/location-icon.svg" alt="mail Logo">
                 </div>
             </a>
-            <a class="left-text-link" href="https://www.csn.se/bidrag-och-lan/korkortslan.html" target="_blank"><span class="desktop">Körkortslån</span> CSN</a>
             <div class="modal-info-button" data-target="#info-modal" data-toggle="modal">GDPR</div>
+            <a class="csn-text-link" href="https://www.csn.se/bidrag-och-lan/korkortslan.html" target="_blank"><span class="desktop">Körkortslån</span> CSN</a>
             <span class="modal-book-button" data-target="#book-test-drive-modal" data-toggle="modal">
                 <img src="images/test-drive.png" class="mobile test-drive-icon" alt="Boka min uppkörning" align="middle">
                 <span class="desktop">Boka min uppkörning</span>
