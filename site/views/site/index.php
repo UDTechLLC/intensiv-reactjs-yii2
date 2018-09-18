@@ -3,6 +3,15 @@
     /** @var array $sectionsAliases */
     /** @var array $sections */
     /* @var $this \yii\web\View */
+
+    function getFileTime($name)
+    {
+        $path = __DIR__.'/../../web/';
+        if (!file_exists($path.$name)) {
+            $path = __DIR__.'/../../www/';
+        }
+        return filemtime($path.$name);
+    }
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="en">
@@ -14,7 +23,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="assets/css/libs.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css?v=<?=getFileTime('css/index.css');?>">
 </head>
 <body>
 <div class="page" id="app">
@@ -29,8 +38,8 @@
                     <img class="svg" src="assets/images/logo.png" alt="logo Intensivkurs Stockholm" style="width:177px">
                 </div>
             </a>
-            <a class="left-text-link" href="https://www.csn.se/bidrag-och-lan/korkortslan.html" target="_blank"><span class="desktop">Körkortslån</span> CSN</a>
             <div class="modal-info-button" data-target="#info-modal" data-toggle="modal">GDPR</div>
+            <a class="csn-text-link" href="https://www.csn.se/bidrag-och-lan/korkortslan.html" target="_blank"><span class="desktop">Körkortslån</span> CSN</a>
         </div>
         <div class="filter-section">
             <div class="flex flex-center header-filter">
@@ -471,10 +480,10 @@
 
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcQed-XICEOIuLN8MHRzJ2GtX6D8g8IXs"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.2.0/vue-resource.js"></script>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="assets/js/vue-resource.js"></script>
+<script src="assets/js/vue.js"></script>
+<script src="assets/js/jquery-2.2.4.min.js"></script>
 <script src="assets/js/libs.js"></script>
-<script src="https://unpkg.com/vue@2.4.2/dist/vue.js"></script>
 <script src="assets/js/script.js"></script>
 <script src="assets/js/contact-form.js"></script>
 <script src="assets/js/packet-form.js"></script>
