@@ -1,5 +1,9 @@
 button:focus { outline: none; }
 
+.one-and-half-line-height {
+    line-height: 1.5em !important;
+}
+
 .header .filter-section .body .section .button-license .wrap-btn.checked {
     border-color: #028fcc !important;
     background-color: rgba(0, 0, 0, 0.3);

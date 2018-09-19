@@ -2,7 +2,20 @@
     /** @var array $packages */
     /** @var array $sectionsAliases */
     /** @var array $sections */
-    /* @var $this \yii\web\View */
+    /** @var $this \yii\web\View */
+
+    /**
+     * @param string $name
+     * @return bool|int
+     */
+    function getFileTime($name)
+    {
+        $path = __DIR__.'/../../web/';
+        if (!file_exists($path.$name)) {
+            $path = __DIR__.'/../../www/';
+        }
+        return filemtime($path.$name);
+    }
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="en">
@@ -14,7 +27,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="assets/css/libs.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="assets/css/site.css?v=<?=filemtime(__DIR__.'/../../web/assets/css/site.css');?>">
+    <link rel="stylesheet" href="assets/css/site.css?v=<?=getFiletime('assets/css/site.css');?>">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -615,8 +628,8 @@
     </div>
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcQed-XICEOIuLN8MHRzJ2GtX6D8g8IXs"></script>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="https://unpkg.com/vue@2.4.2/dist/vue.js"></script>
+<script src="assets/js/jquery-2.2.4.min.js"></script>
+<script src="assets/js/vue.js"></script>
 <script src="assets/js/libs.js"></script>
 <script src="assets/js/script.js"></script>
 <script src="assets/js/contact-form.js"></script>
