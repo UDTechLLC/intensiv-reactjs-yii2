@@ -155,7 +155,7 @@
                 </div>
             </div>
             <div class="contact-info">
-                <div class="info-block location">Duvdesvägen 10A, 162 65 Vällingby</div>
+                <div class="info-block location">Duvedsvägen 10A, 162 65 Vällingby</div>
                 <div class="info-block email">info@vasterorttrafikskola.se</div>
                 <div class="info-block phone">08-533 301 01</div>
                 <input class="btn-blue" type="button" value="KONTAKTA OSS" data-target="#form-modal" data-toggle="modal">
