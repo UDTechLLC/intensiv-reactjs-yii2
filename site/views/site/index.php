@@ -320,7 +320,7 @@
                 </div>
                 <div class="col col-md-5 col-sm-12 col-12 last">
                     <p>INTENSIVKURS STOCKHOLM i samarbete med</p>
-                    <p>VÄSTERORT TRAFIKSKOLA i Vällingby - Grimsta </p>
+                    <p>VÄSTERORT TRAFIKSKOLA i Vällingby - Centrum </p>
                 </div>
             </div>
         </section>
