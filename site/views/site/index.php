@@ -100,7 +100,7 @@
         <div class="school-view">
             <button class="close" @click="closeSchoolView"><span class="icon"><img class="svg" src="assets/images/arrow-down.svg" alt="arrow"></span></button>
             <h2>Intensivkurs Stockholm</h2>
-            <p class="description">Kvalitet och miljö TA-2017</p>
+            <p class="description">Kvalitet och miljö TA-2018</p>
             <div class="graph"></div>
             <div class="table-statistic">
                 <div class="row">
@@ -109,7 +109,7 @@
                     </div>
                     <div class="col col-sm-7">
                         <div class="block-statistic">
-                            <div class="progress-bar support" style="width:85%;"></div>
+                            <div class="progress-bar support" style="width:95%;"></div>
                         </div>
                     </div>
                 </div>
@@ -155,7 +155,7 @@
                 </div>
             </div>
             <div class="contact-info">
-                <div class="info-block location">Grimstagatan 160, 162 58 Vällingby</div>
+                <div class="info-block location">Duvdesvägen 10A, 162 65 Vällingby</div>
                 <div class="info-block email">info@vasterorttrafikskola.se</div>
                 <div class="info-block phone">08-533 301 01</div>
                 <input class="btn-blue" type="button" value="KONTAKTA OSS" data-target="#form-modal" data-toggle="modal">
@@ -173,7 +173,7 @@
                 <img src="images/test-drive.png" class="mobile test-drive-icon" alt="Boka min uppkörning" align="middle">
                 <span class="desktop">Boka min uppkörning</span>
             </span>
-            <a class="text-link elevportalen" href="http://www.trbokning.se/elevportal/?pid=1036515&sid=1074363478650" target="_blank">Elevportalen</a>
+            <a class="text-link elevportalen" href="https://www.trafikskolaonline.se/login" target="_blank">Elevportalen</a>
             <a href="https://sv-se.facebook.com/www.vasterorttrafikskola.se/" target="_blank" id="facebook">
                 <div class="icon"><img class="svg" src="assets/images/icon-facebook.svg" alt="facebook Logo"></div>
             </a>
@@ -569,8 +569,8 @@
                 <div class="modal-header">
                     <button class="close" type="button" data-dismiss="modal"></button>
                     <h4 class="modal-title">BOKA MIN UPPKÖRNING</h4>
-                    <p>Behöver du en snabb uppkörningstid i Stockholm? Nu kan du boka den via oss!</p>
-                    <p>Vi bokar och utbildar dig så att du klarar av kraven som ställs på dig från Trafikverket. </p>
+                    <p>Behöver du en snabb uppkörningstid i Stockholm?</p>
+                    <p class="modal-center-text">Vi bokar och utbildar dig så att du klarar av kraven som ställs på dig från Trafikverket. </p>
                 </div>
                 <div class="modal-body">
                     <form action="#" method="POST">

@@ -146,6 +146,12 @@ body select:active, body select:focus {
     margin-left: 12px;
 }
 
+.modal-center-text {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media (max-width: 1120px) {
     .plans .tab-content .card ul li.info-item:before {
         left: 6px !important;
